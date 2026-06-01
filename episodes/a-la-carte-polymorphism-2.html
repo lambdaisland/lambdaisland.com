@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/a-la-carte-polymorphism-2" />
+<meta name="twitter:title" content="À la Carte Polymorphism, part 2" />
+<meta name="twitter:description" content="With the basics of multimethods out of the way it's time to look at some of the more advanced uses. This episodes explores in depth Clojure's keyword hierarchy features, some..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/737377142-9610d313c503e362d047f9a0063af6711f26134568eac682b8b4e2bf319a721c-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="À la Carte Polymorphism, part 2" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/a-la-carte-polymorphism-2" />
+<meta name="video:duration" content="786" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/737377142-9610d313c503e362d047f9a0063af6711f26134568eac682b8b4e2bf319a721c-d_1280x720?r=pad" />
+<meta name="og:description" content="With the basics of multimethods out of the way it's time to look at some of the more advanced uses. This episodes explores in depth Clojure's keyword hierarchy features, some..." />
+<meta name="video:release_date" content="2018-11-06T20:08:23.995Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">À la Carte Polymorphism, part 2</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/299286633?h=13337c7d43&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="46. A La Carte Polymorphism, part 2"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>With the basics of multimethods out of the way it’s time to look at some of the
+more advanced uses. This episodes explores in depth Clojure’s keyword hierarchy
+features, some little known aspects of the <code>isa?</code> and <code>type</code> functions, and
+closes off with some examples that demonstrate the flexibility Clojure provides
+when modeling data and behavior.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In part one I recapped the basics of protocols, and presented an introduction to
+multimethods. If you’ve never used multimethods before you should watch that one
+first. Now it’s time to dig into some of their more advanced aspects.</p>
+<p>When calling <code>defmulti</code>, after providing the method name and dispatch function,
+you can supply two more options: <code>:default</code> and <code>:hierarchy</code>.</p>
+<p><code>:default</code> is pretty straightforward, it changes the dispatch value that is used
+as a fallback. This is useful if the <code>:default</code> keyword already has a certain
+significance in your domain. It can also be a way to provide a value that more
+meaningfully communicates its intent.</p>
+<pre><code class="language-clojure">(defmulti obstacle? :item/type :default ::unkown-item-type)
+
+(defmethod obstacle? ::unknown-item-type [item]
+  (log/warn "Missing implementation (obstacle? " (:item/type item) ")")
+  false)
+</code></pre>
+<p>At this point I should point out that calling <code>defmulti</code> a second time for the
+same method name does nothing. This is a safety mechanism that’s built-in,
+because when you redefine a multimethod it invalidates all previous
+<code>defmethod</code>s. The downside is that when you change the dispatch function or any
+of the options, that Clojure will not see these changes even after you
+re-evaluate the <code>defmulti</code> form.</p>
+<p>If you do want to force Clojure to pick up the changes, you need to first
+undefine the multimethod var using <code>ns-unmap</code>. Assigning <code>nil</code> to it also works.
+After that re-evaluate the <code>defmulti</code>, and any of its <code>defmethods</code>.</p>
+<pre><code class="language-clojure">(ns-unmap *ns* 'obstacle?)
+;; or
+(def obstacle? nil)
+</code></pre>
+<p>Doing this unloading/reloading manually is tedious and error-prone, which is why
+you have <code>tools.namespace</code>. If you’re using a reloaded-style workflow then a
+call to <code>(reset)</code> should clear things up. The component and integrant episodes
+can tell you more about how that works.</p>
+<p>Note that the <code>defmethod</code>s for a given <code>defmulti</code> can be spread across many
+different namespaces, so having some kind of dependency tracking for smart
+reloading is no frivolous luxury.</p>
+<pre><code class="language-clojure">(reloaded.repl/reset)
+;; or
+(integrant.repl/reset)
+</code></pre>
+<p>The <code>:default</code> option is fairly straightforward, <code>:hierarchy</code> on the other hand
+will need a bit more of an explanation, but for that we first need to talk about
+<code>make-hierarchy</code> and friends.</p>
+<p>The <code>make-hierarchy</code> function in <code>clojure.core</code> doesn’t take any arguments, it
+always returns the same map with three keys, <code>:parents</code>, <code>:ancestors</code>, and
+<code>:descendants</code>.</p>
+<pre><code class="language-clojure">(make-hierarchy) ;;=&gt; {:parents {} :ancestors {} :descendants {}}
+</code></pre>
+<p>With <code>derive</code> you add things to the hierarchy, creating a parent-child or is-a
+relationship.</p>
+<p>For instance in our game we can say that a <code>:gate</code> is a <code>:door</code>, a <code>:rock-face</code>
+is a <code>:wall</code>, and a <code>:city-gate</code> is a kind of <code>:gate</code>.</p>
+<pre><code class="language-clojure">(def my-hierarchy (-&gt; (make-hierarchy)
+                      (derive :gate :door)
+                      (derive :rock-face :wall)
+                      (derive :city-gate :gate)))
+</code></pre>
+<p>Looking at the result you can see Clojure did some book keeping to track the
+relationships in both directions.</p>
+<pre><code class="language-clojure">my-hierarchy
+;;=&gt;
+{:parents     {:gate      #{:door}
+               :rock-face #{:wall}
+               :city-gate #{:gate}}
+
+ :ancestors   {:gate      #{:door}
+               :rock-face #{:wall}
+               :city-gate #{:door :gate}}
+
+ :descendants {:door #{:city-gate :gate}
+               :wall #{:rock-face}
+               :gate #{:city-gate}}}
+</code></pre>
+<p>Once you have your hierarchy in place you can pass it to the <code>(isa?)</code> function.
+Notice that it correctly handles transitive relations. Because <code>:gate</code> is a
+<code>:door</code> and <code>:city-gate</code> is a <code>:gate</code>, we can conclude that (in this hierarchy
+at least) <code>:city-gate</code> is a <code>:door</code>.</p>
+<pre><code class="language-clojure">(isa? my-hierarchy :gate :door)      ;;=&gt; true
+(isa? my-hierarchy :city-gate :door) ;;=&gt; true
+</code></pre>
+<p>But <code>isa?</code> doesn’t stop there. If you pass it two java classes, it will consider
+Java’s class hierarchy to determine whether the relationship holds.</p>
+<pre><code class="language-clojure">(isa? my-hierarchy java.sql.Date java.util.Date) ;;=&gt; true
+</code></pre>
+<p>So far we’ve used <code>derive</code> with keywords, you can also use symbols just the
+same, but the first value passed to <code>derive</code>, the so called “child” can also be
+an interface or class. This allows you to set up a relationship between any
+built-in or custom type and a keyword.</p>
+<pre><code class="language-clojure">(derive my-hierarchy `foo `bar)
+(derive my-hierarchy java.util.Date ::datelike)
+</code></pre>
+<p>Suppose the game has a <code>Fence</code> which is represented as a record. I can now
+establish a relationship between that record type, and the <code>:wall</code> keyword.</p>
+<p>Note that hierarchies are just Clojure maps, so immutable. This means that to
+add to an existing hierarchy you’ll need some kind of mutable container like an
+atom or var. Using vars for this is quite common, since hierarchies are mostly
+defined at the top-level, when code is first loaded, so you don’t need the
+concurrency protections that atoms provide.</p>
+<pre><code class="language-clojure">(defrecord Fence [])
+
+(derive my-hierarchy Fence :wall)
+
+(alter-var-root #'my-hierarchy derive Fence :wall)
+
+(isa? my-hierarchy Fence :wall)
+;; =&gt; true
+</code></pre>
+<p><code>isa?</code> is a sort of equality relationship, if two values are equal then <code>isa?</code>
+will also consider them equal. This is true for both simple and complex types
+like maps.</p>
+<pre><code class="language-clojure">(isa? my-hierarchy 5 5)             ;;=&gt; true
+(isa? my-hierarchy {:x :y} {:x :y}) ;;=&gt; true
+</code></pre>
+<p>For vectors <code>isa?</code> has an extra trick up its sleave. If the vectors are of equal
+size, then <code>isa?</code> will call <code>isa?</code> recursively on their corresponding elements.</p>
+<pre><code class="language-clojure">(isa? my-hierarchy [:city-gate :rock-face] [:door :wall]) ;;=&gt; true
+</code></pre>
+<p>This works even for nested vectors, or when containing a mix of keywords and
+types present in the hierarchy, and plain values, so you can check multiple
+things in a single go, which can be really useful for multimethods, as I’ll show
+you in a bit.</p>
+<pre><code class="language-clojure">(isa? my-hierarchy
+      [[:city-gate :rock-face] {:x :y}]
+      [[:door :wall] {:x :y}])
+;;=&gt; true
+</code></pre>
+<p>Clojure comes with a default hierarchy built-in, called
+<code>clojure.core/global-hierarchy</code>. It’s defined as private, but you can see what’s
+in there by accessing the var and then dereffing it. So far it’s just an empty
+hierarchy. You might also see relationships in there defined by libraries you’ve
+loaded.</p>
+<pre><code class="language-clojure">@#'clojure.core/global-hierarchy
+</code></pre>
+<p>If you call <code>isa?</code> with only two arguments, so without the first hierarchy
+argument, then it will use this global hierarchy to do its lookups.</p>
+<pre><code class="language-clojure">(isa? 5 5)                    ;;=&gt; true
+(isa? :gate :door)            ;;=&gt; false
+</code></pre>
+<p>To add to this global hierarchy you call <code>derive</code> without the hierarchy
+argument. Note that there is a pretty big difference between the two and three
+argument version of derive. One is a pure function which returns a new
+hierarchy, the other one modifies a piece of state in place and returns <code>nil</code>.
+This is a bit of an irregularity in a language that is otherwise very systematic
+about these things, so watch out for that.</p>
+<pre><code class="language-clojure">(derive ::gate ::door) ;;=&gt; nil
+(isa? ::gate ::door)   ;; =&gt; true
+</code></pre>
+<p>Another thing to note is that in this global hierarchy everything must be
+namespaced. You can’t add unqualified keywords or symbols to the global
+hierarchy. This is an understandable design decision, it is global state after
+all, so you want to prevent stepping on others peoples toes by properly
+qualifying the things you put in there.</p>
+<pre><code class="language-clojure">(derive :gate :door)
+;;=&gt; Exception
+</code></pre>
+<p>At this point I should mention there’s also an <code>underive</code> function, which undoes
+the effect of <code>derive</code>. Just like <code>derive</code> it has a destructive 2-arity, and a
+functional 3-arity version.</p>
+<pre><code class="language-clojure">(underive ::gate ::door)  ;; =&gt; nil
+(isa? ::gate ::door)      ;; =&gt; false
+</code></pre>
+<p>Now that you know all about hierarchies, let’s look again at multimethods. When
+you call a multimethod Clojure first calls the dispatch function, to determine a
+dispatch value. Then it goes over the various defmethods, until it finds one
+where the dispatch value matches.</p>
+<p>This match is performed using <code>isa?</code>, using the global hierarchy, so we can use
+that to our benefit, provided we switch to namespaced keywords, since otherwise
+we won’t be able to add them to the hierarchy.</p>
+<pre><code class="language-clojure">(defmulti obstacle? :item/type)
+
+(defmethod obstacle? :default [item]
+  false)
+
+(defmethod obstacle? ::door [item]
+  (not (:door/open? item)))
+
+(defmethod obstacle? ::wall [item]
+  true)
+
+(derive ::gate ::door)
+
+(obstacle? {:item/type ::gate, :door/open? true})   ;;=&gt; false
+(obstacle? {:item/type ::gate, :door/open? false})  ;;=&gt; true
+</code></pre>
+<p>Instead of using the global hierarchy you can also bring your own hierarchy, by
+providing a <code>:hierarchy</code> option to <code>defmulti</code>.</p>
+<p>Create a var that will hold the hierarchy, and then add a helper function to
+update it. With this in place it will be easy to add things to the hierarchy
+later on, similar to the global hierarchy.</p>
+<pre><code class="language-clojure">(def obstacle-hierarchy (make-hierarchy))
+
+(defn obstacle-derive! [child parent]
+  (alter-var-root #'obstacle-hierarchy derive child parent))
+</code></pre>
+<p>Now you pass this to <code>defmulti</code>. Note that you need to give it the var, and not
+just the value. This makes sense, Clojure expects to see a reference type since
+hierarchies are expected to be updated. Providing an atom would also work.</p>
+<p>Notice how powerful this is. The <code>obstacle?</code> method can consider a gate to be
+like a door, but the <code>climb</code> function can consider it to be like a fence.</p>
+<p>Do keep in mind the remark I made earlier: if <code>obstacle?</code> was already defined,
+then you need to unmap it first, or the new option will not take effect.</p>
+<pre><code class="language-clojure">(defmulti obstacle? :item/type :hierarchy #'obstacle-hierarchy)
+
+(obstacle-derive! ::gate ::door)
+</code></pre>
+<p>So now let’s reexamine the claim that Clojure provides “polymorphism a la
+carte”.</p>
+<ul>
+<li>multimethods can dispatch on any aspect of an object, not just its type</li>
+<li>lookup hierarchy is separate from the type/class hierarchy</li>
+<li>different methods can have different hierarchies</li></ul>
+<p>Sounds pretty a la carte to me!</p>
+<p>To wrap it up let’s look at some examples of multimethod usage.</p>
+<p>A common feature in statically typed object-oriented languages is to have
+multiple versions of a function, based on the type and count of the arguments.
+This is called method overloading.</p>
+<pre><code class="language-clojure">function attack(Player p, Zombie z) { }
+function attack(Player p, Zombie z) { }
+function attack(Player p, Creature c1, Creature c2) { }
+function attack(Zombie z, Skeleton s) { }
+</code></pre>
+<p>Clojure supports functions with multiple arities well enough, you can supply
+multiple function bodies in a single function definition, but how about
+dispatching on types?</p>
+<pre><code class="language-clojure">(defn attack
+  ([attacker target] ,,,)
+  ([attacker target1 target2] ,,,))
+</code></pre>
+<p>This is where multimethods come in again. Say you’re writing a game which has a
+player, and a number of creatures like zombies and skeletons. What you want is a
+unified interface to add these kinds of entities to the game state.</p>
+<p>For this I’ll create a multimethod called <code>into-game</code>. As a dispatch value I’ll
+use a vector with the types of the arguments. Note the use of <code>mapv</code>, because of
+the way <code>isa?</code> works it has to be a vector, and not a seq.</p>
+<pre><code class="language-clojure">(defrecord Player [x y hp])
+(defrecord Zombie [x y hp desc])
+(defrecord Skeleton [x y hp desc])
+
+(defrecord Game [player creatures])
+
+(defmulti into-game (fn [&amp; args] (mapv type args)))
+</code></pre>
+<p>Now the implementations first list the types of arguments they expect, and then
+follow with the argument list and function body. I have one version to add a
+player to the game state, one for Zombies, and finally one for skeletons. This
+is all fairly elegant, but the last two implementations are basically identical,
+how could you get rid of that repetition?</p>
+<pre><code class="language-clojure">(defmethod into-game [Game Player] [game player]
+  (assoc game :player player))
+
+(defmethod into-game [Game Zombie] [game zombie]
+  (update game :creatures conj zombie))
+
+(defmethod into-game [Game Skeleton] [game skeleton]
+  (update game :creatures conj zombie))
+</code></pre>
+<p>Since you’re using records a common technique would be to create an empty
+protocol that’s just used as a marker. It doesn’t contain any methods, but by
+adding it to the records they now have a common supertype which you can use for
+your defmethod.</p>
+<pre><code class="language-clojure">(defprotocol Creature)
+
+(defrecord Zombie [x y hp desc]
+  Creature)
+(defrecord Skeleton [x y hp desc]
+  Creature)
+
+(defmethod into-game [Game Creature] [game c]
+  (update game :creatures conj c))
+</code></pre>
+<p>Notice that you could very well achieve the same thing using the hierarchy. Make
+Zombie and Skeleton both derive from a qualified <code>::creature</code> keyword, and then
+dispatch on that.</p>
+<pre><code class="language-clojure">(derive Zombie ::creature)
+(derive Skeleton ::creature)
+
+(defmethod into-game [Game ::creature] [game creature]
+  (update game :creatures conj creature))
+</code></pre>
+<p>Let’s try that, first create an empty game. Now you can add a player and a bunch
+of creatures to it by repeatedly calling <code>into-game</code>. For each type of game
+entity <code>into-game</code> will do the right thing, adding it at the right spot in the
+game state.</p>
+<pre><code class="language-clojure">(def empty-game (map-&gt;Game {}))
+
+(reduce into-game
+        empty-game
+        [(-&gt;Player 10 15 99)
+         (-&gt;Zombie 1 1 15 "shambler")
+         (-&gt;Zombie 20 10 15 "fastzom")
+         (-&gt;Skeleton 25 7 10 "lil bones")])
+</code></pre>
+<p>I’ll store this in a var for later use</p>
+<pre><code class="language-clojure">(def game (reduce into-game ,,,))
+</code></pre>
+<p>To allow the player to save the game you want to be able to convert the game
+state to XML, so you implement a multimethod to convert the various types used
+to the representation of an XML document as used by <code>clojure.xml</code>, meaning a map
+with <code>:tag</code>, <code>:attrs</code>, and <code>:content</code> keys.</p>
+<p>The implementation for <code>Game</code> recursively calls <code>to-xml</code> on the player and the
+creatures, which then each get their own implementation.</p>
+<pre><code class="language-clojure">(defmulti to-xml type)
+
+(defmethod to-xml Game [{:keys [player creatures]}]
+  {:tag :game
+   :content [(to-xml player) (to-xml creatures)]})
+
+(defmethod to-xml Player [{:keys [x y hp]}]
+  {:tag :player
+   :attrs {:x x :y y :hp hp}})
+
+(defmethod to-xml ::creature [creature]
+  {:tag (keyword (.getSimpleName (class creature)))
+   :attrs (into {} creature)})
+</code></pre>
+<p>However this doesn’t quite work yet, the list of creatures is a plain vector,
+and you don’t have an implementation of <code>to-xml</code> for those. You also don’t want
+to add a <code>defmethod</code> for any vector, because a list of creatures will be
+represented differently than a list of items, for instance.</p>
+<pre><code class="language-clojure">(to-xml game)
+;;=&gt; Exception
+</code></pre>
+<p>There’s a pretty elegant solution to this. Notice that so far I’ve been using
+the <code>type</code> function, rather than the <code>class</code> function. The difference is that
+when an object contains a <code>:type</code> metadata key, <code>type</code> will return that instead
+of the actual class.</p>
+<pre><code class="language-clojure">(class [])
+;; =&gt; clojure.lang.PersistentVector
+
+(type [])
+;; =&gt; clojure.lang.PersistentVector
+
+(type ^{:type ::creature-list} [])
+;; =&gt; :user/creature-list
+</code></pre>
+<p>This is really cool, because it means you can still use a plain old vector for
+the list of creatures, while easily distinguishing it from other vectors. So
+let’s add that metadata to the creature list in our empty game state, and then
+recreate the game state based on that.</p>
+<p>So now add an implementation to <code>to-xml</code> for <code>::creature-list</code>, which output a
+<code>&lt;creatures&gt;</code> xml tag, with the individual creatures as child elements.</p>
+<p>Now <code>to-xml</code> no longer throws an exception, and you can pass it to
+<code>clojure.xml/emit</code> to output the actual XML. And of course this type is still
+checked against the current hierarchy. Pretty powerful stuff.</p>
+<pre><code class="language-clojure">(def empty-game (map-&gt;Game {:creatures ^{:type ::creature-list} []}))
+
+(defmethod to-xml ::creature-list [l]
+  {:tag :creatures
+   :content (map to-xml l)})
+
+(def game
+  (reduce into-game
+          empty-game
+          [(-&gt;Player 10 15 99)
+           (-&gt;Zombie 1 1 15 "shambler")
+           (-&gt;Zombie 20 10 15 "fastzom")
+           (-&gt;Skeleton 25 7 10 "lil bones")]))
+
+(clojure.xml/emit-element (to-xml game))
+</code></pre>
+<p>That’s all I have for you today. If you want to dig into a good real world
+example of multimethods and hierarchies then have a look at Integrant, covered
+in episode 39, and the Integrant-based web framework Duct.</p>
+<p>I hope you’ll agree by now that Clojure has top-notch support for polymorphism,
+and that you can mix and match its ingredients in ways few other languages would
+allow.</p>
+<p>Polymorphism á la carte indeed!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/li45_polymorphism">browse source code</a></p>
+<h3 id="docstrings">docstrings</h3>
+<ul>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#defprotocol">defprotocol</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#defmulti">defmulti</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#defmethod">defmethod</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#make-hierarchy">make-hierarchy</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#derive">derive</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#underive">underive</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#isa?">isa?</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-beta5/api/clojure.core#type">type</a></li></ul>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="https://clojure.org/reference/multimethods">Clojure - Multimethods and Hierarchies</a></li>
+<li><a shape="rect" href="https://clojure.org/about/runtime_polymorphism">Clojure - Runtime Polymorphism</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-1" />
+<meta name="twitter:title" content="Building Command Line Applications with Lumo, part 1" />
+<meta name="twitter:description" content="JVM based Clojure isn't very suitable for command line scripting. On the command line you want quick feedback, which is at odds with the time Clojure needs to boot up, and just..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/630951876-977c40933db9c9a84551236421b85b6c044b80b5a645abc868af89d6e2514e44-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Building Command Line Applications with Lumo, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-1" />
+<meta name="video:duration" content="833" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/630951876-977c40933db9c9a84551236421b85b6c044b80b5a645abc868af89d6e2514e44-d_1280x720?r=pad" />
+<meta name="og:description" content="JVM based Clojure isn't very suitable for command line scripting. On the command line you want quick feedback, which is at odds with the time Clojure needs to boot up, and just..." />
+<meta name="video:release_date" content="2017-04-24T10:48:51.623Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Building Command Line Applications with Lumo, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/214471296?h=25465f8c8e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="29. Building Command Line Applications With Lumo"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>JVM based Clojure isn’t very suitable for command line scripting. On the command
+line you want quick feedback, which is at odds with the time Clojure needs to
+boot up, and just to run a single source file you need to jump through a few
+hoops.</p>
+<p>Instead you can use Lumo, a ClojureScript runtime environment based on Node.js.
+In this episode you’ll learn how to write a script in Lumo, and how to make use
+Node’s built-in libraries, by building your own version of the Unix “tree”
+command. It’ll also be a handy refresher on recursion.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In this episode I’ll show you how you can use Lumo, a ClojureScript runtime
+based on Node.js, to write command line utilities. While it’s possible to write
+scripts with JVM based Clojure, it’s not something people do often, mostly
+because Clojure needs quite a bit of time to boot up.</p>
+<p>Lumo’s startup time is measured in milliseconds, rather than seconds, and with
+the npm ecosystem at your disposal it’s a compelling platform to build upon.</p>
+<p>Make sure you have Node.js installed. I’m using the latest long-term-support
+release, 6.10.2, but older versions should work fine. ClojureScript is
+compatible with version 0.12 and up. I’ll link to Node’s installation
+instructions in the show notes.</p>
+<pre><code>$ node --version
+v6.10.2
+$ npm --version
+4.5.0
+</code></pre>
+<p>You install Lumo through Node’s package manager, npm. Use the <code>-g</code> flag to
+install it globally, so you can access it from anywhere.</p>
+<pre><code class="language-shell">$ npm install -g lumo-cljs
+</code></pre>
+<p>Now you get the <code>lumo</code> command line utility at your disposal. Invoke it without
+any arguments to start a ClojureScript REPL.</p>
+<pre><code class="language-clojure">$ lumo
+Lumo 1.0-alpha
+ClojureScript 1.9.293
+ Exit: Control+D or :cljs/quit or exit
+cljs.user=&gt;
+</code></pre>
+<p>You can also pass lumo the name of a Script to run. Here I have a cljs file that
+prints out “Hello from Lumo!”. When given the name of the script on the command
+line, instead of starting a REPL, lumo will compile the script to JavaScript and
+and run it using Node.js.</p>
+<pre><code class="language-clojure">;; lumo_test.cljs
+(println "Hello from Lumo!")
+</code></pre>
+<pre><code>$ lumo lumo_test.cljs
+Hello from Lumo!
+</code></pre>
+<p>To do something a little more interesting than hello world I’m going to show you
+how to implement your own version of the UNIX command line tool <code>tree</code>, which
+prints out a visual tree of a part of the filesystem. I was thinking of naming
+it after a type of tree would be nice, maybe “chestnut”? Mmmmm, that would be
+confusing. How about “elm”? No that doesn’t work either. How about “birch”? Yeah
+I like the sound of that. Let’s call it birch.</p>
+<pre><code>$ tree .
+.
+├── bundled
+│   └── lumo
+│       ├── analyzer.cljs
+│       ├── build
+│       │   └── api.cljs
+│       ├── classpath.cljs
+│       ├── cljs_deps.cljs
+│       ├── closure.cljs
+│       ├── compiler.cljs
+│       ├── io.cljs
+│       ├── json.cljs
+│       ├── util.clj
+│       └── util.cljs
+└── snapshot
+    └── lumo
+        ├── common.cljs
+        ├── core.cljs
+        ├── js_deps.cljs
+        ├── pprint
+        │   └── data.cljs
+        ├── repl.clj
+        ├── repl.cljs
+        └── repl_resources.cljs
+
+6 directories, 17 files
+</code></pre>
+<p>Later on I’ll also show you how to package this script up and publish it, this
+will require a few extra files, so let’s start by creating a project directory.</p>
+<p>Call the project directory <code>birch</code>, and in there create another directory named
+<code>bin</code>, it’s a common name for directories that contain executables. Small tip,
+you can create nested directories in one go if you pass the <code>-p</code> or <code>--parents</code>
+flag to <code>mkdir</code>.</p>
+<pre><code>$ mkdir -p birch/bin
+$ cd birch
+</code></pre>
+<p>Now inside <code>bin/</code> make a new file called <code>birch</code>, it doesn’t have an extension
+since this will be a script that you execute directly from the terminal.</p>
+<p>The first line of the file will be the “shebang” line. The name comes from a
+contraction of “hash-bang”. It tells the operating system which program to use
+to run your script, so you want to point this at the Lumo executable. The
+problem though is that Lumo doesn’t have a fixed, standardized location. In my
+case it’s somewhere under <code>/home/arne/.nvm</code>, but for you the exact location will
+likely be different.</p>
+<p>That’s why there is a tool called <code>env</code>. It’s location is standardized, it’s
+always under <code>/usr/bin</code>. <code>env</code> will search the shell <code>$PATH</code> for an executable
+named <code>lumo</code>, and then call that executable, passing it the name of your script.</p>
+<pre><code>#!/usr/bin/env lumo
+
+</code></pre>
+<p>Because this is just a script it doesn’t really need a namespace declaration,
+instead require the stuff you need directly with <code>require</code>.</p>
+<p><code>birch</code> will take a single command line argument, which you can get a hold of
+through the <code>*command-line-args*</code> var in <code>lumo.core</code>.</p>
+<pre><code>#!/usr/bin/env lumo
+(require '[lumo.core :refer [*command-line-args*]])
+
+(println "--&gt;" (first *command-line-args*))
+</code></pre>
+<p>You need to make the file executable now by flipping its executable bit with
+<code>chmod</code>. After that you should be able to run it.</p>
+<pre><code>$ chmod +x bin/birch
+$ bin/birch hello
+--&gt; hello
+</code></pre>
+<p>Now you might have noticed that my editor isn’t showing any syntax highlighting,
+and my trusty Paredit is also messing. What gives?</p>
+<p>Because the file doesn’t have an extension Emacs doesn’t recognize it as a
+ClojureScript file, and so it won’t switch to the right mode. You can give it a
+little push by adding a special comment at the top.</p>
+<p>Now save the file (C-x C-s) and re-load it (C-x C-v RET), so Emacs picks up the
+special comment. For vim there’s a similar “modeline” syntax, although you have
+to enable support for it first in your <code>.vimrc</code>. For other editors like Atom or
+Sublime Text there are packages to add support for these special comments.</p>
+<pre><code>#!/usr/bin/env lumo
+;; -*- mode: clojurescript -*-
+;; vim: ft=clojure:
+(require '[lumo.core :refer [*command-line-args*]])
+
+(println "--&gt;" (first *command-line-args*))
+</code></pre>
+<pre><code>" .vimrc
+:set modeline
+</code></pre>
+<p>That <code>lumo.core</code> namespace might make you think there’s a rich standard library
+bundled with Lumo. That’s not the case, but it also doesn’t really need one.
+There is already the stuff that’s bundled with ClojureScript itself, like
+<code>clojure.string</code>, <code>clojure.set</code>, zippers, pprint, and spec. There’s the Google
+Closure library which is brimming with goodies; and lumo is built on Node.js, so
+you have access to all the APIs that Node has to offer, things like buffers,
+streams, process control, and network and file system access.</p>
+<p>If that’s still not enough then you can use ClojureScript libraries from
+Clojars, assuming they’re bootstrap compatible, as well as some 450’000 packages
+on npm. That’s a lot of packages.</p>
+<p>Our tree clone needs to scan directories for files, so let’s load some of Node’s
+built-in packages to do that.</p>
+<p>You use the <code>require</code> function from Node, through the <code>js</code> pseudo-namespace.
+This loads the <code>fs</code> module, a JS object containing functions.</p>
+<p>I’m setting up a few aliases so these look like regular ClojureScript functions.
+<code>readdir</code> lists the entries in a directory, and <code>stat</code> let’s you find out a
+couple things, like whether it’s a file or a directory.</p>
+<p>The regular versions of these functions all take callbacks, whereas the <code>Sync</code>
+variant simply returns a value, which is a bit easier to work with.</p>
+<p>From the <code>path</code> module you’ll need <code>join</code>, to build up nested directory paths.
+This is better than just joining them with a slash, because the separator
+differs between operating systems. Finally add a <code>directory?</code> predicate
+function, this will come in handy soon enough.</p>
+<pre><code class="language-clojure">#!/usr/bin/env lumo
+;; -*- mode: clojurescript -*-
+;; vim: ft=clojure:
+(require '[lumo.core :refer [*command-line-args*]])
+
+(def node-fs (js/require "fs"))
+(def node-path (js/require "path"))
+
+(def read-dir (.-readdirSync node-fs))
+(def stat (.-statSync node-fs))
+(def path-join (.-join node-path))
+
+(defn directory? [f]
+  (.isDirectory (stat f)))
+</code></pre>
+<p>This is the kind of result we’re looking for. If you pry that apart you will
+find three different “building blocks”, used to “draw” the tree. I’ll call these
+a <code>T-branch</code>, an <code>I-branch</code>, and an <code>L-branch</code>.</p>
+<pre><code>.
+├── A
+│   ├── B
+│   ├── C
+│   └── D
+└── bin
+    └── birch
+</code></pre>
+<p>I’ll define a few constants already so we can just piece these together later
+on. There are the three types of branches, and then also a spacer for when a
+part of the tree needs to be pushed to the right, as is the case with <code>birch</code>.</p>
+<pre><code class="language-clojure">(def I-branch "│   ")
+(def T-branch "├── ")
+(def L-branch "└── ")
+(def SPACER   "    ")
+</code></pre>
+<p>Implementing <code>tree</code> isn’t <em>too</em> hard once you realize you can split it up in two
+steps: first gather all data in a handy datastructure so it’s easy to work with,
+then write a render function that transforms that data into a visual tree.</p>
+<p>Let’s start by stubbing out these functions, and adding a main function so you
+can test things out as we go along.</p>
+<p><code>tree-entry</code> takes a path and a file or directory name, and returns a
+datastructure representing the file system at that point.</p>
+<p><code>render-tree</code> turns that into the tree ASCII art we’re looking for. For reasons
+we’ll get into in a bit it will return a seq of strings, one for each line,
+rather than a single string.</p>
+<p>Now add a main function, call it <code>birch</code>, which combines the others. It looks
+for the given directory name starting from the current directory, that’s why the
+path argument is just an empty string. The result of <code>render-tree</code> then needs to
+be joined together, and printed out to the console. Also make sure to require
+<code>clojure.string</code>.</p>
+<p>Now at the top level you can call this function, passing it the first command
+line argument.</p>
+<pre><code class="language-clojure">(require '[lumo.core :refer [*command-line-args*]]
+         '[clojure.string :as str])
+
+(defn tree-entry [path name]
+  ,,,)
+
+(defn render-tree [entry]
+  ,,,)
+
+(defn birch [dir]
+  (-&gt;&gt; (tree-entry "" dir)
+       render-tree
+       (str/join "\n")
+       print))
+
+(birch (first *command-line-args*))
+</code></pre>
+<p>This is what the data structure will look like: a simple map containing a
+<code>:name</code> and a list of <code>:children</code>. These children in turn have a <code>:name</code> and
+<code>:children</code>, and so forth, all the way down. So if you have a directory <code>A</code>
+containing the files <code>B</code> and <code>C</code>, and <code>D</code>, then it looks like this.</p>
+<pre><code class="language-clojure">{:name "A"
+ :children '({:name "B" :children nil}
+             {:name "C" :children nil}
+             {:name "D" :children nil})}
+</code></pre>
+<p>So <code>tree-entry</code> returns a map with <code>:name</code> and <code>:children</code>. The name is right
+there in the arguments, for the <code>:children</code> part you can write a separate
+function, call it <code>child-entries</code>. Only directories have children, so add a
+check for that. Let’s first pull this joined path into a let block, expand it,
+and then you can use that path to check if it’s a directory. This way
+<code>child-entries</code> can safely assume it always receives a valid directory path.</p>
+<p>If you make render tree write out its input as a string with <code>prn-str</code> then you
+can already try out <code>tree-entry</code>.</p>
+<pre><code class="language-clojure">(defn child-entries [path]
+  )
+
+(defn tree-entry [path name]
+  (let [path (path-join path name)]
+    {:name name
+     :children (if (directory? path) (child-entries path))}))
+
+(defn render-tree [entry]
+  [(prn-str entry)])
+</code></pre>
+<p>You can call this from the console to see <code>tree-entry</code> in action.</p>
+<pre><code>$ bin/birch .
+{:name ".", :children nil}
+</code></pre>
+<p><code>child-entries</code> needs to return a seq of tree entry maps, one for each file or
+directory under <code>path</code>. So use <code>read-dir</code> to get all the file names, and turn
+them into tree entries.</p>
+<p>Now <code>child-entries</code> calls <code>tree-entry</code>, and <code>tree-entry</code> calls <code>child-entries</code>,
+this is known as mutual recursion.</p>
+<p>Functions in ClojureScript need to be defined or declared before they can be
+used. Since these two functions call each other, you need to declare one of them
+first before you can define the other, so let’s add a define statement for
+<code>tree-entry</code>.</p>
+<pre><code class="language-clojure">(declare tree-entry)
+
+(defn child-entries [path]
+  (map #(tree-entry path %1) (read-dir path)))
+
+(defn tree-entry [parent name]
+  (let [path (path-join parent name)]
+    {:name name
+     :children (if (directory? path) (child-entries path))}))
+</code></pre>
+<p>Now that you have a representation of the tree in data, it’s time to render it.
+This will be the job of <code>render-tree</code>.</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children}]
+  )
+</code></pre>
+<p><code>render-tree</code> accepts a <code>tree-entry</code> map, which falls apart into <code>:name</code> and
+<code>:children</code>, and will return a seq of strings, one for each line of output. Now
+if you run the tree command on a single file, or on an empty directory, then it
+simply prints out the name of the file, so start there by returning a
+one-element vector containing the file name.</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children]}]
+  [name])
+</code></pre>
+<p>The next step is to render the children, you can map over them, for each you
+pull out the child’s name, and then add a tree branch in front. The name of the
+parent needs to come before all this, so prepend it to the result of <code>map</code> with
+<code>cons</code>. Now you can already render a tree of depth 1.</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children]}]
+  (cons
+   name
+   (map (fn [child]
+          (str L-branch (:name child)))
+        children)))
+</code></pre>
+<p>To make this more general you can replace the child name’s with a rendering of
+the tree starting from that child. The result of <code>render-tree</code> is a list of
+strings, one for each line in the subtree, so use <code>map</code> to process all of them.</p>
+<p>Now the outer <code>map</code> will result in a list of lists, instead it should be a flat
+list. By using <code>mapcat</code> instead of map all inner lists get concatenated
+together, so the result is a single list again.</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children]}]
+  (cons
+   name
+   (mapcat (fn [child]
+             (map #(str L-branch %) (render-tree child)))
+           children)))
+</code></pre>
+<p>This is already starting to look tree-like, but it doesn’t look <em>quite</em> right
+yet. Especially if you have trees with more nesting this becomes apparent.</p>
+<pre><code>A
+└── B
+└── C
+└── D
+└── └── E
+└── └── F
+└── └── G
+</code></pre>
+<p>I’ve only used L-branches so far, but sometimes it will have to be a T-branch,
+an I-branch, or a spacer instead.</p>
+<p>Compare this again with the intended output. Directly in front of a child’s name
+there should be a T-branch, except for the last child, which gets an L-branch.</p>
+<p>If a subtree consists of multiple lines, as is the case with “A” or “D”, then
+only the first line needs to get a branch, the remaining lines just need to be
+pushed to the right so they align.</p>
+<p>When shifting a subtree to the right, such as this tree below “A”, it should use
+I-branches, except if it’s the last child of the parent, as is the case with
+“D”, then it uses spaces.</p>
+<p>So pull that render-tree into a let block, so you can destructure it into a
+first line and a seq of the remaining lines. Map over everything but the first
+line, adding spaces in front, and then finally add a branch to the first line,
+adding it to the result again with <code>cons</code>.</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children]}]
+  (cons
+   name
+   (mapcat (fn [child]
+             (let [[first &amp; rest] (render-tree child)]
+               (cons (str L-branch first)
+                     (map #(str SPACER %) rest))))
+           children)))
+</code></pre>
+<p>This looks better, but we’re treating all entries now as if they are the last
+child of their parent. Let’s fix that.</p>
+<pre><code>A
+└── B
+    └── BA
+    └── BB
+    └── BC
+└── C
+└── D
+    └── DA
+    └── DB
+    └── DC
+</code></pre>
+<p>Add an index argument to the <code>mapcat</code> function by mapping over <code>(range)</code> as well
+as <code>children</code>. The last child is the one where its index is one fewer than the
+number of children.</p>
+<p>The first line and the remaining lines need different prefixes, so let’s give
+those name. The last child’s subtree starts with an L-branch on its left,
+followed by spaces, whereas other children get prefix with a T-branch, followed
+by straight lines.</p>
+<p>There, look at that, a birch tree. I hope it doesn’t give me allergies.</p>
+<p>In the first part of this two-part series on Lumo you learned how to create a
+Lumo script, how to use Node’s built-in packages, and you got a good refresher
+on recursive functions. In part 2 I’ll show you how to share your script as an
+NPM packages, and how to make use of third party libraries from Clojars or NPM,
+so see you soon!</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children]}]
+  (cons
+   name
+   (mapcat (fn [child index]
+             (let [subtree (render-tree child)
+                   last? (= index (dec (count children)))
+                   prefix-first (if last? L-branch T-branch)
+                   prefix-rest  (if last? SPACER I-branch)]
+               (cons (str prefix-first (first subtree))
+                     (map #(str prefix-rest %) (next subtree)))))
+           children
+           (range))))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/birch">browse source code</a></p>
+<p>You can browse the code the way it looks at the end of this episode in the <a shape="rect" href="https://github.com/lambdaisland/birch/tree/ep29-end">ep29-end branch</a>.</p>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="https://docs.npmjs.com/getting-started/installing-node">Installing Node.js</a></li>
+<li><a shape="rect" href="http://npmjs.com/lumo-cljs">Installing Lumo</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

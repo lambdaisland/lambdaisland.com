@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/stuartsierra-component-system" />
+<meta name="twitter:title" content="Component and System" />
+<meta name="twitter:description" content="Stuart Sierra's Component is a small library that can have a big impact on the structure and architecture of your application. In this episode you learn how you can use it to..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/622322052-49219f5dce661892b7062c6513923a034c4fb274286721aced1873d7e99aa9b9-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Component and System" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/stuartsierra-component-system" />
+<meta name="video:duration" content="1089" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/622322052-49219f5dce661892b7062c6513923a034c4fb274286721aced1873d7e99aa9b9-d_1280x720?r=pad" />
+<meta name="og:description" content="Stuart Sierra's Component is a small library that can have a big impact on the structure and architecture of your application. In this episode you learn how you can use it to..." />
+<meta name="video:release_date" content="2017-03-07T14:56:58.731Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Component and System</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/207283573?h=812f6796cd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="26. Component and System"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Stuart Sierra’s Component is a small library that can have a big impact on the
+structure and architecture of your application. In this episode you learn how
+you can use it to create components, and manage dependencies. You will create a
+Jetty and an Endpoint component, and use the PostgreSQL component from the
+System project.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Component calls itself a tiny framework for managing the lifecycle and
+dependencies of software components which have runtime state. It’s a helpful
+tool for making runtime dependencies explicit, and it’s a great addition to a
+REPL based workflow.</p>
+<p>Component is platform independent, the examples in this episode will focus on
+Clojure, but you can use it in ClojureScript just the same.</p>
+<p>Component makes heavy use of records and protocols, two Clojure features that
+not everyone will be familiar with. If you need a refresher you can check out
+episode 23 and 24, which cover these in depth.</p>
+<p>With that out of the way, let’s have a look at Component. Component is just a
+library, so to get started add it as a dependency to your <code>project.clj</code> or
+<code>build.boot</code>.</p>
+<pre><code class="language-clojure">(defproject component-example "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [com.stuartsierra/component "0.3.2"]])
+</code></pre>
+<p>If you want to follow along you can also clone the
+<code>lambdaisland/component_example</code> project from Github and grab the <code>ep26-start</code>
+branch. This branch already contains all dependencies used in this episode, as
+well as a few utility functions that will come in handy later on.</p>
+<pre><code>git clone https://github.com/lambdaisland/component_example.git
+cd component_example
+git checkout ep26-start
+</code></pre>
+<p>The main thing that Component provides is a protocol called “Lifecycle”,
+containing two methods, <code>start</code> and <code>stop</code>. A “component”, then, is a record
+that implements this protocol.</p>
+<p>The docstrings mention two important properties that you need to observe when
+implementing these methods. When calling <code>start</code>, the method should not return
+until the component is fully started and ready, and the result of calling
+<code>start</code> must be an updated version of the same component.</p>
+<pre><code class="language-clojure">(ns com.stuartsierra.component
+  ,,,)
+
+(defprotocol Lifecycle
+  (start [component]
+    "Begins operation of this component. Synchronous, does not return
+  until the component is started. Returns an updated version of this
+  component.")
+  (stop [component]
+    "Ceases operation of this component. Synchronous, does not return
+  until the component is stopped. Returns an updated version of this
+  component."))
+</code></pre>
+<p>Let’s see how that looks in practice by implementing a component for the Jetty
+web server. Require the <code>com.stuartsierra.component</code> namespace so you can access
+the <code>Lifecyle</code> protocol. Then define a record, let’s call it <code>JettyWebServer</code>,
+which implements the protocol. For now <code>start</code> and <code>stop</code> are no-ops, they
+simply return the component that’s passed to them. This is also what the default
+implementation does.</p>
+<pre><code class="language-clojure">(ns component-example.components.jetty
+  (:require [com.stuartsierra.component :as component]))
+
+(defrecord JettyWebServer []
+  component/Lifecycle
+  (start [component]
+    component)
+  (stop [component]
+    component))
+</code></pre>
+<p>Next up think about what inputs this component needs. It needs a ring handler
+function to pass incoming requests to, and it needs to know what port to listen
+on. So add <code>handler</code> and <code>port</code> as fields to the record.</p>
+<pre><code class="language-clojure">(ns component-example.components.jetty
+  (:require [com.stuartsierra.component :as component]))
+
+(defrecord JettyWebServer [handler port]
+  component/Lifecycle
+  (start [component]
+    component)
+  (stop [component]
+    component))
+</code></pre>
+<p>Now inside <code>start</code> it’s time to actually start Jetty. Use the Jetty adapter
+provided by Ring, and pass it the handler and the port. <code>:join? false</code> means
+that it will not try to join the current thread. Without this <code>run-jetty</code> will
+cause the main thread to block, and <code>start</code> will never return, which is not what
+we want.</p>
+<pre><code class="language-clojure">(ns component-example.components.jetty
+  (:require [com.stuartsierra.component :as component]
+            [ring.adapter.jetty :as ring-jetty]))
+
+(defrecord JettyWebServer [handler port]
+  component/Lifecycle
+  (start [component]
+    (ring-jetty/run-jetty handler {:port port :join? false})
+    component)
+  (stop [component]
+    component))
+</code></pre>
+<p>To implement <code>stop</code> you need access to the jetty server instance, which you
+received by calling <code>run-jetty</code>. But <code>start</code> didn’t hang on to it, so let’s fix
+that. You can treat records like regular maps and <code>assoc</code> arbitrary values onto
+them, so return an updated version of the component that contains a reference to
+the Jetty server.</p>
+<p>Now in <code>stop</code> you can call the <code>.stop</code> method on jetty, and finally remove the
+<code>:jetty</code> key from the record again. Here you see why it’s important that <code>start</code>
+and <code>stop</code> return an updated version of the component, it allows you to store
+this kind of state.</p>
+<pre><code class="language-clojure">(ns component-example.components.jetty
+  (:require [ring.adapter.jetty :as ring-jetty]
+            [com.stuartsierra.component :as component]))
+
+(defrecord JettyWebServer [handler port]
+  component/Lifecycle
+  (start [component]
+    (assoc component
+           :jetty (ring-jetty/run-jetty handler {:port port :join? false})))
+  (stop [component]
+    (.stop (:jetty component))
+    (dissoc component :jetty)))
+</code></pre>
+<p>Let’s improve this component slightly. You might accidentally call <code>start</code> on an
+already started component, which will cause an exception. You really want to
+avoid components throwing exceptions, it’ll save you a lot of pain once we get
+into systems of components. So let’s make these methods “idempotent”, so that
+calling them multiple times has the same effect as calling them once.</p>
+<p>If the component is already started then it will already have a <code>:jetty</code> key, so
+just return the component unchanged.</p>
+<p>If it isn’t started and you try to stop it, then it will end up calling <code>.stop</code>
+on <code>nil</code>, so before calling <code>.stop</code> check if <code>:jetty</code> is there.</p>
+<pre><code class="language-clojure">(ns component-example.components.jetty
+  (:require [ring.adapter.jetty :as ring-jetty]
+            [com.stuartsierra.component :as component]))
+
+(defrecord JettyWebServer [handler port]
+  component/Lifecycle
+  (start [component]
+    (if (:jetty component)
+      component
+      (assoc component
+             :jetty (ring-jetty/run-jetty handler {:port port :join? false}))))
+  (stop [component]
+    (when-let [jetty (:jetty component)]
+      (.stop jetty))
+    (dissoc component :jetty)))
+</code></pre>
+<p>It’s a good idea to provide a constructor function for this component, let’s
+call it <code>new-jetty-web-server</code>. This gives you a place later on to put extra
+initialization code if needed.</p>
+<pre><code class="language-clojure">(defn new-jetty-web-server [handler port]
+  (map-&gt;JettyWebServer {:handler handler :port port}))
+</code></pre>
+<p>To try this out you will need a ring handler, let’s create one by defining some
+Compojure routes. I’m not using the <code>defroutes</code> macro but instead using the
+<code>routes</code> function directly, inside a kind of routes constructor function. Having
+this wrapper function will come in handy later on for passing dependencies to
+the routes. The route returns a body of “OK” to the client, so you can quickly
+see if it’s working or not.</p>
+<p>Now instantiate a <code>new-jetty-web-server</code>, passing it the newly constructed
+routes plus a port number, and call <code>component/start</code> on it. Assign the result
+to a var.</p>
+<pre><code class="language-clojure">(ns component-example.core
+  (:require [com.stuartsierra.component :as component]
+            [component-example.components.jetty
+             :refer [new-jetty-web-server]]
+            [compojure.core :refer [GET routes]]))
+
+(defn new-routes []
+  (routes
+   (GET "/" [] {:status 200
+                :body "OK"})))
+
+(def jetty (-&gt; (new-jetty-web-server (new-routes) 4567)
+               component/start))
+</code></pre>
+<p>If all went well then Jetty is running now. You can try this out either in your
+browser or on the command line with <code>curl</code>. Ok, that seems to have worked.</p>
+<pre><code class="language-clojure">$ curl http://localhost:4567
+OK
+</code></pre>
+<p>You can stop this component again with <code>component/stop</code>, but you have to make
+sure to also update the var holding the component, since otherwise it’ll think
+it’s still in a started state, and trying to start it again will fail.</p>
+<p>You could use an <code>atom</code>, and <code>swap!</code> it, but frankly that’s overkill. The key
+feature of atoms, their “raison d’être”, is to coordinate and serialize updates
+in the face of concurrency. If you have mutliple threads starting and stopping
+components at the same time then please take a step back and reconsider your
+ways.</p>
+<p>The other thing with atoms is that any function you pass to <code>swap!</code> must be
+pure, because it might be retried several times. Starting and stopping
+components is very much not pure, so altogether atoms are just not a good fit.</p>
+<p>Atoms aren’t the only reference type though. How about vars? Vars get created
+implicitly when using <code>def</code>, so our component is currently stored in the <code>jetty</code>
+var. If you use the symbol <code>jetty</code> in your code it will resolve to the
+<em>contents</em> of the var, but you can get a reference to the var itself with <code>#'</code>,
+which is a shorthand for the <code>(var ,,,)</code> special form.</p>
+<p>For vars the equivalent of <code>swap!</code> is <code>alter-var-root</code>. It’s less commonly used,
+but it’s the most common way to track component and system state.</p>
+<pre><code class="language-clojure">(alter-var-root #'jetty component/stop)
+</code></pre>
+<p>So this is nice, it provides an elegant way to start and stop jetty, but really
+so far it’s mostly been busywork, you could have achieved the same thing without
+component, simply using a few plain functions.</p>
+<pre><code class="language-clojure">component-example.core&gt; (alter-var-root #'jetty component/stop)
+#component_example.components.jetty.JettyWebServer{,,,}
+component-example.core&gt; (alter-var-root #'jetty component/start)
+#component_example.components.jetty.JettyWebServer{:jetty ,,,}
+</code></pre>
+<p>Once you have your components though, you can combine them to form a system map,
+or simply “a system”. This way, you can start or stop the whole system, rather
+than each individual component. It also allows specifying dependencies between
+components. You’ll use this to give the Ring handler access to a database
+connection.</p>
+<p>Let’s first wrap the Jetty component in a system, that way there’s a place to
+add more components later on.</p>
+<p>I like to have a constructor function that takes some configuration as its
+input, and returns a new system-map. I’ll use a single map to hold the
+configuration, which currently only contains Jetty’s port number.</p>
+<p><code>component/system-map</code> takes an even number of arguments, the first of each pair
+is just an identifier for this component, which is followed by the component
+itself.</p>
+<pre><code class="language-clojure">(def config {:port 4567})
+
+(defn new-system [{:keys [port]}]
+  (component/system-map
+   :web (new-jetty-web-server (new-routes) port)))
+</code></pre>
+<p>Now like before, use a var to store the new system map, and then start it using
+<code>alter-var-root</code> to make sure the system var contains the latest system state.</p>
+<pre><code class="language-clojure">(def system (new-system 4567))
+
+(alter-var-root #'system component/start)
+;;=&gt; #&lt;SystemMap&gt;
+</code></pre>
+<p>If you get an error saying the address is already in use, then you probably
+still have another Jetty running in the background. Luckily we used a separate
+var, so you should still have the old Jetty around in order to stop it.</p>
+<pre><code class="language-clojure">(alter-var-root #'jetty component/stop)
+</code></pre>
+<p>Calling <code>start</code> on a system map calls start on each component, so this started
+Jetty just like before, you can verify it with <code>curl</code>.</p>
+<p>Trying to look at a system map doesn’t yield a lot of information, it just says
+“SystemMap”. A SystemMap is another record that implements the start/stop
+Lifecycle protocol, which in turns calls start or stop on the individual
+components, after setting up inter-component dependencies.</p>
+<p>It’s printed representation is deliberately opaque, the author of Component
+tried to discourage you from poking around in there. But this Clojure detective
+has some tricks up his sleave. To see what’s inside you can use <code>into</code> to
+convert it to a regular map.</p>
+<p>Ok, so there’s our JettyWebServer component, and it’s associated with the <code>:web</code>
+key, which is the name you gave it when setting up the system map.</p>
+<pre><code>(into {} system)
+;;=&gt; {:web #component_example.components.jetty.JettyWebServer{,,,}}
+</code></pre>
+<p>In the <code>component-example.util</code> namespace I’ve included an <code>inspect-system</code>
+function that can help you to get a bit more insight. It shows each key in the
+system map, and the list of keys available to each component. Before starting
+the system this is what it looks like. The Jetty component has access to the its
+two fields: handler and port.</p>
+<p>After starting the system there’s one new key: the reference to the Jetty
+instance that was assoced onto the component.</p>
+<pre><code class="language-clojure">(ns component-example.core
+  (:require ,,,
+            [component-example.util :refer [inspect-system]]))
+
+
+(inspect-system system) ;;=&gt; {:web (:handler :port)}
+
+(alter-var-root #'system component/start)
+
+(inspect-system system) ;;=&gt; {:web (:handler :port :jetty)}
+</code></pre>
+<p>Let’s make things more interesting by adding some more components. Say you want
+to use a PostgreSQL database. You could implement another record that handles
+establishing a connection, but you’ll find that for popular open source projects
+like MySQL or PostgreSQL someone has already done the work for you.</p>
+<p>The <a shape="rect" href="https://github.com/danielsz/system">System</a> project in particular contains
+a growing list of ready-made components. I could have used their Jetty
+component, but then I hadn’t had the pleasure to show you how to write your own.</p>
+<p>If you’re following along at home you’ll have to set up PostgreSQL with a new
+database and user. I’ll add some pointers in the show notes.</p>
+<p>We’ll add a postgres component, so require the <code>system.components.postgres</code>
+namespace as <code>pg</code>.</p>
+<p>Next you need a configuration map that specifies how to connect to the database
+server. System contains a default map so you can just override the values that
+matter, like the database name, username and password.</p>
+<p>Finally you can add a new <code>:db</code> component to the, create the component by
+calling the <code>new-postgres-database</code> constructor function with the database
+configuration.</p>
+<pre><code class="language-clojure">(ns component-example.core
+  (:require ,,,
+            [system.components.postgres :as pg]))
+
+(def config
+  {:port 4567
+   :pg-config (assoc pg/DEFAULT-DB-SPEC
+                     :subname "component_example"
+                     :user "component_example"
+                     :password "component_example")})
+
+(defn new-system [{:keys [port pg-config]}]
+  (component/system-map
+   :web (new-jetty-web-server (new-routes) port)
+   :db (pg/new-postgres-database pg-config)))
+</code></pre>
+<p>If you’re following along then first stop the system before redefining the
+system var, otherwise you lose access to the old system which is still running,
+and there will be no way to stop the old Jetty instance.</p>
+<pre><code class="language-clojure">(alter-var-root #'system component/stop)
+
+(def system (new-system {:port 4567
+                         :pg-config pg-config}))
+
+(alter-var-root #'system component/start)
+</code></pre>
+<p>Now if you inspect the system it look like this. The web component hasn’t
+changed, but the <code>:db</code> component is new. <code>:db-spec</code> is the configuration we
+passed to it, and <code>:connection</code> is the actual database connection.</p>
+<pre><code class="language-clojure">{:web (:handler :port)
+ :db (:db-spec :connection :init-fn)}
+</code></pre>
+<p>So with that information you know enough to get from the system map to the
+database connection. The connection uses Java’s JDBC API for database access.
+I’ve added a few convenience functions to the project for querying the database
+based on the connection. They’re in the <code>component_example.db</code> namespace.</p>
+<p>Let’s create a table called widgets, just to have something to play with. To run
+statements like this one that aren’t supposed to return anything, you can use
+<code>db/execute!</code>. Insert a few widgets into the table as well.</p>
+<p>To actually run queries that return a result, you call <code>db/query</code>.</p>
+<pre><code class="language-clojure">(ns component-example.core
+  (:require ,,,
+            [component-example.db :as db]))
+
+(db/execute! (-&gt; system :db :connection)
+             "CREATE TABLE widgets (id BIGSERIAL PRIMARY KEY, name VARCHAR(100))")
+
+(db/execute! (-&gt; system :db :connection)
+             "INSERT INTO widgets (name) VALUES ('button'), ('slider')")
+
+(db/query (-&gt; system :db :connection)
+          "SELECT * FROM widgets")
+</code></pre>
+<p>Now what I would like is that the API endpoint returns a list of these widgets
+in the database. So somehow I’ll have to make sure that the routes function
+receives the database component, so it can query it. Let’s assume the
+constructor function receives something that has a <code>:db</code> key, and then work
+backwards from there.</p>
+<pre><code class="language-clojure">(defn new-routes [{:keys [db]}]
+  (routes
+   (GET "/" [] {:status 200
+                :body "OK"})))
+</code></pre>
+<p>To do this, first introduce a new component, called Endpoint. It’ll act as a
+wrapper for the routes constructor function. <code>start</code> calls the constructor and
+gets routes back, which it stores on the endpoint component with <code>assoc</code>. <code>stop</code>
+dissoces <code>:routes</code> again so it’s back in it’s initial state.</p>
+<p>Also add a contructor function like you did before for Jetty, called
+<code>new-endpoint</code>.</p>
+<p>The thing to notice is that, when calling the routes constructor, it passes in
+the endpoint component as argument. So somehow you’ll have to make sure that the
+endpoint contains the <code>:db</code> component, so the routes can access it.</p>
+<pre><code class="language-clojure">(defrecord Endpoint [routes-fn]
+  component/Lifecycle
+  (start [component]
+    (assoc component :routes (routes-fn component)))
+  (stop [component]
+    (dissoc component :routes)))
+
+(defn new-endpoint [routes-fn]
+  (map-&gt;Endpoint {:routes-fn routes-fn}))
+</code></pre>
+<p>Add the Endpoint to the system, passing it the routes constructor.</p>
+<pre><code class="language-clojure">(defn new-system [{:keys [port pg-config]}]
+  (component/system-map
+   :endpoint (new-endpoint new-routes)
+   :db ,,,
+   :web ,,,
+   ,,,))
+</code></pre>
+<p>The endpoint component passes itself to the routes constructor, so somehow you
+will have to get the database component into the endpoint component, so the
+routes can access it. You can achieve this with <code>component/using</code>. You pass it
+the component, and then a vector of the names of the components that it depends
+on. In this case <code>:db</code>.</p>
+<p>This achieves two things: first it makes sure components are started in the
+right order. After all, if <code>:endpoint</code> needs access to the <code>:db</code>, then the <code>:db</code>
+component should be started before <code>:endpoint</code> gets started.</p>
+<pre><code class="language-clojure">(defn new-system [{:keys [port pg-config]}]
+  (component/system-map
+   :endpoint (component/using (new-endpoint new-routes) [:db])
+   :db ,,,
+   :web ,,,
+   ,,,))
+
+(def system (new-system {,,,}))
+
+(alter-var-root #'system component/start)
+</code></pre>
+<p>The second thing it does, is assoc any dependencies onto the components that
+need them. So in this case that means the <code>:endpoint</code> component will have a new
+key, <code>:db</code>, which points at the PostgreSQL component.</p>
+<p>Now before starting the system this is what it looks like. The endpoint and the
+web components have access to the things we passed them, nothing more.</p>
+<pre><code class="language-clojure">(inspect-system system)
+;; =&gt;
+{:endpoint (:routes-fn)
+ :web (:handler :port)
+ :db (:db-spec :connection :init-fn)}
+</code></pre>
+<p>After starting the system, things look a little different. <code>:endpoint</code> now has
+<code>:routes</code>, and <code>:web</code> has <code>:jetty</code>, these are the things that got added in their
+respective start methods, but <code>:endpoint</code> now also has an extra key: <code>:db</code>. This
+is the <code>:db</code> component, the same one that’s in the system map.</p>
+<p>Because we told component that the endpoint uses the database, it first started
+the database, and then added it to the endpoint, before starting the endpoint.
+So now in the endpoint’s start method it’s possible to access the database
+component.</p>
+<pre><code class="language-clojure">(inspect-system system)
+;; =&gt;
+{:endpoint (:routes-fn :routes :db)
+ :web (:handler :port :jetty)
+ :db (:db-spec :connection :init-fn)}
+</code></pre>
+<p>Here’s the endpoint again. It doesn’t directly access the database, but it
+passes itself on to the routes constructor function. In this way the endpoint
+component just becomes a vehicle for getting dependencies to the routes.</p>
+<pre><code class="language-clojure">(defrecord Endpoint [routes-fn]
+  component/Lifecycle
+  (start [component]
+    (assoc component :routes (routes-fn component)))
+  (stop [component]
+    (dissoc component :routes)))
+</code></pre>
+<p>So the <code>new-routes</code> function ends up receiving the endpoint component as
+argument, and can destructure it to get to any dependent components, in this
+case the database. This way you can inject any dependencies into the routes,
+simply by adding them to <code>component/using</code>.</p>
+<pre><code class="language-clojure">(defn new-routes [{:keys [db] :as endpoint}]
+  ,,,)
+</code></pre>
+<p>When declaring dependencies with <code>component/using</code>, the injected name doesn’t
+always match the name used in the system map. Therefore instead of using a
+vector to declare the dependencies, you can also pass a map.</p>
+<p>You can read this a bit like a binding form, with the original name on the
+right, and the name to be assigned on the left. So if the postgres component is
+called <code>:db</code> in the system map, but the routes expect to find <code>:database</code>, then
+you can do something like this.</p>
+<pre><code class="language-clojure">(defn new-routes [{:keys [database] :as endpoint}]
+  ,,,)
+
+(defn new-system [{:keys [port pg-config]}]
+  (component/system-map
+   :endpoint (component/using (new-endpoint new-routes) {:database :db})
+   ,,,))
+</code></pre>
+<p>So that’s all very well, but this endpoint component isn’t doing anything yet.
+We need to change the Jetty component so it can work with the endpoint, instead
+of using a routes contstructor function directly.</p>
+<p>So take out that first argument, now all you pass to Jetty is the port number,
+and instead use <code>component/using</code> to tell component that Jetty depends on
+the <code>:endpoint</code>.</p>
+<pre><code class="language-clojure">(defn new-system [{:keys [port pg-config]}]
+  (component/system-map
+   :endpoint (component/using (new-endpoint new-routes) {:database :db})
+   :web (component/using (new-jetty-web-server port) [:endpoint])
+   ,,,))
+</code></pre>
+<p>Now it’s time to update Jetty, to make use of this endpoint that’s being
+injected.</p>
+<p>Remove the <code>handler</code> field, it will no longer be needed, and instead starting
+from the Jetty component, find the endpoint component, and then pull out the
+<code>:routes</code>, which is the actual ring handler.</p>
+<p>Also take care to update the constructor function.</p>
+<pre><code class="language-clojure">(defrecord JettyWebServer [port]
+  component/Lifecycle
+  (start [component]
+    (if (:jetty component)
+      component
+      (assoc component
+             :jetty (ring-jetty/run-jetty (-&gt; component :endpoint :routes) {:port port :join? false}))))
+  (stop [component]
+    (when (:jetty component)
+      (.stop (:jetty component)))
+    (dissoc component :jetty)))
+</code></pre>
+<p>Stop the old system, redefine new-system, now create a new system, and start it.</p>
+<p>Now just like <code>:db</code> got added to the <code>:endpoint</code>, this time <code>:endpoint</code> gets
+added to the <code>:web</code> component. You can see that when you inspect the system
+again.</p>
+<pre><code class="language-clojure">(inspect-system system)
+;;=&gt;
+{:endpoint (routes-fn routes db)
+ :web (:port :endpoint)
+ :db ,,,}
+</code></pre>
+<p>So with that the last piece of the puzzle is in place, and the routes now have
+access to the database. Query it to get the list of widgets, and use <code>pr-str</code> to
+turn these into EDN.</p>
+<pre><code class="language-clojure">(defn new-routes [{:keys [database] :as endpoint}]
+  (routes
+   (GET "/" [] {:status 200
+                :body (pr-str
+                       (db/query (:connection database)
+                                 "SELECT name FROM widgets"))})))
+</code></pre>
+<p>After restarting the system, you can check with curl that things are actually
+working.</p>
+<p>You now know the essential parts of component: the Lifecycle protocol with start
+and stop, the system map, and the <code>using</code> function to declare dependencies.</p>
+<p>Component is a small library, but it’s a big topic to cover, and we’ve only
+scratched the surface of its motivations, and usage patterns.</p>
+<p>In a follow up episode we’ll dig a bit deeper into its practical usage.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/component_example">browse source code</a></p>
+<p>The starting point for this episode is the <a shape="rect" href="https://github.com/lambdaisland/component_example/tree/ep26-start">ep26-start branch</a>, the final result is in <a shape="rect" href="https://github.com/lambdaisland/component_example/tree/ep26-end">ep26-end</a>. (<a shape="rect" href="https://github.com/lambdaisland/component_example/compare/ep26-start...ep26-end">diff</a>)</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><a shape="rect" href="https://www.youtube.com/watch?v=13cmHf_kt-Q">Stuart Sierra - Components Just Enough Structure (Clojure/west 2014)</a></li>
+<li><a shape="rect" href="https://medium.com/@hlship/tips-and-tricks-for-component-d00832abcdfa#.vsu03uyd5">Tips and Tricks for Component - Howard Ship</a></li>
+<li><a shape="rect" href="https://www.youtube.com/watch?v=av9Xi6CNqq4">Anthony Marcar - Clojure at Scale (Clojure/West 2015)</a> How component is used at Walmart.</li>
+<li><a shape="rect" href="https://github.com/clojure/tools.namespace#reloading-code-motivation">clojure.tools.namespace: Reloading Code, Motivation</a></li></ul>
+<h2 id="libraries">Libraries</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/stuartsierra/component">stuartsierra/component</a></li>
+<li><a shape="rect" href="https://github.com/danielsz/system">danielsz/system</a> Collection of pre-made components</li>
+<li><a shape="rect" href="https://github.com/weavejester/reloaded.repl">weavejester/reloaded.repl</a></li>
+<li><a shape="rect" href="https://github.com/walmartlabs/system-viz">walmartlabs/system-viz</a> Use graphviz to draw a visual representation of a system map</li>
+<li><a shape="rect" href="https://github.com/weavejester/ring-jetty-component">weavejester/ring-jetty-component</a> A standalone Jetty component</li>
+<li><a shape="rect" href="https://github.com/weavejester/suspendable">weavejester/suspendable</a> Add suspend/resume to component lifecycles</li></ul>
+<h2 id="discussions">Discussions</h2>
+<ul>
+<li><a shape="rect" href="https://groups.google.com/forum/#!topic/clojure/12-j2DeSLEI/discussion">Mailing list thread about using Component with Ring</a></li></ul>
+<h2 id="postgresql-setup">PostgreSQL setup</h2>
+<p>Assuming you have the server set up locally</p>
+<pre><code>$ sudo -u postgres createdb component_example
+$ sudo -u postgres psql component_example
+component_example=# CREATE ROLE component_example PASSWORD 'component_example';
+CREATE ROLE
+component_example=# GRANT ALL PRIVILEGES ON DATABASE component_example to component_example;
+GRANT
+</code></pre>
+<p>For info on how to install the server</p>
+<ul>
+<li><a shape="rect" href="https://help.ubuntu.com/community/PostgreSQL">Ubuntu Community wiki on PostgreSQL</a></li>
+<li><a shape="rect" href="http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/">Install PostgreSQL on Mac OS X via Brew</a></li>
+<li><a shape="rect" href="https://www.postgresql.org/download/windows/">PostgreSQL installers for Windows</a></li></ul>
+<h2 id="title-screen-attribution">Title screen attribution</h2>
+<ul>
+<li><a shape="rect" href="https://www.flickr.com/photos/dinnerseries/14413108882/">Photo of peppermills by dinnerseries</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

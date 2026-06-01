@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video# books: http://ogp.me/ns/books#">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../highlightjs/styles/tomorrow-night.css%3FD372A77090F6A07251DFCE573D121EE2.css" />
+    <link rel="alternate" type="application/atom+xml" href="../feeds/episodes.atom%3F2024-08-10T19:01:18.355Z" title="Episodes Feed" />
+    <link rel="author" href="https://plus.google.com/u/0/112268398775525141261" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="../img/favicon/apple-touch-icon-57x57.png%3F8568A808400E2552E5E222872182E134" />
+    <link rel="apple-touch-icon" sizes="60x60" href="../img/favicon/apple-touch-icon-60x60.png%3FD5D40CD8F4D66C5F5625C2FE608A1C62" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/favicon/apple-touch-icon-72x72.png%3F56F65F0CF9BF8B56AB715B3C25CFA564" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon/apple-touch-icon-76x76.png%3F281598ACD732AF3F197055CC9299117F" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/favicon/apple-touch-icon-114x114.png%3F5538ABAF7604AE49F772493B50C44965" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../img/favicon/apple-touch-icon-120x120.png%3F22E764C660A6F1707D652F3323474058" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../img/favicon/apple-touch-icon-144x144.png%3FDC9D8C3026F9BA39C67254340F39AA82" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/favicon/apple-touch-icon-152x152.png%3FAA0CAD4FE20BAF96E5968C05DBE4CA4A" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon-180x180.png%3FDBB22011968E5211844EF573BC457A37" />
+    <link rel="icon" href="../img/favicon/favicon-16.png%3F2D7E9361B714A93F9D05F20B8A0C64C9" sizes="16x16" type="image/png" />
+    <link rel="icon" href="../img/favicon/favicon-32.png%3FB2E52FEB9900584CED066734EE47C5A8" sizes="32x32" type="image/png" />
+    <link rel="icon" href="../img/favicon/favicon-48.png%3FE9DE59A5129E429DFA471F7DF2C41F97" sizes="48x48" type="image/png" />
+    <link rel="icon" href="../img/favicon/favicon-62.png%3F04BB64567F52B37102B9EBF72399E74F" sizes="62x62" type="image/png" />
+    <link rel="icon" href="../img/favicon/favicon-96.png%3F02F47BF05B5BF9569F4CD9FE798E3E6B" sizes="96x96" type="image/png" />
+    <link rel="icon" href="../img/favicon/favicon-192.png%3F19D7BAACFF8E66837420787EEEA22DE2" sizes="192x192" type="image/png" />
+    <link rel="manifest" href="../img/favicon/manifest.json%3FC6E1235FC7E6A8DBDDB9024592103D8D" />
+    <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg%3FD4151DA457834B75154F1E839ECD9461" color="#1c558b" />
+    <meta name="msapplication-TileColor" content="#1c558b" />
+    <meta name="msapplication-TileImage" content="/img/favicon/favicon-144.png" />
+    <meta name="theme-color" content="#1c558b" />
+    <meta name="stripe-key" content="pk_live_0siMKhVvbX21viAAv97YgKsS" />
+
+    <script type="text/javascript">
+     // Resize Chargebee's iframes
+     window.addEventListener("message", function(ev) {
+         console.log("postMessage: ", ev);
+         if (typeof ev.data == "string") {
+             var data = JSON.parse(ev.data);
+             var iframe = document.getElementsByTagName("iframe")[0];
+             if (iframe) {
+                 console.log("message", data);
+                 if (data.height) {
+                     iframe.height = (data.height+50) + "px";
+                 }
+                 if (data.success) {
+                     window.location = "/thankyou";
+                 }
+             }
+         }
+     });
+    </script>
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//analytics.arnebrasseur.net/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+
+    <title>The Obstacles of Effective Debugging</title>
+  <link href="../fonts/fonts.css" rel="stylesheet" /><link href="../css/semantic.min.css" rel="stylesheet" /><link href="../css/tachyons.min.css" rel="stylesheet" /><link href="../css/styles.css" rel="stylesheet" /><link href="../css/featherlight.min.css" rel="stylesheet" /><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@lambdaisland" /><meta name="twitter:creator" content="@lambdaisland" /><meta name="twitter:url" content="https://lambdaisland.com/blog/2021-09-21-the-obstacles-of-effectively-debugging" /><meta name="twitter:title" content="The Obstacles of Effective Debugging" /><meta name="twitter:description" content="by Laurence Chen Have you ever had one of the following experiences before? Your job is in customer service, and your company’s client reported that they encountered certain..." /><meta name="twitter:image" content="https://img.lambdaisland.com/80dc46cf47385a133bcbd9511cda0d9a.png" /><meta name="og:site-name" content="Lambda Island" /><meta name="og:title" content="The Obstacles of Effective Debugging" /><meta name="og:url" content="https://lambdaisland.com/blog/2021-09-21-the-obstacles-of-effectively-debugging" /><meta name="article:published_time" content="2021-09-21T07:27:11.271Z" /><meta name="og:type" content="article" /><meta name="article:section" content="Blog" /><meta name="og:image" content="https://img.lambdaisland.com/80dc46cf47385a133bcbd9511cda0d9a.png" /><meta name="og:description" content="by Laurence Chen Have you ever had one of the following experiences before? Your job is in customer service, and your company’s client reported that they encountered certain..." /><meta name="og:updated_time" content="2021-09-22T05:11:43.635Z" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+  <body class="lambdaisland dropdown">
+    <div id="wrapper">
+      <header><div id="main-menu" class="ui inverted"><div class="ui grid container"><div class="computer only row"><nav class="ui inverted pointing menu top-bar"><a class="item" href="../index.html"><img src="../img/top-bar-logo.png" style="height: 3rem; width: 14.5rem;" alt="Home" /></a><a class="item" href="../episodes.html">Episodes</a><a class="item" href="../blog.html">Blog</a><a class="item" href="../pricing.html">Pricing</a><a class="item" href="../p/about.html">About</a><div class="right item"><div class="mini-cart pa2 mr3 dn"><i class="icon cart"></i><span class="count">0</span></div><a class="ui inverted button" href="../login.html">Log in</a><a class="ui inverted button" href="../register.html">Sign Up</a></div></nav></div><div class="mobile tablet only row"><nav class="ui inverted pointing menu top-bar menu--hamburger"><a class="item" href="../index.html"><img src="../img/top-bar-logo.png" style="height: 3rem; width: 14.5rem;" alt="Home" /></a><div class="ui inline dropdown right item"><div class="mini-cart pa2 mr3 dn"><i class="icon cart"></i><span class="count">0</span></div><i class="content icon"></i><div class="menu"><a class="item" href="../episodes.html">Episodes</a><a class="item" href="../blog.html">Blog</a><a class="item" href="../pricing.html">Pricing</a><a class="item" href="../p/about.html">About</a><a class="item" href="../login.html">Log in</a><a class="item" href="../register.html">Sign Up</a></div></div></nav></div></div></div></header>
+      
+      <div id="message" class="ui container"></div>
+      <div id="container" class="ui container"><article class="news-item"><h2 class="f2 bb b--black-30"><a class="black-80" href="2021-09-21-the-obstacles-of-effectively-debugging.html">The Obstacles of Effective Debugging</a></h2><div class="metadata">Posted Tue, 21 Sep 2021 07:27:11</div><div class="body f4 black-80">
+<p>by Laurence Chen</p>
+<div style="text-align: center;">
+<p><img width="900" src="https://img.lambdaisland.com/4edeefd5d3b21ca8405f0aee8ba0102b.png" alt="Diagram of how the system and its environment relate to the bug hypothesis" /></p></div>
+<p>Have you ever had one of the following experiences before?</p>
+<ol>
+<li>
+<p>Your job is in customer service, and your company’s client reported that they encountered certain troubles in using your products. You forwarded the client’s complaint to the service team, but the service team told you, “Our product has no bugs.”</p></li>
+<li>
+<p>You needed to use a complex gadget, and it requires 15 steps. You followed the manual, but it did not work well. What do you do next?</p></li>
+<li>
+<p>You needed to use a shell command, even one which you’ve used successfully before. However, when you use it, it doesn’t work. The console gives you some error messages which you do not understand. You searched StackOverflow, but no answer could really get you to progress.</p></li></ol>
+<p>The above difficulties are typical difficulties that users using a new system will encounter, no matter whether that system is a software product, a complex gadget, or a shell command. I have implemented some systems and have been the users of many systems. Having strong feelings about this kind of situation, I believe that people who want to help others to use a system smoothly or people who want to help themselves need to understand “how to debug.”</p>
+<h1 id="the-scientific-method">The scientific method</h1>
+<p>The core idea of debugging is quite similar to the scientific method.</p>
+<p>When scientists want to explain a certain natural phenomenon, they first propose a hypothesis, do experiments which help to verify the hopothesis, observe the results, and then falsify the hypothesis or modify the hypothesis by the experimental results. After several rounds of repetitions, they provide an explanation which has been verified: we call it a theory. Debugging is quite similar to the above activity. If we want to catch a bug inside a system, we also prepare a hypothesis first. The hypothesis is our guess to the bug.</p>
+<p>Here in Taiwan science is one of the things that our education system emphasizes. However, in reality, when I have helped or taught others to debug, I realized that merely eplaining what the scientific method is was not enough to get the learners to acquire this skill. The results were usually quite bad.</p>
+<p>The scientific method of debugging consists of 4 steps:</p>
+<ol>
+<li>hypothesis</li>
+<li>experiment</li>
+<li>observe</li>
+<li>modify hypothesis by observation</li></ol>
+<p>My observation is that there typically are two obstacles to applying the scientific method:</p>
+<ol>
+<li>Not doing experiments well</li>
+<li>Not knowing how to make a good hypothesis</li></ol>
+<h1 id="change-one-thing-at-a-time">Change one thing at a time</h1>
+<p>Sometimes, even myself, I change three different places inside the system and then hope to see the system magically work. However, most of the time, this kind of effort does not get me to my destination faster.</p>
+<p>There is an important property in the experimental part of the scientific method: controlled variables. Every experiment should be used to explain a hypothesis of why the system does not work. Therefore, it is fine that you change three places together if they are dependent and you need to change them together to verify one hypothesis. However, it is not effective to change three places when each place corresponds to a distinct hypothesis.</p>
+<h1 id="a-good-hypothesis-seldom-appears-when-you-dont-understand-how-the-system-works">A good hypothesis seldom appears when you don’t understand how the system works</h1>
+<p>“The errors inside a system usually have a relationship with the physical outer world.” This is something I keep reminding myself when I examine my hypothesis.</p>
+<p>When I was in college, I once conducted a circuit experiment. After I followed the circuit map and created a circuit on breadboard by placing all the active and passive components, the output voltage was not correct. My hypothesis was that probably one of the resistors is broken, and given that examining each one is a little bit too much effort, I decided to reimplement the whole circuit again. Before I began, the teaching assistant showed me how to debug. He picked several points inside the circuit, and he measured the voltages. Then, he pointed out where the bug was.</p>
+<p>In the above example, the younger me made a hypothesis by assuming that anything can break randomly. On the other hand, the teaching assistant, he made a hypothesis based on the mental model of the system and he focused on thinking about the interaction of the circuit components inside the system. Also, he used a multimeter to measure the voltage (the experiment and observe parts).</p>
+<h1 id="debugging-in-our-daily-life">Debugging in our daily life</h1>
+<p>I was once asked by my wife, “Do you think that debugging is an exceptional thing? Well, it depends.” I then replied, “Last time you drove your car to get it fixed by a car mechanic, that mechanic listened to the sound of the car and then made his diagnosis. Does this story sound similar to debugging?”</p></div><div class="more-blog-posts"><h1 class="ui dividing header">More blog posts</h1><article class="news-item"><h2 class="ui header"><a href="2025-08-20-conjure-piglet-client.html">A Conjure Piglet Client</a></h2><div class="metadata">Posted Wed, 20 Aug 2025 09:32:34</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<blockquote>
+<p>“Laurence, are you interested in Piglet? Do you want to help develop Piglet?” Arne asked me. Piglet is the new language he recently released, of course, another Lisp.</p></blockquote>
+<blockquote>
+<p>“Sure, where should I start?” I replied.</p></blockquote></div></article><article class="news-item"><h2 class="ui header"><a href="2025-07-24-re-frame-app.html">The Hidden Lessons in a re-frame App</a></h2><div class="metadata">Posted Thu, 24 Jul 2025 08:08:02</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>I took over a web application whose frontend was built with re-frame, and not long after I started working on it, I felt a bit of discomfort. So, I decided to investigate the source of that discomfort. And my first suspect was re-frame.</p>
+<p>The reason I had this suspicion was mainly because in the frontend stack most commonly used at <a shape="rect" href="https://gaiwan.co/">Gaiwan</a>, we usually only use Reagent.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2025-07-03-on-cognitive-alignment.html">On Cognitive Alignment</a></h2><div class="metadata">Posted Thu, 03 Jul 2025 11:58:58</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>There was once a time when a client asked me to add a rate limit to an HTTP API. I quickly identified three similar options, all of which could apply rate limiting via Ring middleware:</p>
+<ul>
+<li>https://github.com/liwp/ring-congestion</li>
+<li>https://github.com/killme2008/clj-rate-limiter</li>
+<li>https://codeberg.org/valpackett/ring-ratelimit</li></ul></div></article><article class="news-item"><h2 class="ui header"><a href="2025-06-03-beyond-the-if-pattern.html">Beyond the If Pattern</a></h2><div class="metadata">Posted Tue, 03 Jun 2025 14:20:01</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>In my work at <a shape="rect" href="https://gaiwan.co/">Gaiwan</a>, there was a piece of code with poor quality that always felt like a thorn in my side. For a long time, I couldn’t come up with a better way to handle it.</p>
+<p>The code was a Nested If. Each <code>step-*</code> is a side-effect operation, and each handler records a log.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2025-05-13-on-interactive.html">On Interactive Development</a></h2><div class="metadata">Posted Tue, 13 May 2025 03:35:07</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>When I was a child, my sister caught chickenpox. Instead of isolating us, our parents let us continue playing together, and I ended up getting infected too. My father said, “It’s better to get chickenpox now—it won’t hurt you. Children aren’t just miniature adults.” This saying comes from pediatric medicine. While children may resemble adults on the outside, their internal physiology is fundamentally different. Some illnesses are mild for children but can hit adults much harder—chickenpox being a prime example.</p>
+<p>I often think of this phrase, especially when reflecting on Clojure’s interactive development model: interactive development feels natural and smooth in small systems, but without deliberate effort, it often breaks down as the system grows. Just as children and adults must be treated differently, small and large systems have fundamentally different needs and designs when it comes to interactive capabilities.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2025-04-16-fennel.html">Learning Fennel from Scratch to Develop Neovim Plugins</a></h2><div class="metadata">Posted Wed, 16 Apr 2025 04:27:59</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>As a Neovim user writing Clojure, I often watch my colleagues modifying Elisp to create plugins—for example, setting a shortcut key to convert Hiccup-formatted data in the editor into HTML. My feeling is quite complex. On one hand, I just can’t stand Emacs; I’ve tried two or three times, but I could not learn it well. On the other hand, if developing Neovim plugins means choosing between Lua and VimScript, neither of those options excites me. Despite these challenges, I envy those who can extend their editor using Lisp.</p>
+<p>Wouldn’t it be great if there were a Lisp I could use to develop my own Neovim plugins? One day, I discovered Fennel, which compiles to Lua. Great! Now, Neovim actually has a Lisp option. But then came the real challenge—getting started with Fennel and Neovim development was much harder than I expected.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2025-03-20-on-inspectability.html">On Inspectability</a></h2><div class="metadata">Posted Thu, 20 Mar 2025 10:46:34</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>At the beginning of 2025, I took over a client project at <a shape="rect" href="https://gaiwan.co/">Gaiwan</a>. It was a legacy code maintenance project that used re-frame. While familiarizing myself with the codebase, I also began fixing the bugs the client had asked me to address. This process was anything but easy, which led me to reflect on what makes an effective approach to taking over legacy code.</p>
+<p>I have yet to reach a conclusion on the general approach to inheriting legacy code. However, when it comes to taking over a front-end project built with re-frame, I do have a clear answer: <strong>install <a shape="rect" href="https://github.com/day8/re-frame-10x">re-frame-10x</a>, because it significantly improves the system’s inspectability.</strong></p></div></article><article class="news-item"><h2 class="ui header"><a href="2025-02-18-on-extensibility.html">On Extensibility</a></h2><div class="metadata">Posted Tue, 18 Feb 2025 14:28:46</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>For a long time, I had a misunderstanding about Clojure: I always thought that the extensibility Clojure provides was just about macros. Not only that, but many articles I read about Lisp emphasized how Lisp’s macros were far more advanced than those in other languages while also extolling the benefits of macros—how useful it is for a language to be extensible. However, what deeply puzzled me was that the <a shape="rect" href="https://www.booleanknot.com/blog/2016/12/20/code-is-data.html">Clojure community takes a conservative approach to using macros</a>. Did this mean that Clojure was less extensible than other Lisp languages?</p>
+<p>Later, I realized that my misunderstanding had two aspects:</p></div></article><article class="news-item"><h2 class="ui header"><a href="2025-01-14-ornament.html">Ornament</a></h2><div class="metadata">Posted Tue, 14 Jan 2025 09:52:11</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<blockquote>
+<p>Well done on the Compass app. I really like how fast it is (while retaining data consistently which is hugely undervalued these days). I’m not just being polite, I really like it.</p>
+<p>by Malcolm Sparks</p></blockquote>
+<p>Before the <a shape="rect" href="https://2024.heartofclojure.eu/">Heart of Clojure event</a>, one of the projects we spent a considerable amount of time preparing was <a shape="rect" href="https://github.com/GaiwanTeam/compass">Compass</a>, and it’s open-source. This means that if you or your organization is planning a conference, you can use it.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2024-12-19-admin-process.html">The Admin Process</a></h2><div class="metadata">Posted Thu, 19 Dec 2024 09:39:23</div><div class="truncated">
+<p><em>by Laurence Chen</em></p>
+<p>My friend Karen joined an online community of product managers and took on the task of managing a mentor-mentee matchmaking system. She has years of experience as a product manager but lacks a background in software development. Driven by her strong passion for the community, she managed to develop a Python version of the mentor-mentee matching system using ChatGPT. Of course, the story isn’t that simple. The turning point came when she was stuck, no matter how she phrased her questions to ChatGPT, and she came to me for help.</p>
+<p>Her stumbling block was this: she was asking ChatGPT top-down questions, so ChatGPT, using probabilities and statistics, generated high-level sequential logic code, essentially the policy part. This generated code would then need to call underlying library functions, the mechanism part, to perform bipartite matching calculations. This is where ChatGPT got stuck. For such tasks, even humans sometimes have to write some glue code to handle the impedance mismatch between policy code and mechanism code, so it was expected that ChatGPT would hit a wall.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-11-04-clojurists-together-2022.html">Announcing our Clojurists Together Plans</a></h2><div class="metadata">Posted Fri, 04 Nov 2022 19:17:34</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>In case you haven’t been hanging out in our <a shape="rect" href="https://discord.gg/fkU9xXj363">Discord</a> or <a shape="rect" href="https://clojurians.slack.com/archives/C1DV21X9P">Slack
+channel</a> or
+following <a shape="rect" href="https://www.clojuriststogether.org/news/q3-2022-funding-announcement/">Clojurists Together
+news</a>, we’ve been
+accepted into the latest round of Clojurists Together! Many thanks to Clojurists
+Together and the backers who provide their budget. We’re also using
+OpenCollective funds to match our Clojurists Together grant—many thanks to our sponsors on OpenCollective!</p>
+<p>You may have heard <a shape="rect" href="https://www.clojuriststogether.org/news/september-2022-monthly-update/">some updates from fellow
+awardees</a>
+already—we opted for a delayed start and have been gearing up to make the most
+of our funds over the next six months.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-06-23-the-repl-is-not-enough.html">The REPL is Not Enough</a></h2><div class="metadata">Posted Thu, 23 Jun 2022 18:24:44</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>The usual pitch for Clojure typically has a couple ingredients, and a key one
+is the REPL. Unfortunately, it’s not always clear on what ‘REPL’ means. Sometimes the would-be Clojure advocate breaks down what the letters mean—R for read, E for eval, P for print, and L for loop—and how the
+different stages connect to the other Lispy traits of Clojure, at least.
+However, even a thorough understanding of the mechanics of the REPL fails to capture what we’re usually getting at: The promise of interactive development.</p>
+<p>To explore why this is great, let’s build it up from (mostly) older and more familiar
+languages. If you’re new to Clojure, this eases you in. If Clojure’s one of your
+first languages, hopefully it gives you some appreciation of where it came from.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-05-09-clojure-setup-m1-mac-arm.html">Setting up M1 Mac for Clojure development</a></h2><div class="metadata">Posted Mon, 09 May 2022 11:52:23</div><div class="truncated">
+<p>By Mitesh (@oxalorg)</p>
+<p>I recently bought an M1 Macbook Air with 16 GB RAM. Below is a log of how 
+and what I downloaded on my machine for a full stack Clojure development experience.</p>
+<p>The M1 is an ARM chip and thus the software which runs on it must be compatible 
+with the ARM instruction set instead of the x86 instruction set.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-04-25-making-lambda-island-free.html">Making Lambda Island Free</a></h2><div class="metadata">Posted Mon, 25 Apr 2022 10:18:12</div><div class="truncated">
+<p>Six years after launching Lambda Island we’ve decided to flip the switch and make all content free. That’s right, all premium video content is now free for anyone to enjoy. Go learn about <a shape="rect" href="https://lambdaisland.com/collections/react-reagent-re-frame">Reagent and re-frame</a>, <a shape="rect" href="https://lambdaisland.com/collections/ring-compojure">Ring and Compojure</a>, or <a shape="rect" href="https://lambdaisland.com/collections/clojure-foundations">Clojure Fundamentals</a>.</p>
+<p>If you currently have an active subscription then it will be automatically cancelled in the coming days. You will no longer be charged. No further action is necessary.</p>
+<p>Lambda Island is how the <a shape="rect" href="https://gaiwan.co">Gaiwan Team</a> gives back to the Clojure community. We have released over thirty different <a shape="rect" href="https://github.com/lambdaisland/open-source">open source projects</a>, we write articles <a shape="rect" href="index.html">on our blog</a>, post videos on our <a shape="rect" href="https://www.youtube.com/lambdaisland">YouTube channel</a>, we moderate the <a shape="rect" href="https://discord.gg/pCuZBDRruW">Lambda Island discord community</a>, and provide a home for the <a shape="rect" href="https://clojureverse.org/">ClojureVerse forum</a>.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-04-07-Clojure-Error-Messages.html">What Is Behind Clojure Error Messages?</a></h2><div class="metadata">Posted Thu, 07 Apr 2022 11:57:28</div><div class="truncated">
+<p>by Ariel Alexi and Arne Brasseur</p>
+<p>Have you ever looked at your REPL and asked yourself “What am I supposed to understand from this?”. This is not just a junior thought, but one also common to more advanced programmers. What makes it hard is that Clojure error messages are not very informative. This is why a lot of work was put into improving these error messages.</p>
+<p>The errors seem a bit strange at first, but you can get used to them and develop a sense of where to look. Then, handling errors will be much less difficult.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-03-10-mechanism-vs-policy.html">Improve your code by separating mechanism from policy</a></h2><div class="metadata">Posted Thu, 10 Mar 2022 11:34:31</div><div class="truncated">
+<p>by Arne Brasseur</p>
+<p>Years ago when I was still a programming baby, I read about a concept, a way of
+thinking about code, and it has greatly influenced how I think about code to
+this day. I’ve found it tremendously helpful when thinking about API design, or
+how to compose and layer systems.</p>
+<p>Unfortunately I’ve found it hard at times to explain succinctly what I mean.
+I’ve also realized that I’ve built up my own mental framework around this
+concept that goes I think beyond the original formulation. So, in the hope of
+inspiring someone else, to maybe elicit some interesting discussion, and also
+just so that I have a convenient place on the web to link to, here’s my take on
+“policy” vs “mechanism”.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-02-17-the-fg-command.html">How to control the metacognition process of programming?</a></h2><div class="metadata">Posted Thu, 17 Feb 2022 15:41:45</div><div class="truncated">
+<p>by Laurence Chen</p>
+<p>There is a famous quote: Programming is thinking, not typing. After doing this job long enough, sometimes, I feel I am doing too much typing. No matter whether humans are thinking or typing, they use their brains, so I believe the word “typing” is a metaphor: typing refers to the kind of activities that we are doing unconsciously, doing through our muscle memory, not through our deliberate attention. Many of us, with enough experience, use quite a lot of muscle memory. On the other hand, do we use enough thinking when we need to?</p>
+<p>We, humans, make a lot of decisions in our daily life: a decision like buying a car, or a decision like naming a function. Evolution makes us become the kind of animal that we can delegate certain parts of decisions down to our subconscious minds, which we may refer to as the background process in our brain. Therefore, we can focus our mind on something that matters. Here is the problem: what if the subconscious mind is not doing a good job? Most of the time, it is not a big deal, and escalating the issue back to foreground thinking can solve it. For example, when you press <code>&lt;localleader&gt; e e</code> to evaluate a form, but mistakenly evaluating the wrong form. You detect that, then you use your foreground thinking to decide what to do next. However, sometimes, when you know that the subconscious mind can not handle the job well before you begin the job, what can you do to prevent your subconscious mind from taking over control? Do we have any mechanism similar to the linux command <code>fg</code>, which can bring a process from background to foreground?</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-01-27-2022-01-27-unboxing-the-jdk.html">Unboxing the JDK</a></h2><div class="metadata">Posted Thu, 27 Jan 2022 17:36:39</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>It’s easy to forget the Java Development Kit is, in fact, a kit.  Many Clojure
+developers, myself included, rarely work with commands like <code>java</code> directly,
+instead using <code>lein</code>, <code>boot</code>, or <code>clojure</code>. Often we don’t even use the Java
+standard library directly in favor of idiomatic wrappers.</p>
+<p>There are a lot of advantages to staying in the Clojure level. Often, Clojure-specific
+tools ergonomically support common practices like live-reloading, understand
+Clojure data structures, and can tuck away some of the intermediate layers of
+Clojure itself that aren’t a part of your application.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2022-01-13-lioss-update.html">Lambda Island Open Source Update January 2022</a></h2><div class="metadata">Posted Thu, 13 Jan 2022 12:26:18</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>Community contributors and Lambda Island team members have been busy working on new projects and improving
+existing ones.</p>
+<p>If you want to join in, check out our <a shape="rect" href="https://lambdaisland.com/blog/2021-01-21-call-for-contributions-to-lioss">blog
+post</a>
+calling for contributions, or jump right in to our <a shape="rect" href="https://github.com/lambdaisland/kaocha/issues?q=is%3Aopen+is%3Aissue+label%3A%22first+issue+only%22">first
+issues</a>
+list.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-11-24-making-nrepl-cider-more-dynamic-2.html">Making nREPL and CIDER More Dynamic (part 2)</a></h2><div class="metadata">Posted Wed, 24 Nov 2021 09:19:18</div><div class="truncated">
+<p>By Arne Brasseur</p>
+<p>In <a shape="rect" href="https://lambdaisland.com/blog/2021-11-03-making-nrepl-cider-more-dynamic-1">part 1</a> I
+set the stage with a summary of what nREPL is and how it works, how
+editor-specific tooling like CIDER for Emacs extends nREPL through middleware,
+and how that can cause issues and pose challenges for users. Today we’ll finally
+get to the “dynamic” part, and how it can help solve some of these issues.</p>
+<p>To sum up again what we are dealing with: depending on the particulars of the
+nREPL client (i.e. the specific editor you are using, or the presence of
+specific tooling like <code>refactor-clj</code>), or of the project (shadow-cljs vs vanilla
+cljs), certain nREPL middleware needs to present for things to function as they
+should. When starting the nREPL server you typically supply it with a list of
+middlewares to use. This is what plug-and-play “jack-in” commands do behind the
+scenes. For nREPL to be able to load and use those middlewares they need to be
+present on the classpath, in other words, they need to be declared as
+dependencies. This is the second part that jack-in takes care of.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-11-03-making-nrepl-cider-more-dynamic-1.html">Making nREPL and CIDER More Dynamic (part 1)</a></h2><div class="metadata">Posted Wed, 03 Nov 2021 16:59:10</div><div class="truncated">
+<p><em>This first part is a recap about nREPL, nREPL middleware, and some of the
+issues and challenges they pose. We’ll break up the problem and look at
+solutions in part 2.</em></p>
+<p>The REPL is a Clojurists <a shape="rect" href="https://lambdaisland.com/blog/2017-12-29-the-bare-minimum-clojure-mayonnaise">quintessential
+tool</a>,
+it’s what we use to do Interactive Development, the hallmark of the LISP style
+of development.</p>
+<p>In Interactive Development (more commonly but somewhat imprecisely referred to
+as REPL-driven development), the programmer’s editor has a direct connection
+with the running application process. This allows evaluating pieces of code in
+the context of a running program, directly from where the code is written (and
+so not in some separate “REPL place”), inspecting and manipulating the innards
+of the process. This is helped along by the dynamic nature of Clojure in which
+any var can be redefined at any point, allowing for quick incremental and
+iterative experimentation and development.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-08-25-classpath-is-a-lie.html">The Classpath is a Lie</a></h2><div class="metadata">Posted Wed, 25 Aug 2021 14:20:18</div><div class="truncated">
+<p>by Arne Brasseur</p>
+<p>A key concept when working with Clojure is “the classpath”, a concept which we
+inherit from Clojure’s host language Java. It’s a sequence of paths that Clojure
+(or Java) checks when looking for a Clojure source file (<code>.clj</code>), a Java Class
+file (<code>.class</code>), or other resources. So it’s a lookup path, conceptually similar
+to the <code>PATH</code> in your shell, or the “library path” in other dynamic languages.</p>
+<p>The classpath gets set when starting the JVM by using the <code>-cp</code> (or
+<code>-classpath</code>) command line flag.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-08-18-a-tale-of-three-clojures.html">A Tale of Three Clojures</a></h2><div class="metadata">Posted Wed, 18 Aug 2021 16:00:41</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>Recently, I was helping a coworker debug an issue with loading a Clojure
+dependency from a Git repository. (If you don’t know you can do this; it’s very
+handy. <a shape="rect" href="https://clojure.org/guides/deps_and_cli#_using_git_libraries">Here’s</a> a
+guide.) I realized that there were really two Clojures at play: the Clojure that
+<code>clojure</code> was running to generate the classpath and the Clojure that was used by
+the actual Clojure program.</p>
+<p>Taking a step back, there are really three things we might mean when we say
+“Clojure”:</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-07-23-launching-lambda-island-redesign.html">Launching the Lambda Island Redesign</a></h2><div class="metadata">Posted Fri, 23 Jul 2021 14:28:10</div><div class="truncated">
+<p>It’s finally live! A gorgeous, in-depth redesign of the Lambda Island website.
+After months of hard work we soft-launched earlier this week. Today we want to
+tell you a little more about the project, the whys and the hows, and to invite
+you to check it out. And when you’re done do come tell us what you think <a shape="rect" href="https://discord.gg/pCuZBDRruW">on our
+Discord</a>.</p>
+<p><img src="https://img.lambdaisland.com/de32254acec9d7dd8f380711286a46e4.png" alt="Redesigned front page" style="margin: 2rem 0" /></p>
+<p>We already told you in <a shape="rect" href="https://lambdaisland.com/blog/2021-06-17-lambdaisland-is-changing">a previous
+post</a> how
+<a shape="rect" href="https://lambdaisland.com">Lambda Island</a> and <a shape="rect" href="https://gaiwan.co">Gaiwan</a> are
+changing. In a short amount of time we went from a one man endeavor to a team of
+six, drastically changing what we are able to take on and pull off.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-06-29-lioss-update-june-2021.html">Lambda Island Open Source Update July 2021</a></h2><div class="metadata">Posted Tue, 29 Jun 2021 00:16:41</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>It’s been a while since our last update! Community contributors and Lambda
+Island team members have been busy working on new projects and improving
+existing ones.
+We’re trying to strike a balance between venturing
+into new territory while ensuring existing projects continue to improve.</p>
+<p>If you want to join in, check out our <a shape="rect" href="https://lambdaisland.com/blog/2021-01-21-call-for-contributions-to-lioss">blog
+post</a>
+calling for contributions, or jump right in to our <a shape="rect" href="https://github.com/lambdaisland/kaocha/issues?q=is%3Aopen+is%3Aissue+label%3A%22first+issue+only%22">first
+issues</a>
+list.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-06-17-lambdaisland-is-changing.html">Lambda Island is Changing</a></h2><div class="metadata">Posted Thu, 17 Jun 2021 05:28:27</div><div class="truncated">
+<p>Last month marked the five year anniversary of Lambda Island. Five years since I
+quit my job, built a video platform, and figured out how to put together
+tutorial videos. It’s been quite a ride. All this time I’ve been fortunate to be
+part of the Clojure community, to watch it grow and evolve, and to help
+individuals and companies to navigate these waters.</p>
+<p>I learned some hard lessons along the way. Like how hard it is to bootstrap an
+educational content business catering to a niche audience, or how lonely and
+stressful it can be in business to go it alone.</p>
+<p>And with these lessons came changes. I started doing more consulting work again.
+To some extent it was a necessity, but it also provided me with an opportunity
+to get involved with many Clojure projects out there in the wild. To work with
+talented individuals, to learn what amazing things people were doing, and to
+help shape these companies, products, and the greater narrative around Clojure
+as a technology and community.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-06-04-clojure-beginners-just-like-vegans-searching-for-good-cheese.html">Why are Clojure beginners just like vegans searching for good cheese?</a></h2><div class="metadata">Posted Fri, 04 Jun 2021 15:53:45</div><div class="truncated">
+<p>By Ariel Alexi</p>
+<h2 id="have-you-ever-wondered-what-to-do-if-you-love-cheese-but-you-want-to-be-a-vegan-and-how-this-affects-you-when-you-learn-clojure">Have you ever wondered what to do if you love cheese but you want to be a vegan and how this affects you when you learn Clojure?</h2>
+<p>This was my question too. I love cheese, but I wanted to find a good vegan cheese replacement for my breakfast sandwich.
+This wasn’t a fun journey, all the vegan cheese substitutes weren’t like the real deal!
+After a talk with one of my vegan friends, he told me that my point of view over cheese replacement in the sandwich was wrong.
+Instead of searching for a good and tasty vegan cheese replacement, just replace it with an avocado.
+Avocado is a good replacement for your morning sandwich without the compromising that you would do with tasteless vegan cheese substitutes.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2021-04-05-things-i-have-learned-in-my-1st-month-of-clojure.html">The beginner's way</a></h2><div class="metadata">Posted Mon, 05 Apr 2021 18:09:55</div><div class="truncated">
+<p>By Ariel Alexi</p>
+<h2 id="an-oop-developer-finding-her-way-in-the-functional-world-what-could-go-wrong">An OOP developer finding her way in the functional world, what could go wrong?</h2>
+<h2 id="so-why-clojure">So why Clojure?</h2></div></article><article class="news-item"><h2 class="ui header"><a href="2021-01-21-call-for-contributions-to-lioss.html">Call for Contributions to Lambda Island Open Source</a></h2><div class="metadata">Posted Thu, 21 Jan 2021 07:31:32</div><div class="truncated">
+<p><em>By Alys Brooks</em></p>
+<p>We’re always excited when someone new contributes a fix, test, documentation update, or even a major new feature to our open source projects.
+If you’re new to programming, open source projects are a great way to get experience working on a larger project.
+If you’re not so new, they can be an opportunity to try a new technology or work on a kind of software you usually don’t get a chance to.
+Either way, it’s rewarding to help out your fellow users or developers—these issues are for Kaocha, one of the most popular and advanced Clojure test runners.</p>
+<p>But open source can also be intimidating. If you haven’t been sure where to start, then this post is for you! We’ve outlined the process step by step, and we’re here to support you every step of the way.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2020-09-28-logging-in-practice-glogi-pedestal.html">Logging in Practice with Glögi and Pedestal.log</a></h2><div class="metadata">Posted Mon, 28 Sep 2020 09:23:21</div><div class="truncated">
+<p>In an <a shape="rect" href="https://lambdaisland.com/blog/2020-06-12-logging-in-clojure-making-sense-of-the-mess">earlier post</a>
+I tried to map out the Clojure/Java logging landscape a bit, so people can make
+an informed choice about how to set up logging for their application. There are
+several solutions out there with different trade-offs, and recently both <a shape="rect" href="https://github.com/ptaoussanis/timbre">Timbre</a>
+and <a shape="rect" href="https://github.com/BrunoBonacci/mulog">mulog</a> have had some new releases. However until further notice the default
+logging setup in the “Lambda Island Stack” remains pedestal.log on the backend,
+and Glögi at the front.</p>
+<p>This blog post is a bit of practical advice on how to make good use of logging,
+with the focus on these two libraries, which both provide the same API, just for
+a different platform.</p>
+<p>This API consists of a number of macros corresponding with the different log
+levels, which all take key-value pairs as arguments.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2020-07-28-well-behaved-command-line-tools.html">Well Behaved Command Line Tools</a></h2><div class="metadata">Posted Tue, 28 Jul 2020 11:32:26</div><div class="truncated">
+<p>Yesterday Vlaaad wrote a pretty cool blog post titled <a shape="rect" href="https://vlaaad.github.io/tools-cli-in-10-lines-of-code">Alternative to tools.cli
+in 10 lines of code</a>.
+It’s a great read and a very cool hack. It uses <code>read-string</code> to parse command
+line arguments, resolves symbols, and invokes the first symbol/function, passing
+in the rest of the parsed arguments. In other words: it’s the most
+straightforward way to translate a command line invocation into a Clojure
+function call.</p>
+<p>The benefits are illustrated well in the post. It removes all possible friction.
+Want to add a new subcommand? Just add a function. Adding CLI arguments and
+options equals adding arguments and options to said function.</p>
+<p>It’s actually not too different from what people do in shell scripts sometimes.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2020-06-12-logging-in-clojure-making-sense-of-the-mess.html">Logging in Clojure: Making Sense of the Mess</a></h2><div class="metadata">Posted Fri, 12 Jun 2020 10:10:45</div><div class="truncated">
+<p><a shape="rect" href="https://img.lambdaisland.com/d2d44e2500e32e9d68ad8ca2e5a6880e.png"><img src="https://img.lambdaisland.com/d2d44e2500e32e9d68ad8ca2e5a6880e.png" alt="" /></a></p>
+<p>You may also like <a shape="rect" href="https://lambdaisland.com/blog/2017-07-26-dates-in-clojure-making-sense-of-the-mess">Dates in Clojure: Making Sense of the
+Mess</a></p>
+<p>Logging seems like a simple enough concept. It’s basically <code>println</code> with a
+couple of extra smarts. And yet it can be oh so confounding. Even when you
+literally do not care a sigle bit about logging you may still be sent down a
+rabbit hole because of warnings of things that are or aren’t on the classpath.
+What even is a classpath?</p></div></article><article class="news-item"><h2 class="ui header"><a href="2020-06-05-open-source-update-may-2020.html">Lambda Island Open Source Update May 2020</a></h2><div class="metadata">Posted Fri, 05 Jun 2020 13:46:30</div><div class="truncated">
+<p><a shape="rect" href="https://twitter.com/flpbar">Felipe</a> and I have been busy again, read all about
+what we’ve been up to in this month’s Lambda Island Open Source update.</p>
+<p>We currently have two major projects we are working to get out: Regal and
+Kaocha-cljs2. They are both still a work in progress, but we’ve again made some
+good progress this month. Regal is not officially out yet but is at the stage
+where people can safely start incorporating it into their projects.
+Kaocha-cljs2 is a big undertaking, but we’re splitting this work into smaller
+self-contained pieces, and two of those saw their first release this month: Chui
+and Funnel.</p>
+<h2 id="regal">Regal</h2></div></article><article class="news-item"><h2 class="ui header"><a href="2020-05-04-open-source-update-april-2020.html">Lambda Island Open Source Update April 2020</a></h2><div class="metadata">Posted Mon, 04 May 2020 07:26:32</div><div class="truncated">
+<p>With people across the globe isolating themselves it feels sometimes like time
+is standing still, but looking back it’s been a busy month again for the folks
+here at Lambda Island. Besides all the maintenance releases we
+shipped some new features for
+<a shape="rect" href="https://github.com/lambdaisland/uri">lambdaisland.uri</a>, our JS logging library
+<a shape="rect" href="https://github.com/lambdaisland/glogi">Glögi</a>, and a new micro-library,
+<a shape="rect" href="https://github.com/lambdaisland/edn-lines">edn-lines</a>. We also have some
+exciting work in progress, including a brand new browser-based test runner for
+ClojureScript, written with shadow-cljs in mind.</p>
+<h2 id="funding">Funding</h2>
+<p>A big shout goes out to two of our clients,
+<a shape="rect" href="http://nextjournal.com/">Nextjournal</a> and <a shape="rect" href="https://pitch.com">Pitch</a>. They have
+made a lot of this work possible either by funding projects directly, or by
+dogfooding our tools and libraries and giving us an opportunity to improve them.
+Thank you both for investing in this great ecosystem.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2020-03-29-coffee-grinders-2.html">Coffee Grinders, part 2</a></h2><div class="metadata">Posted Sun, 29 Mar 2020 09:57:06</div><div class="truncated">
+<p>Back in December I wrote about a coding pattern that I’ve been using more and more often in my work, which I dubbed “<a shape="rect" href="https://lambdaisland.com/blog/2019-12-16-advent-of-parens-16-coffee-grinders">Coffee Grinders</a>”. My thoughts around this were still gelling at the time, and so the result was a meandering semi-philosophical post that didn’t really get to the point, and that didn’t seem to resonate that much with people.</p>
+<p>Some of the responses I got were “just use functions” or “sounds like a finite-state machine”, which makes it clear that I was not in fact making myself clear.</p>
+<p>Having continued to encounter and apply this pattern I’d like to present a more concise, semi-formal definition of coffee grinders.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2020-02-03-open-collective-lambda-island-open-source.html">Launching an Open Collective for Lambda Island OSS</a></h2><div class="metadata">Posted Mon, 03 Feb 2020 14:33:01</div><div class="truncated">
+<h2 id="tldr">tl;dr</h2>
+<p>We are launching an <a shape="rect" href="https://opencollective.com/lambda-island#section-contribute">Open Collective for Lambda Island Open Source</a>, to help support our Open Source and Community work. Please check it out, pass it (and this article) on to your boss, or consider contributing yourself.</p>
+<h2 id="it-started-with-a-mission">It started with a mission</h2></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-24-advent-of-parens-24-the-last-post.html">Advent 2019 part 24, The Last Post</a></h2><div class="metadata">Posted Tue, 24 Dec 2019 14:52:04</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Day 24, I made it! I did skip a day because I was sick and decided it was more
+important to rest up, but I’m pretty happy with how far I got.</p>
+<p>Let’s see how the others fared who took on the challenge. John Stevenson at
+<a shape="rect" href="https://practicalli.github.io/blog/">Practicalli</a> got four posts out spread out
+across the advent period, similar to lighting an extra candle every sunday of
+the advent. Good job!</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-23-advent-of-parens-23-full-size-svg-with-reagent.html">Advent 2019 part 23, Full size SVG with Reagent</a></h2><div class="metadata">Posted Mon, 23 Dec 2019 20:10:09</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>I’ve been a big fan of SVG since the early 2000’s. To me it’s one of the great
+victories of web standards. Mind you, browser support has taken a long time to catch up.
+Back then you had to embed your SVG file with an <code>&lt;object&gt;</code> tag, and support for the
+many cool features and modules was limited and inconsistent.</p>
+<p>These days of course you can drop an <code>&lt;svg&gt;</code> tag straight into your HTML. What a
+joy! And since the SVG can now go straight into the DOM, you can draw your SVG
+with React/Reagent. Now there’s a killer combo.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-21-advent-of-parens-21-project-config-dir-locals.html">Advent 2019 part 21, Project level Emacs config with .dir-locals.el</a></h2><div class="metadata">Posted Sat, 21 Dec 2019 14:04:39</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>An extremely useful Emacs feature which I learned about much too late is the
+<code>.dir-locals.el</code>. It allows you to define variables which will then be set
+whenever you open a file in the directory where <code>.dir-locals.el</code> is located (or
+any subdirectory thereof).</p>
+<p>Here’s an example of a <code>.dir-locals.el</code> file of a project I was poking at today.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-20-advent-of-parens-20-life-hacks-emacs-ginger-tea.html">Advent 2019 part 20, Life Hacks aka Emacs Ginger Tea</a></h2><div class="metadata">Posted Fri, 20 Dec 2019 14:28:35</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Here’s a great life hack, to peal ginger don’t use a knife, use a spoon. I’m not
+kidding. Just scrape off the peal with the tip of the spoon, it’s almost too
+easy.</p>
+<p>Here’s a Clojure + Emacs life hack:</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-19-advent-of-parens-19-advent-of-random-hacks.html">Advent 2019 part 19, Advent of Random Hacks</a></h2><div class="metadata">Posted Thu, 19 Dec 2019 19:19:04</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Something I’m pretty good at is coming up with random hacks. The thing where
+you’re like “hey how about we plug this thing into that thing” and everyone says
+“why would you do that that’s a terrible idea” and I’m like (<em>mario voice</em>)
+“let’s a go”.</p>
+<p>And sometimes the result is not entirely useless. Like 
+<a shape="rect" href="https://github.com/borkdude/babashka/blob/5e10c913e0dc706c4b4de85e508779a67c6e51c0/README.md#convert-projectclj-to-depsedn">this little oneliner</a>
+I came up with yesterday, using Babashka to “convert” a <code>project.clj</code> into a
+<code>deps.edn</code>.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-18-advent-of-parens-18-exploring-bootleg.html">Advent 2019 part 18, Exploring Bootleg</a></h2><div class="metadata">Posted Wed, 18 Dec 2019 09:43:36</div><div class="truncated">
+<p><a shape="rect" href="https://nextjournal.com/plexus/advent-2019-part-18-exploring-bootleg">Today’s post is published on Nextjournal</a>. Enjoy!</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-17-advent-of-parens-17-trace-untrace.html">Advent 2019 part 17, trace! and untrace!</a></h2><div class="metadata">Posted Tue, 17 Dec 2019 10:02:59</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Here’s a little REPL helper that you may like.</p>
+<pre><code class="language-clojure">(defn trace! [v]
+  (let [m    (meta v)
+        n    (symbol (str (ns-name (:ns m))) (str (:name m)))
+        orig (:trace/orig m @v)]
+    (alter-var-root v (constantly (fn [&amp; args]
+                                    (prn (cons n args))
+                                    (apply orig args))))
+    (alter-meta! v assoc :trace/orig orig)))
+
+(defn untrace! [v]
+  (when-let [orig (:trace/orig (meta v))]
+    (alter-var-root v (constantly orig))
+    (alter-meta! v dissoc :trace/orig)))
+</code></pre></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-16-advent-of-parens-16-coffee-grinders.html">Advent 2019 part 16, Coffee Grinders</a></h2><div class="metadata">Posted Mon, 16 Dec 2019 10:35:27</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Over the last year or so I’ve found myself using some variations on a
+certain pattern when modelling processes in Clojure. It’s kind of like a
+ event loop, but adapted to the functional, immutable nature of
+Clojure. For lack of a better name I’m calling these coffee grinders. (The
+analogy doesn’t even really work but the kid needs to have a name.)</p>
+<p>Since I saw <a shape="rect" href="https://www.youtube.com/watch?v=UJnsXUVsr7w">Avdi Grimm’s OOPS Keynote</a> 
+at Keep Ruby Weird last year I’ve been thinking a lot about the transaction vs process
+dichotomy. Avdi talks about the “Transactional Fallacy” from around 15:25. From his slides:</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-15-advent-of-parens-15-jcmd-and-jstack.html">Advent 2019 part 15, jcmd and jstack</a></h2><div class="metadata">Posted Sun, 15 Dec 2019 19:12:50</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Two shell commands anyone using JVM languages should be familiar with are <code>jcmd</code>
+and <code>jstack</code>. They are probably already available on your system, as they come
+bundled with the JDK. Try it out, run <code>jcmd</code> in a terminal.</p>
+<p>This is what the result might look like</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-14-advent-of-parens-14-why-did-the-clojurist-drop-out-of-school.html">Advent 2019 part 14, Why did the Clojurist drop out of school?</a></h2><div class="metadata">Posted Sat, 14 Dec 2019 23:01:53</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Because they didn’t like classes.</p>
+<p>Almost missed today’s post, so I’ll keep it short.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-13-advent-of-parens-13-datomic-test-factories.html">Advent 2019 part 13, Datomic Test Factories</a></h2><div class="metadata">Posted Fri, 13 Dec 2019 09:13:23</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>When I started consulting for <a shape="rect" href="https://nextjournal.com/">Nextjournal</a> I helped
+them out a lot with tooling and testing. Their data model is fairly complex,
+which made it hard to do setup in tests. I created a factory based approach for
+them, which has served the team well ever since.</p>
+<p>First some preliminaries. At Nextjournal we’re big fans of Datomic, and so
+naturally we have a Datomic connection as part of the Integrant system map.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-12-advent-of-parens-12-pairing-cloud-tmux.html">Advent 2019 part 12, Pairing in the Cloud with Tmux</a></h2><div class="metadata">Posted Thu, 12 Dec 2019 11:40:51</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>I’m a strong believer in pair programming. It can be intense and exhausting, and
+its a skill you need to learn and get good at, but it’s extremely valuable. It
+improves knowledge sharing, prevents mistakes, and helps people to stay on track
+to make sure they are building the right thing, which is arguably one of the
+hardest aspects of our job.</p>
+<p>But <a shape="rect" href="http://gaiwan.co">Gaiwan</a> is a remote-first company. We are spread out
+across Germany, Brazil, Italy, and work with clients as far away as Singapore
+and Hong Kong, so we need good ways to pair remotely. For this we need a tool
+that is</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-11-advent-of-parens-11-integrant-in-practice.html">Advent 2019 part 11, Integrant in Practice</a></h2><div class="metadata">Posted Wed, 11 Dec 2019 09:55:25</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>I’ve been a fan of <a shape="rect" href="https://github.com/weavejester/integrant">Integrant</a> pretty
+much ever since it came out. For me there is still nothing that can rival it.</p>
+<p>The recently released <a shape="rect" href="https://github.com/juxt/clip">clip</a> by the folks from
+Juxt does deserve an honorable mention. It has an interesting alternative
+approach which some may prefer, but it does not resonate with me. I prefer my
+system configuration to be just data, rather than code wrapped in data.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-10-advent-of-parens-10-hillchart-reagent-shadow-firebase.html">Advent 2019 part 10, Hillcharts with Firebase and Shadow-cljs</a></h2><div class="metadata">Posted Tue, 10 Dec 2019 10:43:20</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Recently I led a workshop for a client to help them improve their development
+process, and we talked a lot about <a shape="rect" href="https://basecamp.com/shapeup">Shape Up</a>, a
+book released by Basecamp earlier this year that talks about <em>their</em> process.
+You can read it for free on-line, and I can very much recommend doing so. It’s
+not a long read and there are a ton of good ideas in there.</p>
+<p>One of these ideas has also become a feature in Basecamp, namely hill charts.
+These provide a great way to communicate what stage a piece of work is in. Are
+you still going uphill, figuring things out and discovering new work, or are you
+going downhill, where it’s mostly clear what things will look like, and you’re
+just executing what you discovered?</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-09-advent-of-parens-9-dynamic-vars-clojurescript.html">Advent 2019 part 9, Dynamic Vars in ClojureScript</a></h2><div class="metadata">Posted Mon, 09 Dec 2019 14:42:00</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Clojure has this great feature called Dynamic Vars, it lets you create variables
+which can be dynamically bound, rather than lexically. Lexical (from Ancient
+Greek λέξις (léxis) <em>word</em>) in this case means “according to how it is written”.
+<code>let</code> bindings for instance are lexical.</p>
+<pre><code class="language-clojure">(defn hello [x]
+  (str "hello " x))
+
+(defn greetings []
+  (str "greetings" foo)) ;; *error*
+
+(let [foo 123]
+  (hello foo)
+  (greetings))
+</code></pre></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-08-advent-of-parens-8-everything-is-a-pipe.html">Advent 2019 part 8, Everything is (not) a pipe</a></h2><div class="metadata">Posted Sun, 08 Dec 2019 13:42:16</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>I’ve always been a big UNIX fan. I can hold my own in a shell script, and I
+really like the philosophy of simple tools working on a uniform IO abstraction.
+Uniform abstractions are a huge enabler in heterogenous systems. Just think of
+Uniform Resource Locators and Identifier (URLs/URIs), one of the
+<a shape="rect" href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">cornerstones</a> of
+the web as we know it.</p>
+<p>Unfortunately since coming to Clojure I feel like I’ve lost of some of that
+power. I’m usually developing against a Clojure process running inside (or at
+least connected to) my trusty editor, and the terminal plays second fiddle. How
+do I pipe things into or out of that?</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-07-advent-of-parens-7-do-that-doto.html">Advent 2019 part 7, Do that doto</a></h2><div class="metadata">Posted Sat, 07 Dec 2019 19:43:35</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p><code>doto</code> is a bit of an oddball in the Clojure repertoire, because Clojure is a
+functional language that emphasizes pure functions and immutabilty, and <code>doto</code>
+only makes sense when dealing with side effects.</p>
+<p>To recap, <code>doto</code> takes a value and a number of function or method call forms. It
+executes each form, passing the value in as the first argument. At the end of
+the ride it returns the original value.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-06-advent-of-parens-6-a-small-idiom.html">Advent 2019 part 6, A small idiom</a></h2><div class="metadata">Posted Fri, 06 Dec 2019 12:09:03</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>As an avid tea drinker I’ve been poring (pouring?) over this catalog of teas.</p>
+<pre><code class="language-clojure">(def teas [{:name "Dongding"
+            :type :oolong}
+           {:name "Longjing"
+            :type :green}
+           {:name "Baozhong"
+            :type :oolong}
+           {:name "Taiwan no. 18"
+            :type :black}
+           {:name "Dayuling"
+            :type :oolong}
+           {:name "Biluochun"
+            :type :green}])
+</code></pre></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-05-advent-of-parens-5-clojure-in-the-shell.html">Advent 2019 part 5, Clojure in the shell</a></h2><div class="metadata">Posted Thu, 05 Dec 2019 16:57:16</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>I already showed you netcat, and how it combines perfectly with socket REPLs.
+But what if all you have is an nREPL connection? Then you use
+<a shape="rect" href="https://github.com/eraserhd/rep">rep</a></p>
+<pre><code>$ rep '(clojure.tools.namespace.repl/refresh)'
+:reloading ()
+:ok
+</code></pre></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-04-advent-of-parens-4-a-useful-idiom.html">Advent 2019 part 4, A useful idiom</a></h2><div class="metadata">Posted Wed, 04 Dec 2019 15:47:39</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Here’s a little Clojure idiom that never fails to bring me joy.</p>
+<pre><code class="language-clojure">(into {} (map (juxt key val)) m)
+</code></pre></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-03-advent-of-parens-3-some-fn-every-pred.html">Advent 2019 part 3, `every-pred` and `some-fn`</a></h2><div class="metadata">Posted Tue, 03 Dec 2019 15:07:22</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Ah <code>clojure.core</code>, it’s like an all you can eat hot-pot. Just when you think
+you’ve scooped up all it has to offer, you discover another small but delicious
+delicacy floating in the spicy broth.</p>
+<p>In exactly the same way I recently became aware of two functions that until now
+had only existed on the periphery of my awareness. I’ve since enjoyed using them
+on several occasions, and keep finding uses for them.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-02-advent-of-parens-2-netcat.html">Advent 2019 part 2, Piping hot network sockets with Netcat</a></h2><div class="metadata">Posted Mon, 02 Dec 2019 15:09:05</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>Part of what I want to do in this series is simply point at some of the useful
+tools and libraries I discovered in the past year. I’ve adopted a few tools for
+doing network stuff on the command line which I’ll show you in another post.
+First though we’ll look at a classic: netcat!</p>
+<p>I’ve been using netcat for years, it’s such a great tool. It simply sets up a
+TCP connection and connects it to STDIN/STDOUT. Pretty straightforward. I’ve
+been using it more and more though because of Clojure’s socket REPL.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-12-01-advent-of-parens-1-clojure-vocab-reify.html">Advent 2019 part 1, Clojure Vocab: to Reify</a></h2><div class="metadata">Posted Sun, 01 Dec 2019 21:46:44</div><div class="truncated">
+<p><em>This post is part of <a shape="rect" href="https://lambdaisland.com/blog/2019-11-25-advent-of-parens">Advent of Parens
+2019</a>, my attempt to
+publish one blog post a day during the 24 days of the advent.</em></p>
+<p>An interesting aspect of the Clojure community, for better or for worse, is that
+it forms a kind of linguistic bubble. We use certain words that aren’t
+particularly common in daily speech, like “accretion”, or use innocuous little
+words to refer to something very specific. Even a simple word like “simple” is
+no longer that simple.</p>
+<p>We can thank Rich Hickey for this. He seems to care a great deal about language,
+and is very careful in picking the words he uses in his code, documentation, and
+in his talks.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-11-25-advent-of-parens.html">Advent of Parens 2019</a></h2><div class="metadata">Posted Mon, 25 Nov 2019 19:14:00</div><div class="truncated">
+<p>Ah, the advent, the four weeks leading up to Christmas. That period of glühwein
+and office year-end parties.</p>
+<p>The last couple of years I’ve taken part in the <a shape="rect" href="https://adventofcode.com/">Advent of Code</a>, a series of
+programming puzzles posted daily. They’re generally fun to do and wrapped in a
+nice narrative. They also as the days progress start taking up way too much of
+my time, so this year I won’t be partaking in Advent of Code, instead I’m trying
+something new.</p>
+<p>From the first to the 24th of December I challenge myself to write a single
+small blog post every day. If my friend Sarah Mirk can do a <a shape="rect" href="https://www.mirkwork.com/year-of-zines">daily zine for a
+whole year</a>, surely I can muster a few daily paragraphs for four weeks.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-09-03-streaming-sessions-thursday-friday.html">Lambda Island Streaming Live this Thursday and Friday</a></h2><div class="metadata">Posted Tue, 03 Sep 2019 14:35:18</div><div class="truncated">
+<p>We are definitely back from holidays, and to demonstrate that we’re not just doing one but two live stream events!</p>
+<h2 id="felipe-and-arne-pairing">Felipe and Arne pairing</h2>
+<p><strong>Thursday 5 September, 13:00 to 15:00 UTC</strong></p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-08-09-fork-this-conference.html">Fork This Conference</a></h2><div class="metadata">Posted Fri, 09 Aug 2019 11:16:43</div><div class="truncated">
+<p>Last weekend Heart of Clojure took place in Leuven, Belgium. As one of the core
+organizers it was extremely gratifying to see this event come to life. We
+started with a vision of a particular type of event we wanted to create, and I
+feel like we delivered on all fronts.</p>
+<p>For an impression of what it was like you can check out <a shape="rect" href="https://twitter.com/malweene/status/1157931033477701632">Malwine’s comic summary</a>, or <a shape="rect" href="https://manuel-uberti.github.io/clojure/2019/08/04/clojure-heart/">Manuel’s blog post</a>.</p>
+<p>It seems people had a good time, and a lot of people are already asking about
+the next edition. However we don’t intend to make this a yearly recurring
+conference. We might be back in two years, maybe with another Heart of Clojure,
+maybe with something else. We need to think about that.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2019-08-07-advice-to-younger-self.html">Advice to My Younger Self</a></h2><div class="metadata">Posted Wed, 07 Aug 2019 13:43:58</div><div class="truncated">
+<p>When I was 16 I was visited by a man who said he had come from the future. He
+had traveled twenty years back to 1999 to sit down with me and have a chat.</p>
+<p>We talked for an hour or so, and in the end he gave me a few pieces of advice. I
+have lived by these and they have served me well, and now I dispense this advice
+to you.</p>
+<h2 id="become-allergic-to-the-churn">Become allergic to The Churn</h2></div></article><article class="news-item"><h2 class="ui header"><a href="2019-06-10-goog-log.html">ClojureScript logging with goog.log</a></h2><div class="metadata">Posted Mon, 10 Jun 2019 16:02:09</div><div class="truncated">
+<p><em>This post explores <code>goog.log</code>, and builds an <a shape="rect" href="https://github.com/lambdaisland/glogi">idiomatic ClojureScript
+wrapper</a>, with support for cljs-devtools,
+cross-platform logging (by being API-compatible with Pedestal Log), and logging
+in production.</em></p>
+<p><em>This deep dive into GCL’s logging functionality was inspired by work done with <a shape="rect" href="https://nextjournal.com/">Nextjournal</a>, whose support greatly helped in putting this library together.</em></p>
+<p>Clojure’s standard library isn’t as “batteries included” as, say, Python. This
+is because Clojure and ClojureScript are <em>hosted languages</em>. They rely on a host
+platform to provide the lower level runtime functionality, which also allows
+them to tap into the host language’s standard library and ecosystem. That’s your
+batteries right there.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2018-11-26-art-tree-shaping-clojure-zip.html">The Art of Tree Shaping with Clojure Zippers</a></h2><div class="metadata">Posted Mon, 26 Nov 2018 14:48:06</div><div class="truncated">
+<p>This is a talk I did for the “Den of Clojure” meetup in Denver, Colorado. Enjoy!</p>
+<p>Captions (subtitles) are available, and you can find the transcript below, as well as slides <a shape="rect" href="http://arnebrasseur.net/talks/2018-clojure-zip-denver/#">over here</a>.</p>
+<p>For comments and discussion please refer to this post on <a shape="rect" href="https://www.reddit.com/r/Clojure/comments/a0k26p/the_art_of_tree_shaping_with_clojure_zippers/">r/Clojure</a>.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2018-11-02-test-wars-new-hope.html">Test Wars: A New Hope</a></h2><div class="metadata">Posted Fri, 02 Nov 2018 16:51:58</div><div class="truncated">
+<p>Yesterday was the first day for me on a new job, thanks to <a shape="rect" href="https://clojuriststogether.org/">Clojurists
+Together</a> I will be able to dedicate the coming
+three months to improving <a shape="rect" href="https://github.com/lambdaisland">Kaocha</a>, a next
+generation test runner for Clojure.</p>
+<p>A number of projects applied for grants this quarter, some much more established
+than Kaocha. Clojurists Together has been asking people through their surveys if
+it would be cool to also fund “speculative” projects, and it seems people
+agreed.</p>
+<p>I am extremely grateful for this opportunity. I hope to demonstrate in the
+coming months that Kaocha holds a lot of potential, and to deliver some of that
+potential in the form of a tool people love to use.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2018-06-15-second-year-lambda-island.html">Two Years of Lambda Island, A Healthy Pace and Things to Come</a></h2><div class="metadata">Posted Fri, 15 Jun 2018 12:15:02</div><div class="truncated">
+<p>It’s been just over two years since Lambda Island first launched, and just <a shape="rect" href="https://lambdaisland.com/blog/2017-05-13-lambda-island-turns-one">like
+last year</a> I’d
+like to give you all an update about what’s been happening, where we are, and
+where things are going.</p>
+<p>To recap: the first year was <em>rough</em>. I’d been self-employed for nearly a
+decade, but I’d always done stable contracting work, which provided a steady
+stream of income, and made it easy for me to unplug at the end of the day.</p>
+<p>Lambda Island was, as the Dutch expression goes, “a different pair of sleeves”.
+I really underestimated what switching to a one-man product business in a niche
+market would mean, and within months I was struggling with symptoms of burnout,
+so most of year one was characterised by trying to keep things going and stay
+afloat financially, while looking after myself and trying to get back to a good
+place, physically and mentally.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2018-04-26-d3-clojurescript.html">D3 and ClojureScript</a></h2><div class="metadata">Posted Thu, 26 Apr 2018 09:00:00</div><div class="truncated">
+<p><em>
+This is a guest post by <a shape="rect" href="http://joannecheng.me/">Joanne Cheng</a> (<a shape="rect" href="https://twitter.com/joannecheng">twitter</a>), a freelance software engineer and visualization consultant based in Denver, Colorado. She has taught workshops and spoken at conferences about visualizing data with D3. Turns out ClojureScript and D3 are a great fit, in this post she’ll show you how to create your own visualization using the power of D3 and the elegance of ClojureScript.
+</em></p>
+<p>I use <a shape="rect" href="https://d3js.org/">D3.js</a> for drawing custom data visualizations.
+I love using the library, but I wanted to try one of the several compile to JavaScript options,
+and I decided to look into ClojureScript.
+<a shape="rect" href="http://joannecheng.me/us-energy-slopegraph/">It ended up working out well for me</a>,
+so I’m going to show you how I created a D3.js visualization using ClojureScript!</p>
+<h2 id="what-were-visualizing">What we’re visualizing</h2></div></article><article class="news-item"><h2 class="ui header"><a href="2018-02-09-reloading-woes.html">Reloading Woes</a></h2><div class="metadata">Posted Fri, 09 Feb 2018 06:48:13</div><div class="truncated">
+<p><em>Update: seems Stuart Sierra’s blog post has dropped off the internet. I’ve updated the link to refer to the Wayback Machine’s version instead.</em></p>
+<h2 id="setting-the-stage">Setting the Stage</h2>
+<p>When doing client work I put a lot of emphasis on tooling and workflow. By
+coaching people on their workflow, and by making sure the tooling is there to
+support it, a team can become many times more effective and productive.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-12-29-the-bare-minimum-clojure-mayonnaise.html">The Bare Minimum, or Making Mayonnaise with Clojure</a></h2><div class="metadata">Posted Fri, 29 Dec 2017 14:38:24</div><div class="truncated">
+<h2 id="making-mayonnaise">Making Mayonnaise</h2>
+<p>Imagine you have a grandfather who’s great at making mayonnaise. He’s been
+making mayonnaise since before the war, and the result is truly excellent.
+What’s more, he does this with a good old fashioned whisk. He’s kept his right
+arm in shape throughout decades just by beating those eggs and oil and vinegar.</p>
+<p>Now he’s bought himself a handheld electric mixer after hearing his friend rave
+about hers, but after a few tries he gives up and goes back to his whisk. He
+says he just can’t get the same result. This seems slightly odd, so the next
+time you go over you ask him to show you how he uses the mixer.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-10-02-clojure-gotchas-associative-contains.html">Clojure Gotchas: "contains?" and Associative Collections</a></h2><div class="metadata">Posted Mon, 02 Oct 2017 16:01:45</div><div class="truncated">
+<p>When learning a programming language we rarely read the reference documentation front to back. Instead someone might follow some   tutorials, and look at sample code, until they’re confident enough to start a little project for practice.</p>
+<p>From that point on the learning process is largely “just in time”, looking up exactly the things you need to perform the task at hand. As this goes on you might start to recognize some patterns, some internal logic that allows you to “intuit” how one part of the language works, based on experience with another part.</p>
+<p>Developing this “intuition” — understanding this internal logic — is key to using a language effectively, but occasionally our intuition will be off. Some things are simply not obvious, unless someone has explained them to us. In this post I will look at something that frequently trips people up, and attempt to explain the underlying reasoning.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-07-26-dates-in-clojure-making-sense-of-the-mess.html">Dates in Clojure: Making Sense of the Mess</a></h2><div class="metadata">Posted Wed, 26 Jul 2017 10:53:12</div><div class="truncated">
+<p><em>Update 2018-11-27: while most of this article is still relevant, I no longer recommend using JodaTime as the main date/time representation for new projects. Even existing projects that aren’t too invested in JodaTime/clj-time should consider migrating to <code>java.time</code> and <code>clojure.java-time</code> across the board.</em></p>
+<p><em>Update 2 2019-05-29: Also check out the talk <a shape="rect" href="https://www.youtube.com/watch?v=UFuL-ZDoB2U">Cross Platform DateTime Awesomeness</a> by Henry Widd, given at Clojure/north 2019</em></p>
+<p>You can always count on human culture to make programming messy. To find out if
+a person is a programmer just have them say “encodings” or “timezones” and watch
+their face.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-06-12-clojure-gotchas-surrogate-pairs.html">Clojure Gotchas: Surrogate Pairs</a></h2><div class="metadata">Posted Mon, 12 Jun 2017 19:12:17</div><div class="truncated">
+<p><em>tl;dr: both Java and JavaScript have trouble dealing with unicode characters from <a shape="rect" href="https://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane">Supplementary Planes</a>, like emoji 😱💣.</em></p>
+<p>Today I started working on the next feature of <a shape="rect" href="https://github.com/lambdaisland/uri">lambdaisland/uri</a>, URI normalization. I worked test-first, you’ll get to see how that went in the next Lambda Island episode.</p>
+<p>One of the design goals for this library is to have 100% parity between Clojure and ClojureScript. Learn once, use anywhere. The code is all written in <code>.cljc</code> files, so it can be treated as either Clojure or ClojureScript. Only where necessary am I using a small amount of reader conditionals.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-05-25-simple-and-happy-is-clojure-dying-and-what-has-ruby-got-to-do-with-it.html">Simple and Happy; is Clojure dying, and what has Ruby got to do with it?</a></h2><div class="metadata">Posted Thu, 25 May 2017 13:55:39</div><div class="truncated">
+<p>The past week or so a lot of discussion and introspection has been happening in the Clojure community. Eric Normand responded to my <a shape="rect" href="13-05-2017-lambda-island-turns-one.html">one year Lambda Island post</a> with <a shape="rect" href="https://purelyfunctional.tv/issues/purelyfunctional-tv-newsletter-225-spec-deep-learning-new-orleans/">some reflections</a> on the size and growth of the community.</p>
+<p>And then Zack Maril lamented on Twitter: <a shape="rect" href="https://twitter.com/ZackMaril/status/863915988424589312">“I’m calling it, clojure’s dying more than it is growing”</a>. This sparked a mega-thread, which was still raging four days later. A <a shape="rect" href="https://www.reddit.com/r/Clojure/comments/6brhsq/interesting_discussion_on_clojure_growth_and/">parallel discussion thread</a> formed on Reddit. Someone asked if their were any <a shape="rect" href="https://twitter.com/mark_engelberg/status/865370061489356800">Clojure failure stories</a>. They were pointed at <a shape="rect" href="https://www.youtube.com/watch?v=doZ0XAc9Wtc">this talk</a> from RubyConf 2016, which seemed to hit a lot of people right in the feels, and <a shape="rect" href="https://twitter.com/ztellman/status/865649146476113923">sparked a subthread</a> with a life of its own.</p>
+<p>Meanwhile Ray, one of the hosts of the <a shape="rect" href="https://defn.audio/">defn</a> podcast <a shape="rect" href="https://twitter.com/raymcdermott/status/866216201709662208">reacted</a> to the original tweet: “I’m calling it: Clojure is alive and well with excellent defaults for productive and sustainable software development.” This sparked another big thread.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-05-17-loading-clojure-libraries-directly-from-github.html">Loading Clojure Libraries Directly From Github</a></h2><div class="metadata">Posted Wed, 17 May 2017 13:58:50</div><div class="truncated">
+<p>Did you ever fix a bug in an open source library, and then had to wait until the maintainer released an updated version?</p>
+<p>It’s happened to me many times, the latest one being <a shape="rect" href="https://github.com/metabase/toucan">Toucan</a>. I had run into a limitation, and found out that there was already an <a shape="rect" href="https://github.com/metabase/toucan/issues/6">open ticket</a>. It wasn’t a big change so I decided to <a shape="rect" href="https://github.com/metabase/toucan/pull/10">dive in and address it</a>. Just a little yak shave so I could get on with my life.</p>
+<p>Now this pull request needs to be reviewed, and merged, and eventually be released to Clojars, but ain’t nobody got time for that stuff. No sir-ee.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-05-13-lambda-island-turns-one.html">Lambda Island Turns One, The Story of a Rocky Ride</a></h2><div class="metadata">Posted Sat, 13 May 2017 11:14:34</div><div class="truncated">
+<p>One year ago to date I launched Lambda Island, a service that offers high quality video tutorials on web development with Clojure and ClojureScript. It’s been quite a ride. In this post I want to look back at the past year, provide some insight into how this experience has been for me, and give you a glimpse of what the future has in store.</p>
+<p>This story really starts in December 2015. After three years of doing contract work for <a shape="rect" href="http://ticketsolve.com">Ticketsolve</a> I decided it was time for a change. I have been self-employed for many years, but I knew that sooner or later I wanted to try my hand at selling a product, rather than selling my time.</p>
+<p>In January and February I took some time for soul-searching, and recharging. I went to speak at RubyConf Australia, and got to hang out with some old friends around Australia and New Zealand. Once back in Berlin I got busy creating Lambda Island.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-05-02-nodejs-scripts-clojurescript.html">Writing Node.js scripts with ClojureScript</a></h2><div class="metadata">Posted Tue, 02 May 2017 16:49:32</div><div class="truncated">
+<p>In the
+<a shape="rect" href="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-1">two most recent</a>   <a shape="rect" href="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-2">Lambda Island episodes</a> I
+covered in-depth how to create command line utilities based
+on <a shape="rect" href="https://github.com/anmonteiro/lumo">Lumo</a>, how to combine them with third
+party libraries, and how to deploy them to <a shape="rect" href="http://npmjs.com/">npmjs.com</a>.</p>
+<p>However there’s a different way to create tools with ClojureScript and
+distribute them through NPM, without relying on Lumo. In this blog post I want
+to quickly demostrate how to do just that.</p>
+<p>To recap, Lumo is a ClojureScript environment based on Node.js, using
+bootstrapped (self-hosted) ClojureScript. This means the ClojureScript compiler,
+which is written in Clojure and runs on the JVM, is used to compile itself to
+JavaScript. This way the JVM is no longer needed, all you need is a JavaScript
+runtime to compile and run ClojureScript code, which in this case is provided by
+Node.js. On top of that Lumo uses <a shape="rect" href="https://github.com/nexe/nexe">nexe</a>, so Lumo
+can be distributed as a single compact and fast executable binary.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-02-27-announcing-lambdaisland-uri.html">Announcing lambdaisland/uri 1.0.0</a></h2><div class="metadata">Posted Mon, 27 Feb 2017 08:35:05</div><div class="truncated">
+<p>I just released <code>lambdaisland/uri</code>, a pure Clojure/ClojureScript URI library. It is available <a shape="rect" href="https://github.com/lambdaisland/uri">on Github</a> and <a shape="rect" href="http://clojars.org/lambdaisland/uri">Clojars</a>.</p>
+<p>This is a small piece of the code base that powers <a shape="rect" href="https://lambdaisland.com">lambdaisland.com</a>. It’s inspired by Ruby’s <a shape="rect" href="https://github.com/sporkmonger/addressable">Addressable::URI</a>, the most solid URI implementation I’ve seen to date, although it only offers a small part of the functionality that library offers.</p>
+<p>It’s written in pure Clojure/ClojureScript, with only minimal use of <code>.cljc</code> reader conditionals to smooth over differences in regular expression syntax, and differences in core protocols. It does not rely on any URI functionality offered by the host, such as <code>java.net.URL</code>, so it’s usable across all current and future Clojure implementations (Clojure, ClojureScript, ClojureCLR).</p></div></article><article class="news-item"><h2 class="ui header"><a href="2017-02-11-re-frame-form-1-subscriptions.html">re-frame Subscriptions Got Even Better</a></h2><div class="metadata">Posted Sat, 11 Feb 2017 11:10:43</div><div class="truncated">
+<p>Up until recently, to use re-frame subscriptions in Reagent views, you had to
+use a form-2 component.</p>
+<p>A form-2 component is a function that returns another function, which does the
+actual rendering of the component to hiccup. In contrast, a form-1 component
+renders the hiccup directly.</p>
+<pre><code class="language-clojure">;; form-1
+(defn todo-item [todo]
+  [:div.view
+   [todo-checkbox (:id todo) (:completed todo)]
+   [:label {:unselectable "on"} title]
+   [:button.destroy {:on-click #(dispatch [:todos/remove (:id todo)])}]])
+
+;; form-2
+(defn todo-item [todo]
+  (fn [todo]
+    [:div.view
+     [todo-checkbox (:id todo) (:completed todo)]
+     [:label {:unselectable "on"} title]
+     [:button.destroy {:on-click #(dispatch [:todos/remove (:id todo)])}]]))
+</code></pre></div></article><article class="news-item"><h2 class="ui header"><a href="2017-02-02-why-react-reagent-fast-7-performance-hacks.html">Why React &amp; re-frame are fast in 7 Performance Hacks</a></h2><div class="metadata">Posted Thu, 02 Feb 2017 12:37:43</div><div class="truncated">
+<p>This one had been sitting on my drive for a while, I thought it would be nice to share it with y’all. It’s a recording from a talk I did at the <a shape="rect" href="https://www.meetup.com/Clojure-Berlin/events/233941806/">Clojure Berlin Meetup last October</a>, about the various performance tricks that React, Reagent, and re-frame employ to make sure your apps are as spiffy as can be.</p>
+<p>The <a shape="rect" href="http://arnebrasseur.net/talks/2016-react-fast/#1">slides are on-line</a> as well.</p>
+<div class="video aspect-ratio">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/202177001" width="1119" height="629" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div></div></article><article class="news-item"><h2 class="ui header"><a href="2016-12-08-game-development-with-clojure-clojurescript.html">Game Development with Clojure/ClojureScript</a></h2><div class="metadata">Posted Thu, 08 Dec 2016 21:19:22</div><div class="truncated">
+<p>This weekend it’s <a shape="rect" href="https://ldjam.com/">Ludum Dare</a> again, the world’s longest
+running game jam. The idea is that, alone or with a team, you build a game in a
+weekend based on a certain theme.</p>
+<p>We got a little team together here in Berlin, and so I’ve been reviewing what
+options there are for someone wanting to build a game in Clojure or
+Clojurescript.</p>
+<p>The good news is there are plenty of options, as you’ll see from the list below.
+You can do desktop games, browser based games with canvas or webgl, and you can
+even create <a shape="rect" href="https://unity3d.com/">Unity 3D</a> games, all from your comfortable
+Clojure parentheses.</p></div></article><article class="news-item"><h2 class="ui header"><a href="2016-10-01-clojurescript-and-google-apps-script.html">Using ClojureScript with Google Apps Script</a></h2><div class="metadata">Posted Sat, 01 Oct 2016 11:03:35</div><div class="truncated">
+<p><img src="../img/game-of-life.gif" alt="" /></p>
+<p><em>Game of Life in Google Sheets, written in ClojureScript.
+<a shape="rect" href="https://github.com/plexus/gas-of-life">Github</a> and
+<a shape="rect" href="https://docs.google.com/spreadsheets/d/1ddK2Oh4NdhQ19nFbstI5wIDl39FdBjV3U72bQ5yjxj8/edit#gid=0">demo</a></em></p>
+<h2 id="background-story">Background story</h2></div></article><article class="news-item"><h2 class="ui header"><a href="2016-09-25-union-types.html">Union Types with Clojure.Spec</a></h2><div class="metadata">Posted Sun, 25 Sep 2016 17:04:50</div><div class="truncated">
+<p>Elm and other statically typed languages have a great feature called Union Types
+(also called Sum Types or Algebraic Data Types).</p>
+<p>Here’s an example taken from Elm. Suppose your system used to represent users as
+integers, maybe just an auto-incrementing primary key, but then switched to
+UUIDs represented as strings.</p>
+<p>To correctly model this situation, you need a way to create a type that can be
+either an integer or a string, that’s what union types give you.</p></div></article></div></article></div>
+      <!-- <div id="sticky-cta"></div> -->
+      <section id="footer"><div style="color: white; text-align: center;" id="banner-wrap"><div class="ui container"><div style="padding: 0; display: flex; flex-direction: row; justify-content: space-between;" class="ui stackable grid"><div style="display: flex; flex-direction: column; justify-content: center;" class="eleven wide column"><h1>Become a Clojure Pro</h1><h2>11 hours 6 minutes and 40 seconds of Premium Video Content</h2><div style="display: flex; flex-direction: row; justify-content: center;"><p style="text-align: left; font-size: 1.5rem;"><span style="color: lime; font-size: 1.8rem;">✓ </span>In-depth tutorials<br /><span style="color: lime; font-size: 1.8rem;">✓ </span>Backend, frontend, language and tooling<br /><span style="color: lime; font-size: 1.8rem;">✓ </span>Complete transcripts and source code</p></div><div style="padding-top: 1.5em; font-size: 1.8rem; text-decoration: underline;"><p>Start your free trial today!</p></div></div><div class="five wide column"><div style="max-width: 500px; margin: 0 auto; margin-top: 2em;"><form method="POST" action="../register.html" class="ui form top attached segment"><div class="field"><label for="username">Username<span class="red"> *</span></label><div class="ui right icon input"><i class="user icon"></i><input id="username" name="username" placeholder="Username" type="text" value="" required="required" /></div></div><div class="field"><label for="email">Email<span class="red"> *</span></label><div class="ui right icon input"><i class="mail icon"></i><input id="email" name="email" placeholder="you@example.com" type="text" value="" required="required" /></div></div><div class="field hidden"><label for="url">leave blank</label><div class="ui right input"><input id="url" name="url" placeholder="" type="text" value="" /></div></div><div class="field"><label for="password">Password<span class="red"> *</span></label><div class="ui right icon input"><i class="lock icon"></i><input id="password" name="password" placeholder="Password" type="password" value="" required="required" /></div></div><div class="field"><div class="ui checkbox"><input type="checkbox" name="view_password" id="view_password" /><label for="view_password">Show Password</label></div></div><input type="submit" value="Sign up now!" class="ui button green" /><input type="hidden" name="__anti-forgery-token" value="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></form></div><img style="position: relative; left: -230px; top: -40px;" src="../img/arrow.png" /></div></div></div></div>
+        <div class="ui container">
+          <footer class="ui inverted vertical footer segment">
+            <div>
+              <div class="ui center aligned container">
+                <div class="ui stackable inverted grid">
+                  <div class="three wide column">
+                    <h4 class="ui inverted header">Lambda Island</h4>
+                    <div class="ui inverted link list">
+                      <a class="item" href="../episodes.html">Episodes</a>
+                      <a class="item" href="../p/about.html">About / FAQ</a>
+                      <a class="item" href="../p/imprint.html">Imprint</a>
+                      <a class="item" href="../p/privacy-policy.html">Privacy Policy</a>
+                      <a class="item" href="../p/cookies.html">Cookie Policy</a>
+                      <a class="item" href="../pricing.html">Pricing</a>
+                    </div>
+                  </div>
+                  <div class="three wide column">
+                    <h4 class="ui inverted header">Updates</h4>
+                    <div class="ui inverted link list">
+                      <a class="item" href="../feeds/episodes.atom">Episodes RSS Feed</a>
+                      <a class="item" href="../feeds/blog.atom">Blog RSS Feed</a>
+                      <a class="item" href="https://twitter.com/lambdaisland"><i class="twitter icon"></i> Twitter </a>
+                      <a class="item" href="../news.html">News</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui inverted section divider"></div>
+                <div class="ui horizontal inverted small divided link list">
+                  <a class="item" href="https://twitter.com/lambdaisland"><i class="twitter icon"></i> Twitter </a>
+                  <a class="item" href="https://instagram.com/lambdaisland"><i class="instagram icon"></i> Instagram </a>
+                  <a class="item" href="https://github.com/lambdaisland"><i class="github icon"></i> Github </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+    <script type="text/javascript" src="../js/jquery-2.2.3.min.js%3F33CABFA15C1060AAA3D207C653AFB1EE"></script>
+    <script type="text/javascript" src="../js/jquery.address-1.6.min.js%3F629839D8264B65CB232294A1EE8A7586"></script>
+    <script type="text/javascript" src="../js/featherlight.min.js%3F7D90055DADAC5DAF9FE61BB27884E1D5"></script>
+    <script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+    <script type="text/javascript" src="../js/compiled/legacy.js%3FD1D8DB81780E92790A2BACCBFAA7CAF3"></script>
+    <script type="text/javascript" src="../js/semantic.min.js%3F138102DC0F5B49A870E7DAA94CB28AE3"></script>
+    <script type="text/javascript" src="../highlightjs/highlight.pack.js%3F1EE0E39080A563842A672173E63B08B1"></script>
+    <script type="text/javascript">
+     // Semantic-UI hooks
+     $(document).ready(function () {
+         $('.ui.dropdown').dropdown();
+         $('.tabular.menu .item').tab({"context": '.li-tabs',
+                                       "history": true});
+       $('#view_password').change(function() {
+         if($(this).is(":checked")) {
+           $('#password').attr('type', 'text');
+         } else {
+           $('#password').attr('type', 'password');
+         }
+       });
+     });
+
+     hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+
+</html>

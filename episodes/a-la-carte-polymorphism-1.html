@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/a-la-carte-polymorphism-1" />
+<meta name="twitter:title" content="À la Carte Polymorphism, part 1" />
+<meta name="twitter:description" content="Clojure provides polymorphism through protocols and multimethods. Protocols were covered in depth in [episode 24](https://lambdaisland.com/episodes/defrecord_defprotocol). This..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/735620182-33655483dd8f0a479131a09443329a7d7f693d08986dae9602c8785a5a15c2fc-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="À la Carte Polymorphism, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/a-la-carte-polymorphism-1" />
+<meta name="video:duration" content="542" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/735620182-33655483dd8f0a479131a09443329a7d7f693d08986dae9602c8785a5a15c2fc-d_1280x720?r=pad" />
+<meta name="og:description" content="Clojure provides polymorphism through protocols and multimethods. Protocols were covered in depth in [episode 24](https://lambdaisland.com/episodes/defrecord_defprotocol). This..." />
+<meta name="video:release_date" content="2018-10-30T01:09:42.267Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">À la Carte Polymorphism, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/297838558?h=fed2a8adea&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="45. &amp;aacute; la Carte Polymorphism"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Clojure provides polymorphism through protocols and multimethods. Protocols were covered in depth in <a shape="rect" href="https://lambdaisland.com/episodes/defrecord_defprotocol">episode 24</a>. This episode provides a brief recap, then looks at multimethod basics. If you are already familiar with multimethods then you might want to skip to the second part, which covers some of lesser known aspects.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Clojure is sometimes described as having “à la carte polymorphism”, a phrase
+which can be puzzling, even to those who do have a firm grasp of French and
+Greek. That it’s no false claim though will become clear in this episode.</p>
+<p>This episode is intended as an introduction. If you feel you’re already well
+versed in protocols and multimethods then feel free to skip to part two, where
+I’ll go over some of the more advanced features and uses.</p>
+<p>“Poly-morphic”, from Greek, means “having many forms”. It’s a term programmers
+borrowed from biology, where it’s used to describe species where within the same
+population you have clearly discernable subgroups, for example the two-spotted
+ladybird beetle is most commonly red with two black spots but can also appear in
+other “morphs”, the main one being black with yellow spots.</p>
+<p>In programming polymorphism means having a single interface with multiple
+implementations. Which implementation to run in a given instance is chosen based
+on attributes of the values supplied to the function, most commonly their class
+or type.</p>
+<pre><code class="language-clojure">(conj #{} :x)
+;; =&gt; #{:x}
+
+(conj [] :x)
+;; =&gt; [:x]
+
+(conj {} [:x :y])
+;; =&gt; {:x :y}
+</code></pre>
+<p>“à la carte” is the opposite of a set menu, it means you can order individual
+dishes and sides, instead of getting the package deal. So “à la carte
+polymorphism” suggests that polymorphism in Clojure is more fine grained than in
+other languages, that you can mix and match the various pieces, instead of
+having to settle for the Sunday Special.</p>
+<p>Instead of dwelling on the theory, let’s look at the features Clojure provides,
+and how they differ from other languages.</p>
+<p>Clojure provides two main ways to achieve polymorphism: protocols and
+multimethods. The main focus of this episode is on multimethods. I discussed
+protocols in depth in episode 24, but I will recap them briefly to set the
+stage.</p>
+<p>As an example consider this protocol called “Datelike”. It defines the signature
+of three functions, <code>year</code>, <code>month</code>, and <code>day</code>. Each function takes single
+argument, a “datelike”, and returns an integer.</p>
+<p>The protocol only defines the signature of these functions, not their
+implementation. You can add multiple implementations later on, and because of
+that these functions are caled “polymorphic”. Polymorphic functions are also
+known as “methods”.</p>
+<pre><code class="language-clojure">(defprotocol Datelike
+  (year [d] "return the year (common era)")
+  (month [d] "return the month (1-12)")
+  (day [d] "return the day of the month (1-31)"))
+</code></pre>
+<p><code>year</code>, <code>month</code>, and <code>day</code> don’t have any implementations yet, but they form a
+kind of contract. If I get a <code>Datelike</code> value in my program, then I know I can
+call <code>year</code>, <code>month</code>, or <code>day</code> on it, and get a number back.</p>
+<p>So for instance I could write this function, which calculates the days since new
+year. Don’t worry too much about the implementation, in fact it’s not unlikely I
+got something wrong, but the point is that by relying on the contract provided
+by the <code>year</code>, <code>month</code> and <code>day</code> functions, I can write this function and make
+sure it will work with any <code>Datelike</code> value.</p>
+<pre><code class="language-clojure">(defn days-since-new-year [datelike]
+  (let [y (year datelike)
+        m (month datelike)
+        d (day datelike)
+        leap? (and (= 0 (mod y 4))
+                   (or (not= 0 (mod y 100))
+                       (= 0 (mod y 400))))]
+    (cond-&gt; (apply + (take m [d 31 28 31 30 31 30 31 31 30 31 30 31]))
+      (and leap? (&gt; m 2)) inc)))
+</code></pre>
+<p>But what’s a <code>Datelike</code>? Somewhat cirularly, it’s anything that implements the
+<code>Datelike</code> protocol. You can implement a protocol by using <code>defrecord</code>. This
+creates a custom data structure type with named fields. Inside the defrecord you
+put the name of the protocol, followed by the implementations of its functions.
+Note that inside a <code>defrecord</code> you can access the fields of the record directly,
+making these definitions very short.</p>
+<pre><code class="language-clojure">(defrecord NaiveDate [y m d]
+  Datelike
+  (year [this] y)
+  (month [this] m)
+  (day [this] d))
+</code></pre>
+<p>With that record defined I can now create a <code>NaiveDate</code>, and then call the
+<code>year</code>, <code>month</code>, or <code>day</code> methods on it. And since a <code>NaiveDate</code> is a
+<code>Datelike</code>, I can also use it with <code>days-since-new-year</code>. So far so good.</p>
+<pre><code class="language-clojure">(def d (-&gt;NaiveDate 2018 10 22))
+
+(year d)  ;;=&gt; 2018
+(month d) ;;=&gt; 10
+(day d)   ;;=&gt; 22
+
+(days-since-new-year d) ;;=&gt; 294
+</code></pre>
+<p>When you call <code>year</code> on something that isn’t a <code>Datelike</code>, you get an
+exception. Clojure tried to find an implementation of <code>Datelike</code>’s <code>year</code>
+method for <code>java.util.Date</code>, but didn’t find one, so it gives up.</p>
+<pre><code class="language-clojure">(year (java.util.Date.))
+;;=&gt; No implementation of method: :year of protocol: #'user/Datelike found for class: java.util.Date
+</code></pre>
+<p>To make this work we need to extend <code>java.util.Date</code> to implement the <code>Datelike</code>
+protocol. In most languages including Java you can’t just extend an existing
+type like this. That you are able to do this is one of the great features of
+Clojure’s protocols, and something that sets them apart from typical interface
+implementation or type inheritance.</p>
+<pre><code class="language-clojure">(extend-type java.util.Date
+  Datelike
+  (year [this] (+ 1900 (.getYear this)))
+  (month [this] (inc (.getMonth this)))
+  (day [this] (.getDate this)))
+</code></pre>
+<p>Now the methods defined in <code>Datelike</code> can also be used on <code>java.util.Date</code>
+instances. You can imagine adding more implementations, say for
+<code>java.time.Instant</code>, or even for integers, perhaps treating them as UNIX
+timestamps.</p>
+<pre><code class="language-clojure">(year (java.util.Date.))  ;;=&gt; 2018
+(month (java.util.Date.)) ;;=&gt; 10
+(day (java.util.Date.))   ;;=&gt; 22
+</code></pre>
+<p>Let’s try again to call the <code>Datelike</code> methods on a type we haven’t provided
+implementations for: <code>java.sql.Date</code>. Perhaps suprisingly we don’t get an error
+this time. The reason is that <code>java.sql.Date</code> is derived from <code>java.util.Date</code>.
+In the hierarchy of Java types a <code>java.sql.Date</code> “is a” <code>java.util.Date</code>.
+Clojure will try to find an implementation for <code>java.sql.Date</code>, but failing that
+it will look up the parent class, <code>java.util.Date</code>.</p>
+<p>(Note that none of these examples are intended to show to actually deal with
+dates in your application. The classes shown here have known issues, and you
+should stick to the <code>java.time</code> API where possible.)</p>
+<p>Finding the right function implementation to call is known as “dispatching”.
+Protocols dispatch based on the object’s class, keeping in mind the hierarchy of
+parent and child classes. This is something the JVM knows how to do natively,
+making it very fast.</p>
+<p>Quite often dispatching based on the class is exactly what you want anyway, so
+use protocols where applicable. You can learn about them in-depth in episode 24.</p>
+<p>So, in summary, protocols provide: a dispatch mechanism to pick a function
+implementation, this dispatching is based on an object’s type, and, types form a
+hierarchy, which is condsidered by the dispatching mechanism to find fallbacks.</p>
+<p>Let’s see if we can pry those three things apart.</p>
+<pre><code class="language-clojure">(def s (java.sql.Date. 1540240505000))
+
+(year s)  ;;=&gt; 2018
+(month s) ;;=&gt; 11
+(day s)   ;;=&gt; 22
+
+(supers java.sql.Date)
+;; =&gt; #{java.io.Serializable java.util.Date java.lang.Cloneable java.lang.Object
+;;      java.lang.Comparable}
+</code></pre>
+<p>Say you’re writing a game, you have various in-game items like doors, walls, or
+magical potions, which you represent as pure Clojure data, in this case as maps.</p>
+<pre><code class="language-clojure">{:item/type :door, :door/open? true}
+{:item/type :wall}
+{:item/type :magical-potion}
+</code></pre>
+<p>You need to be able to tell if an item blocks the player from moving or not, so
+you want to implement a  <code>obstacle?</code> function which returns <code>true</code> or <code>false</code>
+for a given item. You could do this with a simple <code>case</code> statement, but this
+means your <code>obstacle?</code> function needs to know ahead of time about all items in
+the game.</p>
+<p>You’ll likely end up with multiple functions like this, checking if an item can
+be picked up, or destroyed, or sold, each of them with an ever growing case
+statement inside. That’s not great.</p>
+<pre><code class="language-clojure">(defn obstacle? [item]
+  (case (:item/type item)
+    :door (not (:door/open? item))
+    :wall false
+    true))
+</code></pre>
+<p>How to solve this? Each item is just a Clojure map, so in that sense they all
+have the same “type”, so protocols won’t do you much good, but each item also
+stores its type inside the map, what if you could dispatch on that? Multimethods
+to the rescue!</p>
+<p>You create multimethods using two macros, <code>defmulti</code> and <code>defmethod</code>. <code>defmulti</code>
+takes the name of the method and a dispatch function. This function shows that I
+want to dispatch on the <code>:item/type</code> value in the item map. You can optionally
+add a docstring and a map with metadata.</p>
+<p>When calling <code>obstacle?</code> Clojure will first pass any arguments to the dispatch
+function. In this case we call <code>obstacle?</code> with a single <code>item</code> argument, so
+that’s what the dispatch function receives.</p>
+<pre><code class="language-clojure">(defmulti obstacle?
+  "Does this item block the player's path?"
+  {:added "1.0"}
+  (fn [item] (:item/type item)))
+</code></pre>
+<p>The return value from the dispatch function is then used to find a suitable
+implementation. These implementations are provided with <code>defmethod</code>. After the
+method name you put the dispatch value, and then the argument vector and
+function body.</p>
+<pre><code class="language-clojure">(defmethod obstacle? :door [item]
+  (not (:door/open? item)))
+
+(defmethod obstacle? :wall [item]
+  true)
+</code></pre>
+<p>Astute viewers will have noticed that the dispatch function could actually just
+be a keyword, which is fairly common.</p>
+<pre><code class="language-clojure">(defmulti obstacle? :item/type)
+</code></pre>
+<p>What happens when you pass in a value that doesn’t have a matching method? In
+this case Clojure throws an exception, similar to what happened when calling a
+protocol method on an unsupported type.</p>
+<pre><code class="language-clojure">(obstacle? {:item/type :magic-potion})
+;;=&gt; java.lang.IllegalArgumentException
+;;   No method in multimethod 'obstacle?' for dispatch value: :magic-potion
+</code></pre>
+<p>To prevent this from happening you can implement a fallback implementation. If
+no matching method is found, then Clojure will look for a method with the
+dispatch value <code>:default</code>. So if you want items to not be obstacles by
+default, then you can supply this implementation.</p>
+<pre><code class="language-clojure">(defmethod obstacle? :default [item]
+  false)
+</code></pre>
+<p>This episode has been a recap of protocols and multimethods. For some of you it
+might not have provided much news, but I wanted to introduce the concept of
+polymorphism first, and get everyone on the same page, before digging into the
+more advanced stuff.</p>
+<p>In the next episode you’ll learn about extra options for <code>defmulti</code>, clojure’s
+built-in and custom hierarchies, interesting uses of the <code>type</code> function, and
+some practical examples of cases where <code>multimethods</code> come in handy.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/li45_polymorphism">browse source code</a></p>
+<h3 id="docstrings">docstrings</h3>
+<ul>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-RC1/api/clojure.core#defprotocol">defprotocol</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-RC1/api/clojure.core#defmulti">defmulti</a></li>
+<li><a shape="rect" href="https://cljdoc.org/d/org.clojure/clojure/1.10.0-RC1/api/clojure.core#defmethod">defmethod</a></li></ul>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="https://clojure.org/reference/multimethods">Clojure - Multimethods and Hierarchies</a></li>
+<li><a shape="rect" href="https://clojure.org/about/runtime_polymorphism">Clojure - Runtime Polymorphism</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

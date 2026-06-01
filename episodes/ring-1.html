@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/ring-1" />
+<meta name="twitter:title" content="Ring, part 1" />
+<meta name="twitter:description" content="In this new series you'll build an API with Ring from the ground up. The pace is slow and no steps are skipped, making it a great lesson for beginners." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/585204965-5e626e9cbf3dc0cf03b9fd489b0f99f5e5d436bad2396938571ee49bc161f67a-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Ring, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/ring-1" />
+<meta name="video:duration" content="921" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/585204965-5e626e9cbf3dc0cf03b9fd489b0f99f5e5d436bad2396938571ee49bc161f67a-d_1280x720?r=pad" />
+<meta name="og:description" content="In this new series you'll build an API with Ring from the ground up. The pace is slow and no steps are skipped, making it a great lesson for beginners." />
+<meta name="video:release_date" content="2016-08-06T08:15:13.668Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Ring, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/177714801?h=c0180848d7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Web Development with Ring, part 1"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>In this new series you’ll build an API with Ring from the ground up. The pace is slow and no steps are skipped, making it a great lesson for beginners.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>This is the start of a new series of episodes about backend development from the
+ground up, and the first point of call, the foundation of any Clojure web app,
+is Ring.</p>
+<p></p>
+<p>Ring is based on a simple but powerful idea, borrowed from Ruby’s Rack and
+Python’s WSGI. If we can agree on a standard way to represent HTTP requests and
+HTTP responses, then web servers, web apps, middleware, and other tooling that
+follows this standard will just effortlessly click together, like legos. This
+standard is embodied in the Ring specification.</p>
+<p></p>
+<p>HTTP is a simple text based protocol, the client, the so-called “user agent”
+opens a connection to the server and sends a request that looks like this. I’m
+using an Emacs package called HTTP Twiddle, so I can send this request and see
+the server’s response.</p>
+<p>The first line is the “Request Line”, it has three parts: the HTTP “method”, the
+resource path, and the HTTP version. In this case we want to GET the resource at
+the server root (“/”).</p>
+<p>Following the request line are one or more headers. I’ve included a few common
+ones.</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: localhost:3000
+User-Agent: Emacs (HTTP Twiddle)
+Accept: */*
+</code></pre>
+<p>If we send this request to the server this is the response we get back. The
+first line is now a “status line”, containing the HTTP version, a numeric status
+code, and a “reason phrase”. “200 OK” means the request was succesful.</p>
+<p>After the status line there are again a number of headers, followed by two
+newlines, and then the response body. In this case we’re getting an EDN document
+back.</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Date: Mon, 01 Aug 2016 16:25:49 GMT
+Content-Type: application/edn; charset=UTF-8
+Content-Length: 110
+Server: Jetty(9.2.10.v20150310)
+
+({:id "e5a92946-4a35-48e4-b4c4-1f75357b1c8c", :full-name "Trish Turtle", :skills ["LISP" "Lambda Calculus"]})
+</code></pre>
+<p>So that’s what goes over the wire, but we don’t want to deal with that directly.
+Instead what we need is a nice Clojure-like representation, which is what ring
+gives us. When using Ring, that request would be represented as a Clojure map
+that looks like this. You can see that all the same information is there, the
+request method, the URI, the headers, but instead of plain text it’s now a
+Clojure map so it’s easy to work with.</p>
+<pre><code class="language-clojure">{:request-method :get
+ :uri "/"
+ :protocol "HTTP/1.0"
+ :headers {"host" "localhost:3000"
+           "user-agent" "Emacs (HTTP Twiddle)"
+           "accept" "*/*"}
+ :scheme :http
+ :server-name "localhost"
+ :remote-addr "127.0.0.1"
+ :server-port 3000}
+</code></pre>
+<p>Similarly the HTTP response can be represented as a map as well, with the
+status, headers, and body all there.</p>
+<pre><code class="language-clojure">{:status 200,
+ :headers {"Content-Type" "application/edn; charset=UTF-8"},
+ :body "({:name \"Brasseur\", :given-name \"Arne\"})\n"}
+</code></pre>
+<p>To handle the plumbing of the HTTP protocol we need a HTTP server. We’ll use
+Jetty in this episode, a popular web server written in Java.</p>
+<p></p>
+<p>Jetty doesn’t use Clojure datastructures, since it’s written in Java. Instead it
+uses certain types of Java objects to represent HTTP requests and responses.
+Normally a web app that uses Jetty would have to know how to consume and create
+these objects.</p>
+<p>In the Clojure world we don’t need no stinking Java objects though, we’re
+perfectly happy with representing requests and responses as Clojure maps.</p>
+<p>We need something to bridge the gap. The Ring specification calls this type of
+thing an “adapter”. The adapter knows how to speak Java when it’s talking to
+Jetty, but when it talks to our app it follows the Ring specification,
+representing requests and responses as maps.</p>
+<p>When the adapter gets a request from Jetty, it turns it into a Ring request map,
+passes that request map to our app, then takes the response map the app
+returned, turns it into a HttpResponse object, and passes that on to Jetty.</p>
+<pre><code>&lt;!-- slides! --&gt;
+</code></pre>
+<p>Enough with the theory, let’s see how that looks in code. We’re going to build
+an address book API, and because we like it 70’s vintage we’re going to call it
+“<a shape="rect" href="https://en.wikipedia.org/wiki/Rolodex">rolodex</a>”.</p>
+<p></p>
+<p>Let’s set up the project. We need Clojure of course, and the Ring adapter for
+Jetty. Adding this dependency will also pull in Jetty itself, so we don’t need
+to add that explicitly.</p>
+<pre><code class="language-clojure">(defproject rolodex "0.1.0"
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [ring/ring-jetty-adapter "1.5.0"]])
+</code></pre>
+<p>At the heart of our app is a function which turns Ring requests into Ring
+responses. The Ring SPEC calls this kind of function a “handler”.</p>
+<p>Our handler doesn’t contain any logic yet, no matter what the request is that
+comes in, it will always answer with the same canned response. A status of 200
+“OK”, a content-type header, and a body.</p>
+<pre><code class="language-clojure">(ns rolodex.core)
+
+(defn handler "request -&gt; response"
+  [req]
+  {:status 200
+   :headers {"Content-Type" "text/plain; charset=UTF-8"}
+   :body "Babby's first ring app"})
+</code></pre>
+<p>Now we’re ready to spin up a Jetty instance using Ring’s Jetty adapter. The
+<code>run-jetty</code> function lives in the <code>ring.adapter.jetty</code> namespace, so require
+that. And then when calling <code>run-jetty</code> we pass it the handler and a list of
+options. We’ll run our app on port 3000.</p>
+<pre><code class="language-clojure">(run-jetty handler {:port 3000})
+</code></pre>
+<p>Now I’m not going to evaluate this line yet, first there are a few things we
+should change about it or we’ll run into issues with our REPL based workflow.</p>
+<p>Let me show you what happens when you run this in a REPL. The call blocks, it
+doesn’t return, and so we don’t get a new REPL prompt. We can interrupt the call
+with <code>Ctrl-C</code>, and Jetty will keep on going in the background, but it’s not
+exactly a great workflow.</p>
+<p></p>
+<p>The same thing happens when you do this in the CIDER REPL, you can see in the
+minibuffer there’s this pseudo-progressbar that shows CIDER is waiting for a
+response. To interrupt a call in CIDER you have to press <code>Ctrl-C</code> twice.</p>
+<p></p>
+<p>If we evaluate this in the buffer with CIDER then the same thing happens, but
+it’s not immediately clear what’s going on. All we notice is that none of the
+CIDER stuff works anymore. When you look at the REPL buffer though you can see
+here in the modeline that CIDER is waiting for a response.</p>
+<p></p>
+<p>So Jetty’s running now and there’s no way for us to stop it, short of stopping
+CIDER. So restart CIDER and let’s try something else.</p>
+<p>To prevent this from happening, we pass this <code>:join? false</code> option, this means
+that the main thread should not join with Jetty’s server thread. Now we can
+start Jetty without CIDER becoming unresponsive.</p>
+<p>I’m also assigning the return value from <code>run-jetty</code> to a var, this will come in
+handy if we want to stop or restart Jetty later.</p>
+<pre><code class="language-clojure">(def server
+  (run-jetty handler {:port 3000
+                      :join? false}))
+</code></pre>
+<p>Ok so our server is running now, let’s see if it works. I’ll first show you how
+to test this with <code>curl</code> from the command line. The <code>-v</code> option gives us verbose
+output, so you see the full request and response as it’s sent over the wire, the
+<code>-s</code> option stands for “silent”, and stops <code>curl</code> from printing a progress
+meter.</p>
+<pre><code class="language-http">$ curl -vs http://localhost:3000/
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 3000 (#0)
+&gt; GET / HTTP/1.1
+&gt; Host: localhost:3000
+&gt; User-Agent: curl/7.47.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Date: Tue, 02 Aug 2016 13:55:32 GMT
+&lt; Content-Type: application/edn; charset=UTF-8
+&lt; Content-Length: 41
+&lt; Server: Jetty(9.2.10.v20150310)
+&lt;
+({:name "Brasseur", :given-name "Arne"})
+* Connection #0 to host localhost left intact
+</code></pre>
+<p>There are also some great Emacs packages you can use for this. You already saw
+me use HTTP Twiddle, simply put your request in a buffer, enable
+http-twiddle-mode, and press <code>C-c C-c</code>, and another buffer pops up with the
+response. Make sure your request ends on two newlines as it should.</p>
+<p>An alternative package that’s a bit more full-featured is called RESTClient.</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: localhost:3000
+User-agent: Emacs (HTTP Twiddle)
+Accept: */*
+</code></pre>
+<p>Back to the app, suppose we want to change our handler. We update the code,
+re-evaluate the <code>defn</code>, and make another HTTP request. Seems like Jetty is still
+using the old handler.</p>
+<p>To make Jetty aware of the new handler we’ll have to stop
+and then start it afresh. That’s why we assigned the result of run-jetty to a
+var.</p>
+<pre><code class="language-clojure">(.stop server)
+
+(def server
+  (run-jetty handler {:port 3000
+                      :join? false}))
+</code></pre>
+<p>There’s a trick to make our lives easier though. Stop Jetty again, and now
+instead of passing it the handler directly, pass it the handler <code>Var</code>. Start
+Jetty again, and update the handler. Now if we try the HTTP request again we see
+it did use the new handler.</p>
+<pre><code class="language-clojure">(def server
+  (run-jetty #'handler {:port 3000
+                        :join? false}))
+</code></pre>
+<p>So what’s going on? When you use <code>def</code> to assign a value to a name, or <code>defn</code> to
+assign a function, then clojure internally will create a “Var” object to hold
+that value. We don’t usually deal with the var itself, but we can get a hold of
+it with the <code>var</code> special form, or its <code>#'</code> shorthand. You can see that this is
+an object of type <code>clojure.lang.Var</code>.</p>
+<p>A “Var” is a reference type, it’s a bit like an <code>atom</code>, a box that can contain a
+value. When you call <code>def</code> again with the same name, then Clojure will use the
+existing var, and just change its content.</p>
+<pre><code class="language-clojure">(def answer 42)
+
+answer                                             ;;=&gt; 42
+
+(var answer)                                       ;;=&gt; #'user/answer
+#'answer                                           ;;=&gt; #'user/answer
+
+(type #'answer)                                    ;;=&gt; clojure.lang.Var
+
+@(var answer)                                      ;;=&gt; 42
+</code></pre>
+<p>The interesting thing is that a “var” can also behave like a function. It
+implement the IFn interface, so like keywords, maps, or sets, you can use it
+wherever you can use a function. If the Var contains a function, then calling
+the var has the same effect as calling the function.</p>
+<pre><code class="language-clojure">(defn answer? [x]
+  (= x 42))
+
+(answer? 42)                             ;;=&gt; true
+
+(instance? clojure.lang.IFn #'answer)    ;;=&gt; true
+
+(#'answer? 42)                           ;;=&gt; true
+</code></pre>
+<p>If we pass the <code>handler</code> var to Jetty, then it will always call whatever
+function is currently assigned to that var. If we redefine <code>handler</code>, then the
+<code>handler</code> var will contain a new function, but it will still be the same Var
+object, so Jetty will always be up to date.</p>
+<p>That should stop us from having to stop and start Jetty, so let’s change this
+<code>def</code> to <code>defonce</code>. That way when we reload the namespace (in CIDER that’s <code>C-c
+C-k</code>) it won’t try to start another instance of Jetty. In other words we’re
+making sure our code is reloadable.</p>
+<pre><code class="language-clojure">(defonce server
+  (run-jetty #'handler {:port 3000
+                        :join? false}))
+</code></pre>
+<p>Time to actually implement some functionality, here are the operations we
+eventually want to support.</p>
+<pre><code>GET /
+  Retrieve a list of all contacts
+
+POST /
+  Create a new contact
+
+GET /:id
+  Retrieve a single contact
+
+PUT /:id
+  Update a contact
+
+DELETE /:id
+  Delete a contact
+
+GET /?name=Smith
+  Filter the list of contacts
+</code></pre>
+<p>As “database” for the contacts in our Rolodex we’ll just use an atom for now.
+I’ll already put one contact in there so we have something to show. As lookup
+key we’ll use the contact’s id.</p>
+<p>Unlike Clojurescript, Clojure doesn’t have a built-in <code>random-uuid</code> function,
+but we can quickly polyfill it by calling the corresponding Java method.</p>
+<pre><code class="language-clojure">(defn random-uuid []
+  (java.util.UUID/randomUUID))
+
+(def contacts (atom (let [id (random-uuid)]
+                      {id {:id id
+                           :full-name "Trish Turtle"
+                           :skills ["LISP", "Lambda Calculus"]}})))
+</code></pre>
+<p>Let’s implement the first action, when doing a GET request to the root path, the
+handler will return a list of all contacts. So check the request-method and uri,
+and if they match we return an EDN document. EDN stands for “extensible data
+notation”, it’s basically a subset of the Clojure syntax that you can use to
+represent data, and we can generate EDN with <code>prn-str</code>.</p>
+<p>We’ll set a <code>Content-Type</code> header. We’ll also explicitly set the character set
+to be the UTF-8 character encoding of unicode. EDN actually doesn’t have an IANA
+registered media type, this one here I just made up. It’s temporary anyway, EDN
+isn’t a great transport format, so we’ll switch to JSON or Transit later on.</p>
+<p>Java strings are encoding-aware, they are internally represented as UTF-16
+unicode strings. When you set a character set like we did here, Jetty will honor
+that and make sure the body text is correctly encoded over the wire.</p>
+<p>It’s a good idea to always set the encoding explicitly. For certain content
+types Jetty will use Latin-1 as its default, also known as ISO-8859-1, and
+anything it can’t encode as Latin-1 will turn into question marks. I would put a
+sad emoji here but it wouldn’t even make it through :(.</p>
+<pre><code class="language-clojure">(defn handler [{:keys [uri request-method]}]
+  (when (and (= request-method :get) (= uri "/"))
+    {:status 200
+     :headers {"Content-Type" "application/edn; charset=UTF-8"}
+     :body (prn-str (vals @contacts))}))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/rolodex">browse source code</a></p>
+<p>This episode goes up to the <code>ring-part-1</code> branch.</p>
+<h2 id="code">Code</h2>
+<p>project.clj</p>
+<pre><code class="language-clojure">(defproject rolodex "0.1.0"
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [ring/ring-jetty-adapter "1.5.0"]])
+</code></pre>
+<p>src/rolodex/core.clj</p>
+<pre><code class="language-clojure">(ns rolodex.core
+  (:require [ring.adapter.jetty :refer [run-jetty]]))
+
+(defn random-uuid []
+  (java.util.UUID/randomUUID))
+
+(def contacts (atom (let [id (random-uuid)]
+                      {id {:id id
+                           :full-name "Trish Turtle"
+                           :skills ["LISP" "Lambda Calculus"]}})))
+
+(defn handler "request -&gt; response"
+  [req]
+  (if (and (= (:request-method req) :get) (= (:uri req) "/"))
+    {:status 200
+     :headers {"Content-Type" "application/edn; charset=UTF-8"}
+     :body (prn-str (vals @contacts))}))
+
+(defonce server
+  (run-jetty #'handler {:port 3000
+                        :join? false}))
+</code></pre>
+<h2 id="links">Links</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/ring-clojure/ring">Ring</a></li>
+<li><a shape="rect" href="https://en.wikipedia.org/wiki/Rolodex">Wikipedia: Rolodex</a></li>
+<li><a shape="rect" href="http://gizmodo.com/5497511/the-life-and-death-of-the-rolodex">The Life and Death of the Rolodex</a></li>
+<li><a shape="rect" href="https://github.com/ring-clojure/ring/blob/master/SPEC">Ring Specification</a></li>
+<li><a shape="rect" href="http://dev.clojure.org/jira/browse/CLJ-1925">Jira ticket about adding <code>random-uuid</code> to Clojure</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

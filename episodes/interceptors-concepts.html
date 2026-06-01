@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/interceptors-concepts" />
+<meta name="twitter:title" content="Interceptors, part 1, concepts" />
+<meta name="twitter:description" content="The Interceptor pattern was originally introduced by Pedestal, but has since been adopted by several other projects in the Clojure world. It's an extremely useful design tools..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/762334573-badeed12b457d3ea4b5ec266a9392e9f51abbb31598e66a207440d64bcad0595-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Interceptors, part 1, concepts" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/interceptors-concepts" />
+<meta name="video:duration" content="702" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/762334573-badeed12b457d3ea4b5ec266a9392e9f51abbb31598e66a207440d64bcad0595-d_1280x720?r=pad" />
+<meta name="og:description" content="The Interceptor pattern was originally introduced by Pedestal, but has since been adopted by several other projects in the Clojure world. It's an extremely useful design tools..." />
+<meta name="video:release_date" content="2019-02-26T13:34:11.073Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Interceptors, part 1, concepts</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/319758149?h=6ae602f201&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="47. Interceptors, part 1: concepts"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>The Interceptor pattern was originally introduced by Pedestal, but has since
+been adopted by several other projects in the Clojure world. It’s an extremely
+useful design tools to be familiar with, and while they may seem a bit strange
+at first, Interceptors are suprisingly straightforward.</p>
+<p>This episode introduces the interceptor concept, including the context map,
+queue, and stack. Clojure’s persistent queues are explored, and to round off we
+look at how interceptors deal with error handling.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Interceptors are a programming pattern first introduced by the Pedestal library,
+where it is used to implement HTTP request handling. Since then there have been
+several independent implementations. re-frame uses a version of interceptors for
+its event handling, Finnish Clojure shop Metosin released a highly optimized
+version called Sieppari, Eric Normand came up with some variations on the theme
+in his own implementation.</p>
+<p>Despite that interceptors have seen limited adoption outside of a few narrow use
+cases tied to specific libraries. This is a shame, because interceptors are
+uniquely suitable for modelling all kinds of processes, including dynamic
+dispatching and asynchrony.</p>
+<p>In this episode I’ll first explain interceptors in their own right using a
+simplified implementation specifically written to help demonstrate the concepts
+involved. Once you’ve gotten a good grasp of the fundamentals I’ll go over some
+of the specific features in Pedestal’s implementations.</p>
+<p>To follow along, clone the GitHub repository for this episode, you can find the
+link in the show notes, and then open the <code>interceptor-demo</code> namespace, and
+start a REPL in your editor of choice.</p>
+<p>I’ve already included the <code>lambdaisland.interceptor</code> namespace, pulling in all
+public functions. The first two, <code>enqueue</code> and <code>execute</code>, are really all you
+need, but the others will come in handy to see step by step how things work
+under the hood.</p>
+<pre><code class="language-clojure">(ns lambdaisland.interceptor-demo
+  (:require [lambdaisland.interceptor :refer [enqueue
+                                              execute
+                                              process-enter
+                                              process-error
+                                              process-leave
+                                              enter-1
+                                              leave-1
+                                              error-1
+                                              ctx-summary]]))
+</code></pre>
+<p>Let’s look at an example to get a birds eye view of what things look like. 
+When dealing with interceptor there’s always a single map called the context
+that gets passed around throughout the process. This snippet starts with a
+<code>context</code> map containing a <code>:count</code> of <code>0</code>. It then enqueues two interceptors,
+the first will increases the counter by 1, and second by 10. It then calls
+<code>execute</code> on the context, so the interceptors actually run. The end result is
+again the context map, but updated by the two interceptors.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [{:enter (fn [ctx]
+                        (update ctx :count + 1))}
+              {:enter (fn [ctx]
+                        (update ctx :count + 10))}])
+    execute)
+;;=&gt;
+{:count 11,
+ :lambdaisland.interceptor/queue &lt;-()-&lt;,
+ :lambdaisland.interceptor/stack ()}
+</code></pre>
+<p>So these two maps in <code>enqueue</code> are what we call interceptors. They can
+optionally have a <code>:name</code>, as well as <code>:enter</code>, <code>:leave</code>, and <code>:error</code>
+functions.</p>
+<p>These different functions are executed at different parts of the process. First
+each interceptor’s <code>:enter</code> functions is called, passing the context from one to
+the next. Once <code>execute</code> has processed all <code>:enter</code> functions it will shift into
+reverse, calling each interceptor’s <code>:leave</code> function in reverse order.</p>
+<p>If an error occurs while processing <code>:enter</code> or <code>:leave</code>, then <code>execute</code> will
+switch to a different track, calling the <code>:error</code> function of any interceptor that
+still needs to leave.</p>
+<p>Don’t worry if that still sounds a little abstract, I’ll run you through the
+process step by step so you can see for yourself what’s happening.</p>
+<pre><code class="language-clojure">{:name ::my-first-interceptor
+ :enter (fn [ctx] ctx)
+ :leave (fn [ctx] ctx)
+ :error (fn [ctx ex] ctx ex)}
+</code></pre>
+<p>Let’s take a step back and drop the call to <code>execute</code>. I’ll also give these
+interceptors names so you can identify them. The first one is called <code>:add-1</code>,
+the second <code>:add-10</code>.</p>
+<p>Next I’m enqueueing these two interceptors onto the context map, but I’m not yet
+executing them. I’m just setting up the battle plan, adding these two
+interceptors to the context, so I can execute them later on.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [{:name  :add-1
+               :enter (fn [ctx]
+                        (update ctx :count + 1))}
+              {:name  :add-10
+               :enter (fn [ctx]
+                        (update ctx :count + 10))}]))
+;; =&gt;
+;; {:count 0,
+;;  :lambdaisland.interceptor/queue
+;;  &lt;-({:name :add-1,
+;;      :enter #function[lambdaisland.interceptor-demo/eval13368/fn--13369]}
+;;     {:name :add-10,
+;;      :enter #function[lambdaisland.interceptor-demo/eval13368/fn--13371]})-&lt;}
+</code></pre>
+<p>Now the context has gotten an extra key: <code>:lambdaisland.interceptor/queue</code>. The
+printed representation has these ASCII art arrows at the front and back,
+indicitating that this is a Clojure <code>PersistentQueue</code>. Queues don’t get the same
+attention that maps, vectors, and sets get, but they are just as much a part of
+Clojure’s immutable data structures.</p>
+<p>A queue is very similar to a Clojure list, the difference is that with a list
+elements are added and removed from the front, so they behave as a kind of
+stack, whereas with a queue elements are added to the back, and removed from the
+front. You can also say that lists are “Last in first out” or LIFO, whereas
+queues are “First in first out” or FIFO.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [{:name  :add-1
+               :enter (fn [ctx]
+                        (update ctx :count + 1))}
+              {:name  :add-2
+               :enter (fn [ctx]
+                        (update ctx :count + 10))}])
+    :lambdaisland.interceptor/queue
+    type)
+;;=&gt; clojure.lang.PersistentQueue
+</code></pre>
+<p>Unlike vectors or maps there’s no reader syntax for creating queue literals,
+instead you start with the empty queue, and add elements onto it with <code>conj</code>.</p>
+<p>The arrows at the front and back show the direction in which the elements move
+through the queue. Each call to <code>conj</code> inserts an element at the tail end, and
+each call to <code>pop</code> removes an element from the front. <code>pop</code> returns the new
+queue, to get the element at the front just call <code>first</code>.</p>
+<pre><code class="language-clojure">(-&gt; clojure.lang.PersistentQueue/EMPTY
+    (conj :a) ;; =&gt; &lt;-(:a)-&lt;
+    (conj :b) ;; =&gt; &lt;-(:a :b)-&lt;
+    (conj :c) ;; =&gt; &lt;-(:a :b :c)-&lt;
+    (pop)     ;; =&gt; &lt;-(:b :c)-&lt;
+    (conj :d) ;; =&gt; &lt;-(:b :c :d)-&lt;
+    (conj :e) ;; =&gt; &lt;-(:b :c :d :e)-&lt;
+    (pop)     ;; =&gt; &lt;-(:c :d :e)-&lt;
+    (pop)     ;; =&gt; &lt;-(:d :e)-&lt;
+    (pop)     ;; =&gt; &lt;-(:e)-&lt;
+    (pop)     ;; =&gt; &lt;-()-&lt;
+    )
+</code></pre>
+<p>Ok so you have a context including a queue of interceptors, let’s start
+executing some of them.</p>
+<p>The <code>execute</code> function is pretty straightforward, it calls <code>process-enter</code>,
+<code>process-leave</code>, and <code>process-error</code>, corresponding with the three stages that
+<code>execute</code> goes through.</p>
+<pre><code class="language-clojure">(defn execute
+  "Execute the context.
+
+  This assumes interceptors have been enqueued with [[enqueue]]. It will run
+  through the `:enter` stage of all interceptors in the queue, and then through
+  their `:leave` stage in reverse order.
+
+  If at some point an exception is raised, then it will skip the rest of the
+  `:enter` or `:leave` stage, and instead run the `:error` stage of all
+  interceptors that still had to leave."
+  [context]
+  (-&gt; context
+      process-enter
+      process-leave
+      process-error))
+</code></pre>
+<p>Each of these you can further split into individual steps. For instance
+<code>process-enter</code> processes the <code>:enter</code> stage of all interceptors in the queue by
+recursively calling <code>enter-1</code>, passing the context from one to the next. The
+rest of the code here is just error and boundary checking.</p>
+<p>Knowing this you can call <code>enter-1</code> directly to see what things look like after
+entering the first interceptor.</p>
+<p><code>process-leave</code> and <code>process-enter</code> similarly call <code>leave-1</code> and <code>error-1</code>, so
+you can call these fine grained functions from the REPL to see step by step what
+happens.</p>
+<pre><code class="language-clojure">(defn process-enter
+  "Process the `:enter` stage of all interceptors on the queue.
+
+  Run through all interceptors on the queue, executing their `:enter` stage and
+  moving them from the queue to the stack, until the queue is empty or an error
+  occured."
+  [{::keys [queue] :as context}]
+  (if (seq queue)
+    (let [new-context (enter-1 context)]
+      (if (::error new-context)
+        new-context
+        (recur new-context)))
+    context))
+</code></pre>
+<p>Let me first refactor this a bit. I’ll create a helper function so I can easily
+create a few interceptors to test with. The interceptor adds one amount to the
+count in the <code>:enter</code> stage, and another amount in the <code>:leave</code> stage. That way
+if I pick my numbers right it’s easy to see which parts have executed and which
+haven’t.</p>
+<pre><code class="language-clojure">(defn make-interceptor [x y]
+  {:name  (keyword (str "add-" x "-" y))
+   :enter (fn [ctx]
+            (update ctx :count + x))
+   :leave  (fn [ctx]
+            (update ctx :count + y))})
+</code></pre>
+<p>Now add them both to the queue, ready to be executed. The count so far is still
+zero, since none of the interceptors have actually run.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)]))
+;;=&gt;
+;; {:count 0,
+;;  :lambdaisland.interceptor/queue
+;;  &lt;-({:name :add-1-2,
+;;      :enter #function[lambdaisland.interceptor-demo/make-interceptor/fn--13426],
+;;      :leave #function[lambdaisland.interceptor-demo/make-interceptor/fn--13428]}
+;;     {:name :add-10-20,
+;;      :enter #function[lambdaisland.interceptor-demo/make-interceptor/fn--13426],
+;;      :leave
+;;      #function[lambdaisland.interceptor-demo/make-interceptor/fn--13428]})-&lt;}
+</code></pre>
+<p>This is a bit noisy though. To better see what’s going on I’ve added a
+<code>ctx-summary</code> function, which replaces the interceptor maps with just their
+names, and it replaces the <code>:lambdaisland.interceptor/queue</code> key with just
+<code>:queue</code>. Now you can see at a glance what’s in the queue.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)])
+    ctx-summary)
+
+;;=&gt; {:count 0, :queue &lt;-(:add-1-2 :add-10-20)-&lt;}
+</code></pre>
+<p>Time to process the first <code>:enter</code> stage using <code>enter-1</code>. Now several things
+have happened. The <code>:count</code> has increased by 1, so it seems like the <code>:enter</code>
+stage of the first interceptor has run. This interceptor has now been removed
+from the queue, instead added onto a list called “stack”.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)])
+    enter-1
+    ctx-summary)
+
+;;=&gt; {:count 1, :queue &lt;-(:add-10-20)-&lt;, :stack (:add-1-2)}
+</code></pre>
+<p>Call <code>enter-1</code> again and now the second interceptor’s <code>:enter</code> stage has
+increased the <code>:count</code> to eleven. The second interceptor also got moved from the
+queue to the stack, so the queue is now empty, while the stack contains both
+interceptors, but in reverse order, since stacks are “first in last out”.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)])
+    enter-1
+    enter-1
+    ctx-summary)
+
+;;=&gt; {:count 11, :queue &lt;-()-&lt;, :stack (:add-10-20 :add-1-2)}
+</code></pre>
+<p>Now that the queue is empty, the <code>:leave</code> stage will kick in, so let’s call
+<code>leave-1</code> and see what happens.</p>
+<p>Rather than processing the queue, the <code>leave</code> stage processes the stack, popping
+interceptors off the stack, and running their <code>:leave</code> functions.</p>
+<p>Notice that the last interceptor to <code>:enter</code> was the first to <code>:leave</code>. They’re
+kind of like sandwiches in that way, and while they’re quite different from Ring
+middleware, you can see that in this sense they’re a little similar, since each
+interceptor can “wrap” the interceptors that follow.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)])
+    enter-1
+    enter-1
+    leave-1
+    ctx-summary)
+;;=&gt; {:count 31, :queue &lt;-()-&lt;, :stack (:add-1-2)}
+</code></pre>
+<p>Finally run the <code>:leave</code> stage of the last interceptor. Now all interceptors have
+finished executing, the stack is empty, and the count is 33.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)])
+    enter-1
+    enter-1
+    leave-1
+    leave-1
+    ctx-summary)
+;;=&gt; {:count 33, :queue &lt;-()-&lt;, :stack ()}
+</code></pre>
+<p>This is the same result as if you would have called <code>execute</code> directly, running
+through the whole interceptor process.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [(make-interceptor 1 2)
+              (make-interceptor 10 20)])
+    execute
+    ctx-summary)
+;;=&gt; {:count 33, :queue &lt;-()-&lt;, :stack ()}
+</code></pre>
+<p>So far so good, now let’s look at some of the more interesting things you can do
+with interceptors. One interesting thing to note is that the full context is
+available to each interceptor, including the queue and stack, and so both can be
+manipulated. This means for instance that an interceptor can queue extra
+interceptors.</p>
+<p>In this example I’m starting out with just a single interceptor, but this
+interceptor calls <code>enqueue</code> again to add ten more interceptors to the queue.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [{:name :enqueue-more
+               :enter
+               (fn [ctx]
+                 (enqueue ctx (repeat 10 (make-interceptor 1 0))))}])
+    enter-1
+    ctx-summary)
+</code></pre>
+<p>This is commonly used in web applications to do routing. A router interceptor
+will inspect the request, and enqueue appropriate interceptors to handle the
+given URL and request method.</p>
+<pre><code class="language-clojure">(-&gt; {:request {:uri "/hello"}}
+    (enqueue [router])
+    execute)
+</code></pre>
+<p>Another thing you can do with the queue is empty it (or simply remove it), to
+stop any interceptors left in the queue from executing. This way the <code>:enter</code>
+stage finishes, and <code>:leave</code> kicks in, calling <code>:leave</code> on any interceptors left
+in the stack. This is common enough that Pedestal has a helper function for it
+called <code>terminate</code>.</p>
+<pre><code class="language-clojure">(defn terminate [ctx]
+  (dissoc ctx :lambdaisland.interceptor/queue))
+</code></pre>
+<p>Can you follow what’s going on here? The <code>:enqueue-more</code> interceptor uses its
+<code>:enter</code> stage to enqueue a hundred identical interceptors. Each of them
+increases the count by one, unless the count is already greater than twenty,
+then it calls <code>terminate</code> to remove the remainder of the queue, effectively
+cutting any remaining processing of the <code>:enter</code> stage short.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [{:name :enqueue-more
+               :enter
+               (fn [ctx]
+                 (enqueue ctx (repeat 100
+                                      {:name :add-1
+                                       :enter
+                                       (fn [ctx]
+                                         (if (&gt; (:count ctx) 20)
+                                           (terminate ctx)
+                                           (update ctx :count inc)))})))}])
+
+    execute)
+</code></pre>
+<p>Now let’s see what happens when an error occurs. I’ll first create this
+interceptor, aptly called “boom!” which simply throws an exception when its
+enter stage gets called.</p>
+<pre><code class="language-clojure">(def boom!
+  {:name :BOOM!
+   :enter (fn [ctx]
+            (throw (ex-info "Oops!" {:very :sorry})))})
+</code></pre>
+<p>The <code>handle-error</code> interceptor doesn’t have an <code>:enter</code> or <code>:leave</code> function,
+but instead has an <code>:error</code> function. Note that unlike <code>:enter</code> and <code>:leave</code>
+this one takes two arguments, the second being the caught exception.</p>
+<p>This error handler interceptor will flip the sign of
+the count, so we can see that something went wrong.</p>
+<pre><code class="language-clojure">(def handle-error
+  {:name :handle-error
+   :error (fn [ctx ex]
+            (update ctx :count * -1))})
+</code></pre>
+<p>Next I’ll enqueue the error handler first. Then I’ll put some regular
+interceptors that increase the count, then the interceptor that blows up, and
+finally another count interceptor.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [handle-error
+              (make-interceptor 1 2)
+              (make-interceptor 10 20)
+              boom!
+              (make-interceptor 100 200)])
+    )
+</code></pre>
+<p>Ok, now let’s walk through this step by step to see what happens. First run the
+<code>:enter</code> stage of the first three interceptors. So far things are
+straightforward, the first didn’t have an <code>:enter</code> stage, the second and third
+increased the <code>:count</code> to eleven. Now the exploding interceptor is up next.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [handle-error
+              (make-interceptor 1 2)
+              (make-interceptor 10 20)
+              boom!
+              (make-interceptor 100 200)])
+    enter-1
+    enter-1
+    enter-1
+    ctx-summary)
+;;=&gt;
+{:count 11,
+ :queue &lt;-(:BOOM! :add-100-200)-&lt;,
+ :stack (:add-10-20 :add-1-2 :handle-error)}
+</code></pre>
+<p>Now run the next one. You’ll notice two things: the queue is gone, and there’s
+an <code>:error</code> key added to the context.</p>
+<pre><code class="language-clojure">{:count 11,
+ :stack (:BOOM! :add-10-20 :add-1-2 :handle-error),
+ :error
+ {:stage :enter,
+  :interceptor :BOOM!,
+  :exception-type :clojure.lang.ExceptionInfo,
+  :very :sorry}}
+</code></pre>
+<p>At this point <code>execute</code> will unwind the stack, just like when processing the
+<code>leave</code> stage, but instead of calling <code>:leave</code>, it will call each interceptor’s
+<code>:error</code> key.</p>
+<p>The same happens if an exception happens during the <code>:leave</code> stage. Any
+remaining interceptors on the stack will have their <code>:error</code> stage called. Note
+that an exception in an <code>:enter</code> stage can be handled by an <code>:error</code> function on
+the same interceptor, whereas if the exception happens in a <code>:leave</code> function,
+then the current interceptor’s <code>:error</code> handler doesn’t run, because the
+interceptor is no longer on the stack.</p>
+<pre><code class="language-clojure">(-&gt; {:count 0}
+    (enqueue [handle-error
+              (make-interceptor 1 2)
+              (make-interceptor 10 20)
+              boom!
+              (make-interceptor 100 200)])
+    process-enter
+    process-error
+    ctx-summary)
+</code></pre>
+<p>So far I’ve stuck to my own minimalist implementation to demonstrate the basic
+concepts involved in dealing with interceptors. It’s a great implementation to
+study, it’s only a hundred-odd lines of straightforward code, but it does lack
+some of the features that you get with Pedestal, key among them the ability to
+“go async”.</p>
+<p>I’ll explore Pedestal’s interceptors in detail in the next episode, stay tuned!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep47-interceptors">browse source code</a></p>
+<h3 id="namespaces">Namespaces</h3>
+<ul>
+<li><a shape="rect" href="https://github.com/lambdaisland/ep47-interceptors/blob/master/src/lambdaisland/interceptor.clj">lambdaisland.interceptor</a></li>
+<li><a shape="rect" href="https://github.com/lambdaisland/ep47-interceptors/blob/master/src/lambdaisland/interceptor_demo.clj">lambdaisland.interceptor-demo</a></li></ul>
+<h3 id="cheat-sheet">Cheat sheet</h3>
+<p>Interceptor:</p>
+<pre><code class="language-clojure">{:name ::my-interceptor
+ :enter (fn [ctx] ctx)
+ :leave (fn [ctx] ctx)
+ :error (fn [ctx exception] ctx)}
+</code></pre>
+<p>Enqueue/execute</p>
+<pre><code class="language-clojure">(require '[lambdaisland.interceptor :refer [enqueue execute]])
+
+(-&gt; {:initial :context}
+    (enqueue [interceptor-1 interceptor-2])
+    (execute))
+</code></pre>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="http://pedestal.io/guides/what-is-an-interceptor">Pedestal guides: what is an interceptor?</a></li>
+<li><a shape="rect" href="http://pedestal.io/reference/interceptors">Pedestal reference: interceptors</a></li>
+<li><a shape="rect" href="https://github.com/Day8/re-frame/blob/master/docs/Interceptors.md">re-frame docs: Interceptors</a></li>
+<li><a shape="rect" href="https://github.com/metosin/sieppari">Sieppari</a></li>
+<li><a shape="rect" href="https://lispcast.com/a-model-of-interceptors/">LispCast: A Model of Interceptors</a></li>
+<li><a shape="rect" href="https://github.com/fixpoint-clojure/interceptors">LispCast implementation</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

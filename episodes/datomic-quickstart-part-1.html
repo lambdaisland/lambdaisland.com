@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/datomic-quickstart-part-1" />
+<meta name="twitter:title" content="Datomic Quickstart, part 1" />
+<meta name="twitter:description" content="Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately...." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/661331224-990d0eb703dd603aa1d89d1867d2bbea0af65c6e138765b3bb561edfe36da8c5-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Datomic Quickstart, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/datomic-quickstart-part-1" />
+<meta name="video:duration" content="689" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/661331224-990d0eb703dd603aa1d89d1867d2bbea0af65c6e138765b3bb561edfe36da8c5-d_1280x720?r=pad" />
+<meta name="og:description" content="Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately...." />
+<meta name="video:release_date" content="2017-10-17T15:32:25.358Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Datomic Quickstart, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/238586560?h=f6c13555e7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="36. Datomic Quickstart, part 1"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately.</p>
+<p>This first part gives an overview of the architecture and data model, and walks you through your first transactions.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Datomic is a database system by Cognitect, the same company that oversees the development of Clojure. It is written in Clojure and built on the same principles as Clojure itself, so using it from Clojure is a smooth experience.</p>
+<p>Datomic is an “immutable” database. It stores a history of facts. Once a fact is in the database you can’t change it or delete it, but you can store a new fact that supercedes or invalidates the old one.</p>
+<p>This way Datomic can easily tell which facts existed at a certain point in time. Such a collection of facts is called a database value. For datomic there’s little difference between the state of the database today, or the state of the database one year ago. They’re simply represented as separate database values.</p>
+<p>Datomic’s architecture is a bit different from other database system. In a traditional database clients connect to a database server, which then handles all database related tasks. You can imagine there’s a part in there that takes care of updates, and a part that let’s you read stuff from the database. In the diagram I’ve labeled these as “Transactor” and “Query Engine”.</p>
+<p>Datomic pulls that Transactor out into its own process. There’s only ever one of these, and any write operations go through it.</p>
+<p>The Query engine gets moved into the client process. It pulls raw data directly from storage, then does the actual querying and filtering locally.</p>
+<p>Instead of being “dumb” clients, these processes are now part of the Datomic network, so instead of “clients” they’re called “peers”.</p>
+<p>Peers read data directly from storage, and then cache it locally, making queries very fast. Peers are also notified by the transactor of any new data, so they’re always up to date.</p>
+<p>This peer model does have two downsides. The first is that the peer library is only available on the JVM. When you’re using Clojure that’s not an issue, but not everyone is so lucky.</p>
+<p>Secondly peers require a lot of memory, since they’ll be holding large parts of the database in memory. This isn’t suitable for all applications.</p>
+<p>Because of this Cognitect introduced a new component called the Peer server. It connects to storage and to the transactor like other peers, but then exposes a HTTP Client API, granting access to Datomic from thinner clients.</p>
+<p>For the actual physical storage of bytes Datomic relies on pre-existing solutions, rather than re-inventing the wheel. There are a number of different storage backends available, depending on your needs and deployment strategy. Amazon DynamoDB and good old PostgreSQL are popular options.</p>
+<p>The “facts” that datomic stores are a kind of five-tuples called datoms. Of these five elements the first three are the most important, they are called the “entity id”, the “attribute” and the “value”, and together they state a proposition like “‘JOHN’ has as ‘EMAIL’ ‘JOHN@PUPPY.WORLD’”.</p>
+<p>A proposition like this however does not constitute a fact. If I say “the temperature in Berlin is 25 degrees celcius”, then that’s not a fact, because at some points in time this will be true, and at other times it won’t. So to make it into a fact you need some kind of timestamp.</p>
+<p>This is what the fourth element is for. It’s called the transaction id, and it allows Datomic to find out when this datom was created. So together these first four elements state that from a certain point in time onwards, this fact is true.</p>
+<p>A fact that was added to datomic may become false at a later point in time, so you need to be able to retract a fact that was previously added.</p>
+<p>This is what the final element is for. It’s a boolean flag, which indicates whether this datom represents an addition or a retraction of a fact.</p>
+<pre><code class="language-clojure"> entity   attribute          value         transaction   added?
+   🡓         🡓                 🡓               🡓          🡓
+[ 98431  :user/email   "john@puppy.world"   137394134    true ]
+</code></pre>
+<p>So if this user first sets their email address to “john@puppy.world”, then later changes it “john@insect.club”, and then a bit later still deletes the email address entirely, then you might have this sequence of datoms in Datomic.</p>
+<pre><code class="language-clojure">[ 98431  :user/email   "john@puppy.world"   137300111    true ]
+[ 98431  :user/email   "john@insect.club"   137300555    true ]
+[ 98431  :user/email   "john@insect.club"   137300999    false ]
+</code></pre>
+<p>In representations the transaction id and “added” flag are often omitted, since you usually care most about the entity, attribute, and value.</p>
+<pre><code class="language-clojure">[ 98431  :user/email   "john@puppy.world" ]
+[ 98431  :user/email   "john@insect.club" ]
+[ 98431  :user/email   "john@insect.club" ]
+</code></pre>
+<p>Now let’s take these three datoms. They are all for the same entity, but each describes a different attribute.</p>
+<p>When there are multiple datoms all for the same entity, then you can more conveniently represent them in an entity map, mapping attributes to values. The entity id is assigned to the special key <code>:db/id</code>.</p>
+<pre><code class="language-clojure">;; Datoms
+[ 31874  :user/name      "jillosaurus" ]  
+[ 31874  :user/email     "jill@insect.club" ]  
+[ 31874  :user/location  "Bug, Bamberg" ]  
+
+;; Entity map
+{:db/id          31874
+ :user/name      "jillosaurus"   
+ :user/email     "jill@insect.club"   
+ :user/location  "Bug, Bamberg"}   
+</code></pre>
+<p>In this episode I’m going to use “Datomic Free”. This edition can be freely downloaded without having to register, and the peer library is even available from Clojars, so you can load it directly with Leiningen or Boot.</p>
+<p>The “free” edition does have some limitations. The only storage backends available are in-memory storage, or a file-system based store that’s suitable for tinkering and small hobby projects.</p>
+<p>Instead you can also register to get the “Datomic Pro Starter Edition”. This is still free and it gives you access to all the same features as the Pro or Enterprise version. Updates are technically limited to one year, but you can keep using the software afterwards without limitations.</p>
+<p>Create a new Clojure project and add <code>datomic-free</code> as a dependency to the <code>project.clj</code>. This JAR contains Datomic’s “Peer Library”, allowing you to communicate with the Transactor, and to read from storage.</p>
+<pre><code class="language-clojure">(defproject datomic-quick-start "0.1.0-SNAPSHOT"
+  :description "Datomic Quick Start"
+  :url "https://github.com/lambdaisland/datomic-quick-start"
+  :license {:name "Mozilla Public License 2.0"
+            :url "https://www.mozilla.org/en-US/MPL/2.0/"}
+  :dependencies [[org.clojure/clojure "1.9.0-beta2"]
+                 [com.datomic/datomic-free "0.9.5561.59"]])
+</code></pre>
+<p>If you had a look at the official documentation you probably first came across examples that use <code>datomic.client</code>. This is for when you are using the REST API with a peer server. I’m not going to cover that.</p>
+<p>Instead I’ll use the peer library directly, by requiring the <code>datomic.api</code> namespace, which is typically aliased to <code>d</code>.</p>
+<p>I’m going to use an in-memory database. This way you don’t have to run a separate transactor process. It does mean that anything you store will be lost when you exit the process.</p>
+<p>If you do want the changes to persist then you need to use the <code>bin/transactor</code> script to start a transactor, passing it a properties file. There’s an example properties file included with Datomic free that works out of the box. Afterwards you connect to the URI that it shows you.</p>
+<p>But like I said I’m actually going to skip that step and use an in-memory database, since this is the easiest way to get a feel for Datomic.</p>
+<p>This is what an in-memory URI looks like, with the last part being the name you chose for the database.</p>
+<p>Since this is the first time you’re using it you have to create the database first with <code>create-database</code>. After that you can connect to it, and get a connection object back.</p>
+<p>If you want a clean slate again then delete the database, and create and connect to it again.</p>
+<pre><code class="language-clojure">(ns datomic-quick-start.core
+  (:require [datomic.api :as d]))
+
+(def db-uri "datomic:mem://quick-start-db")
+
+;;(d/delete-database db-uri)
+(d/create-database db-uri)
+
+(def conn (d/connect db-uri))
+</code></pre>
+<p>Now let’s try to add some data, before you do that though you need to tell Datomic about the attributes you’ll be using, together with their types. They need to be defined before they can be used.</p>
+<p>Take this example from earlier. It makes use of three attributes, <code>:user/name</code>, <code>:user/email</code>, and <code>:user/location</code>, which are all of type string. Here you see it again both as individual datoms, and as the equivalent entity map.</p>
+<pre><code class="language-clojure">;; Datoms
+[ 31874  :user/name      "jillosaurus" ]  
+[ 31874  :user/email     "jill@insect.club" ]  
+[ 31874  :user/location  "Bug, Bamberg" ]  
+
+;; Entity map
+{:db/id          31874
+ :user/name      "jillosaurus"   
+ :user/email     "jill@insect.club"   
+ :user/location  "Bug, Bamberg"}   
+</code></pre>
+<p>Attributes are themselves entities. This probably sounds very meta and abstract, but it’s part of what makes Datomic’s design so interesting. All of a database’s meta-information is stored in the database right along your own data.</p>
+<p>To define an attribute you need to provide at least three things: an identifier, which is typicaly a namespaced keyword, the value type of the attribute, in this case <code>string</code>, and the cardinality. A user only has one name, but a user’s hobbies could have <code>:db.cardinality/many</code>.</p>
+<p>You can also optionally provide a docstring for your attributes, which is generally a good idea. I’m also going to set a uniqueness constraint on this attribute, this automatically adds an index so you can look up users by user name later on. For more information on defining a Datomic schema please refer to the docs.</p>
+<p>I’m using an entity map to create this attribute. Notice that there’s no <code>:db/id</code> in here, this is fine, Datomic will pick an entity id when the entity is created.</p>
+<pre><code class="language-clojure">{;; :db/id       chosen by datomic
+ ;; :db/doc      "optional docstring"
+ :db/ident       :user/name
+ :db/valueType   :db.type/string
+ :db/cardinality :db.cardinality/one}
+</code></pre>
+<p>Now you can send this entity map to the transactor, so it can be written to the database, using the <code>transact</code> function, passing it a connection object, and a list of entity maps.</p>
+<pre><code class="language-clojure">(d/transact conn [{:db/ident       :user/name
+                   :db/doc         "The unique username of a user."
+                   :db/valueType   :db.type/string
+                   :db/cardinality :db.cardinality/one
+                   :db/unique      :db.unique/identity}])
+</code></pre>
+<p>With that <code>:user/name</code> attribute defined it’s time to create some users! Let’s make another transaction, this time passing it two entity maps, one for each user. Assign the result to a var, so you can take it apart to see what’s in there.</p>
+<pre><code class="language-clojure">(def tx-result
+  (d/transact conn [{:user/name    "jillosaurus"}
+                    {:user/name    "jonnyboy"}]))
+</code></pre>
+<p>The result of <code>transact</code> is a promise, a kind of reference type, so to get its contents you will have to “deref” it.</p>
+<pre><code class="language-clojure">(class tx-result)
+;;=&gt; datomic.promise$settable_future$reify__5815
+</code></pre>
+<p>After dereferencing, the result of a transaction behaves like a Clojure map with four keys.</p>
+<p><code>:db-before</code> and <code>:db-after</code> are “databases” or database values. You can best think of them as snapshots. They represent the state of the world at a given point in time. <code>:db-before</code> is how things were before the transaction was processed, and <code>:db-after</code> is how things are afterwards.</p>
+<p>So you could query <code>:db-after</code> and find an entity with username “jillosaurus”, which you won’t find in the <code>:db-before</code>.</p>
+<p>I know I’m jumping ahead here, I’ll explain queries in more detail in a bit. The thing to note is that when looking for “jillosaurus” in <code>:db-after</code> you get a single entity id back, whereas in the <code>:db-before</code> it doesn’t find anything, since the user hasn’t been created yet.</p>
+<pre><code class="language-clojure">(keys @tx-result)
+;;=&gt; (:db-before :db-after :tx-data :tempids)
+
+(:db-before @tx-result)
+;;=&gt; datomic.db.Db@1e985da6
+
+(:db-after @tx-result)
+;;=&gt; datomic.db.Db@ad344ee4
+
+(d/q '[:find ?e :where [?e :user/name "jillosaurus"]] (:db-after @tx-result))
+;;=&gt; #{[17592186045418]}
+
+(d/q '[:find ?e :where [?e :user/name "jillosaurus"]] (:db-before @tx-result))
+;;=&gt; #{}
+</code></pre>
+<p>It’s interesting and useful that calling <code>transact</code> returns these two database values, but most of the time you just want the state of the database the way it is “right now”. For this you use the <code>d/db</code> function.</p>
+<p>Keep in mind that this database value still represents a snapshot. Once you have a database value it never changes. To see changes that happened later on you need to call <code>d/db</code> afresh. This is an extremely common mistake when getting started with datomic.</p>
+<pre><code class="language-clojure">(d/db conn)
+;;=&gt; datomic.db.Db@4e0454d1
+
+(d/q '[:find ?e :where [?e :user/name "jillosaurus"]] (d/db conn))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/datomic-quick-start">browse source code</a></p>
+<ul>
+<li><a shape="rect" href="https://my.datomic.com/downloads/free">Download Datomic Free</a></li>
+<li><a shape="rect" href="http://docs.datomic.com/schema.html">Datomic Docs: Schema</a></li>
+<li><a shape="rect" href="http://docs.datomic.com/query.html">Datomic Docs: Queries</a></li>
+<li><a shape="rect" href="http://blog.datomic.com/2013/06/component-entities.html">Blog post: Datomic Component Entities</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

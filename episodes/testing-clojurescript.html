@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/testing-clojurescript" />
+<meta name="twitter:title" content="Running ClojureScript Tests" />
+<meta name="twitter:description" content="Learn how to run tests with Figwheel, PhantomJS, Node, doo, and Karma. Running Clojure tests once they are written is pretty straightforward, but for ClojureScript there are a..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/643595010-449ac39774e19ade208ec43770249103f8b4b7e02d3d69695a7a02885ae9780d-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Running ClojureScript Tests" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/testing-clojurescript" />
+<meta name="video:duration" content="1028" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/643595010-449ac39774e19ade208ec43770249103f8b4b7e02d3d69695a7a02885ae9780d-d_1280x720?r=pad" />
+<meta name="og:description" content="Learn how to run tests with Figwheel, PhantomJS, Node, doo, and Karma. Running Clojure tests once they are written is pretty straightforward, but for ClojureScript there are a..." />
+<meta name="video:release_date" content="2017-07-06T18:26:55.537Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Running ClojureScript Tests</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/224496288?h=ca67a0afcd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="33. Running ClojureScript Tests"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Learn how to run tests with Figwheel, PhantomJS, Node, doo, and Karma.</p>
+<p>Running Clojure tests once they are written is pretty straightforward, but for ClojureScript there are a few more things to consider. Your code needs to be compiled first, and then needs to run on the JavaScript engine of your choice. In this episode you’ll learn how to set up a ClojureScript project from scratch using Figwheel, how to run tests from the REPL, how to create test runners for PhantomJS and Node, and how to use doo and Karma to run your tests on a wide variety of browsers simultaneously.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Writing tests for ClojureScript isn’t all that different from writing tests for Clojure. There are a few small differences in what the test library provides, but for the most part your code will look exactly the same.</p>
+<p>When it comes to <em>running</em> ClojureScript tests however, there’s a bit more to be said, because you need to be concerned both with the compiler, and with a JavaScript runtime environment.</p>
+<p>Let’s get a feel for things by setting up a small ClojureScript project. To show you I have nothing up my sleave I’m going to start with a completely new and empty project, generated with <code>lein new</code>.</p>
+<pre><code>$ lein new ep33testcljs
+</code></pre>
+<p>First open <code>project.clj</code> to set up dependencies and configure a ClojureScript build. The alphas of Clojure 1.9 are pretty solid so I tend to just use whatever is the most recent one. Then also get the latest ClojureScript. There have been some Compiler performance improvements lately so it’s good to be up to date.</p>
+<p>My only concession to minimalism is that I’m using Figwheel, because really why wouldn’t you? This is by far the fastest and easiest way to get a ClojureScript REPL going, which is what I want as a starting point.</p>
+<p>You also need to set up a ClojureScript build. This is all pretty standard stuff. Tell Figwheel it should manage this build, tell it to find its source files in the “src” and “test” directories, and finally configure the ClojureScript compiler.</p>
+<p><code>:main</code> is the top level namespace, all parts of your app need to be explicitly or implicitly required from this namespace, otherwise they won’t be included in the compiled result.</p>
+<p>To be compatible with Figwheel, optimizations needs to be set to <code>:none</code>, this means each namespace will get compiled to an individual JavaScript file under <code>:output-dir</code>. Notice that they’re being output under <code>resources/public</code>, this way they are accessible from the browser.</p>
+<p>The browser still needs to be able to find them though, with <code>:asset-path</code> you configure the url-prefix needed to correctly locate a compiled file. Finally you set the <code>:output-to</code> file, which is just a small stub in this case that loads up all the actual compiled namespaces.</p>
+<pre><code class="language-clojure">(defproject ep33testcljs "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
+                 [org.clojure/clojurescript "1.9.671"]]
+
+  :plugins [[lein-figwheel "0.5.11"]]
+
+  :cljsbuild {:builds
+              [{:id "dev"
+                :figwheel true
+                :source-paths ["src" "test"]
+                :compiler {:main testcljs.core
+                           :optimizations :none
+                           :output-dir "resources/public/js/out"
+                           :asset-path "js/out"
+                           :output-to "resources/public/js/app.js"}}]})
+</code></pre>
+<p>Let’s get rid of the Clojure files that leiningen created, and instead just create a single ClojureScript namespace so Figwheel has something to chew on.</p>
+<pre><code class="language-shell">rm -rf src/* test/*
+mkdir src/testcljs
+echo '(ns testcljs.core)'&gt; src/testcljs/core.cljs
+</code></pre>
+<p>Ok, now start <code>lein figwheel</code>. This takes a moment, I’m just going to speed that way up. There.</p>
+<p>Now open your browser at <code>http://localhost:3449</code>. It should say “Figwheel Server: Resource not found. Keep on figwheelin’”. Which I certainly intend to, but first Figwheel is going to need a little HTML file that loads up the ClojureScript, so let’s add that.</p>
+<p>This is under <code>resources/public</code>, you create a new file called <code>index.html</code>. This is just the absolute minimum of HTML5 boilerplate, plus a <code>script</code> tag to load up the app.</p>
+<p>Now refresh the browser. You’ll get a blank page, that’s expected, but in the browser console you can see that Figwheel is getting fruity already. And indeed if you switch back to the terminal you’ll see that the Figwheel REPL has appeared.</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src="js/app.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>That’s all I ever wanted, a REPL. Not that I intend to actually type anything into that REPL like some troglodyte. No, of course I want to set up my trusty editor so I can work from a buffer. I use CIDER for a lot of stuff, but for the sake of simplicity I’m going to use <code>inf-clojure</code>. If you’re using Emacs you should be able to follow along, there’s also a separate episode on inf-clojure if you’re feeling a bit fuzzy about what its all about. For other environments the <a shape="rect" href="https://github.com/bhauman/lein-figwheel/wiki">Figwheel Wiki</a> contains documentation on how to get a REPL connected to your editor. There are instructions there for Vim, Cursive, Lighttable, as well as generic instructions for using Figwheel on top of nREPL.</p>
+<p>For me I’m just launching <code>inf-clojure</code>, telling it to run <code>lein figwheel</code> to start the REPL. Again this takes a while, in the meantime I’m going to enable <code>inf-clojure-minor-mode</code> in this source buffer.</p>
+<p>Cutting some fruit… and… there’s the REPL prompt.</p>
+<pre><code>M-: (inf-clojure "lein figwheel")
+</code></pre>
+<p>With that I can type some code in the buffer, hit <code>C-x C-e</code>, and see the result pop up in the REPL buffer.</p>
+<p>Ok now let’s write some code, I’ll be generating mice emoticons like it’s 1999. Some will have short tails, some will be longer, but they are all equally adorable and deserving of love.</p>
+<p>Let’s give that a try. Ok, cool.</p>
+<pre><code class="language-clojure">(ns testcljs.core)
+
+(defn mouse [n]
+  (apply str "&lt;:3)" (repeat n "~")))
+
+(mouse 5)
+;;=&gt; "&lt;:3~~~~~"
+</code></pre>
+<p>And now we get to the fun part, the tests. Create a <code>testcljs.core-test</code> namespace inside the test directory. Require the code you want to test, as well as <code>clojure.test</code>. This is just an alias for <code>cljs.test</code>, a ClojureScript port of <code>clojure.test</code>. You could also require <code>cljs.test</code> directly. I like to do it this way though for consitency. The added benefit is that this will work seamlessly when writing cross-platform CLJC files.</p>
+<p>You do have to refer the various test functions explicitly, since ClojureScript doesn’t have a <code>:refer :all</code>. Most of these are actually macros, and in older versions of ClojureScript you had to use <code>:require-macros</code> or <code>:refer-macros</code>, but in this case it also works with a regular refer. This is because <code>cljs/test.cljs</code> already requires its own macro macro namespace. Thanks to an improvement in ClojureScript that landed about a year ago this means downstream callers can refer to the macros the same way as they would for regular functions.</p>
+<pre><code class="language-clojure">(ns testcljs.core-test
+  (:require [testcljs.core :refer [mouse]]
+            [clojure.test :refer [deftest testing is are async run-tests]]))
+</code></pre>
+<p>The test itself is straightforward. Use <code>deftest</code>, followed by a name, I also like to use <code>testing</code> to add a bit of a description. I’m using <code>are</code> which I described in the previous episode.</p>
+<p>Just as in Clojure this <code>deftest</code> will create a function which runs the test. You can also use <code>(run-tests)</code>, which runs all tests in the given namespaces, defaulting to the current namespace, or you can run all defined tests with <code>(run-all-tests)</code>. This all isn’t news. Everything we’ve done so far works exactly the same way in Clojure.</p>
+<pre><code class="language-clojure">(deftest mouse-test
+  (testing "it has a cute tail"
+    (are [n m] (= (mouse n) m)
+      0 "&lt;:3)"
+      1 "&lt;:3)~"
+      2 "&lt;:3)~~"
+      10 "&lt;:3)~~~~~~~~~~")))
+
+(comment
+  (mouse-test)
+  (run-tests))
+</code></pre>
+<p>I do have a bug in my rodent, so let me fix that. The mouse is missing its bum. Ok, now the tests run without errors.</p>
+<p>Now suppose you want to run these tests from the command line. For Clojure tests you could just use <code>lein test</code>. In <code>project.clj</code> you configure one or more <code>:test-paths</code>, by default that’s just <code>["test"]</code>. <code>lein test</code> will load all namespaces it finds in there, and then call <code>run-tests</code> on all of them.</p>
+<p>For ClojureScript things are a little different. You first need to create a build that includes all your tests. The result is a single compiled JavaScript file, which you then pass to a JavaScript runtime, such as your browser.</p>
+<p>To decide what goes into a build, ClojureScript takes the <code>:main</code> namespace, and then starts adding required namespaces from there. To make sure all test namespaces get added, create a new <code>test-runner</code> namespace, which requires all the different test namespaces.</p>
+<p>So this namespace loads the one test namespace we have so far, as well as the <code>run-all-tests</code> macro.</p>
+<p>Make sure output is printed on the browser console with <code>enable-console-print!</code>, so you can see the test results. Now that the test namespaces are included in the build, call <code>run-all-tests</code> at the top level, so they run whenever this code gets loaded.</p>
+<pre><code class="language-clojure">(ns testcljs.test-runner
+  (:require [testcljs.core-test]
+            [clojure.test :refer [run-all-tests]]))
+
+(enable-console-print!)
+
+(run-all-tests)
+</code></pre>
+<p>Finally update <code>project.clj</code> to use this test-runner as the main namespace.</p>
+<pre><code class="language-clojure">(defproject
+  ,,,
+  :cljsbuild {:builds
+              [{:id "dev"
+                ,,,
+                :compiler {:main testcljs.test-runner
+                           ,,,}}]})
+</code></pre>
+<p>Because you change the build configuration to use a different <code>:main</code> namespace, you have to tell Figwheel to reload and restart, using <code>(reload-config)</code></p>
+<pre><code class="language-clojure">;; on the Figwheel REPL
+dev:cljs.user=&gt; (reload-config)
+Figwheel: Stopped watching build - dev
+Figwheel: Reloading build config information
+Figwheel: Cleaning build - dev
+Figwheel: Watching build - dev
+Figwheel: Cleaning build - dev
+Compiling "resources/public/js/app.js" from ["src" "test"]...
+Successfully compiled "resources/public/js/app.js" in 5.835 seconds.
+</code></pre>
+<p>Refresh your browser, open the JavaScript console, and you should see the test results. And thanks to Figwheel any code change will cause them to reload and run again, so this already works alright as a test runner.</p>
+<p>The next step is running the tests from the command line. This is especially useful for setting up Continuous Integration, say with Travis or Circle CI.</p>
+<p>For this first add the <code>lein-cljsbuild</code> Leiningen plugin to your project. This allows you to build your code without Figwheel.</p>
+<pre><code class="language-clojure">(defproject
+  ,,,
+
+  :plugins [[lein-figwheel "0.5.11"]
+            [lein-cljsbuild "1.1.6"]]
+  ,,,)
+</code></pre>
+<p>So far I’ve been using this single <code>dev</code> build to run the tests, but it might be better to introduce a separate <code>test</code> build.</p>
+<p>Change the <code>:main</code> namespace of the <code>dev</code> build back to <code>testcljs.core</code>. Now add a <code>test</code> build, which uses <code>testcljs.test-runner</code> as the main namespace. You won’t be using Figwheel in this case, so remove the <code>:figwheel</code> flag.</p>
+<p>For the <code>dev</code> build I used <code>:optimizations :none</code>, the lowest level of optimizations. With this setting each namespace gets turned into a separate JavaScript file, meaning the JavaScript environment needs to know how to resolve and load namespaces. This means a HTTP server needs to be involved, to serve up the individual JavaScript files, that’s also why you need that <code>:asset-path</code> setting.</p>
+<p>For the tests you can go one level up and <code>:optimizations :whitespace</code>. The only difference is that with this setting, all code gets concatenated into a single file. Each build needs to have a separate <code>:output-dir</code>, so let’s just add <code>test</code> to this path, and finally choose a different name for the final build artifact.</p>
+<pre><code class="language-clojure">  :cljsbuild {:builds
+              [{:id "dev"
+                :figwheel true
+                :source-paths ["src" "test"]
+                :compiler {:main testcljs.core
+                           :optimizations :none
+                           :output-dir "resources/public/js/out"
+                           :asset-path "js/out"
+                           :output-to "resources/public/js/app.js"}}
+
+               {:id "test"
+                :source-paths ["src" "test"]
+                :compiler {:main testcljs.test-runner
+                           :optimizations :whitespace
+                           :output-dir "resources/public/js/out/test"
+                           :output-to "resources/public/js/test.js"}}]}
+</code></pre>
+<p>Ok, save that, and now run <code>lein cljsbuild</code> to create <code>test.js</code>. Give it a moment to do its magic. Ok, now there should be a single <code>test.js</code> file that contains all code and tests.</p>
+<pre><code class="language-shell">$ lein cljsbuild once test
+Compiling ClojureScript...
+Compiling "resources/public/js/test.js" from ["src" "test"]...
+Successfully compiled "resources/public/js/test.js" in 8.788 seconds.
+</code></pre>
+<p>You could still just load that in your browser by updating <code>index.html</code>, but let’s not do that. Instead I’ll run it on the command line with <a shape="rect" href="http://phantomjs.org/">PhantomJS</a>. Phantom is a complete WebKit-based browser, but it’s “headless”, meaning it doesn’t have a GUI.</p>
+<p>The Phantom site has installation instructions, for what follows I’m assuming you have PhantomJS installed and working on your system.</p>
+<pre><code class="language-shell">$ phantomjs --version
+2.1.1
+</code></pre>
+<p>Now you just pass Phantom the path to <code>test.js</code>, and there you go! Notice though that the process doesn’t exit, it’s just hanging there until you hit Ctrl-C. We’ll have to do something about that.</p>
+<pre><code class="language-shell">$ phantomjs resources/public/js/test.js
+
+Testing cljs.user
+
+Testing cljs.core
+
+Testing clojure.string
+
+Testing cljs.pprint
+
+Testing cljs.test
+
+Testing clojure.template
+
+Testing testcljs.core
+
+Testing testcljs.core-test
+
+Testing testcljs.test-runner
+
+Ran 1 tests containing 4 assertions.
+0 failures, 0 errors.
+</code></pre>
+<p>If for some reason this didn’t work, then try deleting <code>resources/public/js</code>, and then recompile. Sometimes <code>lein cljsbuild</code> gets confused due to old build artifacts lying around.</p>
+<pre><code class="language-shell">$ rm -rf resources/public/js
+</code></pre>
+<p>To get phantom to exit, you call <code>phantom.exit</code>, optionally passing it an exit code for the process. Let’s check though if that <code>phantom</code> object is present first, so that this code doesn’t cause problems on other platforms. ClojureScript has an <code>exists?</code> predicate that lets you check if an identifier is defined.</p>
+<pre><code class="language-clojure">(ns testcljs.test-runner
+  (:require [testcljs.core-test]
+            [clojure.test :refer [run-all-tests]]))
+
+(enable-console-print!)
+
+(run-all-tests)
+
+(when (exists? js/phantom)
+  (js/phantom.exit))
+</code></pre>
+<p>This works, but it has two problems: the first is that when a test fails, Phantom should return a non-zero exit status. Otherwise your CI will think that all is green when it really isn’t. So we’ll have to get access to the test results in some way.</p>
+<p>The second problem is that when using asynchronous tests, this will kill the process before the tests have had a chance to finish.</p>
+<p>We can solve both of these problems by plugging into the <code>cljs.test/report</code> multimethod. This method lets you monitor the test suite’s lifecycle, it gets called when a test starts or finishes, when an assertion succeeds or fails, and it gets called all the way at the end after the test run has finished.</p>
+<p>This method dispatches on a two element vector, the first element is the type of test reporter being used for this test run. Normally that will be <code>:cljs.test/default</code>, you can abbreviate that using a double colon and the namespace alias.</p>
+<p>The second element is the type of event being handled. This can be something like <code>:begin-test-ns</code>, or <code>:fail</code>, we’re interested in <code>:end-run-tests</code>.</p>
+<p>The argument given to <code>report</code> is a map, containing <code>:type</code>, <code>:fail</code>, <code>:error</code>, <code>:pass</code>, and <code>:test</code>. I’m going to mimic what <code>lein test</code> does, but adding together the number of tests that failed or raised an error, and use that as the exit code. The exit code should be zero if all is good, and non-zero otherwise, so that works.</p>
+<pre><code class="language-clojure">(ns testcljs.test-runner
+  (:require [testcljs.core-test]
+            [clojure.test :as t :refer [run-all-tests]]))
+
+(enable-console-print!)
+
+(defmethod t/report [::t/default :end-run-tests] [m]
+  ;;{:type :end-run-tests, :fail 0, :error 0, :pass 4, :test 1}
+  (when (exists? js/phantom)
+    (js/phantom.exit (+ (:fail m) (:error m)))))
+
+(run-all-tests)
+</code></pre>
+<p>Cool, there you have your PhantomJS test runners in a handful of lines of ClojureScript.</p>
+<p>If you like to use Node instead then that’s also possible. Beware that Node is just a JavaScript runtime, it does not contain a browser, and so doesn’t provide a DOM or other browser-specific APIs. It’ll depend on your project if this is an issue for you. Luckily for us we can generate cute mice emoticons on Node just fine.</p>
+<p>Your first attempt would probably be to run that same <code>test.js</code> on Node, which does not work. Node is different enough from other environments that ClojureScript has a custom mode for outputting code compatible with Node.</p>
+<pre><code class="language-shell">$ node resources/public/js/test.js
+/home/arne/ep33testcljs/resources/public/js/test.js:79
+"String))throw 1;for(const a of[2,3]){if(a\x3d\x3d2)continue;function "+"f(z\x3d{a}){let a\x3d0;return z.a}{function f(){return 0;}}return f()"+"\x3d\x3d3}";return evalCheck('(()\x3d\x3e{"use strict";'+es6fullTest+"})()")});addNewerLanguageTranspilationCheck("es6-impl",function(){return true});addNewerLanguageTranspilationCheck("es7",function(){return evalCheck("2 ** 2 \x3d\x3d 4")});addNewerLanguageTranspilationCheck("es8",function(){return evalCheck("async () \x3d\x3e 1, true")});return requiresTranspilation};goog.provide("goog.string");goog.provide("goog.string.Unicode");goog.define("goog.string.DETECT_DOUBLE_ESCAPING",false);goog.define("goog.string.FORCE_NON_DOM_HTML_UNESCAPING",false);goog.string.Unicode={NBSP:" "};goog.string.startsWith=function(str,prefix){return str.lastIndexOf(prefix,0)==0};goog.string.endsWith=function(str,suffix){var l=str.length-suffix.length;return l&gt;=0&amp;&amp;str.indexOf(suffix,l)==l};
+
+
+TypeError: Cannot set property 'Unicode' of undefined
+    at Object.&lt;anonymous&gt; (/home/arne/ep33testcljs/resources/public/js/test.js:79:720)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+    at Function.Module._load (module.js:438:3)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:393:7)
+    at startup (bootstrap_node.js:150:9)
+    at bootstrap_node.js:508:3
+</code></pre>
+<p>In the ClojureScript compiler options add <code>:target :nodejs</code>. Also change the optimizations level to <code>:simple</code>, this is the lowest level of optimizations that work with Node.</p>
+<pre><code class="language-clojure">:compiler {:main testcljs.test-runner
+           :optimizations :simple
+           :target :nodejs
+           ,,,}
+</code></pre>
+<p>Now clean up the compiled JavaScript again, to force cljsbuild to do a full rebuild. Now you can run the tests with Node.</p>
+<pre><code class="language-shell">$ rm -rf resources/public/js
+$ lein cljsbuild once test
+Compiling ClojureScript...
+Compiling "resources/public/js/test.js" from ["src" "test"]...
+Successfully compiled "resources/public/js/test.js" in 13.249 seconds.
+$ node resources/public/js/test.js
+
+Testing cljs.user
+
+Testing cljs.core
+
+Testing clojure.string
+
+Testing cljs.pprint
+
+Testing cljs.test
+
+Testing clojure.template
+
+Testing testcljs.core
+
+Testing testcljs.core-test
+
+Testing testcljs.test-runner
+
+Ran 1 tests containing 4 assertions.
+0 failures, 0 errors.
+</code></pre>
+<p>In this case Node does exit immediately, not because of our own exit code, since that only works for Phantom, but because Node is not a browser, it just runs the script you give it and then exits. This does mean that once again the exit code doesn’t reflect the status of the test run.</p>
+<p>That’s easy enough to fix, the equivalent of <code>phantom.exit</code> is called <code>process.exit</code>, but it does highlight that you have to do extra work for every environment you’re targeting.</p>
+<pre><code class="language-clojure">(defmethod t/report [::t/default :end-run-tests] [m]
+  (when-let [exit (cond (exists? js/phantom) js/phantom.exit
+                      (exists? js/process) js/process.exit)]
+    (exit (+ (:fail m) (:error m)))))
+</code></pre>
+<p>Luckily there’s a project calls <a shape="rect" href="https://github.com/bensu/doo">doo</a> which makes running tests on different environments a whole lot easier.</p>
+<p>Add <code>lein-doo</code> as a plugin, and change the test build back so it’s no longer targeting node, and it has <code>:optimizations :whitespace</code></p>
+<pre><code class="language-clojure">:plugins [[,,,]
+          [lein-doo "0.1.7"]]
+
+
+:cljsbuild {:builds
+            [,,,
+
+             {:id "test"
+              :source-paths ["src" "test"]
+              :compiler {:main testcljs.test-runner
+                         :optimizations :whitespace
+                         :output-dir "resources/public/js/out/test"
+                         :output-to "resources/public/js/test.js"}}]}
+</code></pre>
+<p>In order for doo to do its magic you need to use some custom macros in the test runner. <code>doo-tests</code> in the <code>doo.runner</code> namespace replaces <code>run-tests</code>, and <code>doo-all-tests</code> replaces <code>run-all-tests</code>.</p>
+<pre><code class="language-clojure">(ns testcljs.test-runner
+  (:require [testcljs.core-test]
+            [doo.runner :refer-macros [doo-tests doo-all-tests]]))
+
+(doo-tests 'testcljs.core-test)
+</code></pre>
+<p>Now you can invoke doo from the command line with with <code>lein doo</code>. When running <code>lein doo</code>, you pass it the runner it should use, and the name of the build. So for instance <code>lein doo phantom test</code> uses PhantomJS to run the build named <code>test</code>. A cool thing is after running the tests, doo will start watching you code for changes. As soon as you change a file, it re-runs the tests, so you get a nice and speedy feedback loop.</p>
+<pre><code class="language-shell">$ lein doo phantom test
+</code></pre>
+<p>Doo supports an impressive list of environments, including Chrome, Firefox, Safari, PhantomJS, Slimer, and the JavaScript engines that come bundled with Java: Rhino and Nashorn.</p>
+<pre><code class="language-shell">$ lein doo nashorn test
+</code></pre>
+<p>To be able to support all these different browsers, doo leverages <a shape="rect" href="https://karma-runner.github.io/1.0/index.html">Karma</a>, a fairly advanced JavaScript test runner that came out of the Angular project. This does mean that to run for instance on Firefox or Chrome, you need to first install Karma, using <code>npm</code>.</p>
+<p>To begin with you need the <code>karma-cli</code> executable, which doo recommends you install globally with the <code>-g</code> flag.</p>
+<pre><code class="language-shell">$ npm install -g karma-cli
+</code></pre>
+<p>You also need Karma itself, as well as a couple of plugins. One for each browser you want to test with, and one to support ClojureScript tests. These you can install inside your project directory. They will get install under <code>node_modules</code>, which you don’t have to check into source control, although you could provide a <code>package.json</code> so others can more easily install these.</p>
+<pre><code class="language-shell">npm install karma karma-firefox-launcher karma-cljs-test
+</code></pre>
+<p>Now when you do <code>lein doo firefox test</code>, it will compile the code, start the Karma server, and open Karma’s url in Firefox: http://localhost:9876. Now each time you change some code, it re-runs all your tests in Firefox, and shows you the result.</p>
+<p>I did notice that it doesn’t always run the tests when it starts up, but as soon as you touch a file it does re-run them.</p>
+<p>The really cool thing about Karma is that you can open this URL in as many browsers as you like. So here I opened it in Firefox, Chrome, and on my phone. Now when I change some code the tests will run on each of these browsers, and you get the see the results for each of them. Pretty cool, right?</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep33testcljs">browse source code</a></p>
+<h2 id="useful-links-and-further-reading">Useful links and further reading</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Compiler-Options">ClojureScript Wiki: Compiler Options</a>
+I refer to this page <em>all the time</em>. Definitely one for the bookmarks.</li>
+<li><a shape="rect" href="https://github.com/bhauman/lein-figwheel/wiki/Using-the-Figwheel-REPL-within-NRepl">Figwheel Wiki</a>
+For when you need help getting things hooked up to your editor.</li>
+<li><a shape="rect" href="https://github.com/bensu/doo">doo</a>
+The README has elaborate instructions on how to set things up to test against various browser backends.</li></ul>
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<p>Compile ClojureScript once</p>
+<pre><code>lein cljsbuild &lt;build-id&gt; once
+</code></pre>
+<p>Compile ClojureScript and watch for changed</p>
+<pre><code>lein cljsbuild &lt;build-id&gt; watch
+</code></pre>
+<p>Run doo</p>
+<pre><code>lein doo &lt;environment&gt; &lt;build-id&gt;
+</code></pre>
+<h2 id="extras">Extras</h2>
+<p>Something I didn’t mention in the episode is that lein-cljsbuild allows you to configure your test runners, so you can invoke them with <code>lein cljsbuild test &lt;runner&gt;</code>. This will also make sure your code is compiled before starting the test run.</p>
+<p>It doesn’t do anything you can’t do directly from the command line, and it doesn’t support watching tests for changes, but it can be handy when integrating into a Leiningen based work.</p>
+<pre><code class="language-clojure">(defproject lein-cljsbuild-example "1.2.3"
+  :plugins [[lein-cljsbuild "1.1.6"]]
+  :cljsbuild {:test-commands
+              ;; run with `lein cljsbuild test my-test`
+              {"my-test" ["phantomjs" "resources/public/js/test.js"]}}
+  :hooks [leiningen.cljsbuild])
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/introduction-luminus-3" />
+<meta name="twitter:title" content="Introduction to Luminus, part 3" />
+<meta name="twitter:description" content="In this closing episode of the Luminus introduction, you'll learn how to extend the template language with custom filters, and how to generate HTML components in code using..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/572362936-3bc544b2b678d4920a23667c9e2b9704a3e128eeeb7b1de7058beb36155ece08-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Introduction to Luminus, part 3" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/introduction-luminus-3" />
+<meta name="video:duration" content="512" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/572362936-3bc544b2b678d4920a23667c9e2b9704a3e128eeeb7b1de7058beb36155ece08-d_1280x720?r=pad" />
+<meta name="og:description" content="In this closing episode of the Luminus introduction, you'll learn how to extend the template language with custom filters, and how to generate HTML components in code using..." />
+<meta name="video:release_date" content="2016-05-24T21:53:47.735Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Introduction to Luminus, part 3</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/167950794?h=b57aaa6820&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Introduction to Luminus, part 3"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>In this closing episode of the Luminus introduction, you’ll learn how to extend the template language with custom filters, and how to generate HTML components in code using Hiccup.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In part 1 we set up our database, and implemented the rendering of wiki pages.
+In the second part we saw how to add a form to edit the pages, and we ended by
+showing the custom markup for links within our wiki, that we’re planning to
+implement.</p>
+<p>In this third and final part of the introduction to Luminus, we’ll
+implement a custom filter to render these links, and we’ll handle
+creating new pages, so that the wiki is fully functional.</p>
+<p>This is the syntax we want to use for links. Right now that doesn’t
+work yet, because they’re not valid markdown. For them to work we’ll
+have to do some extra processing when rendering a page. The Selmer
+templating system lets you write your own filters, so we’ll make one
+called <code>wiki-links</code> to render our links.</p>
+<pre><code class="language-html">&lt;!-- wiki-page.html --&gt;
+{{body|wiki-links|markdown}}
+</code></pre>
+<p>This filter isn’t defined yet, let’s fix that. The layout namespace is where
+Luminus puts custom tags and filters. You can see the markdown filter that we
+used earlier, as well as the <code>csrf-field</code> tag we needed for the form.</p>
+<p>Add a new filter called <code>wiki-links</code>. We’ll just pass through the content for
+now. Let’s test that, everything should still work as before.</p>
+<pre><code class="language-clojure">(ns lambwiki.layout
+  ,,,)
+,,,
+
+(defn wiki-links [content]
+  content)
+
+(filters/add-filter! :wiki-links wiki-links)
+</code></pre>
+<p>Now we need to pull out those links, which I’m doing with a regular expression.
+I have to admit it looks horrible, as regular expressions often do. I’ll add a
+link in the show notes to a regex fiddle so you can play around with it a bit.
+(http://refiddle.com/9rip)</p>
+<p>Let’s implement this step by step. This first version should verify that that
+regexp is doing its job.</p>
+<pre><code class="language-clojure">(ns lambwiki.layout
+  (:require ,,,
+            [clojure.string :as str]))
+
+(defn wiki-links [content]
+  (str/replace content #"\[\[([^\]]+)\]\]" "&lt;a&gt;$1&lt;/a&gt;"))
+</code></pre>
+<p>Sure enough, they’re links now, but they don’t go anywhere yet.</p>
+<p>To fix that, we need to turn the human readable title into something more
+suitable for use in a URL. This regexp replaces every sequence of one or more
+non-word characters with a single dash. We’ll also make everything lower case
+for consistency.</p>
+<p>How can we use that function now to generate the links? Turns out
+<code>string/replace</code> can take a function as its final argument, instead of a string.
+That gives us a bit more flexibility. This inner function receives a vector
+containing both the fully matched form including the outer brackets, and the
+title part that’s inside the capturing group. With some destructuring you can
+ignore the first part and just get the title.</p>
+<pre><code class="language-clojure">(ns lambwiki.layout
+  (:require ,,,
+            [clojure.string :as str]))
+
+(defn- title-&gt;uri-slug [title]
+  (str/lower-case (str/replace title #"\W+" "-")))
+
+(defn wiki-links [content]
+  (str/replace content #"\[\[([^\]]+)\]\]"
+               (fn [[_ title]]
+                 (str "&lt;a href=\"" (title-&gt;uri-slug title) "\"&gt;" title "&lt;/a&gt;"))))
+</code></pre>
+<p>So now it renders the links, but when the page doesn’t exist yet, the link
+should go straight to the form so we can edit the page. Cause right now all we
+get is a 404.</p>
+<p>We need to check if there’s a corresponding page when rendering each link. I’ll
+use a bit more clj-refactor magic here. First I introduce a let form, then use
+“expand let” until it’s at the right scope.</p>
+<p>Now I’ll use that uri-slug to see if there’s a corresponding page. If there is
+then we get the old behavior, if the page doesn’t exist the link goes to the
+edit route so you get a form. I’m also adding an extra class on those links, so
+we can style them a bit differently.</p>
+<pre><code class="language-clojure">(ns lambwiki.layout
+  (:require ,,,
+            [lambwiki.db.core :refer [find-page-by-uri-slug]]))
+
+(defn- title-&gt;uri-slug [title]
+  (str/lower-case (str/replace title #"\W+" "-")))
+
+(defn wiki-links [content]
+  (str/replace content #"\[\[([^\]]+)\]\]"
+               (fn [[_ title]]
+                 (let [uri-slug (title-&gt;uri-slug title)]
+                   (if (find-page-by-uri-slug {:uri_slug uri-slug})
+                     (str "&lt;a href=\"/" uri-slug "\"&gt;" title "&lt;/a&gt;")
+                     (str "&lt;a class=\"new-page-link\" href=\"/" uri-slug "/edit\"&gt;" title "&lt;/a&gt;"))))))
+</code></pre>
+<p>Links to new pages should show up bright red.</p>
+<p>Now it’s really starting to feel like a wiki, what with them colored links and
+all, but we’re still getting 404s. Let’s have another look at the edit route.</p>
+<pre><code class="language-css">/* resources/public/screen.css */
+
+/* ... */
+
+.new-page-link {
+  color: red;
+}
+</code></pre>
+<p>When the page doesn’t exist it does nothing. Instead we’ll also render the form
+page. It also needs to know the uri slug of the new page so the form can submit
+to the right place. For that we can pass the params map right through.</p>
+<pre><code class="language-clojure">(ns lambwiki.routes.home)
+,,,
+
+  (GET "/:uri_slug/edit" {{:keys [uri_slug] :as params} :params}
+    (if-let [page (find-page-by-uri-slug {:uri_slug uri_slug})]
+      (edit-page page)
+      (edit-page params)))
+</code></pre>
+<p>So far so good, let’s try that. Yeah we need to handle saving new pages as well,
+but the POST went to the right URI, so that’s good.</p>
+<p>Saving new pages is not that different from how we handle existing pages. We
+will still have to create a revision, but before we can do that we need to
+create a new page. Don’t forget to add that <code>create-page!</code> function to the
+namespace.</p>
+<pre><code class="language-clojure">(ns lambwiki.routes.home)
+,,,
+
+  (POST "/:uri_slug" {{:keys [uri_slug title body] :as params} :params}
+    (let [page (or (find-page-by-uri-slug {:uri_slug uri_slug})
+                   (create-page! {:uri_slug uri_slug}))]
+      (create-revision! {:page_id (:id page)
+                         :body body
+                         :title title})
+      (wiki-page params)))
+</code></pre>
+<p>Awesome! That totally works. I wish I knew more about lambs, so I could populate
+this wiki a bit more. Oh well let’s just make some stuff up.</p>
+<p>Something bothers me about this workflow though, I’m already choosing a title
+when I create the link, and now I have to enter it again in the form. Let’s fix
+that.</p>
+<p>Let’s have another look at that <code>wiki-links</code> function. Does it bother you? It
+bothers me. It’s generating HTML by mashing a bunch of strings together. How
+terribly uncivilized. Let’s clean that up a bit with the help of Hiccup.</p>
+<p>I’m using clj-refactor again to add a new project dependency. If you’re
+following along at home and you don’t have clj-refactor, just add this section
+to <code>project.clj</code>, and then restart your REPL.</p>
+<pre><code class="language-clojure">(defproject lambwiki
+  ,,,
+
+  :dependencies [,,,
+                 [hiccup "1.0.5"]]
+
+  ,,,)
+</code></pre>
+<p>Hiccup lets you write HTML using Clojure Syntax, so with simple vectors,
+keywords, and maps. These are much easier to compose than strings.</p>
+<pre><code class="language-clojure">(hiccup/html [:div [:p {:class "important"} "Lambs have" [:a {:href "/tentacles"} "Tentacles"]]])
+;;=&gt; "&lt;div&gt;&lt;p class=\"important\"&gt;Lambs have&lt;a href=\"/tentacles\"&gt;Tentacles&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;"
+</code></pre>
+<p>Let me rewrite this link generation using Hiccup syntax. Wrap the result in
+<code>hiccup/html</code>, and we’re good to go. Doesn’t that look a whole lot better?</p>
+<pre><code class="language-clojure">(ns lambwiki.layout
+  (:require ,,,
+            [hiccup.core :as hiccup]))
+
+(defn wiki-links [content]
+  (str/replace content #"\[\[([^\]]+)\]\]"
+   (fn [[_ title]]
+     (let [uri-slug (title-&gt;uri-slug title)]
+       (hiccup/html
+        (if (find-page-by-uri-slug {:uri_slug uri-slug})
+          [:a {:href (str "/" uri-slug)} title]
+          [:a {:class "new-page-link" :href (str "/" uri-slug "/edit")} title]))))))
+</code></pre>
+<p>Ok, now what I’ll do is add a query parameter to those new page links, so we
+don’t lose track of the title of the link.</p>
+<p>Let’s refactor this a bit first because it’s getting unwieldy. The only part of
+the link that really changes are the attributes, if I pull those into their own
+function it becomes a bit easier to see what’s going on.</p>
+<p>Now that we’re sticking random user input in the URL we need to make sure to
+properly encode it. If our needs got more complex than we should consider using
+a proper URL library, but for now Ring’s <code>url-encode</code> function will do the
+trick.</p>
+<pre><code class="language-clojure">(ns lambwiki.layout
+  (:require ,,,
+            [ring.util.codec :refer [url-encode]]))
+
+(defn- link-attrs [title uri-slug]
+  (if (find-page-by-uri-slug {:uri_slug uri-slug})
+    {:href (str "/" uri-slug)}
+    {:href (str "/" uri-slug "/edit?title=" (url-encode title)) :class "new-page-link" }))
+
+(defn wiki-links [content]
+  (str/replace content #"\[\[([^\]]+)\]\]"
+   (fn [[_ title]]
+     (let [uri-slug (title-&gt;uri-slug title)]
+       (html [:a (link-attrs title uri-slug) title])))))
+</code></pre>
+<p>Let’s try that. The title is in the link now, and it’s get prepopulated in the form.</p>
+<p>Maybe that’s a bit surprising, but remember how in this route we passed the
+params map right through to the function that renders the form? Before the
+params only contained the uri slug, but now they contain the title as well.</p>
+<pre><code class="language-clojure">  (GET "/:uri_slug/edit" {{:keys [uri_slug] :as params} :params}
+    (if-let [page (find-page-by-uri-slug {:uri_slug uri_slug})]
+      (edit-page page)
+      (edit-page params)))
+</code></pre>
+<p>And that’s it, time to wrap this up.</p>
+<pre><code class="language-sh">git add -A
+git commit
+</code></pre>
+<p>I hope you enjoyed this guided tour of Luminus. We covered a lot of ground in
+these two episodes, from migrations and queries, to routes, templates, and
+custom content filters. We didn’t have time to cover any of those aspects in
+depth, but hopefully this has given you enough material to start tinkering.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="code">Code</h2>
+<p>To follow along with this episode, you can start with the <a shape="rect" href="https://github.com/lambdaisland/lambwiki/tree/part-2">code provided on Github</a>. Check out the <code>part-2</code> branch, and follow the instructions in the README to set up your database. After that you should be ready to start this episode.</p>
+<h2 id="regular-expressions">Regular Expressions</h2>
+<p>Have a look at this <a shape="rect" href="http://refiddle.com/9rip">Regexp fiddle</a> to play around with the regexp we used to extract links, <code>#"\[\[([^\]]+)\]\]"</code>.</p>
+<p>Regular expressions in Clojure make use of Java’s regexp engine. For a
+comprehensive overview of its syntax and features, you’ll have to head to the
+<a shape="rect" href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html">javadoc for java.util.regex.Pattern</a>.</p>
+<h2 id="further-reading">Further Reading</h2>
+<p>For more info on wiki, CSRF, and a full list of all the versions used in this project, have a look at the show notes for <a shape="rect" href="https://lambdaisland.com/episodes/introduction-luminus-2">part 2</a>.</p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

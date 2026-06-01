@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/re-frame-subscriptions" />
+<meta name="twitter:title" content="re-frame, part 2: Subscriptions" />
+<meta name="twitter:description" content="A complete look at re-frame subscriptions, including coverage of Reagent's atoms and reactions. You learn how to write subscriptions, how they work, and how to plug them..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/603160108-0b12a06a7ecbcf9b6b104a05df1f99cb909c0714fcb60af5bcac1a3349093354-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="re-frame, part 2: Subscriptions" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/re-frame-subscriptions" />
+<meta name="video:duration" content="830" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/603160108-0b12a06a7ecbcf9b6b104a05df1f99cb909c0714fcb60af5bcac1a3349093354-d_1280x720?r=pad" />
+<meta name="og:description" content="A complete look at re-frame subscriptions, including coverage of Reagent's atoms and reactions. You learn how to write subscriptions, how they work, and how to plug them..." />
+<meta name="video:release_date" content="2016-11-17T13:25:34.315Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">re-frame, part 2: Subscriptions</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/191956845?h=b5344be1ee&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="20. re-frame Subscriptions"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>A complete look at re-frame subscriptions, including coverage of Reagent’s atoms and reactions. You learn how to write subscriptions, how they work, and how to plug them together into a signal graph.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In re-frame, views receive data from the database through subscriptions. Suppose
+we have a database that looks like this, here we’re building a todo list app,
+and individual todo items are represented as hash-maps, bundled together in a
+vector under the :todos key.</p>
+<pre><code class="language-clojure">(def default-db
+  {:todos [{:id (random-uuid)
+            :title "Donate to charity"
+            :completed false}]})
+</code></pre>
+<p>We want to use this information to render a list of all todos that haven’t been
+completed yet. So we need a subscription, let’s call it <code>:visible-todos</code>.</p>
+<p>Registering a subscription is done with <code>re-frame.core/reg-sub</code>. You first pass
+it the name of the subscription as a keyword, followed by the function that gets
+the right data from the database.</p>
+<p>This function receives the current state of the application database, and pulls
+out the list todos that haven’t been completed yet. You can think of it as a
+database query.</p>
+<p>This subscription function also receives a second argument, the query vector.
+This is useful for subscriptions that take arguments, we’ll see examples of
+those later on.</p>
+<pre><code class="language-clojure">(re-frame.core/reg-sub :visible-todos
+         (fn [db query-v]
+           (remove :completed (:todos db))))
+</code></pre>
+<p>Now create a view that will display this data. Use a form-2 component, let’s
+call it <code>todo-list</code>, and add a let block around the render function to subscribe
+to any data sources you need. Here we subscribe to the <code>:visible-todos</code>
+subscription we created earlier. <code>subscribe</code> takes a vector which is known as
+the “query vector”, where the first argument in the vector is the name of the
+subscription.</p>
+<p>The inner render function returns Hiccup that will become the next virtual DOM.
+We’ll return a <code>div</code> containing the individual todos.</p>
+<p>Notice that I’m dereferencing the subscription here to get its current value,
+and that it’s happening inside the render function . This is important, as we’ll
+see later.</p>
+<p>As always don’t forget to give siblings elements a unique key to keep React happy.</p>
+<pre><code class="language-clojure">(defn todo-list []
+  (let [todos (subscribe [:visible-todos])]
+    (fn []
+      [:div#todo-list
+       (for [todo @todos]
+         ^{:key (:id todo)} [todo-item todo])])))
+</code></pre>
+<p>re-frame’s subscription system is built using Reagent’s atoms and reactions.
+When you look at the result of calling <code>subscribe</code>, you can see it’s a
+‘Reaction`’, a special type of object provided by Reagent. To fully understand
+what reactions are, we first need to talk about Reagent’s atoms.</p>
+<pre><code class="language-clojure">(subscribe [:visible-todos])
+;;=&gt; #&lt;Reaction 11: ({:id #uuid "4760db48-c52a-494a-a62c-00cb64504238", :title "Donate to charity"})&gt;
+</code></pre>
+<p>A Reagent atom, also called an “ratom”, behaves a lot like a regular
+Clojurescript atom. It allows you to store a value that might change over time.
+It’s basically just a box holding a value. To get to the value inside the atom
+you “deref” it, which can be abbreviated to simply “@”.</p>
+<p>Changing an atom is done with <code>swap!</code>. You pass <code>swap!</code> a function that takes
+the atom’s current value, and returns the new one. You can also set the atom to
+a fixed value with <code>reset!</code>.</p>
+<pre><code class="language-clojure">(require '[reagent.core :as r])
+(def counter (r/atom 0))              ;;=&gt; #'cljs.user/counter
+
+counter                               ;;=&gt; #&lt;Atom: 0&gt;
+(deref counter)                       ;;=&gt; 0
+@counter                              ;;=&gt; 0
+
+(swap! counter (fn [i] (+ 1 i)))      ;;=&gt; 1
+@counter                              ;;=&gt; 1
+
+(reset! counter 7)                    ;;=&gt; 7
+@counter                              ;;=&gt; 7
+</code></pre>
+<p>It is possible to “watch” an atom, so your code gets notified when its value
+changes. When you’re using Reagent atoms then Reagent does this watching for you
+behind the scenes. First it will detect whenever an ratom is dereferenced inside
+a render function. This way it can track which components should be updated
+whenever a certain atom changes. When the atom does change, Reagent tells React
+to re-draw only these particular components use it, leaving the rest alone.</p>
+<p>This is why Reagent atoms work so well for storing application state. With a
+regular atom you would have to manually re-render the whole virtual DOM whenever
+the app state changes. With ratoms components are automatically kept up-to-date,
+and in a way that cuts out a lot of unnecessary work.</p>
+<pre><code class="language-clojure">(def app-state (r/atom {:todos []}))
+
+(def todo-list []
+  [:div
+   (for [todo (:todos @app-state)]
+     ^{:key (:id todo)} [todo-item todo])])
+</code></pre>
+<p>Besides storing global application state, ratoms are also used to store
+component local state. This for example is a common pattern for storing the
+current value of a text input field. You create the atom in the outer let of a
+form-2 component, so that the render function closes over it. Now the change
+events from the text field keep the atom up-to-date, which in turn causes the
+new value to be displayed in the text field. When the user presses enter or
+clicks a button, you can read out the current value and use it.</p>
+<pre><code class="language-clojure">(def input-box []
+  (let [value (r/atom "")]
+    (fn []
+      [:input {:type "text"
+               :value @value
+               :on-change #(reset! value (.. % -target -value))
+               :on-key-down #(when (= 13 (.. % -which))
+                               (handle-enter @value))}])))
+</code></pre>
+<p>So that’s a Reagent atom, if you used plain Reagent before you probably already
+used these. In a re-frame app however you typically don’t use atoms directly.
+Instead there’s one atom that’s managed behind the scenes by re-frame, called
+the application database.</p>
+<p>Using a single atom to store all application states is a typical Clojure thing
+to do. It’s very elegant and makes code easy to reason about. In the case of
+Reagent though there’s one gotcha you have to be aware of.</p>
+<p>Remember that whenever the atom changes, Reagent will re-render all components
+that reference it. This mean that if you only have one atom that’s used all over
+the place, then any state change will cause all components to re-render. This
+isn’t necessarily a huge deal. Even though you’re rebuilding the virtual DOM
+more often than necessary, React’s DOM diffing algorithm will still minimize the
+amount of operations to the real DOM, but still there’s work being done that we
+might just as well avoid.</p>
+<p>To solve this, Reagent introduced Reactions. They let you specify a value based
+on the value of one or more ratoms. Think of them as formulas in a spreadsheet.
+When you update a spreadsheet cell, then any formulas that reference that cell
+will update. Similarly, when an ratom changes, any reactions that reference it
+get updated.</p>
+<p>You create a Reaction by wrapping some code in the <code>reaction</code> macro. By
+dereffing the reaction you get to its computed value. For example we can have a
+reaction that returns just the list of todos.</p>
+<p>Now in the component instead of dereffing the whole <code>app-state</code> atom, use the
+<code>todos-reaction</code> instead. When the <code>app-state</code> changes React will recompute the
+list of todos, and only when it is different from the previous value will it
+re-render the component.</p>
+<pre><code class="language-clojure">(require '[reagent.core :as r])
+(require-macros '[reagent.ratom :refer [reaction]])
+
+(def app-state (r/atom {:user {}
+                        :sidebar-open false
+                        :todos []}))
+
+(def todos-reaction
+  (reaction
+   (:todos @app-state)))
+
+todos-reaction       ;;=&gt; #&lt;Reaction 27: []&gt;
+@todos-reaction      ;;=&gt; []
+
+(def todo-list []
+  [:div
+   (for [todo @todos-reaction]
+     ^{:key (:id todo)}) [todo-item todo]])
+</code></pre>
+<p>Before continuing let’s see what we’re actually building. I’m making a re-frame
+version of the popular TodoMVC app. Our app state will hold two things: the list
+of todos, and the type of todos that are currently visible. I’m only going to
+show a few select parts of the code, but I encourage you to check out the whole
+source on Github. It also demonstrates how to use Secretary for page routing.</p>
+<p>Here’s the default database state, this will be used for the initial value of
+re-frame’s internal database atom. This time I’m using a map to store the todos,
+rather than a vector, so it’s easy to look them up based on their id.</p>
+<p>We’ll also track the, <code>:display-type</code>. This determines which todos are currently
+visible. This way we can either show all todos, only the ones that are
+completed, or those that haven’t been completed yet.</p>
+<pre><code class="language-clojure">(def default-db
+  {:todos {}
+   :display-type :all})
+</code></pre>
+<p>By now you might already have realized that re-frames subscriptions behave a lot
+like reactions. That’s because subscriptions are really just reactions under the
+hood.</p>
+<p>So let’s create a subscription for the todos. I don’t need the query vector so
+I’m just using <code>_</code> as a placeholder argument. Given the current database state
+this function pulls out the <code>:todos</code> hash-map, and then returns all values in
+the map, so you get a seq of todos you can iterate over. Notice that the
+subscription is just a pure function. Even though the application database is an
+atom, you don’t have to worry about dereferencing it. re-frame will pass in the
+latest version whenever <code>:todos</code> needs to be recomputed.</p>
+<p>We also need to expose <code>:display-type</code> to the views, so create a subscription which passes it on directly.</p>
+<pre><code class="language-clojure">(reg-sub :todos
+         (fn [db _]
+           (vals (:todos db))))
+
+(reg-sub :display-type
+         (fn [db _]
+           (:display-type db)))
+</code></pre>
+<p>As we saw before, calling <code>subscribe</code> now returns a reaction. You might think
+that the reaction is created when calling <code>reg-sub</code>, but it’s really only
+instantiated in the call to subscribe.</p>
+<pre><code class="language-clojure">(subscribe [:todos])
+</code></pre>
+<p>The reason for this is that subscriptions can take arguments, and only when you
+call subscribe does re-frame know what those arguments are. For example this is
+a subscription to get a specific todo item based on its id.</p>
+<p>Now we do need the query vector, with some destructuring it’s easy to get to the
+individual arguments. The first item in the vector will be the name of the
+subscription, <code>:todo-by-id</code>, we can ignore that one. The id we’re looking for
+comes second.</p>
+<p>Now when you call <code>subscribe</code> include the todo’s <code>:id</code> as second argument in the
+query vector, and it will create a reaction that always looks up the todo with
+this particular id.</p>
+<pre><code class="language-clojure">(reg-sub :todo-by-id
+         (fn [db [_ uuid]]
+           (get (:todos db) uuid)))
+
+(subscribe [:todo-by-id #uuid "0eda7b22-cff7-4abc-b10c-fd892bd7132b"])
+</code></pre>
+<p>Subscriptions are named such because they allow a component to “subscribe” to
+specific pieces of data. It’s like there’s a cable connected to the component
+that always feeds it the current value of whatever data it’s interested in.</p>
+<p>Looked at this way, the database is like a signal that always sends out the
+current state of the database. Subscriptions are like signal transformers, they
+receive one or more input signals, and send out a new signal based on what
+they’re receiving.</p>
+<p>Finally components tune in to these signals so they stay up to date.</p>
+<pre><code class="language-clojure">(defn todos-list []
+  (let [todos (subscribe [:todos])]
+    (fn []
+      [:ul#todo-list
+       (for [todo @todos]
+         ^{:key (:id todo)} [todo-item todo])])))
+</code></pre>
+<p>A collection of things that send, receive, or transform signals is known as a
+signal graph. This signal graph is still pretty simple, there’s only one
+subscription between the app db and the components. It’s possible however to use
+ subscriptions as inputs for other subscriptions, creating a chain of
+computed values.</p>
+<p>Any state change will trickle down through the chain of subscriptions, but if
+the output of a subscription didn’t change, then the flow of data stops.
+Subscriptions further down the line will not be recomputed, and components that
+use them will not be re-rendered.</p>
+<p>It should be clear now that good use of subscriptions can go a long way towards
+making your app perform well.</p>
+<p>There are two ways to link subscriptions together. I’ll first show you how to
+plug them together using a special “arrow” syntax, then afterwards show the more
+general way.</p>
+<p>Create a new subscription called <code>:todos/completed</code>. I’m using a namespaced
+keyword this time. As your app grows it’s a good idea to use these both for
+subscriptions and for events, to logically group things together. This way it’s
+also easy later on to split things into multiple files based on the keyword
+prefix.</p>
+<p>Now after the subscription name, add this arrow keyword, and then the query
+vector.</p>
+<p>You can think of this arrow as saying “use the output of <code>[:todos]</code> as input for
+this subscription”. Now the subscription function no longer receives the whole
+database, but instead just receives the list of todos as output by the <code>:todos</code>
+subscription.</p>
+<pre><code class="language-clojure">(reg-sub :todos/completed :&lt;- [:todos]
+         (fn [todos _]
+           (filter :completed todos)))
+</code></pre>
+<p>Let me also quickly add a subscription for the “active” todos, in other words
+the ones that haven’t been completed.</p>
+<pre><code class="language-clojure">(reg-sub :todos/active :&lt;- [:todos]
+         (fn [todos _]
+           (remove :completed todos)))
+</code></pre>
+<p>Now you can implement a subscription for the currently visible todos, which
+depending on the value of <code>:display-type</code> will be either all of them, just the
+completed ones, or only the active ones. We already have subscriptions for all
+of those, so now you can use them as inputs.</p>
+<p>When a subscription has more than one input, as is the case here, then their
+values will be passed to the subscription function in a vector, so you need an
+extra pair of square brackets here to destructure the vector. This wasn’t the
+case earlier, when there was only one input.</p>
+<p>With all of that there it’s just a matter of switching on the display type and
+returning the right response.</p>
+<pre><code class="language-clojure">(reg-sub :todos/visible
+         :&lt;- [:display-type]
+         :&lt;- [:todos]
+         :&lt;- [:todos/completed]
+         :&lt;- [:todos/active]
+         (fn [[type all completed active] query-v]
+           (case type
+             :all all
+             :completed completed
+             :active active)))
+</code></pre>
+<p>Now let’s go back to this <code>:todo-by-id</code> subscription. Suppose you want to add a
+similar, derived subscription, that tells you if a todo with a certain id is
+completed or not.</p>
+<p>Here’s a first attempt, using <code>:todo-by-id</code> as an input. But <code>:todo-by-id</code>
+requires an <code>uuid</code> as an argument, and we only have access to that uuid from the
+query vector inside the subscription function, not outside of it when setting up
+the inputs.</p>
+<p>For cases like these where you need access to the query vector to set up the
+inputs, there’s a different approach.</p>
+<pre><code class="language-clojure">(reg-sub :todo-by-id
+         (fn [db [_ uuid]]
+           (get (:todos db) uuid)))
+
+(reg-sub :todo-completed? :&lt;- [:todo-by-id uuid]
+         (fn [todo [_ uuid]]
+           (:completed todo)))
+</code></pre>
+<p>Instead of using the magical arrow syntax, you can use a function that provides
+the inputs for the subscription. The return value has to be either a single
+ratom or reaction, or a vector of them. re-frame will take care of derefercing
+them and passing them to the subscription as inputs.</p>
+<pre><code class="language-clojure">(reg-sub :todo-completed?
+         (fn [query-v]
+           (subscribe [:todo-by-id (second query-v)]))
+         (fn [todo [_ uuid]]
+           (:completed todo)))
+</code></pre>
+<p>We can refactor <code>:todos/visible</code> to use this syntax as well, to demonstrate how
+it looks when there’s more than one input. Notice that the inputs-function now
+returns a vector of reactions, which corresponds with the vector of inputs that
+is passed to the subscription-function.</p>
+<pre><code class="language-clojure">(reg-sub :todos/visible
+         (fn [_]
+           [(subscribe [:display-type])
+            (subscribe [:todos])
+            (subscribe [:todos/completed])
+            (subscribe [:todos/active])])
+
+         (fn [[type all completed active] query-v]
+           (case type
+             :all all
+             :completed completed
+             :active active)))
+</code></pre>
+<p>So far I’ve used subscriptions as inputs, but <code>subscribe</code> just returns a
+reaction, and in fact any reaction or ratom will work as an input just fine.
+This can be very useful when migrating a legacy Reagent app to re-frame. You can
+continue to use the ratoms you used before to store application state, but
+already use subscriptions to populate your views. Once that is done it should be
+easier to migrate the state held in those atoms into the re-frame database.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/redolist">browse source code</a></p>
+<p>Starting point is the <a shape="rect" href="https://github.com/lambdaisland/redolist/tree/ep20-start">ep20-start</a> branch, the episode goes up to the <a shape="rect" href="https://github.com/lambdaisland/redolist/tree/ep20-end">ep20-end</a>. [<a shape="rect" href="https://github.com/lambdaisland/redolist/compare/ep20-start...ep20-end">Full diff</a>]</p>
+<h2 id="errata">Errata</h2>
+<p>The video is missing the definition of the <code>:display-type</code> subscription. The transcript has been updated to include it.</p>
+<pre><code class="language-clojure">(reg-sub :display-type
+         (fn [db _]
+           (:display-type db)))
+</code></pre>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This episode is part of a series on building React apps using Reagent and re-frame.</p>
+<p>If you’re not familiar with re-frame yet, then start here:</p>
+<ul>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/re-frame">19. re-frame</a></li></ul>
+<p>re-frame builds on top of Reagent, which you can learn about in these episodes.
+Especially the first and third are relevant to this episode</p>
+<ul>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/reagent">9. Reagent</a></li>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/reagent-2-cursors">10. Reagent part 2: Cursors</a></li>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/reagent-3-keys-lifecycle-methods">11. Reagent part 3: Keys &amp; Lifecycle Methods</a></li></ul>
+<p>Reagent is a ClojureScript wrapper for React. If you’re new to React development
+and not yet familiar with its concepts like components and the virtual DOM, then
+start here:</p>
+<ul>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/react-app-clojurescript">6. Building a React app with ClojureScript</a></li></ul>
+<h2 id="code">Code</h2>
+<pre><code class="language-clojure">(ns redolist.subs
+    (:require-macros [reagent.ratom :refer [reaction]])
+    (:require [re-frame.core :as re-frame :refer [reg-sub]]))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Regular subscriptions
+
+(reg-sub :display-type
+         (fn [db]
+           (:display-type db)))
+
+(reg-sub :todos
+         (fn [db]
+           (vals (:todos db))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Subscriptions with othe subscriptions as inputs
+
+(reg-sub :todos/visible
+         :&lt;- [:display-type]
+         :&lt;- [:todos]
+         :&lt;- [:todos/completed]
+         :&lt;- [:todos/active]
+         (fn [[type all completed active]]
+           (case type
+             :all all
+             :completed completed
+             :active active)))
+
+(reg-sub :todos/completed :&lt;- [:todos]
+         (fn [todos]
+           (filter :completed todos)))
+
+(reg-sub :todos/active :&lt;- [:todos]
+         (fn [todos]
+           (filter (complement :completed) todos)))
+
+(reg-sub :todos/empty? :&lt;- [:todos]
+         (fn [todos]
+           (empty? todos)))
+
+(reg-sub :todos/all-complete? :&lt;- [:todos/active]
+         (fn [active]
+           (empty? active)))
+
+(reg-sub :todos/active-count :&lt;- [:todos/active]
+         (fn [active]
+           (count active)))
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

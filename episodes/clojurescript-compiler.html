@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojurescript-compiler" />
+<meta name="twitter:title" content="The ClojureScript Compiler" />
+<meta name="twitter:description" content="To be effective at programming, you have to understand your tools. In this episode we'll peel a few layers away, and use the ClojureScript compiler without any help from..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/576410742-d7ae94feea5fe63889ede5c056de5c8a01fe7fb6f81abd7ad5ccad907ed1ff9b-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="The ClojureScript Compiler" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojurescript-compiler" />
+<meta name="video:duration" content="817" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/576410742-d7ae94feea5fe63889ede5c056de5c8a01fe7fb6f81abd7ad5ccad907ed1ff9b-d_1280x720?r=pad" />
+<meta name="og:description" content="To be effective at programming, you have to understand your tools. In this episode we'll peel a few layers away, and use the ClojureScript compiler without any help from..." />
+<meta name="video:release_date" content="2016-06-17T13:55:06.363Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">The ClojureScript Compiler</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/171091240?h=e78ba527d5&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="The ClojureScript Compiler"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>To be effective at programming, you have to understand your tools. In this episode we’ll peel a few layers away, and use the ClojureScript compiler without any help from Leiningen, Cljsbuild or Figwheel. You’ll learn about compiler options, levels of optimization, the role of the Google Closure Library, and how to confgure the compiler for development and production use.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>If you’re just starting out with ClojureScript, either with or without tinkering
+with Clojure first, it’s easy to get lost in ClojureScript’s setup and tooling.</p>
+<p>There are various projects and tools that try to make your life easier, but
+which ones do you really need, and do the benefits outweigh the added
+complexity?</p>
+<p>In this and following episodes we’ll start with the most basic setup, and work
+our way up to more complex tools. If you get stuck with some of the more
+advanced tools, try taking a step back. Having less layers involved can make it
+more clear what’s going on.</p>
+<p>For this first episode we’ll use the standalone <code>cljs.jar</code>. You can find it on
+<a shape="rect" href="https://github.com/clojure/clojurescript/releases">ClojureScript’s Github site under “releases”</a>.</p>
+<p></p>
+<pre><code class="language-sh">curl -L https://github.com/clojure/clojurescript/releases/download/r1.9.36/cljs.jar &gt; cljs.jar
+</code></pre>
+<p>JAR is short for “Java Archive”. Don’t worry though, no Java code has been used
+in the making of this video, but we will make use of the Java Runtime
+Environment, since that is needed to power Clojure.</p>
+<p>A JAR is essentially a zip file containing code and other resources. This
+particular JAR is great to play around with, because it bundles both Clojure and
+ClojureScript, so it has everything to get you started.</p>
+<p>For example, you can use it to start a Clojure REPL by invoking Clojure’s “main”
+class.</p>
+<pre><code class="language-sh">cp ~/Downloads/cljs.jar .
+java -cp cljs.jar clojure.main
+</code></pre>
+<p>You can also use this JAR to execute a Clojure source file, by passing the
+filename as an extra argument.</p>
+<p>You might wonder what that “-cp” stands for. It specifies the “classpath”, which
+is Java’s way of specifying locations to look for stuff. It’s like the “load
+path” or “library path” of other languages.</p>
+<p>An entry in the classpath can be a directory path, but it can also be a JAR
+file, in which case Java will look for resources inside the JAR. Here we tell it
+that to find <code>clojure.main</code>, in needs to look inside <code>cljs.jar</code></p>
+<pre><code class="language-sh">mkdir clj
+echo '(doseq [i (range 1 7)] (println i "mississippi"))' &gt; clj/mississippi.clj
+java -cp cljs.jar clojure.main clj/mississippi.clj
+</code></pre>
+<p>To show you I have nothing up my sleaves, I’m starting from a new and empty
+directory. My ClojureScript code will go in the <code>cljs</code> directory. The entry
+point of this app will be the <code>demo.main</code> namespace. I will follow the Clojure
+naming conventions by putting the code for this namespace in a <code>main.cljs</code> file
+in the <code>demo</code> directory.</p>
+<pre><code class="language-sh">mkdir -p cljs/demo
+emacsclient -n cljs/demo/main.cljs
+</code></pre>
+<pre><code class="language-clojure">(ns demo.main)
+
+(js/alert "it's working")
+</code></pre>
+<p>Now two things need to happen: we need to compile this code to JavaScript, and
+we need to deliver it to the browser.</p>
+<p>The ClojureScript compiler is written in Clojure, so you can run it simply by
+calling a Clojure function. Let’s write a script to compile our code.</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options {:output-to "compiled.js"})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<p>Let’s see what we have so far, I have a build script written in Clojure, which
+will compile the ClojureScript code to JavaScript. There’s a ClojureScript
+source file, which needs to be compiled, and then there’s the JAR containing
+Clojure and ClojureScript.</p>
+<pre><code class="language-sh">$ tree
+.
+├── clj
+│   └── build.clj
+├── cljs
+│   └── demo
+│       └── main.cljs
+└── cljs.jar
+</code></pre>
+<p>Now we can use Clojure to run the build script, which kicks off the
+ClojureScript compilation. We set the Java classpath to be the cljs JAR. We tell
+Java to run clojure.main, and pass the name of our build script as an argument
+to clojure.main. Clojure will compile and run our script, which then compiles
+our ClojureScript code.</p>
+<pre><code class="language-shell">java -cp cljs.jar clojure.main clj/build.clj
+</code></pre>
+<p>Woah there’s a lot more going on now. There’s <code>compiled.js</code>, which we asked for,
+but under the <code>out</code> directory there’s all kinds of other stuff. ClojureScript
+didn’t just compile our one namespace, but also <code>cljs.core</code>, which contains the
+ClojureScript built-in functions and data structures. And <code>cljs.core</code> has its
+own dependencies, which also need to be compiled.</p>
+<p>You might wonder what that <code>goog</code> stuff is. ClojureScript makes use the Google
+Closure Library (with an “s”, not with a “j”, I know it’s confusing). The Google
+Closure Library or GCL provides us with three things,</p>
+<ul>
+<li>A collection of useful functions, a bit like a standard library</li>
+<li>A module and dependency tracking system</li>
+<li>An optimizing JavaScript-to-JavaScript compiler</li></ul>
+<p>In fact, ClojureScript namespaces are compiled to GCL modules. That way
+ClojureScript doesn’t need to implement its own dependency tracking, and it
+allows GCL to do advanced optimizations, like “dead code elimination”.</p>
+<pre><code class="language-sh">$ tree
+.
+├── clj
+│   └── build.clj
+├── cljs
+│   └── demo
+│       └── main.cljs
+├── cljs.jar
+├── compiled.js
+└── out
+    ├── cljs
+    │   ├── core.cljs
+    │   ├── core.js
+    │   └── core.js.map
+    ├── cljs_deps.js
+    ├── demo
+    │   ├── main.cljs
+    │   ├── main.cljs.cache.json
+    │   ├── main.js
+    │   └── main.js.map
+    └── goog
+        ├── array
+        │   └── array.js
+        ├── asserts
+        │   └── asserts.js
+        ├── base.js
+        ├── debug
+        │   └── error.js
+        ├── deps.js
+        ├── dom
+        │   └── nodetype.js
+        ├── object
+        │   └── object.js
+        └── string
+            ├── stringbuffer.js
+            └── string.js
+</code></pre>
+<p>Now all that’s left for us to do is ship this to the browser. Create this small
+HTML file, and open your browser. Hmmm… not quite what we expected. The
+problem is that while ClojureScript compiled our code, it’s not getting loaded.
+Instead we get an error message saying <code>goog</code> is undefined.</p>
+<p>Some tutorials will tell you now to add some extra stuff to your <code>index.html</code> so
+<code>goog</code> is no longer undefined, but that would mean adding stuff that you would
+have to strip out again when deploying to production. Instead there’s an easier
+solution.</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;!-- index.html --&gt;
+  &lt;body&gt;
+    &lt;script type="text/javascript" src="compiled.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>If we tell ClojureScript what our main namespace is, then it will also inject
+some extra code to make sure this namespace and all its dependencies get loaded.</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options {:output-to "compiled.js"
+                       :main 'demo.main})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<p>Recompile…</p>
+<pre><code class="language-shell">java -cp cljs.jar clojure.main clj/build.clj
+</code></pre>
+<p>And now it works</p>
+<p></p>
+<p>Now if you peak under the covers, you’ll notice a whole lot of extra stuff got
+added to the DOM. Because we compiled our code without any optimizations, each
+ClojureScript namespace and GCL module is loaded as a separate JavaScript file,
+plus ClojureScript injected some code to bootstrap our app.</p>
+<p>Also notice that ClojureScript helpfully generated source maps, so we see
+ClojureScript code when using the browser’s debugger.</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;script type="text/javascript" src="compiled.js"&gt;&lt;/script&gt;
+    &lt;script src="out/goog/base.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/deps.js"&gt;&lt;/script&gt;
+    &lt;script src="out/cljs_deps.js"&gt;&lt;/script&gt;
+    &lt;script&gt;if (typeof goog != "undefined") { goog.require("demo.main"); } else { console.warn("ClojureScript could not load :main, did you forget to specify :asset-path?"); };&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/string/string.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/object/object.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/string/stringbuffer.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/debug/error.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/dom/nodetype.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/asserts/asserts.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/array/array.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/../cljs/core.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/../demo/deps.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///tmp/out/goog/../demo/core.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Let’s have another look at the build script. We passed the compiler two
+arguments: the path of the directory with source files to compile, and a map of
+“compiler options”. It’s worth it to focus on those compiler options for a bit,
+because even when using other tools like lein-cljsbuild or Figwheel you will
+still be dealing with these exact same compiler options.</p>
+<p>There are too many options to cover them all, plus many of them you won’t have
+to care about. I’ll go over the ones that matter most, either for a development
+setup or for a production build. The ClojureScript wiki contains
+<a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Compiler-Options">a complete reference of all recognized options</a>.</p>
+<p></p>
+<p>You can see all intermediate JavaScript files in the <code>out/</code> directory.</p>
+<p>Building a ClojureScript project happens in two steps, first the ClojureScript
+compiler turns each ClojureScript namespace into a JavaScript module, then these
+modules are fed to the Google Closure Compiler, to produce a single, optimized,
+minimized JavaScript file.</p>
+<p>I call these intermediate JavaScript files “modules” because that’s what they
+are to Google Closure. They follow specific conventions to take part in Google
+Closure’s module system.</p>
+<pre><code class="language-sh">$ find out -name *.js
+out/demo/main.js
+out/cljs/core.js
+out/goog/object/object.js
+out/goog/debug/error.js
+out/goog/asserts/asserts.js
+out/goog/array/array.js
+out/goog/dom/nodetype.js
+out/goog/string/string.js
+out/goog/string/stringbuffer.js
+out/goog/deps.js
+out/goog/base.js
+</code></pre>
+<p>Here’s what our compiled <code>demo.main</code> namespace looks like.</p>
+<p>Each module specifies its name by calling <code>goog.provide</code>. If a module depends on
+other modules, it can specifiy those dependencies with <code>goog.require</code>. Our
+namespace declaration didn’t specifiy dependencies, but we still depend on the
+core ClojureScript functions being available.</p>
+<p>There’s also a magic comment at the end to point the browser at the source map.</p>
+<pre><code class="language-javascript">// Compiled by ClojureScript 1.9.36 {}
+goog.provide('demo.main');
+goog.require('cljs.core');
+alert("it's working!");
+
+//# sourceMappingURL=main.js.map%
+</code></pre>
+<p>Now normally the Google Closure Compiler would take all these modules, analyze
+them, and output a single optimized JavaScript file, but we didn’t specify an
+optimization level, which means we got the default value, which is <code>:none</code>.</p>
+<p><code>:none</code> is the recommended setting for development. With this setting
+ClojureScript does not invoke the Google Closure Compiler. Instead it loads all
+the module files individually, which is why we got all those extra <code>&lt;script&gt;</code>
+tags added to the DOM.</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options {:output-to "compiled.js"
+                       :main 'demo.main
+                       :optimizations :none})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<p>Opting out of optimizations, as we’ve done so far, is useful for development
+because it allows ClojureScript to only recompile the namespaces that have
+changed. It is also a requirement for Figwheel to be able to do its automatic
+code reloading.</p>
+<p>For production use we probably do want some level of optimization. The Google
+Closure Compiler gives us three options: whitespace, simple, and advanced. I’ll
+leave a link to this documentation in the show notes, it’s a good idea to read
+through it once when you have a moment.</p>
+<p><a shape="rect" href="https://developers.google.com/closure/compiler/docs/compilation_levels">levels of optimizations</a>:</p>
+<p>Any optimization level (besides <code>none</code>, or no optimization at all) will cause
+all modules to be packed together into a single JavaScript file. This means we
+no longer need to specify a main namespace, any top level forms in the compiled
+namespaces will be part of this single compiled JavaScript file.</p>
+<p>The simplest option <code>:whitespace</code>, will only strip out comments and whitespace
+to reduce the file size, but that’s it. The resulting file is over a megabyte!</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options '{:output-to "compiled.js"
+                        :optimizations :whitespace})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<pre><code class="language-sh">$ rm -rf compiled.js out
+$ java -cp cljs.jar clojure.main clj/build.clj
+</code></pre>
+<pre><code class="language-sh">-rw-rw-r-- 1 arne arne 1014K Jun 15 14:54 compiled.js
+</code></pre>
+<p>But something else changed as well, we no longer have source maps. ClojureScript
+only enables source maps when not using optimizations, but we can easily turn
+them on again.</p>
+<p></p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options '{:output-to "compiled.js"
+                        :source-map "compiled.js.map"
+                        :optimizations :whitespace})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<p></p>
+<p>Oh yeah, we also need to specify the output directory or this won’t work. So far
+we’ve used the default output directory, called “out”, we can just stick to
+that. When compiling without optimizations you would have to set this output-dir
+to wherever your webserver looks for files to serve.</p>
+<p>If you do that and you’re still having trouble loading these files, you might
+have to fiddle with the <code>asset-path</code> setting. I won’t show that here, you can
+find it documented in the ClojureScript wiki.</p>
+<p>With optimizations enabled the output directory is only used for intermediate
+files, so it doesn’t matter much what you call it or where you put it. Another
+commonly used name for it is “target”.</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options '{:output-to "compiled.js"
+                        :source-map "compiled.js.map"
+                        :output-dir "out"
+                        :optimizations :whitespace})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<p>One step up from <code>:whitespace</code> optimization is <code>:simple</code>. This is where the
+Google Closure Compiler starts doing some of its magic. It will rename variables
+to make them shorter, but only in ways that can not possibly change the meaning
+of the program. This mainly means it limits itself to variables inside
+functions. It’s somewhat limited, but still managed to shave a quarter off the
+final file size.</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options '{:output-to "compiled.js"
+                        :source-map "compiled.js.map"
+                        :output-dir "out"
+                        :optimizations :simple})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<pre><code class="language-sh">-rw-rw-r-- 1 arne arne 727K Jun 15 15:30 compiled.js
+</code></pre>
+<p>Finally we get to <code>:advanced</code> optimization. This is the real deal. GCL will not
+only do renaming of functions, variables, and constants across your complete
+code base, it will also remove any code that isn’t being used. This is known as
+“dead code elimination”. If you require a big library, but only end up using one
+or two functions, then this dramatically reduces the impact on your final file
+size.</p>
+<p>This is also true for <code>cljs.core</code>. If you’re not using all the ClojureScript core functions, then you’re not paying for them.</p>
+<pre><code class="language-clojure">;; clj/build.clj
+(require '[cljs.build.api :as cljs])
+
+(def compiler-options '{:output-to "compiled.js"
+                        :source-map "compiled.js.map"
+                        :optimizations :advanced})
+
+(cljs/build "cljs" compiler-options)
+</code></pre>
+<p>And, no joke, our original megabyte has shrunk to just over a kilobyte. Factor
+in HTTP gzip compression, and you’re looking at 648 <em>bytes</em> over the wire.
+That’s not bad!</p>
+<p>Keep in mind that advanced optimization is invasive. It will assume your code
+sticks to the Google Closure Library conventions. Only if that’s the case can it
+perform these advanced optimizations correctly.</p>
+<pre><code class="language-sh">$ ls -lh compiled.js
+-rw-rw-r-- 1 arne arne 1.3K Jun 15 15:37 compiled.js
+</code></pre>
+<pre><code class="language-sh">$ cat compiled.js | gzip | wc -c
+648
+</code></pre>
+<p>If you’re only depending on other ClojureScript code, then that’s not an issue,
+but it’s a different story if you rely on third party JavaScript libraries.</p>
+<p>Consuming third party JavaScript code is a big topic, but I’ll give you a few
+rules of thumb. First check http://cljsjs.org. Many popular libraries have been
+packaged for use with ClojureScript. These packages are carefully prepared so
+they contain everything needed to be compatible with ClojureScript and GCL.</p>
+<p>If there’s no CLJSJS package, and you don’t care too much about file size, you
+can always choose for <code>:optimizations :simple</code>. It’s not as nice, but it always
+works.</p>
+<p>If that’s not good enough for you, you will have to learn about <code>externs</code>. The
+ClojureScript wiki has documentation to help you get started. I’ll leave some
+links in the show notes.</p>
+<p></p>
+<p>In the next episode we’ll learn about browser repls, and we’ll look at two
+popular tools for compiling ClojureScript: lein-cljbuild and Figwheel.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>The <a shape="rect" href="https://github.com/lambdaisland/clojurescript-compiler">Code of this episode</a> is on Github.</p>
+<p>On the <a shape="rect" href="https://github.com/clojure/clojurescript/releases/">ClojureScript releases</a> page you can download <code>cljs.jar</code></p>
+<p>From the ClojureScript wiki:</p>
+<ul>
+<li><a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Compiler-Options">An overview of all the compiler options</a></li>
+<li><a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Source-maps">Source maps</a></li>
+<li><a shape="rect" href="https://github.com/cljsjs/packages/wiki/Creating-Externs">Creating Externs</a></li>
+<li><a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Dependencies">Dependencies</a></li></ul>
+<p>Google Closure Compiler:</p>
+<ul>
+<li><a shape="rect" href="https://developers.google.com/closure/compiler/docs/compilation_levels">Optimization levels</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

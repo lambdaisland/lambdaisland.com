@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojure-keyword-arguments" />
+<meta name="twitter:title" content="Clojure Keyword Arguments" />
+<meta name="twitter:description" content="Clojure's variable argument functions combined with map destructuring results in a concise syntax for keyword arguments. We'll pick this feature apart to see exactly what's..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/583537176-0367453c5480d13f8afcfde89b1785f1a207adbc526630a69582276f75b701c5-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Clojure Keyword Arguments" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojure-keyword-arguments" />
+<meta name="video:duration" content="559" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/583537176-0367453c5480d13f8afcfde89b1785f1a207adbc526630a69582276f75b701c5-d_1280x720?r=pad" />
+<meta name="og:description" content="Clojure's variable argument functions combined with map destructuring results in a concise syntax for keyword arguments. We'll pick this feature apart to see exactly what's..." />
+<meta name="video:release_date" content="2016-07-26T15:52:56.891Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Clojure Keyword Arguments</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/176318671?h=f42597265d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Keyword Arguments"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Clojure’s variable argument functions combined with map destructuring results in a concise syntax for keyword arguments. We’ll pick this feature apart to see exactly what’s inside. You’ll learn about “mapply”, and learn why keyword arguments aren’t always the best solution.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>I want to zoom in for a moment on the use of keyword arguments in Clojure.
+Although the syntax takes some getting used to they’re a great feature to
+acquaint yourself with. And the best part? They don’t really exist!</p>
+<p>To set the stage, we’ll start with a simple Hiccup component, for rendering
+information about a specific tea on our website.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [&amp; {:keys [name type description]}]
+  [:div.tea
+   [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+   [:p.description description]])
+</code></pre>
+<p>And here’s how you would use it. The arguments are specified as key-value pairs,
+the way you would when creating a hash-map.</p>
+<pre><code class="language-clojure">(tea-info-sheet :name "Alishan"
+                :type "Wulong"
+                :description "Hand picked high-mountain tea grown close to the Yushan national park.")
+
+;;=&gt;
+[:div.tea
+ [:h2.name "Alishan" [:em "(" [:a {:href "/type/Wulong"} "Wulong"] ")"]]
+ [:p.description
+  "Hand picked high-mountain tea grown close to the Yushan national park."]]
+
+</code></pre>
+<p>There’s quite some syntax in that argument list though. Let’s try to pick that
+apart, until we get to the bottom of it, then build it up again step by step.</p>
+<p>The first thing you notice is that initial ampersand. Normally in an argument
+list this is followed by a single “rest” argument, which will receive any
+remaining arguments gathered up in a collection.</p>
+<p>This function demostrates that, the first argument is assigned to the first
+argument name, and arguments 2 to 4 are assigned to <code>rest-of-the-args</code> as a
+list.</p>
+<pre><code class="language-clojure">(defn demo [first-arg &amp; rest-of-the-args]
+  {:first-arg first-arg
+   :rest-of-args rest-of-the-args})
+
+(demo 1 2 3 4)
+;;=&gt;
+{:first-arg 1, :rest-of-args (2 3 4)}
+</code></pre>
+<p>Or take this <code>separate</code> function, a variation on <code>clojure.string/join</code>. The
+first argument is a separator, which we put in between each pair of remaining
+arguments with <code>interpose</code>, before turning the whole lot into a single string.</p>
+<pre><code class="language-clojure">(defn separate [separator &amp; rest]
+  (apply str (interpose separator rest)))
+
+(separate "," "foo" "bar" "baz")
+</code></pre>
+<p>If we take the ampersand out of our <code>tea-info-sheet</code> function, we now get a
+function which takes only a single argument, which should be a map which will be
+destructured.</p>
+<p>Now when we call it we need to round up these key-value pairs in a map.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [{:keys [name type description]}]
+  [:div.tea
+   [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+   [:p.description description]])
+
+(tea-info-sheet {:name "Alishan"
+                 :type "Wulong"
+                 :description "Hand picked high-mountain tea grown close to the Yushan national park."})
+
+;;=&gt;
+[:div.tea
+ [:h2.name "Alishan" [:em "(" [:a {:href "/type/Wulong"} "Wulong"] ")"]]
+ [:p.description
+  "Hand picked high-mountain tea grown close to the Yushan national park."]]
+</code></pre>
+<p>Let’s make it more clear that this function really only takes a single argument
+by doing the destructuring separately.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [tea-props]
+  (let [{:keys [name type description]} tea-props]
+    [:div.tea
+     [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+     [:p.description description]]))
+</code></pre>
+<p>This destructuring still uses some pretty magical syntax, using this <code>keys</code>
+keyword plus a vector of symbols. This is really just a shorthand for
+destructuring each key separately.</p>
+<p>This syntax used to trip me up, because I assumed it would follow the structure
+of the map, with keywords on the left, and the to-be-assigned variable name on
+the right, but it makes sense if you think of it as a binding form. In a
+let-block the to-be-assigned variable name also comes on the left, and the same
+is true when destructuring maps.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [tea-props]
+  (let [{name :name
+         type :type
+         description :description} tea-props]
+    [:div.tea
+     [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+     [:p.description description]]))
+</code></pre>
+<p>And this in turn is nothing but syntactic sugar for pulling out each value separately.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [tea-props]
+  (let [name (:name tea-props)
+        type (:type tea-props)
+        description (:description tea-props)]
+    [:div.tea
+     [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+     [:p.description description]]))
+</code></pre>
+<p>Now let’s go one step back, so we have the map destructuring again, and then
+make our function take a variable number of arguments. Now it works again like
+it did before, but the fact that it does is a bit surprising, after all we know
+that tea-props will be a list, but yet somehow we can treat it as if it’s a map.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [&amp; tea-props]
+  (let [{name :name
+         type :type
+         description :description} tea-props]
+    [:div.tea
+     [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+     [:p.description description]]))
+</code></pre>
+<p>Turns out if you try to destructure a sequence into a map, Clojure will convert
+it for you behind the scene. This can be any sequence like lists and vectors,
+and even lazy sequences.</p>
+<pre><code class="language-clojure">(defn demo [coll]
+  (let [{name :name
+         type :type} coll]
+    {"its name" name
+     "its type" type}))
+
+(demo '(:name "Alishan" :type "Wulong"))
+;;=&gt;
+{"it's name" "Alishan", "it's type" "Wulong"}
+</code></pre>
+<p>So now a lot should become clear. Let’s turn this function back into the
+original version. Eliminating the let is straightforward, and we can use the
+more concise map destructuring syntax. This syntax has an extra advantage: we
+can specify fallback values, using <code>:or</code>. <code>:or</code> takes a map, but you can think
+of it as a kind of <code>let</code>, as it uses similar binding forms, with a symbol
+followed by a value.</p>
+<pre><code class="language-clojure">(defn tea-info-sheet [&amp; {:keys [name type description]
+                         :or {name "Generic tea"
+                              description "No description given"}}]
+  [:div.tea
+   [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])]
+   [:p.description description]])
+
+(tea-info-sheet :name "Alishan")
+;;=&gt;
+[:div.tea [:h2.name "Alishan" nil] [:p.description "No description given"]]
+</code></pre>
+<p>Now suppose we want to pull this header out into a separate “product-title”
+component. It also takes keyword arguments just like the main component, so I
+pass on the ones it needs.</p>
+<pre><code class="language-clojure">(defn product-title [&amp; {:keys [name type]}]
+  [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])])
+
+(defn tea-info-sheet [&amp; {:keys [name type description]
+                         :or {name "Generic tea"
+                              description "No description given"}}]
+  [:div.tea
+   (product-title :name name
+                  :type type)
+   [:p.description description]])
+</code></pre>
+<p>But we’ve introduced some duplication here, it’s not much in this case, but it
+would be much nicer if we could just pass the map of tea properties on to the
+other component.</p>
+<p>Getting hold of the properties is straightforward, besides <code>:keys</code> and <code>:or</code> we
+can add an <code>:as</code> keyword to capture to original input.</p>
+<p>Passing it on to the other component isn’t straightforward at all though. Even
+though it also destructures its arguments to a map, we can’t just pass it a map.
+Instead we first need to turn the map into a flat sequence again, and then use
+apply, since the items in the sequence should be passed as individual arguments.</p>
+<p>Ugh. What a mess.</p>
+<pre><code class="language-clojure">(defn product-title [&amp; {:keys [name type]}]
+  [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])])
+
+(defn tea-info-sheet [&amp; {:keys [name type description]
+                         :or {name "Generic tea"
+                              description "No description given"}
+                         :as tea-props}]
+  [:div.tea
+   (apply product-title (apply concat tea-props))
+   [:p.description description]])
+
+(tea-info-sheet :description "Fine tea" :type "tea")
+;; =&gt;
+[:div.tea [:h2.name nil [:em "(" [:a {:href "/type/tea"} "tea"] ")"]] [:p.description "Fine tea"]]
+
+</code></pre>
+<p>We can clean this up by using <code>mapply</code>, which is like regular <code>apply</code>, but works
+with maps. <code>mapply</code> is not included with Clojure, but it’s part of all the main
+Clojure utility libraries like Medley, Encore, or Prismatic’s Plumbing. There’s
+even a project on Clojars that <em>only</em> implements <code>mapply</code>. In total
+Crossclj.info currently lists 29 separate libraries all implementing their own
+`mapply.</p>
+<p>Here’s what a potential implementation looks like.</p>
+<pre><code class="language-clojure">(defn mapply
+  [f &amp; args]
+  (apply f (apply concat (butlast args) (last args))))
+</code></pre>
+<p>Using that our function becomes a little bit less silly, but there’s another
+problem. Let’s actually use our current implementation, but rely on the fallback
+values.</p>
+<p>The name disappeared! Turns out that even though we supplied fallback values,
+this <code>:as tea-props</code> still contains the original input without the defaults.</p>
+<p>We could repeat them in the other component, but that’s also not great.</p>
+<pre><code class="language-clojure">(defn product-title [&amp; {:keys [name type]}]
+  [:h2.name name (if type [:em "(" [:a {:href (str "/type/" type)} type] ")"])])
+
+(defn tea-info-sheet [&amp; {:keys [name type description]
+                         :or {name "Generic tea"
+                              description "No description given"}
+                         :as tea-props}]
+  [:div.tea
+   (mapply product-title tea-props)
+   [:p.description description]])
+
+(tea-info-sheet)
+</code></pre>
+<p>I hope I’ve demonstrated that using keyword arguments in this way can have real
+drawbacks. And what did we gain? We’ve saved the consumer of our API one pair of
+curlies.</p>
+<p>Maybe it’s time to admit that <code>tea-props</code> are a first class citizen in our code,
+something that we can pass around, and that many functions can consume.</p>
+<p>If we change the two component functions to accept a single map, then we no
+longer need <code>mapply</code>, and it’s more clear that they really accept the same type
+of thing.</p>
+<pre><code class="language-clojure">(defn product-title [{:keys [name type]
+                      :or {name "Generic Tea"
+                           description "No description given"}}]
+  [:h2.name name (if type
+                   [:em "(" [:a {:href (str "/type/" type)} type] ")"])])
+
+(defn tea-info-sheet [{:keys [name type description]
+                       :or {name "Generic Tea"
+                            description "No description given"}
+                       :as tea-props}]
+  [:div.tea
+   (product-title tea-props)
+   [:p.description description]])
+
+
+
+(tea-info-sheet {:name "Alishan"
+                 :type "Oolong"
+                 :description "Hand picked high-mountain tea grown close to the Yushan national park"})
+</code></pre>
+<p>Finally for convenience, but also for safety and validation, we can provide a
+<code>tea-props</code> “constructor” function. We can make sure this always returns a map
+with all the necessary keys. It’s also a good place to provide specs to check
+for invalid usage.</p>
+<pre><code class="language-clojure">(defn tea-props [&amp; {:as props}]
+  (merge {:name "Generic Tea"
+          :description "No description given"} props))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="errata">Errata</h2>
+<p>Destructuring a vector as a map does not work the way destructuring a list works, like the episode claims. A vector is an associative data structure, where values are associated with their index. It is possible to use map (associative) destructuring with vectors, but only based on index. For instance, this will pull out the third and sixth item out of the vector and assign them to <code>x</code> and <code>y</code>.</p>
+<pre><code class="language-clojure">(let [{x 2 y 5} [10 11 12 13 14 15]]
+  {:x x
+   :y y})
+;;=&gt;
+{:x 12, :y 15}
+</code></pre>
+<h2 id="mapply">Mapply</h2>
+<p>Can be found in <a shape="rect" href="https://github.com/weavejester/medley">Medley</a>, <a shape="rect" href="https://github.com/ptaoussanis/encore">Encore</a>, <a shape="rect" href="https://github.com/plumatic/plumbing">Plumbing</a>, or simple in <a shape="rect" href="https://github.com/ToBeReplaced/mapply">its own jar</a></p>
+<pre><code class="language-clojure">(defn mapply
+  [f &amp; args]
+  (apply f (apply concat (butlast args) (last args))))
+</code></pre>
+<h2 id="further-reading">Further reading</h2>
+<p>The Clojure guide on destructuring has an in-depth section about <a shape="rect" href="http://clojure.org/guides/destructuring#_associative_destructuring">associative destructuring</a></p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

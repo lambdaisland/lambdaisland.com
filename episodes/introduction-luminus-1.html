@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/introduction-luminus-1" />
+<meta name="twitter:title" content="Introduction to Luminus, part 1" />
+<meta name="twitter:description" content="To give you a starting point for building your own app, we'll go through the process of building an application from scratch with Luminus. In this first part in a series of..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/570875248-167fb0d354f44aa4fe04ead1fcdcec041d04bb1c04a4a9a3dd837e3836da4701-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Introduction to Luminus, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/introduction-luminus-1" />
+<meta name="video:duration" content="557" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/570875248-167fb0d354f44aa4fe04ead1fcdcec041d04bb1c04a4a9a3dd837e3836da4701-d_1280x720?r=pad" />
+<meta name="og:description" content="To give you a starting point for building your own app, we'll go through the process of building an application from scratch with Luminus. In this first part in a series of..." />
+<meta name="video:release_date" content="2016-05-20T11:18:26.725Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Introduction to Luminus, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/166728277?h=0140ac0a00&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Introduction to Luminus - part 1"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>To give you a starting point for building your own app, we’ll go through the process of building an application from scratch with Luminus. In this first part in a series of three, you’ll learn to set up the database, write migrations to create tables with Migratus, create SQL queries with HugSQL, and tie it all together with Compojure routes and Selmer templates.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>One of the challenges when starting out with Clojure is piecing together a web
+development stack. There is no single dominant framework like Rails in the Ruby
+world, or Django for Python. Instead the focus is on small composable libraries.
+Figuring out which ones you need, what they do, and how to put them together can
+be a real challenge.</p>
+<p>The Luminus project seeks to remedy this. It gives you everything you need to
+get started in a single package. Luminus comes with comprehensive documentation,
+including information on security, testing, and how to deploy your app to
+production.</p>
+<p>In this episode, and the next one, I’ll take you on a quick tour through Luminus
+by building a simple wiki application.</p>
+<pre><code class="language-sh">lein new luminus lambwiki +postgres
+</code></pre>
+<p>Luminus comes as a template for leiningen, so I’m generating my application
+skeleton with the <code>lein new</code> command. I’ll be using PostgreSQL to store the
+data. It’s a tried and trusted database that I’m confident to use both during
+development and in production.</p>
+<pre><code class="language-sh">cd lambwiki
+l
+env
+log
+resources
+src
+target
+test
+Procfile
+profiles.clj
+project.clj
+README.md
+</code></pre>
+<p>The directory layout is pretty standard. Most code lives under the <code>src</code>
+directory. Configuration that only relates to a specific environment, such as
+development, or production, goes under <code>env</code>. The <code>resources</code> directory contains
+everything that isn’t clojure code, like SQL queries, HTML templates, CSS, and Javascript.</p>
+<pre><code class="language-sh">createdb lambwiki_dev
+emacsclient -n profiles.clj
+</code></pre>
+<pre><code class="language-clojure">;; profiles.clj
+{:profiles/dev  {:env {:database-url "jdbc:postgresql://localhost/lambwiki_dev?user=arne&amp;password=arne"}}
+ :profiles/test {:env {:database-url "jdbc:postgresql://localhost/lambwiki_test?user=arne&amp;password=arne"}}}
+</code></pre>
+<p>I will create a database to store our data using <code>createdb</code>, a command line
+utility provided by Postgres.</p>
+<p>The app needs to know how to connect to the database. In production you would
+typically pass the database URL in as an environment variable. During
+development you can use leiningen’s profiles.clj. This file is not committed to
+git, so it’s perfect for setup that only pertains to your local environment.</p>
+<pre><code class="language-sh">cd lambwiki
+git init
+git add -A
+git commit -m 'lein new luminus lambwiki +postgres'
+</code></pre>
+<p>I like to already commit this generated code to Git, so I can easily see later
+on which parts I added myself. Just initialize the repository, add all files,
+and commit it with the leiningen command as a comment.</p>
+<pre><code class="language-clojure">cider-jack-in
+(start)
+</code></pre>
+<p>I’ll jack in CIDER to have a REPL to work with. Yeah I did speed that part up a
+bit. Start the app and browse to port 3000. You should see this Luminus welcome
+page. So far so good. I’ll get rid of this boilerplate content, and clean up the
+template a bit.</p>
+<pre><code class="language-html">&lt;!-- resource/templates/base.html --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="x-ua-compatible" content="ie=edge"&gt;
+
+    {% style "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css" %}
+
+...
+
+&lt;nav class="ui inverted menu"&gt;
+  &lt;div class="ui container"&gt;
+    &lt;a href="/" class="item"&gt;Home&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container"&gt;
+  {% block content %}
+  {% endblock %}
+&lt;/div&gt;
+</code></pre>
+<p>The <code>base.html</code> template is what some web frameworks call a layout, it contains
+the things that needs to be on every page. Other templates then “extend” the
+base template to add their specific content.</p>
+<p>The templating system used by Luminus is called Selmer, and its syntax is
+inspired by the Django templating system.</p>
+<p>I’m not a huge fan of Bootstrap, so I’ll replace it with Semantic UI. Nice,
+reduced to its essence.</p>
+<pre><code class="language-html">&lt;!-- home.html --&gt;
+  &lt;div class="ui container"&gt;
+    &lt;h1 class="ui header"&gt;Coming soon: wiki!&lt;/h1&gt;
+  &lt;/div&gt;
+</code></pre>
+<p>In the <code>home.html</code> template just put some HTML as a sentinel. There, that looks
+better. A blank slate! It looks a bit too empty. I’ll add a navigation bar at
+the top so it looks a bit more like an actual site.</p>
+<p>After committing these changes to git, it’s time to move on to the database.</p>
+<pre><code class="language-sh">lein migratus create add-pages-table
+</code></pre>
+<p>Migratus is a migration library bundled with Luminus. Each change to the database
+schema is stored in a migration file, so that the database on each developer’s
+machine, as well as the database in production, can all stay in sync.</p>
+<p>A database without tables is like a namespace without vars. With <code>lein migratus
+create</code> you can generate a new empty migration file. Inside it create tables
+for pages and page revisions.</p>
+<pre><code class="language-sql">-- 20160426172359-add-pages-table.up.sql
+CREATE TABLE pages (
+    id SERIAL PRIMARY KEY,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    uri_slug TEXT NOT NULL UNIQUE,
+    title TEXT NOT NULL
+);
+--;;
+CREATE TABLE revisions (
+    id SERIAL PRIMARY KEY,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    page_id INTEGER NOT NULL REFERENCES pages(id),
+    body TEXT
+);
+</code></pre>
+<p>It’s a good practice to have a numeric id as a primary key, and to timestamp
+columns to each table to track when exactly a row was inserted. This will also
+be useful later on for retreiving the most recent revision of a page. A page
+will have a title, and also a URI slug, the path of its URI.</p>
+<p>The <code>pages</code> table doesn’t have a body field, instead I’ll create a new revision
+with the new body whenever a page changes. Immutability for the win!</p>
+<p>Defining both tables in the same file like this is fine, but you need to
+separate the statements with dash-dash-semicolon-semicolon so migratus makes
+sure to split them up.</p>
+<pre><code class="language-sql">-- 20160426172359-add-pages-table.down.sql
+DROP TABLE revisions;
+--;;
+DROP TABLE pages;
+</code></pre>
+<p>For completeness I’ll add the “down” migration as well, so it can be rolled
+back in case things go wrong.</p>
+<pre><code class="language-sh">lein run migrate
+</code></pre>
+<p>You can run the app with the argument “migrate” to run the migrations. You could
+use the Migratus leiningen plugin to do the same thing. The benefit of having
+this built-in to the app itself is that you can easily run your migrations in
+production as well, even if you don’t have leiningen available there.</p>
+<pre><code class="language-sh">git add -A resource/migrations
+git commit
+</code></pre>
+<p>Also don’t forget to commit these changes.</p>
+<pre><code class="language-sql">-- resources/sql/queries.sql
+-- :name create-page! :insert :raw
+INSERT INTO pages (uri_slug, title) VALUES (:uri_slug, :title)
+</code></pre>
+<p>Now that the tables are there, it’s time to put some data in them. Open the
+<code>queries.sql</code> and add a new INSERT statement.</p>
+<p>Database access in Luminus is based on HugSQL. You write queries in plain SQL,
+and based on the metadata provided in comments these get turned into Clojure
+functions. You use Clojure keyword syntax to define placeholders in the query
+that can be filled in later. HugSQL does not support positional arguments, so
+placeholders are always named.</p>
+<pre><code class="language-clojure">(conman/bind-connection *db* "sql/queries.sql")
+</code></pre>
+<p>This line in db.core namespace is responsible for turning the SQL into Clojure.
+Make sure to evaluate it again whenever you make changes to the queries.sql
+file. Conman is just a thin wrapper around HugSQL providing some extra
+convenience. Without it you would have to pass in the database connection to
+each query function.</p>
+<pre><code class="language-clojure">(lambwiki.db.core/create-page! {:uri_slug "home", :title "Home"})
+IllegalArgumentException db-spec mount.core.DerefableState@19bbc000 is missing a required parameter  clojure.java.jdbc/get-connection (jdbc.clj:292)
+</code></pre>
+<p>Now try to create a new page from the REPL. Oops, what happened there? This
+error message is coming from Mount. Luminus uses mount to manage application
+state, like starting and stopping the web server, or connecting to the database.
+In this case our application isn’t using the database yet, so Mount didn’t
+bother to start it. You can start it manually now. Once you start using the
+query functions in code this problem will simply go away.</p>
+<pre><code class="language-clojure">(mount/start #'lambwiki.db.core/*db*)
+(lambwiki.db.core/create-page! {:uri_slug "home", :title "Home"})
+;;=&gt; {:id 1, :created_at #inst "2016-04-28T12:43:00.521-00:00", :uri_slug "home", :title "Home"}
+</code></pre>
+<p>Great, you’ve created your first page! But the body of the page is stored in a
+revision, so you need one of those as well.</p>
+<pre><code class="language-sql">-- :name create-revision! :insert :raw
+INSERT INTO revisions (page_id, body) VALUES (:page_id, :body)
+</code></pre>
+<pre><code class="language-clojure">(lambwiki.db.core/create-revision! {:page_id 1, :body "Welcome Home"})
+;;=&gt; {:id 1, :created_at #inst "2016-04-28T12:43:17.366-00:00", :body "Welcome Home", :page_id 1}
+</code></pre>
+<p>Add the query to queries.sql, call bind-connection again, and now you should be
+able to create a revision.</p>
+<pre><code class="language-html">{% extends "base.html" %}
+{% block content %}
+&lt;div class="ui container"&gt;
+  &lt;h1 class="ui header"&gt;{{title}}&lt;/h1&gt;
+  {{body|markdown}}
+  &lt;hr&gt;
+  &lt;a class="ui button" href="/{{uri_slug}}/edit"&gt;Edit page&lt;/a&gt;
+&lt;/div&gt;
+{% endblock %}
+</code></pre>
+<p>Now you can finally start showing some stuff. Rename <code>home.html</code> to <code>wiki-page.html</code>. Render the page title, as well as the body. The body uses Markdown syntax, so use the markdown filter ot convert it to html.</p>
+<pre><code class="language-clojure">(defn render-wiki-page [page]
+  (layout/render
+   "wiki/page.html" page))
+
+(defroutes home-routes
+  (GET "/" []
+    (found "/home"))
+  (GET "/:slug" [slug]
+    (render-wiki-page {:title "The title" :body "The body" :uri-slug slug})))
+</code></pre>
+<p>Finally in the routes is where it all comes together. You can repurpose the
+home-routes to implement the wiki functionality.</p>
+<p>The wiki-page template will receive a map containing the page title, body, and
+uri_slug. The “home” page you already created from the REPL will be the landing
+page, so I’m just going to put in a redirect from the root of the domain to
+“home”.</p>
+<p>Uh right, there’s no query yet to retreive the page from the database. Ok, fine.
+Just start with some dummy data to see that things are working.</p>
+<p>Oh and one more thing, this found function here isn’t available in this
+namespace yet. It needs to be added to the namespace declaration. I know it’s
+defined somewhere in Ring, and I could search the documentation, but I’m lazy,
+so I’m going to use clj-refactor. This will automatically add the missing
+declaration. Honestly I don’t know how I would survive without it.</p>
+<p>Let’s check the browser…. uhhh seems it’s not returning HTML…. because I
+forgot to render the template. And… there. Magic!</p>
+<pre><code class="language-sql">-- :name find-page-by-uri-slug :query :one
+SELECT pages.*, revisions.body
+FROM pages, revisions
+WHERE pages.id = page_id
+AND uri_slug=:uri_slug
+ORDER BY revisions.created_at DESC
+LIMIT 1
+</code></pre>
+<p>This final query is the most complicated. It uses a join to retreive the page
+data together with the body of the most recent revision. See how that timestamp
+comes in handy now. Because of the annotations in the comment above the query,
+HugSQL knows this is a regular select query that returns one row.</p>
+<p>Does that work? Looks like it does.</p>
+<pre><code class="language-clojure">(defn render-wiki-page [page]
+  (layout/render
+   "wiki/page.html" page))
+
+(defroutes home-routes
+  (GET "/" []
+    (found "/home"))
+  (GET "/:slug" [slug]
+    (when-let [page (find-page-by-uri-slug {:uri_slug slug})]
+      (render-wiki-page page))))
+</code></pre>
+<p>All that’s left is to update the route to use the query. And of course to
+require it in the namespace declaration.</p>
+<p>That’s it for now. In the next episode of Lambda Island you’ll find out how to
+edit and create new wiki pages. Till next time!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/lambwiki/tree/part-1">browse source code</a></p>
+<h2 id="warning-high-pacing">!!WARNING!! High pacing</h2>
+<p>The pace of this video is very high. Pause often, keep the transcript handy, and refer to the code on GitHub if necessary.</p>
+<p>This is less of an issue in following videos, and should no longer be an issue starting episode 10. I’ll redo these Luminus episodes at some point. Until then either skip to the later episodes or try to make the best of it.</p>
+<h2 id="docs">Docs</h2>
+<p>The <a shape="rect" href="http://www.luminusweb.net/">Luminus docs</a> should be your first port of call, they have information on all the main pieces of your application.</p>
+<p>Migrations are powered by <a shape="rect" href="https://github.com/yogthos/migratus">Migratus</a>, and database queries by <a shape="rect" href="http://www.hugsql.org/">HugSQL</a>. Check their respective project pages if you want the full low-down.</p>
+<p>The CSS system I’m using is <a shape="rect" href="http://semantic-ui.com/">Semantic UI</a>. It’s not particularly special, Bootstrap or Foundation would do the trick just as well. I just like it’s clear and modular approach.</p>
+<h2 id="versions">Versions</h2>
+<p>The software used in this episode</p>
+<pre><code class="language-sh">$ lein --version
+Leiningen 2.6.1 on Java 1.8.0_91 Java HotSpot(TM) 64-Bit Server VM
+</code></pre>
+<pre><code class="language-clojure">  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [selmer "1.0.4"]
+                 [markdown-clj "0.9.88"]
+                 [ring-middleware-format "0.7.0"]
+                 [metosin/ring-http-response "0.6.5"]
+                 [bouncer "1.0.0"]
+                 [org.webjars/bootstrap "4.0.0-alpha.2"]
+                 [org.webjars/font-awesome "4.6.1"]
+                 [org.webjars.bower/tether "1.1.1"]
+                 [org.webjars/jquery "2.2.2"]
+                 [org.clojure/tools.logging "0.3.1"]
+                 [compojure "1.5.0"]
+                 [ring-webjars "0.1.1"]
+                 [ring/ring-defaults "0.2.0"]
+                 [mount "0.1.10"]
+                 [cprop "0.1.7"]
+                 [org.clojure/tools.cli "0.3.3"]
+                 [luminus-nrepl "0.1.4"]
+                 [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
+                 [luminus-immutant "0.2.0"]
+                 [luminus-migrations "0.1.2"]
+                 [conman "0.5.1"]
+                 [org.postgresql/postgresql "9.4-1206-jdbc4"]
+                 [luminus-log4j "0.1.3"]
+                 [hiccup "1.0.5"]]
+</code></pre>
+<pre><code>GNU Emacs 25.0.92.2 (x86_64-unknown-linux-gnu, GTK+ Version 3.16.7) of 2016-03-30
+CIDER 0.13.0snapshot (package: 20160510.1330)
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

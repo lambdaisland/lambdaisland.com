@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #8c8b97;
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+body {
+  margin: 0;
+  font-family: open-sans, sans-serif;
+}
+
+.video-wrapper {
+  position: relative;
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+img + a {
+  vertical-align: bottom;
+  padding-left: 0.2rem;
+}
+
+a {
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.project-discovery_episode_views__sidebar_content ul {
+  list-style-type: none;
+  padding-left: 1ch;
+}
+
+.project-discovery_episode_views__sidebar_content ul li::before {
+  padding-inline: 0.2rem;
+  content: "";
+}
+
+.project-discovery_episode_views__sidebar_content ul li::marker {
+  content: "•";
+}
+
+@font-face {
+  font-family: rubik;
+  src: url('../fonts/rubik/rubik-medium-webfont.woff2') format('woff2'), url('../fonts/rubik/rubik-medium-webfont.woff') format('woff');
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: iosevka;
+  src: url('../fonts/iosevka-fixed-ss14-v3.7.1/iosevka-fixed-ss14-regular.woff2') format('woff2'), url('../fonts/iosevka-fixed-ss14-v3.7.1/iosevka-fixed-ss14-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: iosevka;
+  src: url('../fonts/iosevka-fixed-ss14-v3.7.1/iosevka-fixed-ss14-bold.woff2') format('woff2'), url('../fonts/iosevka-fixed-ss14-v3.7.1/iosevka-fixed-ss14-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: open-sans;
+  src: url('../fonts/open-sans-fontfacekit/OpenSans-Regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: open-sans;
+  src: url('../fonts/open-sans-fontfacekit/OpenSans-Italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: open-sans;
+  src: url('../fonts/open-sans-fontfacekit/OpenSans-Semibold-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: open-sans;
+  src: url('../fonts/open-sans-fontfacekit/OpenSans-SemiboldItalic-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+.hljs-comment, .hljs-quote {
+  color: #b9bbb9;
+}
+
+.hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion {
+  color: #ffb9b9;
+  font-weight: bold;
+}
+
+.hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link {
+  color: #ffe2ce;
+}
+
+.hljs-attribute {
+  color: #f0c674;
+}
+
+.hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
+  color: #f6fdb4;
+}
+
+.hljs-title, .hljs-section {
+  color: #c3e3ff;
+  font-weight: bold;
+}
+
+.hljs-keyword, .hljs-selector-tag {
+  color: #f0c8fb;
+  font-weight: bold;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #4d7ad1;
+  color: #fff;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

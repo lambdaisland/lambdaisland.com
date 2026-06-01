@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/re-frame_events_effects" />
+<meta name="twitter:title" content="re-frame, part 3: Events and Effects" />
+<meta name="twitter:description" content="Side effects in re-frame are handled through events. You'll implement several event handlers of a TodoMVC app so it becomes functional. You'll also implement custom effect and..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/619555581-01f1add67c46cce750c53f97601cb857ef2c7ce0ae1aa609a6839b1ed01bcfea-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="re-frame, part 3: Events and Effects" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/re-frame_events_effects" />
+<meta name="video:duration" content="932" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/619555581-01f1add67c46cce750c53f97601cb857ef2c7ce0ae1aa609a6839b1ed01bcfea-d_1280x720?r=pad" />
+<meta name="og:description" content="Side effects in re-frame are handled through events. You'll implement several event handlers of a TodoMVC app so it becomes functional. You'll also implement custom effect and..." />
+<meta name="video:release_date" content="2017-02-20T19:24:26.083Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">re-frame, part 3: Events and Effects</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/204923799?h=571eca7183&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="25. re-frame Events and Effects"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Side effects in re-frame are handled through events. You’ll implement several event handlers of a TodoMVC app so it becomes functional. You’ll also implement custom effect and co-effect handlers for storing the application state in localStorage. To debug event handlers you’ll learn about the “debug” interceptor, and about re-frisk, a handy tool for inspecting your re-frame database.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In this episode you’ll learn all about re-frame event handlers, as well as
+effects and co-effects. You’ll continue building the “redolist” app from
+previous episodes, a TodoMVC implementation based on re-frame. All code is on
+Github, you can find a link in the show notes. The starting point for this
+episode is the <code>ep25-start</code> branch.</p>
+<p>So grab the repo, switch to the right branch, and poke around in it a bit before
+continuing this episode. All the views are already there, since they were
+covered in previous episodes, and they receive data from the database through
+subscriptions.</p>
+<p>The file with event handlers is still mostly empty, you’ll be adding more of
+them soon.</p>
+<p>Before continuing, I recommend adding re-frisk, a helpful tool for inspecting
+the state of your re-frame app. First add it to <code>project.clj</code>. It’s currently at
+version 0.3.2.</p>
+<pre><code class="language-clojure">;; project.clj
+:dependencies [,,,
+               [re-frisk "0.3.2"]]
+</code></pre>
+<p>In <code>core.cljs</code>, after requiring it, call <code>enable-re-frisk!</code> in the <code>dev-setup</code>
+function. That’s all the setup you need.</p>
+<pre><code class="language-clojure">(ns redolist.core
+  (:require ,,,
+            [re-frisk.core :refer [enable-re-frisk!]]))
+
+(defn dev-setup []
+  (when config/debug?
+    (enable-re-frisk!)
+    ,,,))
+</code></pre>
+<p>What you get in return is this little button at the bottom right corner of your
+browser window. Click on it and you can inspect re-frame’s state. The main thing
+to care about for now is <code>:app-db</code>.</p>
+<p>You can “pop-out” re-frisk for a more comfortable view, plus some extra
+functionality. This column on the left shows all past events, and if you select
+one you can see the full event vector.</p>
+<p>Up here is all of re-frame’s state, including registered events and
+subscriptions, effects and co-effects.</p>
+<p>Let’s quickly recap re-frame’s data flow model. On the one hand there’s the
+application state, held in the re-frame database, an ratom managed behind the
+scenes by re-frame.</p>
+<p>On the other hand there are the views, which turn app state into HTML and show
+it to the user.</p>
+<p>Data flows from the database to the views through subscriptions, you can learn
+all about them in episode 20.</p>
+<p>Subscriptions are reactive: they respond to changes in application state, and
+propagate those changes to the views.</p>
+<p>Views receive browser events, which they use to dispatch re-frame events, which
+result in a number of side effects (or simply “effects”).</p>
+<p>The effects may cause the application state to change, and this change
+propagates back to the view, thus completing a full cycle.</p>
+<p>Let’s have a look at the app. If you open <code>events.cljs</code> you’ll see two events
+registered there. The first one, <code>:initialize-db</code>, is fired when the application
+boots to give the database a default value.</p>
+<pre><code class="language-clojure">(ns redolist.events
+  (:require [re-frame.core :refer [reg-event-db]]
+            [redolist.db :as db]))
+
+(reg-event-db :initialize-db
+              (fn  [_ _]
+                db/default-db))
+</code></pre>
+<p>This default is set in <code>db.cljs</code>, and I went ahead and added two todo items
+there so you have something to look at, one completed and one still in progress.</p>
+<pre><code class="language-clojure">(ns redolist.db)
+
+(def default-db
+  {:todos {1 {:id 1
+              :title "Put a lying demagogue in power"
+              :completed true
+              :editing false}
+           2 {:id 2
+              :title "Fight for freedom #resist"
+              :completed false
+              :editing false}}
+   :display-type :all})
+</code></pre>
+<p>Boot up Figwheel and open the app. This is what we have so far, all the
+components are there, it all renders, but none of it works, since it doesn’t yet
+trigger any events.</p>
+<p>The only thing that does work is this filtering by active or completed todos.
+These are actually just plain links, simple <code>a</code> elements. Instead of firing
+React events, they make the browser navigate to a new URL. This is picked up by
+Secretary, a routing library for ClojureScript.</p>
+<p>I won’t cover Secretary in depth now, but if you look at <code>routes.cljs</code> you can
+see that it fires a <code>:set-display-type</code>. This is done with re-frame’s <code>dispatch</code>
+function. You pass it a “event vector”, containing the name of the event, and
+any extra arguments. You’ll be using <code>dispatch</code> a lot in your views.</p>
+<p><code>:set-display-type</code> expects one argument, a keyword indicating which todos
+should be visible.</p>
+<pre><code class="language-clojure">(defn app-routes []
+  (secretary/set-config! :prefix "#")
+  ;; --------------------
+  ;; define routes here
+  (defroute "/" []
+    (re-frame/dispatch [:set-display-type :all]))
+
+  (defroute "/active" []
+    (re-frame/dispatch [:set-display-type :active]))
+
+  (defroute "/completed" []
+    (re-frame/dispatch [:set-display-type :completed]))
+  ;; --------------------
+  (hook-browser-navigation!))
+</code></pre>
+<p>Handling this event is done by an event handler, which is the second event you
+see registered in <code>events.cljs</code>.</p>
+<p>Let’s pick that apart. This event handler only needs to change the database, it
+does not cause other side effects. This makes it comparatively simple and
+straightforward. You pass <code>reg-event-db</code> the event name, and then a pure
+function which takes the old database value and the event vector, and returns
+the updated database. re-frame will take care of swapping the database ratom
+behind the scenes.</p>
+<p>It’s common to destructure the event vector like this, ignoring the first
+element, the event name, since in this case it will always be the same.</p>
+<pre><code class="language-clojure">(reg-event-db :set-display-type
+              (fn [db [_ type]]
+                (assoc db :display-type type)))
+</code></pre>
+<p>Let’s add a few more to get a feel for them. For starters it would be nice to be
+able to mark a todo as done. For that add an <code>on-change</code> handler to the
+checkbox.</p>
+<p>The on-change takes a function, so don’t forget the hash symbol. Otherwise it’s
+just a function call and the event will be dispatched immediately when the
+component renders. It’s a surprisingly common mistake.</p>
+<p>Just like with subscriptions, it’s a good idea to namespace these event. You’ll
+be grateful you did when your app starts getting bigger.</p>
+<p>This is the first usage of <code>dispatch</code> in the views, so make sure it’s added to
+the namespace declaration.</p>
+<pre><code class="language-clojure">(ns redolist.views
+  (:require [re-frame.core :as re-frame :refer [subscribe dispatch]]
+            ,,,))
+
+
+(defn todo-checkbox [id completed]
+  [:input.toggle {:type "checkbox"
+                  :checked completed
+                  :on-change #(dispatch [:todos/toggle id])}])
+</code></pre>
+<p>Now register a handler for this event. The event vector contains the todo item’s
+id, which is easy to get to with destructuring.</p>
+<p>The database value is a map containing <code>:todos</code>, which is in turn a map with the
+id’s of the todo items as keys. Each todo item is again a map, which can be
+<code>:completed</code> or not. With <code>update-in</code> you can reach into this nested structure,
+and flip the <code>:completed</code> flag by negating it.</p>
+<pre><code class="language-clojure">(reg-event-db :todos/toggle
+              (fn [db [_ id]]
+                (update-in db [:todos id :completed] not)))
+</code></pre>
+<p>Sweet! Check that out and you should be able to mark todos as completed. Now
+maybe it doesn’t work the first time. In that case a good starting point for
+debugging is figuring out if the event actually gets fired.</p>
+<p>So far you’ve only seen <code>reg-event-db</code> taking two arguments: the event name and
+handler, but in between those two you can insert a third argument: a vector of
+“interceptors”. Explaining interceptors in detail will take some time, but just
+try adding <code>[debug]</code> after the event name.</p>
+<pre><code class="language-clojure">(reg-event-db :todos/toggle [debug]
+              (fn [db [_ id]]
+                (update-in db [:todos id :completed] not)))
+</code></pre>
+<p><code>debug</code> is again defined in <code>re-frame.core</code>.</p>
+<pre><code class="language-clojure">(ns redolist.events
+  (:require [re-frame.core :refer [,,, debug]]
+            ,,,))
+</code></pre>
+<p>Now when you look at the browser console, you’ll see a notification that this
+event was handled, including a diff of how the database changed.</p>
+<p>This is what it looks like in Firefox. That’s not how it’s supposed to look like
+though. The browser is displaying ClojureScript datastructures as plain
+JavaScript objects, which is not helpful at all.</p>
+<pre><code>Handling re-frame event: Object { meta: null, cnt: 2 ...}
+ db clojure.data/diff for: [:todos/toggle 2]
+ only before: Object { meta: null, cnt: 1, arr: [2], ...}
+ only after : Object { meta: null, cnt: 1, arr: [2], ...}
+</code></pre>
+<p>This is what you get in Chrome. It’s not that Chrome itself has support for
+ClojureScript datastructures, but rather that it has support for custom object
+formatters. The re-frame template contains <code>cljs-devtools</code> which makes use of
+this feature to add this custom rendering.</p>
+<p>Currently Chrome or Chromium is the only browser supporting this. There’s an
+open ticket for Firefox, but not much has moved yet.</p>
+<pre><code>Handling re-frame event: [:todos/toggle 2]
+ db clojure.data/diff for: [:todos/toggle 2]
+ only before: {:todos {2 {…}}}
+ only after : {:todos {2 {…}}}
+</code></pre>
+<p>If you are using Chrome but ClojureScript collections still aren’t rendering
+properly, then make sure custom formatters are enabled in the devtools settings
+dialog.</p>
+<p>Let’s add one more event to drive the pattern home. The <code>:todos/add</code> event takes
+the title for a new todo item, and inserts it into the database.</p>
+<p>You can use random uuids to identify each todo item. The item itself is just a
+map with an id, a title, and a <code>:completed</code> flag. The collection of todos in the
+database is again a map, with ids as keys. This makes it easy to look up a todo
+later on.</p>
+<pre><code class="language-clojure">(reg-event-db :todos/add
+              (fn [db [_ title]]
+                (let [id (random-uuid)
+                      todo {:id id
+                            :title title
+                            :completed false}]
+                  (update db :todos assoc id todo))))
+</code></pre>
+<p>The <code>todo-input</code> component uses an ratom to keep some component local state,
+namely the text in the input field. That’s why there’s already an <code>on-change</code>
+handler, it keeps the ratom in sync with whatever is entered in the text field.</p>
+<p>When a user presses “enter” a todo item should get added, so for that you need
+an <code>:on-key-down</code> handler. You don’t want to respond to every key, so you need
+an extra check before dispatching the event.</p>
+<p>The keydown event will have a <code>which</code> property which is the number of the key,
+with 13 meaning “enter”. If it is enter, then dispatch the event, which adds the
+todo item, and also reset the title atom so the text field is empty again.</p>
+<p>Having that magic number there makes the code a bit cryptic, so let’s pull that
+out into an <code>enter?</code> predicate.</p>
+<pre><code class="language-clojure">(defn enter? [evt]
+  (= (.-which evt) 13))
+
+(defn todo-input []
+  (let [title (r/atom "")]
+    (fn []
+      [:input#new-todo {,,,
+                        :on-key-down #(when (enter? %)
+                                        (dispatch [:todos/add @title])
+                                        (reset! title ""))}])))
+</code></pre>
+<p>So far these event handlers only deal with the database, they take the current
+database value as input, and return the updated database. Event handlers can
+also have other inputs, and they can cause other side-effects.</p>
+<p>re-frame refers to the inputs of an event handler as its co-effects, and the
+side-effects it causes are simply known as “effects”.</p>
+<p>To use other effects or co-effects besides reading and updating the database,
+you use a different registration function, <code>reg-event-fx</code>.</p>
+<p><code>reg-event-fx</code> is strictly more powerful than <code>reg-event-db</code>, and in fact you
+can easily transform the <code>-db</code> form into a more general <code>-fx</code> form.</p>
+<p>The first difference is that, instead of receiving the database as its first
+argument, the event handler now receives a map of inputs, or “co-effects”. One
+of these (and currently the only one), is the database.</p>
+<p>The return value of the event handler should also be a map, these are the
+“effects”, each entry in the map describes some side-effect that needs to
+happen. In this case <code>:db</code> means that the database needs to be updated to this
+new value.</p>
+<pre><code class="language-clojure">(reg-event-fx :set-display-type
+              (fn [cofx [_ type]]
+                {:db (assoc (:db cofx) :display-type type)}))
+</code></pre>
+<p><code>:db</code> is the only co-effect that is included with re-frame, although others can be added, either by you, or by a third party library.</p>
+<p>There are also a couple different effects available: <code>:db</code> for updating the
+database, <code>:dispatch</code> for triggering another event, <code>:dispatch-n</code> for triggerring
+several, and <code>:dispatch-later</code> for scheduling an event in the future.</p>
+<pre><code class="language-clojure">(reg-event-fx :foo
+              (fn [cofx [_ type]]
+                {:db ,,,
+                 :dispatch [:some/event]
+                 :dispatch-n [[:all] [:of] [:these]]
+                 :dispatch-later [{:ms 200 :dispatch [:this-in-200-ms]}]
+                 }))
+</code></pre>
+<p>You can easily register new effects and co-effects, and several are provided by
+third party libraries. To show you how that works let’s add support for
+localStorage. This HTML5 API provides a simple key-value store that persists
+across page loads, so that a users todo list isn’t lost when they close the
+browser.</p>
+<p>Start by adding a new <code>redolist.local-storage</code> namespace, and include these
+helper functions that wrap the browser’s localStorage API. Check the transcript
+if you don’t want to type this all out. The only really notable thing about this
+code is that it encodes stored values using Transit, a fast and compact
+serialization format based on JSON. LocalStorage only supports storing strings.
+By using Transit it’s possible to store arbitrary ClojureScript values, such as
+the current state of the database.</p>
+<pre><code class="language-clojure">(ns redolist.local-storage
+  (:require [re-frame.core :refer [reg-cofx reg-fx]]
+            [cognitect.transit :as t]))
+
+(defonce t-writer (t/writer :json))
+(defonce t-reader (t/reader :json))
+
+(defn set-item!
+  "Set `key' in browser's localStorage to `val`."
+  [key val]
+  (.setItem (.-localStorage js/window) key (t/write t-writer val)))
+
+(defn get-item
+  "Returns value of `key' from browser's localStorage."
+  [key]
+  (t/read t-reader (.getItem (.-localStorage js/window) key)))
+
+(defn remove-item!
+  "Remove the browser's localStorage value for the given `key`"
+  [key]
+  (.removeItem (.-localStorage js/window) key))
+</code></pre>
+<p>If you have a Figwheel REPL open then go ahead and try these out. First require
+the local-storage namespace from <code>core.cljs</code>, or Figwheel won’t load it.</p>
+<pre><code class="language-clojure">(ns redolist.core
+  (:require ,,,
+            [redolist.local-storage]))
+</code></pre>
+<p>In the REPL, use <code>in-ns</code> to switch to the right namespace. Now you can store a
+value with <code>set-item!</code>, such as a set of numbers. With <code>get-item</code> you can retrieve it again.</p>
+<pre><code>redolist.local-storage&gt; (in-ns 'redolist.local-storage)
+nil
+redolist.local-storage&gt; (set-item! "test" #{1 2 3})
+nil
+redolist.local-storage&gt; (get-item "test")
+#{1 3 2}
+redolist.local-storage&gt; (apply max (get-item "test"))
+3
+</code></pre>
+<p>Now comes the interesting bit, adding the effects and co-effects handlers.</p>
+<p><code>reg-fx</code> takes the name of the new effect you want to register, and a handler
+function that performs the actual side-effects. When an event handler has
+<code>:storage</code> as a key in its effect map, then this this effect handler will run.
+The value associated with <code>:storage</code> is passed to the effect handler function as
+an argument, so it knows which side effects to perform.</p>
+<p>I’ll keep it simple and only allow storing a single value under the “redolist”
+key.</p>
+<pre><code class="language-clojure">(reg-fx :storage (fn [value]
+                   (set-item! "redolist" value)))
+</code></pre>
+<p>Now you can add a “save” event that stores the current state of the database.
+All it does it take the current value of the database from the co-effect map,
+and pass it on in the effect map to be put in localStorage. This will trigger the effect handler you just implemented.</p>
+<pre><code class="language-clojure">(reg-event-fx :storage/save
+              (fn [cofx _]
+                {:storage (:db cofx)}))
+</code></pre>
+<p>To save the database after every change, dispatch a <code>:storage/save</code> event from
+the other event handlers. So change <code>:todos/toggle</code> and <code>:todos/add</code> to use
+<code>reg-event-fx</code>. You can destructure the co-effects map to get to the database.
+Then return a map with the new <code>:db</code>, and an event vector to dispatch, so that
+it triggers the <code>:save</code>.</p>
+<pre><code class="language-clojure">(reg-event-fx :todos/toggle
+              (fn [{:keys [db]} [_ id]]
+                {:db (update-in db [:todos id :completed] not)
+                 :dispatch [:storage/save]}))
+
+(reg-event-fx :todos/add
+              (fn [{:keys [db]} [_ title]]
+                {:db (let [id (random-uuid)
+                           todo {:id id
+                                 :title title
+                                 :completed false}]
+                       (update db :todos assoc id todo))
+                 :dispatch [:storage/save]}))
+</code></pre>
+<p>The next step is to now restore the database from localStorage when the page
+loads. There’s already an <code>:initialize-db</code> event, so you can change that to
+either load from storage if it finds anything there, or else use the default db.</p>
+<p>First register the new co-effect. <code>reg-cofx</code> is very similar to <code>reg-fx</code>, you
+give it a name, and then a handler function. This time the handler receives a
+map of co-effects which it can add things to, and possibly extra arguments.</p>
+<p>Now grab the saved state from localStorage, and assoc it onto the cofx, so event
+handlers can access it.</p>
+<pre><code class="language-clojure">(reg-cofx :storage (fn [cofx _]
+                     (-&gt;&gt; (get-item "redolist")
+                          (assoc cofx :storage ))))
+</code></pre>
+<p>Now you can update <code>:initialize-db</code> to first check for a stored state. If
+nothing is stored yet then this will be nil, and it’ll use the default database
+instead.</p>
+<pre><code class="language-clojure">(reg-event-fx :initialize-db
+              (fn [{:keys [storage]} _]
+                {:db (or storage db/default-db)}))
+</code></pre>
+<p>There’s one more thing to add. Even though you’ve registered the co-effect, it’s
+not actually used yet. This makes sense, you might have many data sources, and
+you don’t want to query them all for every event, instead you need to tell
+re-frame which co-effects a given event needs, so it can make sure to get those
+for you.</p>
+<p>You do this with <code>inject-cofx</code>, which returns another “interceptor”, just like
+the <code>debug</code> interceptor I showed you at the beginning. I’m not going to explain
+the ins and outs of interceptors in this episode, but you should be able to use
+the ones I’ve shown by following the examples. Add a vector form between the
+event name and the handler, and in there add the interceptor. Note that you
+could pass extra arguments to <code>inject-cofx</code>, these would be passed on to the
+co-effect handler.</p>
+<pre><code class="language-clojure">(reg-event-fx :initialize-db [(inject-cofx :storage)]
+              (fn [cofx _]
+                {:db
+                 (or (:storage cofx)
+                     db/default-db)}))
+</code></pre>
+<p>Apart from interceptors, you now know all the core concepts of re-frame. I’m
+looking forward to hearing about what you build with it!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/redolist">browse source code</a></p>
+<p>The starting point for this episode is the <a shape="rect" href="https://github.com/lambdaisland/redolist/tree/ep25-start">ep25-start branch</a>. To code along at home do</p>
+<pre><code class="language-sh">git clone -b ep25-start https://github.com/lambdaisland/redolist.git 
+</code></pre>
+<p>For the usage of <code>&lt;sub</code>, see <a shape="rect" href="../blog/11-02-2017-re-frame-form-1-subscriptions.html">the blog post about the revamped re-frame subscriptions</a>.</p>
+<h2 id="cheat-sheet">Cheat sheet</h2>
+<pre><code class="language-clojure">;; Events that purely update the database
+(reg-event-db :set-user-name
+  (fn [db [_ user-name]]                          ;; [old-db-value event-vector] -&gt; new-db-value
+    (assoc db :user-name user-name)))
+
+;; Same event handler, but rewritten to use co-effects -&gt; effects
+(reg-event-fx :set-user-name
+  (fn [cofx [_ user-name]]                        ;; [cofx-map event-vector] -&gt; fx-map
+    {:db
+     (assoc (:db cofx) :user-name user-name)}))
+
+</code></pre>
+<h2 id="built-in-co-effects">Built-in co-effects</h2>
+<h3 id="db"><code>:db</code></h3>
+<p>The current value of the database.</p>
+<h2 id="built-in-effects">Built-in effects</h2>
+<h3 id="db-1"><code>:db</code></h3>
+<p>Supply a new value for the app db. Typically used with the <code>:db</code> coeffect to update the database.</p>
+<pre><code class="language-clojure">{:db (assoc db :foo "bar")}
+</code></pre>
+<h3 id="dispatch"><code>:dispatch</code></h3>
+<p>Dispatch another event</p>
+<pre><code class="language-clojure">{:dispatch [:event-id "param"] }
+</code></pre>
+<h3 id="dispatch-later"><code>:dispatch-later</code></h3>
+<p>Dispatch one or more events in the future.</p>
+<pre><code class="language-clojure">{:dispatch-later [{:ms 200 :dispatch [:event-id "param"]}        ;;  in 200ms do this: (dispatch [:event-id "param"])
+                  {:ms 100 :dispatch [:also :this :in :100ms]}]}
+</code></pre>
+<h3 id="dispatch-n"><code>:dispatch-n</code></h3>
+<p>Dispatch multiple events. Expects a <code>seqable?</code> of event vectors.</p>
+<pre><code class="language-clojure">{:dispatch-n [ [:do :all] [:three :of] [:these] ])}
+</code></pre>
+<h3 id="deregister-event-handler"><code>:deregister-event-handler</code></h3>
+<p>Get rid of a previously registered event handler. Either pass it a single id, or a vector of ids.</p>
+<pre><code class="language-clojure">{:deregister-event-handler :my-id)}
+{:deregister-event-handler [:one-id :another-id]}
+</code></pre>
+<h2 id="registering-cofxfx">Registering cofx/fx</h2>
+<pre><code class="language-clojure">(require '[re.frame.core :refer [reg-fx reg-event-fx reg-cofx inject-cofx]])
+
+;; Registering a new effect
+(reg-fx :fx-name (fn [fx-input] ,,, ;; perform side-effects
+                   ))
+
+;; using it from an event handler
+(reg-event-fx :some/event
+              (fn [cofx event-v]
+                {:fx-name fx-input}))
+
+;; Registering a new co-effect
+(reg-cofx :cofx-name (fn [cofx args]
+                     (assoc cofx :new-cofx "cofx-value")))
+
+;; using it from an event handler
+(reg-event-fx :some/event [(inject-cofx :cofx-name arg1 arg2)]
+              (fn [{:keys [new-cofx]} event-v]
+                ))
+</code></pre>
+<h2 id="links">Links</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/Day8/re-frame/blob/master/docs/EffectfulHandlers.md">re-frame docs: Effectful Handlers</a></li>
+<li><a shape="rect" href="https://github.com/Day8/re-frame/blob/master/docs/Effects.md">re-frame docs: Effects</a></li>
+<li><a shape="rect" href="https://github.com/Day8/re-frame/blob/master/docs/Coeffects.md">re-frame docs: Co-effects</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

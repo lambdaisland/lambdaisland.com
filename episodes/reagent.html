@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/reagent" />
+<meta name="twitter:title" content="Reagent, part 1" />
+<meta name="twitter:description" content="One of the more popular wrapper libraries for using React with ClojureScript is Reagent. We'll build a kanban style board to demonstrate the main features." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/578268600-71777e993d882fb7850c64a35b20f99e4806e9ce911923655672f875f795c3fa-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Reagent, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/reagent" />
+<meta name="video:duration" content="444" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/578268600-71777e993d882fb7850c64a35b20f99e4806e9ce911923655672f875f795c3fa-d_1280x720?r=pad" />
+<meta name="og:description" content="One of the more popular wrapper libraries for using React with ClojureScript is Reagent. We'll build a kanban style board to demonstrate the main features." />
+<meta name="video:release_date" content="2016-06-27T18:20:03.190Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Reagent, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/172451261?h=b9453bc559&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="9. Reagent"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>One of the more popular wrapper libraries for using React with ClojureScript is Reagent. We’ll build a kanban style board to demonstrate the main features.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>We already learned the basics of React in Episode 6. If you’re new to React I
+would suggest you check that out. In this episode we’ll work with a
+ClojureScript wrapper library called Reagent to build a kanban-style board with
+cards and columns.</p>
+<p></p>
+<p>Start with a new Chestnut app, this time with the <code>--reagent</code> option. Chestnut
+combines a minimal setup with all tooling and setup to work comfortably.</p>
+<pre><code class="language-shell">$ lein new chestnut kanban --template-version 0.14.0 -- --reagent
+</code></pre>
+<div class="bg-washed-red b--black ba pa2">
+<p>One of the libraries used by this template is no longer compatible with the latest versions of Java. To fix that, add these dependencies in <code>project.clj</code>.</p>
+<pre><code class="language-clojure">(defproject kanban "0.1.0-SNAPSHOT"
+  :dependencies [,,,
+                 [org.clojure/core.rrb-vector "0.0.14"]
+                 [javax.xml.bind/jaxb-api "2.2.4"]
+                 ,,,
+                 ]
+  ,,,)
+</code></pre></div>
+<p>Now start Figwheel, either from a terminal with <code>lein figwheel</code>, or if you’re
+using an nREPL based system like CIDER you can call Chestnut’s <code>(run)</code> from your
+REPL.</p>
+<pre><code class="language-sh">lein figwheel
+</code></pre>
+<pre><code>M-x cider-jack-in
+user&gt; (run)
+</code></pre>
+<p>Here’s what the result will look like, you have a number of columns, and columns
+contain cards. You can click on a column title or on a card to edit it.</p>
+<p></p>
+<p>Cards and columns are straightforward divs with some styling. I won’t dwell on
+the CSS, just copy it from the show’s transcript and put it in <code>style.css</code>.</p>
+<pre><code class="language-css">.card {
+    background-color:  #fafafa;
+    border-radius: 0.2em;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.card.editing {
+    padding: 0;
+}
+
+.card.editing input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.column, .new-column {
+    width: 200px;
+    float: left;
+    padding: 0.1em 0.5em;
+    border-radius: 0.2em;
+    background-color:  #cccccc;
+    margin: 0.5em;
+}
+
+.new-card, .new-column {
+    padding: 0.5em;
+    background-color:  #aaaaaa;
+    border: 1px solid #cccccc;
+    border-radius: 0.2em;
+    margin: 0.5em;
+}
+</code></pre>
+<p>Now open <code>core.cljs</code>, we will be spending most of our time in here. There’s
+already a bit of example code in here.</p>
+<p>The <code>greeting</code> function is a Reagent component. Remember that in React we used
+<code>createClass</code> to create a component class, which required at a minimum a
+<code>render</code> method. Reagent boils that down to its minimum: components in Reagent
+are just functions, they return the virtual DOM in the form of Hiccup, a way of
+writing HTML tags using Clojure’s syntax.</p>
+<p>So a React element is simply represented as a vector. The first element in the
+vector is the element’s type, which can be either a keyword, or a component. You
+can see that in the last line, where we pass <code>reagent/render</code> a single element,
+with as type the greeting component.</p>
+<pre><code>(ns kanban.core
+  (:require [reagent.core :as reagent :refer [atom]]))
+
+(enable-console-print!)
+
+(defonce app-state (atom {:text "Hello Chestnut!"}))
+
+(defn greeting []
+  [:h1 (:text @app-state)])
+
+(reagent/render [greeting] (js/document.getElementById "app"))
+</code></pre>
+<p>We’ll start with three components: a card, a column, and a “board” component
+which forms the root of our component tree.</p>
+<p>I like to first code up the general structure of the UI, this is more a design
+than a coding task, and as long as you have a good idea of what you’re trying to
+build this can go fast.</p>
+<p>Once the structure is there you can move on to the more error prone parts:
+hooking up state and behavior.</p>
+<pre><code class="language-clojure">(defn Card []
+  [:div.card])
+
+(defn Column []
+  [:div.column])
+
+(defn Board []
+  [:div.board])
+</code></pre>
+<p>A card and a column both have a title, just hard code them for now. A board
+consists of a number of columns. Now render the Board component, and let’s see
+how that looks.</p>
+<pre><code class="language-clojure">(defn Card []
+  [:div.card
+   "a card"])
+
+(defn Column []
+  [:div.column
+   [:h2 "a column"]])
+
+(defn Board []
+  [:div.board
+   [Column]
+   [Column]])
+
+(reagent/render [Board] (js/document.getElementById "app"))
+</code></pre>
+<p></p>
+<p>We also need a placeholder card and column so people can add new ones. Each of
+these also becomes a component.</p>
+<pre><code class="language-clojure">(defn Card []
+  [:div.card
+   "a card"])
+
+(defn NewCard []
+  [:div.new-card
+   "+ add new card"])
+
+(defn Column []
+  [:div.column
+   [:h2 "a column"]
+   [Card]
+   [Card]
+   [Card]
+   [NewCard]])
+
+(defn NewColumn []
+  [:div.new-column
+   "+ add new column"])
+
+(defn Board []
+  [:div.board
+   [Column]
+   [Column]
+   [NewColumn]])
+</code></pre>
+<p>Let’s have another look at that namespace declaration, it refers to an <code>atom</code>
+function in the <code>reagent.core</code> namespace. It turns out Reagent has its own atom
+implementation. It’s very similar to the ClojureScript atom, but it allows
+Reagent to know when specific components need to be re-rendered, based on
+changes in the application state.</p>
+<p>I like to see immediately when I’m using a React atom, so I’m going to change
+this namespace declaration a bit, and then update the calls to <code>atom</code> and
+<code>render</code>.</p>
+<p>It’s a common mistake when using Reagent to accidentally use the ClojureScript
+atom instead, and you will be scratching your head wondering why your UI isn’t
+updating when it should.</p>
+<pre><code class="language-clojure">(ns kanban.core
+  (:require [reagent.core :as r]))
+
+(defonce app-state (r/atom {:text "Hello Chestnut!"}))
+
+,,,
+
+(r/render [Board] (js/document.getElementById "app"))
+</code></pre>
+<p>Now let’s define some cards so we have something to render. Change the <code>defonce</code>
+to <code>def</code> for now, so the state is reset on every update. We’ll change it back
+later but right now this makes things easier.</p>
+<p>Our app-state consists of colunms, which have a title, and a number of cards.
+I’ll just add a couple todo items to this column.</p>
+<p>It’s just Clojure values all the way down, nothing exotic. The state follows the
+structure of the components, which makes things easy.</p>
+<pre><code class="language-clojure">(def app-state
+  (r/atom {:columns
+           [{:title "Todos"
+             :cards [{:title "Learn about Reagent"}
+                     {:title "Tell my friends about Lambda Island"}]}]}))
+</code></pre>
+<p>Now we can start rendering based on actual values. First pass the application
+state atom to the Board component. Now the Board function will receive this
+state atom as its first argument.</p>
+<pre><code class="language-clojure">(defn Board [state]
+  ,,,)
+
+(r/render [Board app-state] (js/document.getElementById "app"))
+</code></pre>
+<p>It’s worth pausing a moment to see what goes into making that happen. Remember
+that React components receive a JS properties object, which also contains any
+child elements passed to the component.</p>
+<pre><code class="language-clojure">{:render (fn []
+           ,,,
+           (this-as t
+             (.. t -props)))}
+</code></pre>
+<p>Reagent components on the other can receive any number of ClojureScript or
+JavaScript values, and they are passed as positional arguments.</p>
+<p>If we look at the resulting component in the React browser extension, we see
+only a single property, <code>argv</code>, which is a vector containing the values passed
+to the component.</p>
+<p>Reagent sets up a React component with a render function that “wraps” our own
+component function, and takes care of calling our function with the values in
+<code>argv</code>.</p>
+<p></p>
+<p>Back to our kanban board! The Board component can now dereference the state atom
+to get its current value, and then render columns based on that.</p>
+<p>I find for-loops work really well for rendering collections like this. We just
+pass the column data as-is to each Column component.</p>
+<pre><code class="language-clojure">(defn Column [col]
+  ,,,)
+
+(defn Board [state]
+  [:div.board
+   (for [c (:columns @state)]
+     [Column c])
+   [NewColumn]])
+</code></pre>
+<p>The column component now receives a map representing the column, it contains the
+title and a vector of cards, so we can destructure that. We now use the same
+pattern to render the collection of cards.</p>
+<pre><code class="language-clojure">(defn Card [card]
+  ,,,)
+
+(defn Column [{:keys [title cards]}]
+  [:div.column
+   [:h2 title]
+   (for [c cards]
+     [Card c])
+   [NewCard]])
+</code></pre>
+<p>Finally all the card component needs to do right now is render its title.</p>
+<pre><code class="language-clojure">(defn Card [card]
+  [:div.card
+   (:title card)])
+</code></pre>
+<p>So that’s cool, our UI rendering is basically done. You can play around with
+this by adding some columns and cards to the app-state.</p>
+<pre><code class="language-clojure">(def app-state ,,,)
+</code></pre>
+<p>There’s still something missing from our rendering code though, we also want to
+edit cards and column titles. When a user clicks on a card or column title it
+should temporarily change into a text field.</p>
+<p>We’ll keep track of which card or column is being edited with an extra
+<code>:editing</code> flag in our app-state.</p>
+<pre><code class="language-clojure">(def app-state
+  (r/atom {:columns
+           [{:title "Todos"
+             :cards [{:title "Learn about Reagent"}
+                     {:title "Tell my friends about Lambda Island"
+                      :editing true}]}]}))
+</code></pre>
+<p>So now when a card is in the <code>editing</code> state it needs to be rendered
+differently. I’ll give it an extra class-name so it can be styled, and then wrap
+the title in an input text field.</p>
+<pre><code class="language-clojure">(defn Card [card]
+  (if (:editing card)
+    [:div.card.editing [:input {:type "text" :value (:title card)}]]
+    [:div.card (:title card)]))
+</code></pre>
+<p>And do the same for the title of a column.</p>
+<pre><code class="language-clojure">(defn Column [{:keys [title cards editing]}]
+  [:div.column
+   (if editing
+     [:input {:type "text" :value title}]
+     [:h2 title])
+   (for [c cards]
+     [Card c])
+   [NewCard]])
+</code></pre>
+<p>There’s something funny with these text fields, we can’t edit them! Your browser
+isn’t broken, this is simply because of the way that React works. The DOM in a
+React app is a pure function of application state. The same application state
+will always result in the same DOM being rendered. If we could just change the
+value of these text fields independently, then we would be altering the DOM,
+breaking this equivalence.</p>
+<p>We’ll see how to implement these text fields, as well as how to add new cards
+and columns, in the following episode.</p>
+<p></p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png%3F7C766C55321639B4E263DDD9323EA560" alt="" /><a shape="rect" href="https://github.com/lambdaisland/kanban">browse source code</a></p>
+<div class="bg-washed-red b--black ba pa2">
+<h2 id="caution">Caution</h2>
+<p>The Chestnut application template has changed since this episode was written. To follow along you are best to stick to version 0.14.0, which you can do like this.</p>
+<pre><code class="language-shell">$ lein new chestnut kanban --template-version 0.14.0 -- --reagent
+</code></pre>
+<p>This unfortunately pulls in a version of rrb-vector which is not compatible with newer versions of Java. To fix that, add this to the <code>:dependencies</code> in <code>project.clj</code>:</p>
+<pre><code class="language-clojure">[org.clojure/core.rrb-vector "0.0.14"]
+[javax.xml.bind/jaxb-api "2.2.4"]
+</code></pre>
+<p>result:</p>
+<pre><code class="language-clojure">(defproject kanban "0.1.0-SNAPSHOT"
+  :dependencies [,,,
+                 [org.clojure/core.rrb-vector "0.0.14"]
+                 [javax.xml.bind/jaxb-api "2.2.4"]
+                 ,,,
+                 ]
+  ,,,)
+</code></pre></div>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a shape="rect" href="http://reagent-project.github.io/">Reagent</a></li></ul>
+<h2 id="code">Code</h2>
+<p>styles.css</p>
+<pre><code class="language-css">.card {
+    background-color:  #fafafa;
+    border-radius: 0.2em;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.card.editing {
+    padding: 0;
+}
+
+.card.editing input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.column, .new-column {
+    width: 200px;
+    float: left;
+    padding: 0.1em 0.5em;
+    border-radius: 0.2em;
+    background-color:  #cccccc;
+    margin: 0.5em;
+}
+
+.new-card, .new-column {
+    padding: 0.5em;
+    background-color:  #aaaaaa;
+    border: 1px solid #cccccc;
+    border-radius: 0.2em;
+    margin: 0.5em;
+}
+</code></pre>
+<p>core.cljs</p>
+<pre><code class="language-clojure">(ns kanban.core
+  (:require [reagent.core :as r]))
+
+(enable-console-print!)
+
+(def app-state
+  (r/atom {:columns [{:title "Todos"
+                      :cards [{:title "Learn about Reagent"}
+                              {:title "Tell my friends about Lambda Island"}]}
+                     {:title "Awesomize"
+                      :editing true
+                      :cards [{:title "Meditate"}
+                              {:title "Work out"
+                               :editing true}]}]}))
+
+(defn Card [card]
+  (if (:editing card)
+    [:div.card.editing [:input {:type "text" :value (:title card)}]]
+    [:div.card (:title card)]))
+
+(defn NewCard []
+  [:div.new-card
+   "+ add new card"])
+
+(defn Column [{:keys [title cards editing]}]
+  [:div.column
+   (if editing
+     [:input {:type "text" :value title}]
+     [:h2 title])
+   (for [c cards]
+     [Card c])
+   [NewCard]])
+
+(defn NewColumn []
+  [:div.new-column
+   "+ add new column"])
+
+(defn Board [state]
+  [:div.board
+   (for [c (:columns @state)]
+     [Column c])
+   [NewColumn]])
+
+(r/render [Board app-state] (js/document.getElementById "app"))
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

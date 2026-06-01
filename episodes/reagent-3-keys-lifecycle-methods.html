@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/reagent-3-keys-lifecycle-methods" />
+<meta name="twitter:title" content="Reagent, part 3: Keys &amp; Lifecycle Methods" />
+<meta name="twitter:description" content="Learn about React performance, the use of `keys` properties, and how to use lifecycle methods with Reagent." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/582186934-df4d6d7338d13aa22d193342a21ecf9ef82f333ec682bf964a1677f6167cc9ab-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Reagent, part 3: Keys &amp; Lifecycle Methods" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/reagent-3-keys-lifecycle-methods" />
+<meta name="video:duration" content="777" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/582186934-df4d6d7338d13aa22d193342a21ecf9ef82f333ec682bf964a1677f6167cc9ab-d_1280x720?r=pad" />
+<meta name="og:description" content="Learn about React performance, the use of `keys` properties, and how to use lifecycle methods with Reagent." />
+<meta name="video:release_date" content="2016-07-17T19:22:32.887Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Reagent, part 3: Keys &amp; Lifecycle Methods</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/175135283?h=756ddb8552&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="11. Reagent part 3: Keys &amp;amp; Lifecycle Methods"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Learn about React performance, the use of <code>keys</code> properties, and how to use lifecycle methods with Reagent.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In previous episodes we started building a Kanban board with cards organized in
+columns. In this episode we’ll provide the finishing touches, you’ll learn about
+element keys and why they matter for performance, and also how to use React’s
+lifecycle methods like <code>component-did-mount</code> with Reagent.</p>
+<p>As usual all the code is on Github, so if you didn’t follow along with the
+previous episode just grab it from there and check out the right branch. You can
+the link and instructions in the show notes.</p>
+<p>Now open the app and have a look at the browser console. Both React and Reagent
+are trying to warn us about something. When there are multiple columns on a
+board, or multiple cards in a column, then React wants you to give each of these
+a “key” property. So let’s do that.</p>
+<p>Keys don’t need to be globally unique, they just need to be unique among
+siblings. Since there will only ever be one title and one “new card” button in a
+column, I can simply give these a hard coded key. For the individual cards I’m
+using the card’s position as key.</p>
+<p>The Card and NewCard now take a properties map as a first argument, so we need
+to update their signatures.</p>
+<pre><code class="language-clojure">(defn Card [props col-cur] ,,,)
+(defn NewCard [props] ,,,)
+
+[:div.column
+ (if editing
+   [:input {:type "text" :value title :key "edit"}]
+   [:h2 {:key "title"} title])
+ (for [i (range (count cards))]
+   [Card {:key i} (r/cursor col-cur [:cards i])])
+ [NewCard {:key "new"}]]
+</code></pre>
+<p>Maybe you’re already using property maps to pass data to components, as you
+would in React, in which case this approach is fine. But Reagent also lets you
+use positional arguments, which is what we’ve been doing so far.</p>
+<p>So if you prefer not to have the properties map, then you can also specify the
+key as metadata. Remember that Clojure has a facility to attach extra metadata
+to objects using this caret notation.</p>
+<p>Let’s also do the same for columns in a board. Now we’ve added keys everywhere
+where there are multiple children with the same parent. Reload the browser, and
+the warnings should be gone.</p>
+<pre><code class="language-clojure">(defn Column [col-cur]
+  (let [{:keys [title cards editing]} @col-cur]
+    [:div.column
+     (if editing
+       [:input {:type "text" :value title :key "edit"}]
+       [:h2 {:key "title"} title])
+     (for [i (range (count cards))]
+       ^{:key i} [Card (r/cursor col-cur [:cards i])])
+     ^{:key "new"} [NewCard]]))
+
+
+(defn Board [board]
+  [:div.board
+   (for [i (range (count (:columns @board)))]
+     ^{:key i} [Column (r/cursor state [:columns i])])
+   ^{:key "new"} [NewColumn]])
+</code></pre>
+<p>These keys are really just a performance hint for React. When doing an update
+React compares the old version of the DOM with the new version, and figures out
+what needs to change.</p>
+<p>Each list of child elements is scanned from left to right, and compared with the
+corresponding element in the previous DOM. If we insert a new element at the
+start of the list, then all the others shift one place. React isn’t able to
+figure this out by itself, it will just assume all elements have changed, and
+redraw them.</p>
+<p>By adding a key React can quickly see if a child element changed position, and
+just move it instead of redrawing everything.</p>
+<p></p>
+<p>This means that what we’ve been doing so far, using a card or columns index
+number, isn’t a great idea. Instead you should use something that isn’t
+likely to change, like a database primary key.</p>
+<p>Let’s give all our cards and columns a unique id. Normally this would come out
+of a database or something, but a random unique id will do for now.</p>
+<p>Because we need both the index and the card itself I’m using <code>map-indexed</code> now
+instead of <code>for</code>. Pull the card’s id out with some destructuring, and use that
+as the key instead of the positional index.</p>
+<p>And now we do the exact same thing for columns.</p>
+<pre><code class="language-clojure">(def app-state (r/atom {:columns [{:id (random-uuid)
+                                   :cards []}
+                                  {:id (random-uuid)
+                                   :cards [{:id (random-uuid)
+                                            :title "Hello Island."}]}]}))
+
+(defn Column [col-cur]
+  ,,,
+  (map-indexed (fn [idx {id :id}]
+                 ^{:key id}
+                 [Card (r/cursor col-cur [:cards idx])])
+               cards)
+  ,,,)
+
+(defn Board [board]
+  ,,,
+
+  (map-indexed (fn [i {id :id}]
+                 ^{:key id}
+                 [Column (r/cursor state [:columns i])])
+               (:columns @board))
+  ,,,)
+</code></pre>
+<p>Ok, time to wrap things up. There are still three things missing: add new cards,
+add new columns, and edit column titles. Let’s first add new cards.</p>
+<p>This should start looking familiar, we create an <code>add-new-card</code> function which
+takes a column cursor and updates it by conj-ing a new card map onto the cards
+vector. We’ll make sure the card has a unique id, and we already set its editing
+flag to true so you can immediately type in the card’s title. Pass the column
+cursor in so we can update it.</p>
+<p>Let’s try that… uh yeah and we also need this on-click handler on the div to
+hook things up. There, that looks good.</p>
+<pre><code class="language-clojure">(defn add-new-card [col-cur]
+  (swap! col-cur update :cards conj {:id (random-uuid)
+                                     :title ""
+                                     :editing true}))
+
+(defn NewCard [col-cur]
+  [:div.new-card
+   {:on-click #(add-new-card col-cur)}
+   "+ add new card"])
+
+(defn Column [col-cur]
+  ,,,
+  [NewCard col-cur]
+  ,,,
+  )
+</code></pre>
+<p>Adding new Columns is pretty much identical to adding cards. We could even
+consider rolling the components and handler into one, but they are just
+different enough that in this case I’m going to leave this bit of duplication.</p>
+<p>Pass the board atom to the NewColumn component, give it an on-click handler
+which adds a new column, then implement this add-new-column function to do the
+work.</p>
+<p>Uh yeah these need to be in a map… ok cool, we can add new columns, we’re
+almost there. All that’s missing is editing the column’s title.</p>
+<pre><code class="language-clojure">(defn add-new-column [board]
+  (swap! board update :columns conj {:id (random-uuid)
+                                     :title ""
+                                     :cards []
+                                     :editing true}))
+
+(defn NewColumn [board]
+  [:div.new-column
+   {:on-click #(add-new-column board)}
+   "+ add new column"])
+
+(defn Board [board]
+  ,,,
+  [NewColumn board]
+  ,,,)
+</code></pre>
+<p>To make column titles editable it does make sense to reuse the functionality we
+already coded up for the cards. Both cards and columns have an editing flag and
+a title field, that’s all the event handlers care about. And there are two DOM
+elements and four event handlers to coordinate, we don’t want to duplicate all
+of that.</p>
+<p>Let’s turn our Card component into a generic Editable component. It’s no longer
+necessarily a card cursor now, it could also be a column cursor, so rename this
+variable. The only card-specific thing left is this <code>:div.card</code> with. We can
+pass that element type in as an argument. The “editing” className we can still
+add with a property.</p>
+<p>The new Card component simply uses the Editable component, passing in the
+element type: a div with a className of “card”.</p>
+<pre><code class="language-clojure">(defn Editable [el cur]
+  (let [{:keys [editing title]} @cur]
+    (if editing
+      [el
+       {:className "editing"}
+       [:input {:type "text"
+                :value title
+                :autoFocus true
+                :on-change #(update-title cur (.. % -target -value))
+                :on-blur #(stop-editing cur)
+                :on-key-press #(if (= (.-charCode %) 13)
+                                 (stop-editing cur))}]]
+      [el {:on-click #(start-editing cur)} title])))
+
+(defn Card [card-cur]
+  [Editable :div.card card-cur])
+</code></pre>
+<p>So that still works, now let’s look at the Column component. We already had a
+bit of code in there to deal with the editing flag, but we can replace that now
+with the Editable component, and there you go. Editing support with no extra
+effort! The column title is a level two heading, and now it’s the column cursor
+we’re updating. This element has siblings, so make sure it still has a key.</p>
+<p>And… great! You did it, good job!</p>
+<pre><code class="language-clojure">(defn Column [col-cur]
+  ,,,
+  [:div.column
+   ^{:key "title"} [Editable :h2 col-cur]
+   ,,,])
+</code></pre>
+<p>So our app is finished, and we’re all drinking White Russians to celebrate the
+big launch, when suddenly the Head of QA calls. Turns out auto-focusing of the
+input fields doesn’t work on iPhone, and this truly will not stand, man.</p>
+<p>Now you can choose your own adventure… do you A) slap on a polyfill for
+autoFocus, or B) decide to get your hands dirty with the DOM.</p>
+<p>If you chose A) you can stop the episode and go bowling. If you chose B) then
+stay put!</p>
+<p>Reagent components come in three flavors, known as form-1, form-2, and form-3.
+So far we’ve only used the simplest of these, the form-1, a simple function
+which returns Hiccup.</p>
+<pre><code class="language-clojure">(defn Form1Component [x y z]
+  [:div.f1 x y z])
+</code></pre>
+<p>A form-2 component is similar, but instead of returning Hiccup directly, it
+returns a function which returns Hiccup. The inner function takes the exact same
+arguments as the component itself.</p>
+<p>With a form-2 component, the outer function is only called once, and you can use
+it to do one-time initialization. You can also use this to create
+component-local state, by closing over a Reagent atom. The usual caveats about
+component-local state apply of course, avoid it except for the smallest and
+simplest of cases.</p>
+<pre><code class="language-clojure">(defn Component2 [x y z]
+  (fn [x y z]
+    [:div.c2 x y z]))
+
+(defn Component2 [x y z]
+  (let [component-state (r/atom {:loading true})]
+    (request-data-from-api :handler (fn [res]
+                                      (reset! component-state res)))
+    (fn [x y z]
+      (if (:loading @component-state)
+        "Loading..."
+        [:div.c2 x y z]))))
+</code></pre>
+<p>So form-1 and form-2 components are pretty simple, they provide a very
+Clojuresque way of doing things, it’s only functions after all. Sometimes you
+need to invoke the full power of the React though. This is where form-3
+components come in.</p>
+<p>In this case our component is a function which returns the result of Reagent’s
+create-class function. It’s very similar to the createClass function you might
+remember from React itself, except that the <code>render</code> method is now called
+<code>reagent-render</code>. You could use plain <code>render</code> and it would appear to work, but
+you won’t get automatic updates when a reagent atom changes, so better to always
+stick with <code>reagent-render</code>.</p>
+<pre><code class="language-clojure">(defn Component3 [x y z]
+  (r/create-class {:display-name "Component3"
+                   :reagent-render (fn [x y z]
+                                     [:div.c2 x y z])}))
+</code></pre>
+<p>So why add all the extra syntax to achieve the same thing? Well now we have a
+place to declare React lifecycle methods. We haven’t talked about them much yet,
+but lifecycle methods power many of the more advanced use cases of React.</p>
+<p>To demonstrate this let’s create a component that works just like an <code>&lt;input&gt;</code>
+form element, but it also automatically focuses itself after it’s rendered. This
+function is mostly boilerplate, but you can see that in the end it just renders
+an input field, passing in the component’s properties unchanged. We can use this
+in our Editable component in place of a regular input field.</p>
+<pre><code class="language-clojure">(defn AutoFocusInput [props]
+  (r/create-class
+   {:display-name "AutoFocusInput"
+    :reagent-render (fn [props]
+                      [:input props])}))
+
+
+(defn Editable [el cur]
+  ,,,
+  [AutoFocusInput {:type "text"
+                   :value title
+                   ,,,}]
+  ,,,)
+</code></pre>
+<p>Now we can implement the <code>component-did-mount</code> lifecycle method. Like its name
+implies, it is called after React is ready “mounting” this component in the DOM,
+so now there’s a real DOM node that we can access.</p>
+<p><code>component-did-mount</code> receives the component instance, with the <code>dom-node</code>
+function we can find the actual <code>&lt;input&gt;</code> DOM node, and then call its focus
+method.</p>
+<pre><code class="language-clojure">(defn AutoFocusInput [props]
+  (r/create-class
+   {:display-name "AutoFocusInput"
+    :component-did-mount (fn [component]
+                           (.focus (r/dom-node component)))
+    :reagent-render (fn [props]
+                      [:input props])}))
+</code></pre>
+<p>And now our Kanban board is fully functional and we can join our colleagues at
+the bar again.</p>
+<p>In this episode I showed you how to manage state in Reagent using a global atom
+and cursors. Cursors are great to have in your toolbox, and for simple apps like
+this they provide an elegant solution.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/kanban">browse source code</a></p>
+<p>To get the code at the start of the episode so you can follow along</p>
+<pre><code class="language-sh">git clone https://github.com/lambdaisland/kanban.git
+cd kanban
+git checkout ep-10-reagent-cursors
+</code></pre>
+<p>To try out the fully finished application</p>
+<pre><code class="language-sh">git checkout ep-11-keys-lifecycle
+</code></pre>
+<p>Here’s the fully finished application code</p>
+<pre><code class="language-clojure">(ns kanban.core
+  (:require [reagent.core :as r]))
+
+(enable-console-print!)
+
+(def app-state
+  (r/atom {:columns [{:id (random-uuid)
+                      :title "Todos"
+                      :cards [{:id (random-uuid)
+                               :title "Learn about Reagent"}
+                              {:id (random-uuid)
+                               :title "Tell my friends about Lambda Island"}]}
+                     {:id (random-uuid)
+                      :title "Awesomize"
+                      :cards [{:id (random-uuid)
+                               :title "Meditate"}
+                              {:id (random-uuid)
+                               :title "Work out"}]}]}))
+
+(defn AutoFocusInput [props]
+  (r/create-class {:displayName "AutoFocusInput"
+                   :component-did-mount (fn [component]
+                                          (.focus (r/dom-node component)))
+                   :reagent-render (fn [props]
+                                     [:input props])}))
+
+(defn- update-title [cursor title]
+  (swap! cursor assoc :title title))
+
+(defn- stop-editing [cursor]
+  (swap! cursor dissoc :editing))
+
+(defn- start-editing [cursor]
+  (swap! cursor assoc :editing true))
+
+(defn Editable [el cursor]
+  (let [{:keys [editing title]} @cursor]
+    (if editing
+      [el {:className "editing"} [AutoFocusInput {:type "text"
+                                                  :value title
+                                                  :on-change #(update-title cursor (.. % -target -value))
+                                                  :on-blur #(stop-editing cursor)
+                                                  :on-key-press #(if (= (.-charCode %) 13)
+                                                                   (stop-editing cursor))}]]
+      [el {:on-click #(start-editing cursor)} title])))
+
+(defn Card [cursor]
+  [Editable :div.card cursor])
+
+(defn add-new-card [col-cur]
+  (swap! col-cur update :cards conj {:id (random-uuid)
+                                     :title ""
+                                     :editing true}))
+
+(defn NewCard [col-cur]
+  [:div.new-card
+   {:on-click #(add-new-card col-cur)}
+   "+ add new card"])
+
+(defn Column [col-cur]
+  (let [{:keys [title cards editing]} @col-cur]
+    [:div.column
+     ^{:key "title"} [Editable :h2 col-cur]
+     (map-indexed (fn [idx {id :id}]
+                    (let [card-cur (r/cursor col-cur [:cards idx])]
+                      ^{:key id} [Card card-cur]))
+                  cards)
+     ^{:key "new"} [NewCard col-cur]]))
+
+(defn- add-new-column [board]
+  (swap! board update :columns conj {:id (random-uuid)
+                                     :title ""
+                                     :cards []
+                                     :editing true}))
+
+(defn NewColumn [board]
+  [:div.new-column
+   {:on-click #(add-new-column board)}
+   "+ add new column"])
+
+(defn Board [board]
+  [:div.board
+   (map-indexed (fn [idx {id :id}]
+                  (let [col-cur (r/cursor board [:columns idx])]
+                    ^{:key id} [Column col-cur]))
+                (:columns @board))
+   ^{:key "new"} [NewColumn board]])
+
+(r/render [Board app-state] (js/document.getElementById "app"))
+</code></pre>
+<h2 id="lifecycle-methods">Lifecycle Methods</h2>
+<p>To learn more about React’s lifecycle methods, <a shape="rect" href="https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods">The official React docs on Component Specs and Lifecycle Methods</a> are a great start.</p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

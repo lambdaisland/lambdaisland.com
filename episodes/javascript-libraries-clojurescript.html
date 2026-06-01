@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/javascript-libraries-clojurescript" />
+<meta name="twitter:title" content="Using JavaScript libraries in ClojureScript" />
+<meta name="twitter:description" content="One of the benefits of ClojureScript is that it lets you leverage the great JavaScript ecosystem. Using arbitrary JS libraries isn't always trivial though, and a lot of head..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/593333448-abb9df89fd000dcdd4c418129bc59e1a53c1083c5d2fcd9dce5bf8d6b94722e1-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Using JavaScript libraries in ClojureScript" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/javascript-libraries-clojurescript" />
+<meta name="video:duration" content="1053" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/593333448-abb9df89fd000dcdd4c418129bc59e1a53c1083c5d2fcd9dce5bf8d6b94722e1-d_1280x720?r=pad" />
+<meta name="og:description" content="One of the benefits of ClojureScript is that it lets you leverage the great JavaScript ecosystem. Using arbitrary JS libraries isn't always trivial though, and a lot of head..." />
+<meta name="video:release_date" content="2016-09-23T11:40:18.323Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Using JavaScript libraries in ClojureScript</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/183980038?h=691540f179&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="18. Using JavaScript libraries in ClojureScript"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>One of the benefits of ClojureScript is that it lets you leverage the great JavaScript ecosystem. Using arbitrary JS libraries isn’t always trivial though, and a lot of head scratching can ensue. In this episode you’ll learn the exact steps from here to success, and you’ll gain insight into ClojureScript’s build process, so you can tackle any challenge that comes your way.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>ClojureScript is great, but it gets even better when you combine it with the
+vast amount of JavaScript libraries out there. There’s more than one way to do
+that, and because of the way ClojureScript compilation works there are a few
+snags to watch out for.</p>
+<p>You’re going to see quite some JavaScript interop forms in this episode. If
+you’re still a bit fuzzy on those then I recommend first watching the episode on
+JavaScript interop.</p>
+<p>I’ve set up a minimal ClojureScript project to demonstrate how to do things.
+It’s <a shape="rect" href="https://github.com/lambdaisland/thirdpartyjs">on Github</a> under
+<code>lambdaisland/thirdpartyjs</code>. I’ll use a separate branch for each thing I’m
+demonstrating, so you can easily check them out.</p>
+<p>The project is fairly typical. I’ve included ClojureScript and the
+<code>lein-cljsbuild</code> plugin, and configured two ClojureScript builds, one with and
+one without optimizations. I’ve added a main namespace, with a bit of code just
+to see that it’s working, and added an <code>index.html</code> that loads the compiled
+CloureScript. So far so good.</p>
+<pre><code class="language-clojure">(defproject thirdpartyjs "0.1.0-SNAPSHOT"
+  :license {:name "Mozilla Public License 2.0" :url "https://www.mozilla.org/en-US/MPL/2.0/"}
+
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojurescript "1.9.229"]]
+
+  :source-paths ["src/clj"]
+
+  :plugins [[lein-cljsbuild "1.1.4"]]
+
+  :clean-targets ^{:protect false} [:target-path :compile-path "resources/public/js/compiled"]
+
+  :cljsbuild {:builds
+              {:dev {:source-paths ["src/cljs"]
+                     :compiler {:main thirdpartyjs.core
+                                :optimizations :none
+                                :output-to "resources/public/js/compiled/thirdpartyjs.js"
+                                :output-dir "resources/public/js/compiled/dev"
+                                :asset-path "js/compiled/dev"
+                                :source-map-timestamp true}}
+
+               :prod {:source-paths ["src/cljs"]
+                      :jar true
+                      :compiler {:main thirdpartyjs.core
+                                 :optimizations :advanced
+                                 :output-to "resources/public/js/compiled/thirdpartyjs.js"
+                                 :source-map "resources/public/js/compiled/thirdpartyjs.js.map"
+                                 :output-dir "resources/public/js/compiled/prod"
+                                 :source-map-timestamp true
+                                 :pretty-print false}}}})
+</code></pre>
+<p>The advice I want to give you first is to use CLJSJS whenever possible. CLJSJS
+is a community effort to package up JavaScript libraries so they’re easy to
+consume from ClojureScript. A few hundred libraries are already packaged up, and
+more are being added all the time.</p>
+<p>This only takes three steps. First, find the library on
+<a shape="rect" href="https://cljsjs.github.io">cljsjs.github.io</a>, and copy the dependency vector
+into your Leingen or Boot configuration.</p>
+<pre><code class="language-clojure">:dependencies [,,,
+               [cljsjs/d3 "4.2.2-0"]]
+</code></pre>
+<p>Now look at the usage instructions to find the provided name of the package,
+also known as its “synthetic namespace”. By requiring this in our namespace we
+make sure the package gets loaded.</p>
+<pre><code class="language-clojure">(ns thirdpartyjs.core
+  (:require [cljsjs.d3]))
+</code></pre>
+<p>Finally use whatever JavaScript globals the library creates. This depends on the
+project, in this case there’s a global <code>d3</code> object that we can access through
+the <code>js</code> pseudo-namespace. Here’s some example code that draws the outline of an
+ice berg. Notice how I’m accessing <code>d3</code> through <code>js/d3</code>, and not through the
+<code>cljsjs.d3</code> namespace that we required. The <code>cljsjs.d3</code> namespace is called a
+“synthetic namespace”. It doesn’t really exist. It’s only used to signal that
+this code uses D3, so it will be loaded.</p>
+<pre><code class="language-clojure">(def values #js [0 3 2 5 4 7 8 6 2 6 5 1 0])
+
+(def width 960)
+(def height 500)
+
+(let [svg (.. js/d3
+              (select "#app")
+              (append "svg")
+              (attr "width" width)
+              (attr "height" height))
+      x-scale (.. js/d3
+                  scaleLinear
+                  (range #js [0 width])
+                  (domain #js [0 12]))
+      y-scale (.. js/d3
+                  scaleLinear
+                  (range #js [height 0])
+                  (domain #js [0 10]))
+      line (.. js/d3
+               line
+               (x #(x-scale %2))
+               (y y-scale))]
+
+  (.. svg
+      (append "path")
+      (datum (clj-&gt;js values))
+      (attr "fill" "none")
+      (attr "stroke" "#3355ee")
+      (attr "stroke-width" "5px")
+      (attr "d" line)))
+</code></pre>
+<p>Now do a <code>dev</code> build, that’s <code>lein cljsbuild once dev</code>. This goes relatively
+fast. Open <code>index.html</code> in your browser, and you should see this working.</p>
+<pre><code>lein cljsbuild once dev
+firefox resources/public/index.html
+</code></pre>
+<p>You can do the same for the minimized build. This time run <code>lein cljsbuild once
+prod</code>, and reload your browser. Look at that!</p>
+<pre><code>lein cljsbuild once prod
+</code></pre>
+<p>Now suppose CLJSJS isn’t an option, what’s the simplest thing that could
+possibly work? Well let’s just load D3 as a separate script tag, by adding a
+script tag to <code>index.html</code>. This should make the <code>d3</code> global available like
+before, so our code should work unchanged. The only thing that changes is the
+namespace declaration, that synthetic require can go, we’re taking care of
+loading D3 ourselves now.</p>
+<pre><code class="language-html">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js" type="text/javascript"&gt;&lt;/script&gt;
+</code></pre>
+<p>Now do a development build and reload your browser again. Seems this “simplest
+thing that could possibly work” actually worked, it almost seems too easy!</p>
+<pre><code>lein clean ; lein cljsbuild once dev
+</code></pre>
+<p>Let’s try a production build instead. Reload the browser, oops, looks like we
+broke something. Peek under the cover and you’ll see an error message
+like this one </p>
+<pre><code>TypeError: d3.select(...).append(...).Va is not a function
+</code></pre>
+<p><code>d3.select.append</code>, that still looks good, but then it tries to call a <code>Va</code>
+method. That’s not in our code. Where does this gibberish come from?</p>
+<p>Open the compiled file, <code>thirdpartyjs.js</code>, and scroll to the bottom. You should
+recognize bits of our code, but it’s all been jumbled and obfuscated.</p>
+<pre><code class="language-javascript">var Pe=d3.select("#app").append("svg").Va("width",960).Va("height",500),Qe=d3.Vb().Tb([0,960]).domain([0,12]),Re=d3.Vb().Tb([500,0]).domain([0,10]),Se=d3.fc().x(function(a,b){return function(a,d){return b.b?b.b(d):b.call(null,d)}}(Pe,Qe,Re)).y(Re);Pe.append("path").dc(Oe([0,3,2,5,4,7,8,6,2,6,5,1,0])).Va("fill","none").Va("stroke","#3355ee").Va("stroke-width","5px").Va("d",Se);
+</code></pre>
+<p>So how did this happen? The ClojureScript compiler is built on top of the Google
+Closure Compiler. That’s Closure with an <code>s</code>, not with a <code>j</code>. One of the main
+goals of the Closure Compiler is to reduce loading time, by packing all the
+JavaScript together in a single file, and then making it as small as possible.</p>
+<p>It has a few ways of doing this, including renaming functions to something
+shorter. In this case it has renamed every occurence of <code>attr</code> with <code>Va</code>. When
+it does that all over the code base then that’s not a problem, but because we
+loaded D3 separately it hasn’t been processed, and so we’re calling a function
+that doesn’t exist, leading the browser to divulge this universally
+acknowledged, inaliable truth: “Undefined is not a function”.</p>
+<p>One way around this is to simply not use advanced optimizations. There are four
+optimization levels to choose from, and only one of them causes this problem. If
+squeezing the last byte out isn’t vital to what you are doing, then maybe
+<code>:whitespace</code> or <code>:simple</code> optimization is good enough.</p>
+<p>Those advanced optimizations are nice though, can we have our cake and optimize
+it too?</p>
+<p>Google Closure has its own module and dependency tracking system, a bit like
+CommonJS or AMD. If D3 was a library written for Google Closure then we could
+just add it to our build, and it would be optimized with the rest of the code.
+That’s not the case, but let’s have a look anyway what such a module would look
+like.</p>
+<p>Here’s a “padding” module that implements a “leftPad” and a “rightPad” function.
+The <code>goog.provide</code> clause declares the namespace that this module defines.
+<code>goog.provide</code> will create a JavaScript object with that name, so we can assign
+properties onto it. Any function we want to make publicly available, like
+<code>leftPad</code> or <code>rightPad</code>, must be added to this object. <code>makePadding</code> is just an
+internal helper, so we don’t need to add it.</p>
+<p>With <code>goog.require</code> we can include another library, in this case <code>goog.string</code>,
+since we’re using the <code>goog.string.repeat</code> function.</p>
+<pre><code class="language-javascript">goog.provide('thirdpartyjs.padding');
+goog.require('goog.string');
+
+function makePadding(str, len) {
+  var padLen = len - str.length;
+  if (padLen &lt;= 0) {
+    return str;
+  }
+  return goog.string.repeat(' ', padLen);
+}
+
+thirdpartyjs.padding.leftPad = function (str, len) {
+  return makePadding(str, len) + str;
+}
+
+thirdpartyjs.padding.rightPad = function (str, len) {
+  return str + makePadding(str, len);
+}
+</code></pre>
+<p>Notice the name I used in <code>goog.provide</code>, it looks just like a ClojureScript
+namespace. That’s because for our purposes it is. To save this file, use the
+same naming conventions as you would in ClojureScript, except that now instead
+“cljs” it has a “js” extension. So namespace segments become directories, and
+the last segment becomes the file name.</p>
+<pre><code>.
+├── clj
+│   └── thirdpartyjs
+│       └── core.clj
+└── cljs
+    └── thirdpartyjs
+        ├── core.cljs
+        └── padding.js
+</code></pre>
+<p>Now from ClojureScript, require it just like a regular namespace. <code>:refer</code> won’t
+work in this case, but <code>:as</code> does, so we’ll give it a more convenient alias.</p>
+<pre><code class="language-clojure">(ns thirdpartyjs.core
+  (:require [thirdpartyjs.padding :as padding]))
+
+(enable-console-print!)
+
+(prn (padding/leftPad "Hello!" 10))
+</code></pre>
+<p>This time it works both with the development and with the production build.
+Let’s peek under the covers and see how they differ.</p>
+<p>The HTML we send to the browser is pretty minimal, there’s just one JS file that
+we load.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;link href="css/style.css" rel="stylesheet" type="text/css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+
+    &lt;script src="js/compiled/thirdpartyjs.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>When looking at the inspector there’s a lot more going on though. We started
+with a single Script tag, but now there are at least a dozen. Where do all those
+extra script tags come from?</p>
+<pre><code class="language-html">&lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+
+    &lt;script src="js/compiled/thirdpartyjs.js" type="text/javascript"&gt; &lt;/script&gt;
+
+    &lt;script src="js/compiled/dev/goog/base.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/deps.js"&gt;&lt;/script&gt;
+    &lt;script src="js/compiled/dev/cljs_deps.js"&gt;&lt;/script&gt;
+    &lt;script&gt;if (typeof goog == "undefined") console.warn("ClojureScript could not load :main, did you forget to specify :asset-path?");&lt;/script&gt;
+    &lt;script&gt;goog.require("thirdpartyjs.core");&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/string/string.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/object/object.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/math/integer.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/string/stringbuffer.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/debug/error.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/dom/nodetype.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/asserts/asserts.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/array/array.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/reflect/reflect.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/math/long.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/../cljs/core.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/../thirdpartyjs/padding.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="file:///home/arne/thirdpartyjs/resources/public/js/compiled/dev/goog/../thirdpartyjs/core.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>If you look at <code>thirdpartyjs.js</code>, you’ll see that it doesn’t contain any
+application code, all it does is inject some tags to do the actual loading.
+Three of these are important for us.</p>
+<p><code>base.js</code> contains supporting code for Google Closure’s module system. It’s here
+that <code>goog.provide</code> and <code>goog.require</code> are defined, so code can be loaded
+dynamically, on the fly.</p>
+<p><code>cljs_deps.js</code> is a generated file containing a list of calls to
+<code>goog.addDependency</code>. Together they form the dependency graph for our
+application, specifying the dependencies between namespaces, and the files they
+are defined in.</p>
+<p>Once that is done a call to <code>goog.require</code> will load the <code>thirdpartyjs.core</code>
+namespace. All of the necessary dependencies will now be loaded first. <code>core</code>
+depends on <code>padding</code>, and also uses ClojureScript built-in functions, defined in
+<code>cljs.core</code>, which in turn depends on stuff from the Google Closure Library, so
+that’s what these are.</p>
+<p>I hope you managed to follow that :) The reason I’m showing you all this is to
+drive home the point that, when optimizations are disabled, Google Closure forms
+a dynamic module system, where each namespace forms its own file, and namespaces
+can be loaded at runtime.</p>
+<pre><code class="language-javascript">document.write('&lt;script src="js/compiled/dev/goog/base.js"&gt;&lt;/script&gt;');
+document.write('&lt;script src="js/compiled/dev/cljs_deps.js"&gt;&lt;/script&gt;');
+document.write('&lt;script&gt;goog.require("thirdpartyjs.core");&lt;/script&gt;');
+</code></pre>
+<p>When we go to the other end of the optimization spectrum, skipping <code>:whitespace</code>
+or <code>:simple</code> optimizations, and moving straight to <code>:advanced</code> we get a very
+different picture.</p>
+<p>I now did a production build, so with advanced optimizations. It’s still using
+the same HTML, containing a single <code>&lt;script&gt;</code> tag. If you look at the inspector,
+it’s no longer loading any extra files, so it must be that our whole application
+has now been packed into this one file. It’s highly optimized code, not meant
+for human consumption, but with some effort you can still find <code>leftPad</code> in
+there, except now it looks like this:</p>
+<p>Several things are remarkable about this bit of generated code. The
+<code>makePadding</code> function is gone, it has been inlined into <code>leftPad</code>. Namespaces
+are gone, instead every individual function has gotten a unique short name,
+flattening the hierarchy.</p>
+<p>And what happened to <code>rightPad</code>? Well, it’s simply gone. Google Closure figured
+out we weren’t using it, and simply ripped it out. The same happens for
+ClojureScript core or library functions: if you don’t use it, you don’t pay for
+it. That’s one of the superpowers of ClojureScript.</p>
+<p>The takeaway from this is that what was essentially a system for loading
+dependencies at run-time, now becomes a tool for analyzing and optimizing code.
+And, given the magic it does, it’s also easy to see how things can go wrong.</p>
+<pre><code class="language-javascript">function Oe(a,b){var c=b-a.length;return(0&gt;=c?a:da(" ",c))+a}
+</code></pre>
+<p>Back to D3, we understand now what went wrong. We had D3 outside of our build,
+and so the compiler couldn’t take into account the functions it’s defining.</p>
+<p>We need to tell the compiler that it should leave certain function names alone,
+because they’re defined elsewhere. This is done through an “externs” file, a
+JavaScript file that doesn’t contain any code, but instead contains declarations
+for all the identifiers that should be left alone. Here’s a small externs file
+with declarations for all the bits of D3 that we’re actually using.</p>
+<pre><code class="language-javascript">var d3 = {};
+d3.select = function() {};
+d3.selection = function() {};
+d3.selection.prototype.append = function() {};
+d3.selection.prototype.attr = function() {};
+d3.selection.prototype.datum = function() {};
+d3.scaleLinear = function() {};
+d3.scaleLinear.prototype.range = function() {};
+d3.scaleLinear.prototype.domain = function() {};
+d3.line = function() {};
+d3.line.prototype.x = function() {};
+d3.line.prototype.y = function() {};
+</code></pre>
+<p>Save that to <code>d3-externs.js</code> and add it to the ClojureScript compiler
+configuration under <code>:externs</code></p>
+<p>Now we can do an advanced compilation without breaking the app.</p>
+<pre><code class="language-clojure">:externs ["d3-externs.js"]
+</code></pre>
+<p>In this case we’re only using a handful of functions, but for a real world
+application you really don’t want to be writing these externs manually. Luckily
+there are tools to generate them for you, like this
+<a shape="rect" href="http://michaelmclellan.me/javascript-externs-generator/">online externs generator</a>
+by Michael McLellan. Just put in a link to the D3 source file, choose which top
+level variable you’ll be referencing, in our case that’s <code>d3</code>, and click on
+“Extern!”. Copy the result to your externs file and you’re done.</p>
+<p>Or at least, mostly done. Occasionally it might not detect all the necessary
+externs, and you need to add a few yourself. Doesn’t sound like fun? That’s why
+we have CLJSJS. CLJSJS packages already have the necessary externs included, so
+you don’t have to worry about them. If you have choice in the matter, than
+always use CLJSJS, but I already told you that.</p>
+<p>So far we’re still loading D3 separately by adding an extra <code>script</code> tag. That
+means doing an extra network request, and if we get more dependencies that is
+going to get costly. It would be better if we could compile D3 together with the
+rest of our code into a single artifact.</p>
+<p>Let’s first pull D3 down so we can use it locally.</p>
+<pre><code>curl https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js &gt; d3.js
+</code></pre>
+<p>To get a JavaScript file into the build that isn’t a Google Closure module, you
+use the <code>:foreign-libs</code> option in the compiler configuration. <code>:foreign-libs</code>
+takes a vector of maps, one map for each file you want to include. First point
+it at the right file, and then use <code>:provides</code> to give it a “synthetic
+namespace”. Provides takes a vector, but normally you just put a single string
+in there.</p>
+<p>All this will accomplish is including the D3 source as-is in the final output.
+It just concatenates the files together. It won’t analyze it, or do smart
+optimizations, so we still need the externs file to make sure our own code stays
+compatible after optimizations.</p>
+<pre><code class="language-clojure">:foreign-libs [{:file "d3.js"
+                :provides ["js.d3"]}]
+:externs ["d3-externs.js"]
+</code></pre>
+<p>Now just like with CLJSJS we need to require this namespace, or it won’t be
+included in the build. After that you can reference D3 like any JavaScript
+global.</p>
+<p>This final approach is in most cases the recommended one. It doesn’t allow
+Google Closure to optimize the third party library, but for many libraries that
+will probably never be the case, given there are some very specific requirements
+in how the code is written.</p>
+<pre><code class="language-clojure">(ns thirdpartyjs.core
+  (:require [js.d3]))
+</code></pre>
+<p>What I haven’t told you yet, is that Google Closure Compiler does ship with the
+ability to load other module formats, like CommonJS, AMD, or ES6. It’s still a
+bit of an experimental feature, I definitely had some mixed results trying this
+out, but I’ll show you anyway, because it’s a pretty cool feature, and because
+it lets you imagine what might be possible in the future.</p>
+<p>To show you how that works I’ve changed <code>padding.js</code> to use ES6 <code>import</code> and
+<code>export</code> statements.</p>
+<p>Import is used to pull in the <code>goog.string.repeat</code> function. The <code>goog:</code> prefix
+is needed here to show that this is a Google Closure namespace we’re loading
+from, and not another ES6 file. You can also use it to import functions defined
+in ClojureScript namespaces, which I think is pretty wild.</p>
+<p>Finally it exports <code>leftPad</code> and <code>rightPad</code>, the two public functions of this
+<code>padding</code> namespace.</p>
+<pre><code class="language-javascript">import {repeat} from 'goog:goog.string';
+
+function makePadding(str, len) {
+  var padLen = len - str.length;
+  if (padLen &lt;= 0) {
+    return str;
+  }
+  return repeat(' ', padLen);
+}
+
+function leftPad (str, len) {
+  return makePadding(str, len) + str;
+}
+
+function rightPad (str, len) {
+  return str + makePadding(str, len);
+}
+
+export { leftPad, rightPad };
+</code></pre>
+<p>To include an ES6 module also add it to <code>:foreign-libs</code>. We specify the filename
+and the provided namespace, like before, but now add an extra option
+<code>:module-type</code>.</p>
+<p>This makes a pretty big difference, where before the foreign library would
+naively be concatenated with the rest, now it becomes a first class part of the
+build, taking part in dependency resolution, and getting the full load of
+optimizations.</p>
+<pre><code class="language-clojure">:foreign-libs [{:file "padding.js"
+                :provides ["thirdpartyjs.padding"]
+                :module-type :es6}]
+</code></pre>
+<p>The application code is unchanged from before, we require the padding namespace,
+and call <code>leftPad</code>. Pretty cool!</p>
+<pre><code class="language-clojure">(ns thirdpartyjs.core
+  (:require [thirdpartyjs.padding :as padding]))
+
+(enable-console-print!)
+
+(prn (padding/leftPad "Hello!" 10))
+</code></pre>
+<p>That’s it, you now know all there is to know about using JavaScript libraries
+from ClojureScript. Most of the time CLJSJS will be all you need, but sometimes
+it’s not. With this stuff under your belt you should have all the tools
+available to figure whatever challenge comes your way.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/thirdpartyjs">browse source code</a></p>
+<p>Each approach is demonstrated in a separate branch, the README in the repo contains an overview.</p>
+<style type="text/css">
+#js-in-cljs-overview td {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+</style>
+<table frame="hsides" rules="groups" id="js-in-cljs-overview" border="2" cellspacing="0" cellpadding="16"><thead><tr><th colspan="1" rowspan="1" scope="col"> </th><th colspan="1" rowspan="1" scope="col">Module format</th><th colspan="1" rowspan="1" scope="col">Max optimization level</th><th colspan="1" rowspan="1" scope="col">3rd party code</th></tr></thead><tbody><tr><td colspan="1" rowspan="1">script</td><td colspan="1" rowspan="1">any</td><td colspan="1" rowspan="1">:simple</td><td colspan="1" rowspan="1">side-loaded</td></tr><tr><td colspan="1" rowspan="1">script + externs</td><td colspan="1" rowspan="1">any</td><td colspan="1" rowspan="1">:advanced</td><td colspan="1" rowspan="1">side-loaded</td></tr><tr><td colspan="1" rowspan="1">Closure module</td><td colspan="1" rowspan="1">Google Closure</td><td colspan="1" rowspan="1">:advanced</td><td colspan="1" rowspan="1">optimized + bundled</td></tr><tr><td colspan="1" rowspan="1">foreign-libs</td><td colspan="1" rowspan="1">any</td><td colspan="1" rowspan="1">:simple</td><td colspan="1" rowspan="1">bundled</td></tr><tr><td colspan="1" rowspan="1">foreign-libs + externs</td><td colspan="1" rowspan="1">any</td><td colspan="1" rowspan="1">:advanced</td><td colspan="1" rowspan="1">bundled</td></tr><tr><td colspan="1" rowspan="1">module-type</td><td colspan="1" rowspan="1">ES6, AMD, CommonJS, UMD*</td><td colspan="1" rowspan="1">:advanced</td><td colspan="1" rowspan="1">optimized + bundled</td></tr></tbody></table>
+<h2 id="compiler-options">Compiler options</h2>
+<p>The ClojureScript compiler options relevant for this episode are</p>
+<pre><code class="language-clojure">:optimizations :none|:whitespace|:simple|:advanced
+:foreign-libs {:file "path/to/file.js"
+               :file-min "path/to/file-minified.js"
+               :provides ["synthetic.namespace"]
+               :requires ["other.name" "spac.es"]
+               :module-type :es6|:amd|:commonjs}
+:externs ["path/to/externs.js"]
+</code></pre>
+<h3 id="optimizations"><code>:optimizations</code></h3>
+<ul>
+<li><code>:none</code><br clear="none" /> Don’t invoke the Google Closure Compiler, load Google Closure modules with <code>base.js</code></li>
+<li><code>:whitespace</code><br clear="none" /> Concatenate sources into a single artifact</li>
+<li><code>:simple</code><br clear="none" /> Do optimizations that are guaranteed to be safe, like local variable renaming</li>
+<li><code>:advanced</code><br clear="none" />  Perform global analyzing and renaming, dead code elimination, inlining, etc.</li></ul>
+<h3 id="file-min"><code>:file-min</code></h3>
+<p>Not discussed in this episode, it is possible to point to both the regular and
+minified version of a library. In development mode (<code>:optimizations :none</code>) the
+regular version is used for easy debugging, with optimizations enabled the
+minified version is used. This is useful since when using <code>:foreign-libs</code> the
+3rd party library is simply concatenated into the final build artifact, it is
+not analyzed or optimized.</p>
+<h2 id="links-and-further-reading">Links and Further reading</h2>
+<p><a shape="rect" href="http://michaelmclellan.me/javascript-externs-generator/">JavaScript Externs Generator</a></p>
+<p>ClojureScript Wiki:</p>
+<ul>
+<li><a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Dependencies">Dependencies</a></li>
+<li><a shape="rect" href="https://github.com/clojure/clojurescript/wiki/Compiler-Options">Compiler Options</a></li></ul>
+<p>Closure Compiler Wiki:</p>
+<ul>
+<li><a shape="rect" href="https://github.com/google/closure-compiler/wiki/JS-Modules">JS Modules</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

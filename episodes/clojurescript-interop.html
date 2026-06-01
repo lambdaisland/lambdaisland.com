@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojurescript-interop" />
+<meta name="twitter:title" content="ClojureScript Interop" />
+<meta name="twitter:description" content="In this episode we'll go over all the tools ClojureScript puts at your disposal to interoperate with JavaScript. You'll learn how to call JavaScript libraries, how to work with..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/574036430-186a9ce366f3e8fd920d7111e8580a9fa4a6c98e038c5084e350823dd6b14b4b-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="ClojureScript Interop" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojurescript-interop" />
+<meta name="video:duration" content="509" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/574036430-186a9ce366f3e8fd920d7111e8580a9fa4a6c98e038c5084e350823dd6b14b4b-d_1280x720?r=pad" />
+<meta name="og:description" content="In this episode we'll go over all the tools ClojureScript puts at your disposal to interoperate with JavaScript. You'll learn how to call JavaScript libraries, how to work with..." />
+<meta name="video:release_date" content="2016-05-20T16:26:56.106Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">ClojureScript Interop</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/167447138?h=4e2085ab4a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="ClojureScript Interop"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>In this episode we’ll go over all the tools ClojureScript puts at your disposal to interoperate with JavaScript. You’ll learn how to call JavaScript libraries, how to work with JavaScript datatypes, how to convert data back and forth, and how to use “this”.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>ClojureScript doesn’t try to hide the JavaScript underneath, instead it uses the
+host platform to its advantage. That means you still have JavaScript’s existing
+functionality, and its pre-existing libraries, at your fingertips.</p>
+<p>If you’re already profecient in JavaScript, then you should learn early on how
+to map JavaScript code to the equivalent ClojureScript, so you can transfer your
+existing knowledge. That’s what we’ll do in this episode.</p>
+<h2 id="essentials">Essentials</h2>
+<h3 id="method-calls">Method calls</h3>
+<p>Let’s start simple with some strings. ClojureScript strings are just JavaScript
+strings. This means they have methods such as <code>toUpperCase</code>, and properties such
+as <code>length</code>. To call a method on an object, put a dot before the method name. In
+ClojureScript the function always comes first, and the same is true for methods.</p>
+<pre><code class="language-clojure">(def s "The octopus concoted colorized octane.")
+
+(type s)
+;;=&gt; #object[String "function String() {
+;;       [native code]
+;;   }"]
+
+(.toUpperCase s)
+</code></pre>
+<h3 id="property-access">Property access</h3>
+<p>To retreive a property, add a dash after the dot. Otherwise ClojureScript will
+assume the property is bound to a function, and try to call it.</p>
+<pre><code class="language-clojure">(.-length s)
+
+</code></pre>
+<h3 id="double-dot">double-dot</h3>
+<p>To chain multiple method calls or property lookups, you can use the double-dot
+operator. It’s a bit like the thread-first macro, except that now you can omit
+the dot before each method or property name.</p>
+<p>Suppose we have this line of JavaScript.</p>
+<pre><code class="language-javascript">// js
+s.charCodeAt(7).toString(16).toUpperCase()
+</code></pre>
+<p>Normally we would have to turn that inside out and write something like this.</p>
+<pre><code class="language-clojure">(.toUpperCase (.toString (.charCodeAt s 7) 16))
+</code></pre>
+<p>But with this dot-dot form it’s much closer to the original. Notice that the
+dots before each method are gone now.</p>
+<pre><code class="language-clojure">(.. s (charCodeAt 7) (toString 16) (toUpperCase))
+</code></pre>
+<p>In fact, since this last method doesn’t take any arguments, we can omit those
+parentheses as well.</p>
+<pre><code class="language-clojure">(.. s (charCodeAt 7) (toString 16) toUpperCase)
+</code></pre>
+<p>The same works with property access. The dots are gone, the dashes remain.
+Notice that here I needed to access the global document variable. ClojureScript
+provides the special “js” namespace, which contains all JS globals.</p>
+<pre><code class="language-clojure">;; document.body.lastChild.innerHTML.length
+
+(.. js/document -body -lastChild -innerHTML -length)
+</code></pre>
+<h3 id="gettingsettingdeleting-properties">Getting/Setting/Deleting properties</h3>
+<p>To do a JavaScript assignment, you use the <code>set!</code> function. We can use this to
+create a new global variable.</p>
+<pre><code class="language-clojure">(set! js/newVar 3)
+js/newVar ;;=&gt; 3
+</code></pre>
+<p>More commonly you’ll use it to assign properties. For that take the expression
+that would look up the property you want to assign, and use that in <code>set!</code>.</p>
+<pre><code class="language-clojure">(set! (.. js/document (getElementById "app") -innerHTML) "Hello, world!")
+(set! (.-innerHTML (.getElementById js/document "app")) "Hello, world!!!")
+</code></pre>
+<p>This previous code will translate directly into a JavaScript assignment of the
+property using dot notation, but objects and arrays can also be accessed with
+square brackets.</p>
+<pre><code class="language-javascript">// js
+var arr = [1, 2, 3]
+var obj = {x: 1, y: 2}
+
+arr[1]
+obj["z"] = 3
+</code></pre>
+<p>To achieve this we have two sibling functions, <code>aget</code> and <code>aset</code>. Here’s the
+equivalent ClojureScript. Two more functions enter the stage here, one create
+JavaScript array, the other one constructs objects. We’ll see more ways to
+create these JavaScript collections in a bit.</p>
+<pre><code class="language-clojure">(def arr (array 1 2 3))
+(def obj (js-obj "x" 1 "y" 2))
+
+arr ;;=&gt; #js [1 2 3]
+obj ;;=&gt; #js {:x 1, :y 2}
+
+(aget arr 1)     ;;=&gt; 2
+(aset obj "z" 3) ;;=&gt; 3
+
+obj ;;=&gt; #js {:x 1, :y 2, :z 3}
+</code></pre>
+<p>The only thing we can’t do yet with object properties is delete them. Javascript
+has the <code>delete</code> keyword, ClojureScript comes with the <code>js-delete</code> function.</p>
+<pre><code class="language-clojure">(def obj (js-obj "x" 1 "y" 2 "z" 3))
+
+(js-delete obj "x") ;;=&gt; true
+obj ;;=&gt; #js {:y 2, :z 3}
+</code></pre>
+<h3 id="js-globals">JS globals</h3>
+<p>When using this <code>js</code> namespace, you can chain property access directly onto it,
+the way you would do in JavaScript.</p>
+<pre><code class="language-clojure">js/document.body.lastChild.innerHTML.length
+</code></pre>
+<p>If the resulting value is a function, we can call it just like a ClojureScript
+function, by wrapping it in parens.</p>
+<pre><code class="language-clojure">(js/document.body.lastChild.innerHTML.charAt 7)
+
+(js/encodeURI "this is a test")
+;;=&gt; "this%20is%20a%20test"
+</code></pre>
+<h3 id="constructor-calls">Constructor calls</h3>
+<p>You can also invoke a function as a constructor, in JavaScript you do that with
+the “new” keyword. The ClojureScript equivalent is putting a dot after the
+function name. We can demonstrate this with the built-in Date function. When
+called as a regular function, it returns a formatted string, when called as a
+constructor, it returns a Date object.</p>
+<pre><code class="language-clojure">(js/Date "2016-05-19") ;;=&gt; "Thu May 19 2016 21:18:44 GMT+0200 (CEST)"
+(js/Date. "2016-05-19") ;;=&gt; #inst "2016-05-19T00:00:00.000-00:00"
+(js/Date.) ;;=&gt; #inst "2016-05-19T19:18:56.430-00:00"
+</code></pre>
+<h3 id="working-with-arrays-and-objects">Working with Arrays and Objects</h3>
+<p>So you’re off to a good start. You know how to call JavaScript functions, you
+also know that ClojureScript functions are regular JavaScript functions, so you
+grab your favorite library, pass it an object with some configuration and a
+callback, and… nothing happens.</p>
+<pre><code class="language-clojure">(js/$.ajax {:url "/"
+            :success (fn [e] (js/console.log "--&gt; " e))})
+</code></pre>
+<p>If you’ve been paying attention you might already realize what’s going on. We
+should have used <code>js-obj</code>, since a JavaScript object is what jQuery expects.
+There’s another gotcha here, when ClojureScript turns those keywords into
+strings, it keeps the initial colon, which isn’t quite what we wanted. When we
+use strings, then it works.</p>
+<pre><code class="language-clojure">(js-obj :url "/"
+        :success (fn [e] (js/console.log "--&gt; " e)))
+;;=&gt; #js {::url "/", ::success #object[Function "function (e){
+;;                             return console.log("--&gt; ",e);
+;;                           }"]}
+
+
+(js/$.ajax (js-obj "url" "/"
+                   "success" (fn [e] (js/console.log "--&gt; " e))))
+
+
+</code></pre>
+<p>So how come this doesn’t work with a ClojureScript map?</p>
+<p>The thing is that even though they look similar, they are actually very
+different things. ClojureScript piggiebacks on JavaScript and uses its strings,
+numbers, regular expressions, and functions as-is, but vectors and maps are not
+the same as, or compatible with, arrays and objects.</p>
+<p>This is not an oversight. ClojureScript offers immutable, persistent data
+structures. These are state of the art functional data types, which are much
+more suitable for the the style of coding that is typical in ClojureScript.</p>
+<p>So we could use the <code>js-obj</code> function, but there’s an even simpler solution. Put
+<code>#js</code> before the map, and ClojureScript reads it as a JavaScript object. It
+works with arrays as well.</p>
+<pre><code class="language-clojure">(js/$.ajax #js {:url "/"
+                 :success (fn [e] (js/console.log "--&gt; " e))})
+
+#js [1 2 3]
+#js {:map {:ima "map"}
+     :object #js {:ima "js-obj"}}
+</code></pre>
+<p>Note that <code>#js</code> only affects the outer level, so any nested maps or vectors will
+not be converted. To converted nested structures use <code>clj-&gt;js</code>. You can convert back as well with <code>js-&gt;clj</code>.</p>
+<p>In JavaScript objects the keys are always strings, so when converting back
+they’ll still be strings, but <code>js-&gt;clj</code> will convert to keywords if you ask it to.</p>
+<pre><code class="language-clojure">(def animals {:land ["foxes" "rabbits"]
+              :sea ["turtles" "octopi"]})
+
+(clj-&gt;js animals)
+;;=&gt; #js {:land #js ["foxes" "rabbits"], :sea #js ["turtles" "octopi"]}
+
+(js-&gt;clj (clj-&gt;js animals))
+;;=&gt; {"land" ["foxes" "rabbits"], "sea" ["turtles" "octopi"]}
+
+(js-&gt;clj (clj-&gt;js animals) :keywordize-keys true)
+;;=&gt; {:land ["foxes" "rabbits"], :sea ["turtles" "octopi"]}
+</code></pre>
+<h3 id="capturing-this">Capturing this</h3>
+<p>When using callbacks or event handlers, you regularly need to reference the
+current object scope using <code>this</code>. This is not a regular variable, it’s a
+JavaScript keyword that ClojureScript has no use for. For the cases where you do
+need it there’s the <code>this-as</code> macro, which lets you temporarily bind it to a
+certain name.</p>
+<p>In this example I’m using the DOM API to add a button to the page. Each time you
+click the button, the number on the button increases. While the handler
+executes, <code>this</code> is bound to the DOM node that represents the button, so we can
+check what number it has, and update it.</p>
+<pre><code class="language-clojure">(defn click-handler []
+  (this-as b
+    (set! (.-innerHTML b) (inc (long (.-innerHTML b))))))
+
+(let [button (.createElement js/document "button")]
+  (set! (.-innerHTML button) "0")
+  (set! (.-onclick button) click-handler)
+  (.. js/document -body (appendChild button)))
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>This episode has been a bit encyclopedic. Thank you for sticking with me until
+the end. I prefer to show you how to actually build stuff, using close to real
+world examples, but I wanted to get this out of the way first, so when I use
+interop forms in the coming episodes it doesn’t come as a surprise.</p>
+<p>I also find that sometimes people come from JavaScript, but only learn this
+interop stuff quite late, or only bit by bit, making them feel restricted. If
+this is you I hope this episode has been empowering.</p>
+<p>There’s a handy tool for trying out ClojureScript in your browser called
+<a shape="rect" href="http://app.klipse.tech/">Klipse</a>. The great thing about it is it also shows you
+how your code compiles to JavaScript. I recommend playing around with that, I’ll
+add a link in the show notes.</p>
+<p>In the next ClojureScript episode I’ll be using this interop stuff to actually
+build something fun and interesting. In the meanwhile if you have any feedback
+on this episode please send it to arne@lambdaisland.com.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><a shape="rect" href="http://app.klipse.tech/">Klipse</a> is a “fiddle” for ClojureScript,
+that shows you how your code compiles to JavaScript. If any of this
+interop stuff is bugging you, try it out there to see if it actually
+does what you think it does.</p>
+<p>This <a shape="rect" href="http://cljs.info/cheatsheet/">ClojureScript Cheatsheet</a> lists
+mosts of the functions in this episode. You can keep it handy as a
+reference.</p>
+<h2 id="tagged-literals">Tagged literals</h2>
+<p>I mention in the episode that “Date” objects in ClojureScript are
+simply instance of JavaScript’s Date type, yet they look a bit funny
+in the output.</p>
+<pre><code class="language-clojure">#inst "2016-05-20T15:58:57.135-00:00"
+</code></pre>
+<p>This representation has been standardized in
+<a shape="rect" href="https://github.com/edn-format/edn#built-in-tagged-elements">EDN</a>,
+which forms the foundation for Clojure’s parser. This means a date
+represented this way can be understood by Clojure, ClojureScript, or
+any system using EDN as an input format. In each case it will be
+converted to whatever “native” date type is available on the
+platform. In ClojureScript that’s a JavaScript <code>Date</code>, in Clojure a
+<code>java.util.Date</code>.</p>
+<h2 id="performance">Performance</h2>
+<p>Be careful using <code>js-&gt;clj</code> on large data structures, such as a JSON
+response coming from an API. It does not perform well for such
+cases. If possible use an alternative format like
+<a shape="rect" href="https://github.com/cognitect/transit-format">Transit</a>, or work with
+the JSON data directly to extract the bits you need.</p>
+<h2 id="aget--aset">aget / aset</h2>
+<p>The <code>aget</code> and <code>aset</code> functions are really intended for use with arrays, hence their name. They also exist in Clojure, where they will only work with arrays. The fact that you can also use them with JavaScript objects in ClojureScript is really an implementation detail, a result of the fact that JavaScript doesn’t do type checking, and that it uses the same syntax for array indices and object properties.</p>
+<p>If you do need to access object properties dynamically, then all ClojureScript core provides are <code>aget</code> and <code>aset</code>, so what other option do we have? If you look a bit further you’ll find that ClojureScript comes bundled with the Google Closure Library, which is a bit like the missing “standard library” for JavaScript. The <a shape="rect" href="http://google.github.io/closure-library/api/namespace_goog_object.html"><code>goog.object</code> namespace</a> has a few functions specifically for dealing with object properties.</p>
+<p>There’s <code>goog.object/get</code> and <code>goog.object/set</code>, corresponding with <code>aset</code> and <code>aget</code>, but also <code>goog.object/add</code>, which is like a safer version of <code>set</code>, in that it will only set a property if it’s not present yet, or otherwise throw an exception.</p>
+<pre><code class="language-clojure">(require '[goog.object :as gobj])
+
+(def my-obj (js-obj))
+(gobj/set my-obj "a-key" 42)
+my-obj ;;=&gt; #js {:a-key 42}
+(gobj/get my-obj "a-key") ;;=&gt; 42
+(gobj/add my-obj "a-key" 43) ;;=&gt; Error: The object already contains the key "a-key"
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/react-components-reagent" />
+<meta name="twitter:title" content="Using React Components with Reagent" />
+<meta name="twitter:description" content="React's component based approach means you don't have to reinvent the wheel, there are literally thousands of building blocks freely available. When using React components from..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/702033997-8097215409430c1109a82116089ca3eea40120f4c1259a3a5e929f4cce3db91c-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Using React Components with Reagent" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/react-components-reagent" />
+<meta name="video:duration" content="942" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/702033997-8097215409430c1109a82116089ca3eea40120f4c1259a3a5e929f4cce3db91c-d_1280x720?r=pad" />
+<meta name="og:description" content="React's component based approach means you don't have to reinvent the wheel, there are literally thousands of building blocks freely available. When using React components from..." />
+<meta name="video:release_date" content="2018-05-23T16:17:59.479Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Using React Components with Reagent</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/270886796?h=69475f3fc2&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="41. Using React Components from Reagent"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>React’s component based approach means you don’t have to reinvent the wheel,
+there are literally thousands of building blocks freely available.</p>
+<p>When using React components from Reagent there are a few things to watch out
+for, this episode will show you how to use some popular React components from
+Reagent, and point out useful constructs and patterns.</p>
+<p>You’ll also get to see some of the new <code>cljs.main</code> feature that landed in
+ClojureScript 1.10.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>One of the great things about React is the large amount of ready made components
+for you to pick from, but when using these components with Reagent and
+ClojureScript there are a few things to watch out for. This episode will walk
+you through a few practical examples, using popular open source React
+components.</p>
+<p>You’ll also get a demonstration of the
+<a shape="rect" href="https://clojurescript.org/news/2018-03-26-clojurescript-command-line"><code>cljs.main</code></a>
+functionality that came out in ClojureScript 1.10.</p>
+<p>This episode will make use of the Clojure CLI tools that came out with Clojure 1.9.
+For Linux and OS X you can follow the <a shape="rect" href="https://clojure.org/guides/getting_started">Clojure Getting Started
+guide</a>, you’ll find the link in the
+show notes.</p>
+<pre><code>$ clj --help
+
+Usage: clojure [dep-opt*] [init-opt*] [main-opt] [arg*]
+       clj     [dep-opt*] [init-opt*] [main-opt] [arg*]
+
+The clojure script is a runner for Clojure. clj is a wrapper
+for interactive repl use. These scripts ultimately construct and
+invoke a command-line of the form:
+
+java [java-opt*] -cp classpath clojure.main [init-opt*] [main-opt] [arg*]
+</code></pre>
+<p>The Clojure CLI tools are not yet available for Windows, but the <a shape="rect" href="https://clojurescript.org/guides/quick-start">ClojureScript
+Quick-Start Guide</a> has
+instructions on how to run <code>cljs.main</code> directly from the ClojureScript release
+JAR.</p>
+<p>What I love about this new generation of tooling is that you need so little to
+get started. You don’t need to generate dozens of files, just a <code>deps.edn</code> with a few dependencies and you’re off to the races.</p>
+<p>You’ll need Clojure and ClojureScript of course, as well as Reagent, since
+that’s what this episode is all about.</p>
+<pre><code class="language-clojure">{:deps {org.clojure/clojure       {:mvn/version "1.9.0"}
+        org.clojure/clojurescript {:mvn/version "1.10.238"}
+        reagent                   {:mvn/version "0.8.0"}}}
+</code></pre>
+<p>Time to add a first ClojureScript source file. The <code>"src"</code> directory is the
+default place the compiler will look for those. I’ll use <code>ep41</code> as a common
+namespace prefix, so this file will contain the <code>ep41.slider</code> namespace.</p>
+<pre><code class="language-shell">$ mkdir -p src/ep41
+$ touch src/ep41/slider.cljs
+$ tree
+.
+├── deps.edn
+└── src
+    └── ep41
+        └── slider.cljs
+
+2 directories, 2 files
+</code></pre>
+<p>For starters let’s make sure things are hooked up correctly, so you are able to
+compile ClojureScript and run it in the browser. <code>enable-console-print!</code> is
+there to make the output of <code>println</code> go to the browser console. Finally print
+out the evergreen phrase <code>"hello, world"</code>.</p>
+<pre><code class="language-clojure">(ns ep41.slider)
+
+(enable-console-print!)
+
+(println "hello, world!")
+</code></pre>
+<p>That’s all you need, with these two files in place, you can kick off the
+ClojureScript compiler.</p>
+<p><code>--main cljs.main</code> tells Clojure to invoke the ClojureScript compiler. You want
+<code>--watch</code> the <code>"src"</code> directory for changes, so they get recompiled
+automatically. Finally you tell the compiler to use <code>ep41.slider</code> as the main
+namespace, and to start a REPL.</p>
+<p>This might take a moment, but after a little while your browser should pop up with this ClojureScript welcome page. If you open the JavaScript console you’ll find “hello, world!” there among some other debug messages, and if you switch back to your terminal you’ll see that you now have a ClojureScript REPL awaiting your command.</p>
+<pre><code class="language-shell">clj --main cljs.main --watch src --compile ep41.slider --repl
+</code></pre>
+<p>Try a <code>js/alert</code> and you’ll see that it’s your browser that executes the
+ClojureScript you type into the REPL.</p>
+<pre><code class="language-clojure">(js/alert "mayonnaise")
+</code></pre>
+<p>Note that, when running this way, ClojureScript writes its compilation logs to a
+file called <code>out/watch.log</code>. It’s a good idea to use <code>tail -f</code> in a separate
+terminal to keep an eye on it. If your code fails to compile this is where
+you’ll find out what’s wrong.</p>
+<pre><code class="language-shell">tail -f out/watch.log
+</code></pre>
+<p>The ClojureScript welcome page will suggest you make your own <code>index.html</code>, so
+you can change the HTML that your app will load into. Simply add it to the root
+of the project, next to <code>deps.edn</code>. Copy the provided template, and add these
+CSS styles, as well as an extra <code>&lt;div&gt;</code> with an <code>id</code> of <code>"app"</code>, so you have a
+place to mount the Reagent app.</p>
+<p>Remember you can find this code in the transcript and on Github, so no need to
+type it in by hand.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;style&gt;
+      .slider {
+        border-radius: 4px;
+        background-color: rgb(240, 240, 232);
+        position: relative;
+        margin: 5px 3px 10px;
+        width: 450px;
+        height: 50px;
+      }
+      .slider-block {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        background-color: rgb(130, 181, 198);
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+    &lt;script src="out/main.js" type="text/javascript"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Time to get reactive! Pull in <code>reagent.core</code> as <code>r</code>, grab the app div you just
+added, and render a paragraph element.</p>
+<p>Assuming your REPL is still open this code will recompile as soon as you save
+it. Do a browser refresh to load the new <code>index.html</code> and your freshly compiled
+app. (Ctrl-R/Cmd-R or F5).</p>
+<pre><code class="language-clojure">(ns ep41.core
+  (:require [reagent.core :as r]))
+
+(enable-console-print!)
+
+(r/render [:p "hello, world!"]
+          (js/document.getElementById "app"))
+</code></pre>
+<p>I’ll show you how to use
+<a shape="rect" href="https://www.npmjs.com/package/react-motion">react-motion</a> with Reagent. At
+200’000 downloads per week you could say it’s a fairly popular package.</p>
+<p>Like most popular packages <code>react-motion</code> is available on
+<a shape="rect" href="http://cljsjs.github.io/">CLJSJS</a>, so adding it to the project is
+straightforward, you add it to <code>deps.edn</code> like any other Maven or Clojars
+dependency.</p>
+<pre><code class="language-clojure">{:deps {,,,
+        cljsjs/react-motion {:mvn/version "0.5.2-0"}}}
+
+</code></pre>
+<p>Restart <code>cljs.main</code> so it picks up the dependency. You can exit the
+REPL with Ctrl-D.</p>
+<p>I’m going to recreate the <a shape="rect" href="http://chenglou.github.io/react-motion/demos/demo0-simple-transition/">simple
+transition</a>
+demo that’s included with react-motion.</p>
+<p>This is what the code of that demo looks like using JSX. This is a bit
+simplified, it’s just to have an idea of what we want to translate to
+ClojureScript.</p>
+<p>There’s a button with a mouse-down handler which toggles a bit of
+component-local state on and off, and then there’s the actual slider, which is
+wrapped in a callback, which is passed to the <code>Motion</code> component.</p>
+<p>You pass <code>Motion</code> a style property, a JavaScript object whose values are
+“springs”. These specify how to do the interpolation. In this case depending on
+the current state we want to move towards 400, or towards 0, but in a smooth,
+springy way.</p>
+<p>Inside the <code>Motion</code> component you would normally put any child elements, but in
+this case <code>Motion</code> expects you to put a callback there which renders the
+element, based on an interpolated value of <code>style</code>.</p>
+<pre><code class="language-rjsx">import {Motion, spring} from 'react-motion';
+
+function render() {
+  &lt;div&gt;
+    &lt;button onMouseDown={this.handleMouseDown}&gt;
+      Toggle
+    &lt;/button&gt;
+
+    &lt;Motion style={{x: spring(this.state.open ? 400 : 0)}}&gt;
+     {({x}) =&gt;
+       &lt;div className="slider"&gt;
+         &lt;div className="slider-block" style={{transform: `translate3d(${x}px, 0, 0)`}} /&gt;
+       &lt;/div&gt;
+     }
+    &lt;/Motion&gt;
+  &lt;/div&gt;
+}
+</code></pre>
+<p>Now let’s try to translate that into Reagent, I’ll first do a one-to-one, naive
+translation, and then look at the extra bits needed to make it actually work.
+Finally I’ll pull out all that plumbing into a wrapper component, so that the
+final result again looks more ore less how you would expect it to.</p>
+<p>Start by adding <code>cljsjs.react-motion</code> to the namespace declaration. This
+“synthetic” namespace makes sure react-motion gets loaded. After that you access
+it through the JavaScript globals it defines, in this case there’s a <code>ReactMotion</code> global, which contains <code>Motion</code> and <code>spring</code>.</p>
+<pre><code class="language-clojure">(ns ep41.core
+  (:require [reagent.core :as r]
+            [cljsjs.react-motion]))
+
+(def Motion js/ReactMotion.Motion)
+(def spring js/ReactMotion.spring)
+</code></pre>
+<p>Instead of component-local state use a reagent atom called <code>toggled?</code>.</p>
+<p>Define a single component named <code>app</code>, which renders the slider, and then update
+the render call to use this <code>app</code> component.</p>
+<p>You can take a moment to look through that code, it’s really a direct
+translation of the JavaScript code you just saw.</p>
+<p>There’s a button with a mouse-down handler, which toggles the atom’s value on
+and off. Then there’s a actual slider, wrapped in a callback, wrapped inside the
+<code>Motion</code> component.</p>
+<p><code>Motion</code> still receives a <code>:style</code> property mapping keys to “springs”, and then
+provides interpolated values to the callback, where they are used to do the
+actual rendering.</p>
+<pre><code class="language-clojure">(def toggled? (r/atom false))
+
+(defn app []
+  [:div
+   [:button {:on-mouse-down #(swap! toggled? not)} "Toggle"]
+   [Motion {:style {:x (spring (if @toggled? 400 0))}}
+    (fn [style]
+      [:div.slider
+       [:div.slider-block
+        {:style {:transform (str "translate3d(" (:x style) "px, 0, 0)")}}]])]])
+
+(r/render [app] (js/document.getElementById "app"))
+
+</code></pre>
+<p>This looks great, except for the small fact that it does not work. There are two
+kinds of problems we need to deal with: interop between ClojureScript and
+JavaScript, and compatibility between Reagent and React.</p>
+<p>We’re used to dealing with ClojureScript vectors and maps, but JavaScript
+libraries expect plain arrays and objects, so in both directions you need to
+make sure you’re using the right type of data structures, and convert them when
+necessary.</p>
+<p>If your interop is a little rusty then I recommend <a shape="rect" href="https://lambdaisland.com/episodes/clojurescript-interop">Lambda Island episode 4,
+about ClojureScript/JavaScript
+interop</a> for a
+refresher.</p>
+<p>Beyond that we also need to handle Reagent/React compatibility. Reagent has its
+own representation of components and elements, so before using a React component
+like react-motion you need to convert it into a Reagent one.</p>
+<pre><code class="language-clojurescript">[]
+#js []
+
+{}
+#js {}
+</code></pre>
+<p>Let’s walk through the code with these things in mind.</p>
+<p><code>Motion</code> is a React class, to use it inside a Reagent component you use
+<code>adapt-react-class</code>.</p>
+<pre><code class="language-clojure">[(r/adapt-react-class Motion) ,,,]
+</code></pre>
+<p>Since you’re already defining <code>Motion</code> higher up you could do the conversion
+there, which is a bit more elegant. Alternatively there’s this this “smily bird”
+pseudo-element which lets you use React components in your Hiccup directly.</p>
+<pre><code class="language-clojure">[:&gt; Motion ,,,]
+</code></pre>
+<p>The first argument to <code>Motion</code> is the map of props. Reagent will handle this
+one, so it should be a regular ClojureScript map, but any values therein are
+passed on to <code>Motion</code>, so those should use plain JavaScript collections.</p>
+<p>Since this is a map literal adding a <code>#js</code> reader tag is enough.</p>
+<pre><code class="language-clojure">[:&gt; Motion {:style #js {:x (spring (if @toggled? 400 0))}}
+  ,,,]
+</code></pre>
+<p>ClojureScript’s <code>fn</code> creates regular JavaScript functions, so you can use one as
+a callback just fine, but you do have to take care of the style argument, and of
+the function’s return value.</p>
+<p><code>style</code> is a JavaScript object, so the easiest way to get the <code>x</code> property out
+is with <code>.-x</code>.</p>
+<pre><code class="language-clojure">[:&gt; Motion {:style #js {:x (spring (if @toggled? 400 0))}}
+ (fn [style]
+   (let [x  (.-x style)]
+     ,,,
+     ))]
+</code></pre>
+<p>Now let’s look at this callback’s return value, using Hiccup syntax may seem
+natural to us, but to a React component those ClojureScript vectors are as alien
+as polar bears to Iberians.</p>
+<p>With Reagent’s <code>as-element</code> you can turn that Hiccup into a plain React element,
+which Motion will be more than happy to render for you.</p>
+<pre><code class="language-clojure">[:&gt; Motion {:style #js {:x (spring (if @toggled? 400 0))}}
+ (fn [style]
+   (let [x (.-x style)]
+     (r/as-element
+      [:div.slider
+       [:div.slider-block
+        {:style {:transform (str "translate3d(" x "px, 0, 0)")}}]])))]
+</code></pre>
+<p>And with that we should have working code again! Save the file, and reload it.
+You can do a browser refresh, or do it from the REPL with <code>(require 'ep41.slider
+:reload)</code></p>
+<pre><code class="language-clojure">(require 'ep41.slider :reload)
+</code></pre>
+<p>Now what would it look if we pulled all that boilerplate into a separate
+component,a wrapper which makes ReactMotion appear to be just another Reagent
+component?</p>
+<p>Have it take a map of props containing a map of styles, and a callback, and turn
+the styles into a JavaScript object before passing them on to ReactMotion.</p>
+<p>Wrap the callback in another function, so you can convert both the input and the
+output.</p>
+<p>This function is a plain Reagent form-1 component. With <code>clj-&gt;js</code> and <code>js-&gt;clj</code>
+it converts between ClojureScript and JavaScript, and with the “smily bird” and
+<code>reagent.core/as-element</code> it bridges the gap between Reagent and React.</p>
+<pre><code class="language-clojure">(defm motion [{style :style} callback]
+  [:&gt; Motion {:style (clj-&gt;js style)} 
+   (fn [style]
+     (r/as-element (callback (js-&gt;clj style :keywordize-keys true))))])
+</code></pre>
+<p>Now you can get rid of all that special treatment in your own application code.
+You can drop the call to <code>as-element</code>, as well as the <code>let</code>, since you can now
+destructure the style map directly in the argument list. This is very similar to
+what the original JavaScript code did with ES6 object destructuring.</p>
+<pre><code>(defn app []
+  [:div
+   [:button {:on-mouse-down #(swap! toggled? not)} "Toggle"]
+   [motion {:style {:x (spring (if @toggled? 400 0))}}
+    (fn [{x :x}]
+      [:div.slider
+       [:div.slider-block
+        {:style {:transform (str "translate3d(" x "px, 0, 0)")}}]])]])
+</code></pre>
+<p>So to recap, you’ve seen how to convert React components to Reagent, and how to
+turn Reagent-style hiccup syntax into a React element. How about going the other
+way, using a Reagent component from React, or using React elements inside
+Reagent?</p>
+<pre><code class="language-clojure">;; React component -&gt; Reagent component
+(reagent.core/adapt-react-class react-component)
+[:&gt; react-component ,,,]
+
+;; Hiccup -&gt; React element
+(reagent.core/as-element [:p "hiccup"])
+
+;; Reagent component -&gt; React component
+??
+
+;; React element -&gt; Hiccup
+??
+</code></pre>
+<p>I’ll demonstrate these things using the “ultimate pagination” component. This
+package is again available on CLJSJS. Now what if you want to use a package that
+isn’t yet on CLJSJS? In that case I recommend adding it yourself. The process is
+well documented, and there are hundreds of example packages to learn from. You
+submit a pull request with a recipe for building the package, and it will get
+built and added to the repository automatically.</p>
+<pre><code class="language-clojure">{:deps {,,,
+        cljsjs/react-ultimate-pagination {:mvn/version "1.2.0-1"}}}
+</code></pre>
+<p>To have something to paginate I’m going to render a table with types of tea,
+scraped from Wikipedia. There’s a bit of code here already, but I’ll walk you
+through.</p>
+<p>The namespace includes reagent, and I’ve already added the pagination component
+as well, we’ll be hooking that one up in a bit.</p>
+<pre><code>(ns ep41.teas
+  (:require [reagent.core :as r]
+            [cljsjs.react-ultimate-pagination]))
+</code></pre>
+<p><code>table</code> and <code>app</code> are two regular Reagent components, they render a <code>div</code>, containing a header, and a HTML table with four columns, and bunch of rows.</p>
+<p>The only thing that might seem odd here is the use of the backtick syntax
+outside of macros. I find it very useful though for defining Hiccup forms, since
+it’s essentially a templating system.</p>
+<pre><code class="language-clojure">(defn table [rows]
+  `[:table
+    [:thead
+     [:tr ~@(for [x ["Title" "Name" "Type" "Origin"]]
+              [:th x])]]
+    [:tbody
+     ~@(for [row rows]
+         `[:tr ~@(for [cell row] [:td cell])])]])
+
+(defn app []
+  [:div
+   [:h1 "List of Teas"]
+   [table (current-page-data)]])
+</code></pre>
+<p>There’s a single atom to keep the application state: the current page number,
+the number of items per page, and the data itself.</p>
+<pre><code class="language-clojure">(def state (r/atom {:page 1
+                    :page-size 10
+                    :data []}))
+</code></pre>
+<p>This data is loaded from a JSON files with JavaScript’s <code>fetch</code> API, and added
+to the state atom. The <code>current-page-data</code> helper function uses the current page
+number and page size to only return the rows that are currently visible.</p>
+<pre><code class="language-clojure">(defn fetch-data []
+  (-&gt; (js/fetch "teas.json")
+      (.then #(.json %))
+      (.then (fn [json]
+               (swap! state assoc :data json)))))
+
+(defn current-page-data []
+  (let [{:keys [page page-size data]} @state]
+    (-&gt;&gt; data
+         (drop (* (dec page) page-size))
+         (take page-size))))
+</code></pre>
+<p>Finally there are two top-level forms, one to render the app, and one to fetch
+the data.</p>
+<pre><code class="language-clojure">(r/render [app] (js/document.getElementById "app"))
+(fetch-data)
+</code></pre>
+<p>Start the REPL again so it picks up the new dependency, while you’re add it also
+pass it the name of the new namespace, so it uses that as the main entry point.</p>
+<p>Once it’s finished downloading the new dependency a browser window pops up
+again. This is what the app looks like so far, we have the table, but we’re only
+seeing the first ten results. Time to add in that pagination!</p>
+<pre><code class="language-shell">clj --main cljs.main --watch src --compile ep41.tea-table --repl
+</code></pre>
+<p>Here’s an example of how to use ReactUltimatePagination, I’ve adapted this code
+straight from the package’s README.</p>
+<p>You first define a bunch of small components, one for each type of pagination
+button, and a wrapper that acts as a container for the rest. With these you
+build up a configuration map, and pass that map to <code>createUltimatePagination</code>,
+which then returns the actual pagination component.</p>
+<p>Now you can use that like any other component, passing it the current page,
+total number of pages, and an on-change handler.</p>
+<p>The interesting thing to note is that this package doesn’t itself render any
+elements, everything is delegated to the components you provide.</p>
+<pre><code class="language-javascript">function Page(props) {
+  return &lt;button onClick={props.onClick}&gt;{props.value}&lt;/button&gt;;
+}
+
+function Ellipsis(props) { ... }
+function FirstPageLink(props) { ... }
+function PreviousPageLink(props) { ... }
+function NextPageLink(props) { ... }
+function LastPageLink(props) { ... }
+
+function Wrapper(props) {
+  return &lt;div&gt;{props.children}&lt;/div&gt;
+}
+
+var itemTypeToComponent = {
+  'PAGE': Page,
+  'ELLIPSIS': Ellipsis,
+  'FIRST_PAGE_LINK': FirstPageLink,
+  'PREVIOUS_PAGE_LINK': PreviousPageLink,
+  'NEXT_PAGE_LINK': NextPageLink,
+  'LAST_PAGE_LINK': LastPageLink
+};
+
+var UltimatePagination = ReactUltimatePagination.createUltimatePagination({
+  itemTypeToComponent: itemTypeToComponent,
+  WrapperComponent: Wrapper
+});
+</code></pre>
+<p>Let’s translate that to Reagent. I’ve started by creating the button and wrapper
+components.</p>
+<p>There are a few things to note here, while these are regular Reagent components,
+the properties like <code>onClick</code> and <code>isDisabled</code> will be coming directly from
+ReactUltimatePagination, so we need to use the keys that ReactUltimatePagination
+uses, which is why they are camelcased rather than kebap-case.</p>
+<p>When you look at the wrapper component, you see that the children are passed in
+as a prop, as they are in React, rather than as positional arguments. If you’ve
+used React directly this should look familiar, but it’s different from Reagent
+and so something to look out for.</p>
+<p>Another thing is that these children are React elements, don’t we need to
+convert them to Hiccup first? Turns out that’s not necessary, you can use React
+elements, or in this case, fragments directly inside your Reagent forms.</p>
+<pre><code class="language-clojure">(defn page [{:keys [value isActive onClick isDisabled]}]
+  [:button {:style (if isActive {:font-weight "bold"}), :on-click onClick, :disabled isDisabled} value])
+
+(defn ellipsis [{:keys [onClick isDisabled]}]
+  [:button {:on-click onClick, :disabled isDisabled} "..."])
+
+(defn first-page-link [{:keys [onClick isDisabled]}]
+  [:button {:on-click onClick, :disabled isDisabled} "&lt;&lt;"])
+
+(defn last-page-link [{:keys [onClick isDisabled]}]
+  [:button {:on-click onClick, :disabled isDisabled} "&gt;&gt;"])
+
+(defn next-page-link [{:keys [onClick isDisabled]}]
+  [:button {:on-click onClick, :disabled isDisabled} "&gt;"])
+
+(defn previous-page-link [{:keys [onClick isDisabled]}]
+  [:button {:on-click onClick, :disabled isDisabled} "&lt;"])
+
+(defn wrapper [{:keys [children]}]
+  [:div {:style {:padding "1em 0"}}
+   children])
+</code></pre>
+<p>Next you create the configuration object that you can pass to
+<code>createUltimatePagination</code>. This is where we’re meeting a new type of conversion
+function. This time we have Reagent components that we want to pass into the
+world of React, so we need to “reactify” them first, turning them into plain
+React components. Also notice the <code>#js</code> reader literals, since
+<code>createUltimatePagination</code> expects JavaScript objects.</p>
+<p>I could have used the <code>clj-&gt;js</code> function as well, but I prefer to use reader
+literals whenever possible. They’re processed at compile time, and don’t have to
+traverse data structures recursively, making them a lot faster.</p>
+<p>The result of <code>createUltimatePagination</code> is a React component, which you then
+turn into a Reagent one with <code>adapt-react-class</code>, this is the equivalent of the
+“smily bird” I used with the slider.</p>
+<pre><code class="language-clojure">(def pagination-config
+  #js {:itemTypeToComponent
+       #js {:PAGE               (r/reactify-component page)
+            :ELLIPSIS           (r/reactify-component ellipsis)
+            :FIRST_PAGE_LINK    (r/reactify-component first-page-link)
+            :LAST_PAGE_LINK     (r/reactify-component last-page-link)
+            :NEXT_PAGE_LINK     (r/reactify-component next-page-link)
+            :PREVIOUS_PAGE_LINK (r/reactify-component previous-page-link)}
+       :WrapperComponent (r/reactify-component wrapper)})
+
+(def pagination
+  (r/adapt-react-class
+   (.createUltimatePagination js/ReactUltimatePagination pagination-config)))
+</code></pre>
+<p>That was a good bunch of setup again, but you now have a <code>pagination</code> component
+that you can use like any other Reagent component. I’ve added some helpers which
+you’re not seeing, to get the current page, total number of pages, and to change
+the current page, and with that this looks pretty clean to me. Only the
+camelcased props give away its React origins.</p>
+<pre><code class="language-clojure">(defn current-page []
+  (:page @state))
+
+(defn total-pages []
+  (let [{:keys [page-size data]} @state]
+    (max 1 (Math/ceil (/ (count data) page-size)))))
+
+(defn set-page! [page]
+  (swap! state assoc :page page))
+
+(defn app []
+  [:div
+   [:h1 "List of Teas"]
+   [table (current-page-data)]
+   [pagination {:currentPage (current-page)
+                :totalPages  (total-pages)
+                :onChange    set-page!}]])
+</code></pre>
+<p>And here’s what that looks like in the browser. I hope I managed to show you
+that there’s no need to reinvent the wheel. Both Clojure and ClojureScript are
+hosted languages, precisely because it allows us to leverage a massive
+pre-existing ecosystem, and so getting familiar with the idioms to do so really
+pays off in the long run.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep41-react-components-reagent">browse source code</a></p>
+<h3 id="cheat-sheet">Cheat sheet</h3>
+<ul>
+<li><code>reagent.core/adapt-react-class</code></li>
+<li><code>[:&gt; foo]</code></li>
+<li><code>reagent.core/create-element</code></li>
+<li><code>reagent.core/as-element</code></li>
+<li><code>reagent.core/reactify-component</code></li></ul>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="https://clojure.org/guides/getting_started">Clojure Getting Started</a></li>
+<li><a shape="rect" href="https://clojure.org/guides/deps_and_cli">Clojure Deps and CLI Guide</a></li>
+<li><a shape="rect" href="https://clojurescript.org/guides/quick-start">ClojureScript QuickStart</a></li>
+<li><a shape="rect" href="https://github.com/reagent-project/reagent/blob/master/docs/InteropWithReact.md">Reagent interop with React</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

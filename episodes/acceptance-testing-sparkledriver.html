@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/acceptance-testing-sparkledriver" />
+<meta name="twitter:title" content="Acceptance Testing With SparkleDriver" />
+<meta name="twitter:description" content="Learn how to use a headless web browser to test your application for feature completeness. You'll also see how Component can be used to set up an isolated test environment, how..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/650343713-40782773267747d4c301361d6c77e9b1c9e3ce98104043f5417c45fd3f6fe694-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Acceptance Testing With SparkleDriver" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/acceptance-testing-sparkledriver" />
+<meta name="video:duration" content="1332" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/650343713-40782773267747d4c301361d6c77e9b1c9e3ce98104043f5417c45fd3f6fe694-d_1280x720?r=pad" />
+<meta name="og:description" content="Learn how to use a headless web browser to test your application for feature completeness. You'll also see how Component can be used to set up an isolated test environment, how..." />
+<meta name="video:release_date" content="2017-08-16T20:34:45.894Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Acceptance Testing With SparkleDriver</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/229901162?h=6ef3e98f4e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="34. Acceptance Testing With SparkleDriver"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Learn how to use a headless web browser to test your application for feature completeness. You’ll also see how Component can be used to set up an isolated test environment, how to use fixtures and dynamic var bindings to share setup code between tests, and how to keep tests readable and concise by judicously pulling code into helper functions.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>When talking about automated software testing, the phrase most commonly used is “unit testing”. The idea is that you slice your program in small, self-contained “units”, be it modules, functions, classes; and that you test each unit in isolation (to the extent that that’s possible).</p>
+<p>Testing small units helps you to be exhaustive. You can mentally go over each line of code and ask yourself, “do I have a test for this?”. You can look at each input and ask yourself what the range of possible values is for that input, and which the edge cases to look out for.</p>
+<p>But just because units work on their own doesn’t mean they work together. They need to work together with other units to get actual work done, these could be other parts of your code, or libraries and services provided by other parties. Verifying that they sing in harmony is done with integration tests.</p>
+<p>In this way tests form a spectrum, from placing one tiny piece under a microscope, then zooming out and considering bigger and bigger chunks of your application, until you are finally looking at the system as a whole. You have become an outside observer, pressing the buttons on the box to see what happens.</p>
+<p>This is where you find out if the features you implemented actually work, and when they do you’re done, and your app is ready to ship. This is why these are called “acceptance tests”. These are the polar opposite of unit tests. Being exhaustive is no longer possible, the amount of possible states and inputs, the possible permutations of incoming events are simply too large, while tests at this level tend to be slow. Instead you write a test for each feature or use case, each task a person using the app might want to achieve.</p>
+<p>In this episode I’m going to write acceptance tests for the Booklog application first featured in <a shape="rect" href="https://lambdaisland.com/episodes/buddy-authentication">episode 28 about Authentication with Buddy</a>. I’ll be using <a shape="rect" href="https://github.com/jackrusher/sparkledriver">SparkleDriver</a>, a Clojure interface to control a headless WebKit browser. Sparkledriver’s requires Java version 8 or later, since it relies on the embedded browser which ships with recent versions of JavaFX. SparkleDriver is just a thin Clojure wrapper library, most of the API it uses is provided by a Java library: jBrowserDriver.</p>
+<p>To get started, grab the booklog application off Github, and check out the <code>ep34-start</code> branch.</p>
+<pre><code class="language-shell">~ $ git clone https://github.com/lambdaisland/booklog.git
+Cloning into 'booklog'...
+remote: Counting objects: 255, done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 255 (delta 1), reused 13 (delta 1), pack-reused 238
+Receiving objects: 100% (255/255), 63.48 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (91/91), done.
+Checking connectivity... done.
+~ $ cd booklog
+~/booklog $ git checkout ep34-start
+Branch ep34-start set up to track remote branch ep34-start from origin.
+Switched to a new branch 'ep34-start'
+~/booklog $
+</code></pre>
+<p>Sparkledriver has already been added to <code>project.clj</code>, together with anything else you’ll be needing for this episode.</p>
+<pre><code class="language-clojure">(defproject booklog "0.1.0-SNAPSHOT"
+  :dependencies [,,,
+                 [sparkledriver "0.1.10"]]
+  ,,,)
+</code></pre>
+<p>Spin up a REPL, and launch the application with <code>(go)</code>. It would be best if you can get a REPL connected to your editor so you can work from a buffer,
+What I’ll be showing really benefits from having that kind of interactive workflow.</p>
+<pre><code class="language-clojure">user&gt; (go)
+Figwheel: Starting server at http://0.0.0.0:1235
+Figwheel: Watching build - app
+Compiling "resources/public/js/compiled/booklog.js" from ["src/cljs" "src/cljc"]...
+Successfully compiled "resources/public/js/compiled/booklog.js" in 3.686 seconds.
+Figwheel: Starting CSS Watcher for paths  ["resources/public/css"]
+Garden: compiling #'booklog.styles/style
+Wrote: resources/public/css/style.css
+Garden: watching /home/arne/github/booklog/src/clj/booklog/styles.clj
+:started
+user&gt;
+</code></pre>
+<p>Lately I’ve started adding a <code>repl</code> directory to my projects, where I put scratch files that I use to enter forms and send them to the REPL. This directory is not on Clojure’s load path, since these files are not meant to be loaded wholesale. I find this structure encourages me to explore, and it makes it easy to keep a log of my tinkering, which often turns out to be handy later on.</p>
+<pre><code>.
+├── dev
+│   └── user.clj
+├── project.clj
+├── README.md
+├── repl
+│   └── sparkledriver.clj
+├── resources
+│   ├── log4j.properties
+│   └── public
+├── src
+│   ├── clj
+│   ├── cljc
+│   └── cljs
+├── system.properties
+└── test
+    ├── clj
+    ├── cljc
+    └── cljs
+</code></pre>
+<p>I already added a <code>repl/sparkledriver.clj</code> file to the project, with a namespace declaration at the top. The namespace isn’t really necessary in this case, since you won’t be requiring the file, but I tend to add one anyway, to provide some kind of isolation.</p>
+<pre><code class="language-clojure">(ns repl.sparkledriver
+  (:require [sparkledriver.core :as sd]))
+</code></pre>
+<p>In CIDER this has the effect that any form evaluated in this file is executed in this repl namespace. Without it it defaults to whatever namespace your REPL is currently in, which initially is <code>user</code>.</p>
+<pre><code class="language-clojure">(ns repl.sparkledriver)
+
+*ns* ;;=&gt; repl.sparkledriver
+</code></pre>
+<pre><code class="language-clojure">;; (ns repl.sparkledriver)
+
+*ns* ;;=&gt; user
+</code></pre>
+<p>I also already required the core SparkleDriver namespace, aliased to <code>sd</code>.</p>
+<pre><code class="language-clojure">(ns repl.sparkledriver
+  (:require '[sparkledriver.core :as sd]))
+</code></pre>
+<p>To start using SparkleDriver, you first need to create a browser instance  with <code>make-browser</code>. At the end when you’re done with it you can free up the resources it’s using with <code>close-browser!</code>.</p>
+<p>Remember that this is a full WebKit browser. Some rough measurements show that a freshly instantiated browser takes up about 130MB of memory, which I guess in today’s browser landscape isn’t all that bad, but still you don’t want to leak these by the dozen.</p>
+<pre><code class="language-clojure">(def browser (sd/make-browser))
+,,,
+(sd/close-browser! browser)
+</code></pre>
+<p>There’s also a <code>with-browser</code> macro, which is similar to Clojure’s <code>with-open</code>. It makes sure that the browser is closed as soon as it goes out of scope. This is generally a good idea, but for this REPL based stuff it’s nice to keep the browser instance around in a var.</p>
+<pre><code class="language-clojure">(sd/with-browser [browser (sd/make-browser)]
+  ,,,)
+</code></pre>
+<p>The <code>fetch!</code> function is the equivalent of typing a URL into the address bar and hitting enter. Once the page has loaded you can then use links and forms to navigate. The return value of <code>fetch!</code> is again the browser instance, allowing you to chain calls. Note that this is a single, mutable browser object. The browser instance that you pass to <code>fetch!</code> is the same one that comes out of it, except that its internal state has changed.</p>
+<pre><code class="language-clojure">(sd/fetch! browser "http://localhost:1234")
+;;=&gt; #object[com.machinepublishers.jbrowserdriver.JBrowserDriver 0x392d747e "com.machinepublishers.jbrowserdriver.JBrowserDriver@392d747e"]
+</code></pre>
+<p>You can see that it’s an instance of JBrowserDriver, which is the library SparkleDriver uses under the hood. It’s a so-called “headless” browser, meaning there’s no GUI to interact with. Instead you control it through code. But being headless can make it hard to see where you’re going. You can find out though, if you know how to ask.</p>
+<p>With <code>(current-url)</code> you can see the contents of the address bar, and <code>(page-source)</code> returns the full HTML contents of the page you’re “looking” at. With <code>(page-text)</code> you get just the visible text back. Finally if you really want visual, you can take a screenshot. The <code>(screenshot)</code> function returns the path to the image file. You can combine this with Clojure’s <code>browse-url</code> to immediately pop up an image viewer.</p>
+<pre><code class="language-clojure">(sd/current-url browser)
+;;=&gt; "http://localhost:1234/"
+(sd/page-source browser)
+;;=&gt; "&lt;html&gt;&lt;head&gt;&lt;meta content=\"width=device-width, initial-scale=1\" name=\"viewport\"&gt;..."
+(sd/screenshot browser)
+;;=&gt; "/tmp/screenshot7524621746679777593.png"
+
+(require '[clojure.java.browse :refer [browse-url]])
+(browse-url (sd/screenshot browser))
+</code></pre>
+<p>Now that the first page is loaded you can start “clicking” around. First you use one of the finder methods to find the Element you want to click on. <code>find-by-css</code> is very useful since you might already be familiar with CSS selectors.</p>
+<p>When you found the element you can use <code>click!</code> to actually click on it. As you can see we’ve now navigated to the log in page.</p>
+<p>You can also use XPath expressions to find elements. XPath was developed as part of XML, and it’s very powerful, allowing you to do many things that CSS still can’t.</p>
+<pre><code class="language-clojure">(sd/click! (sd/find-by-css browser "a.log-in"))
+(sd/click! (sd/find-by-xpath browser "//a[text()='Log in']"))
+(sd/current-url browser)
+;; =&gt; "http://localhost:1234/login"
+</code></pre>
+<p>These finders always return the first match, or throw an exception when no match is found. There are also variants of these functions with their names ending in an asterisk. These return a collection of all elements that match, which may be empty.</p>
+<p>Finally there are specific finder functions for finding an element by its tagname, id, or class, and these too have wildcard variants.</p>
+<pre><code>sd/find-by-css*
+sd/find-by-xpath*
+
+sd/find-by-tag
+sd/find-by-id
+sd/find-by-class
+
+sd/find-by-tag*
+sd/find-by-id*
+sd/find-by-class*
+</code></pre>
+<p>That’s enough SparkleDriver to get you started, let’s get busy on those tests. You’ll find two files under the <code>test/clj/booklog</code> directory: <code>acceptance_test.clj</code>, and <code>test_helper.clj</code>.</p>
+<p>Before you can run tests you need to have a system to test against. There’s already a system running, the one that you started from the REPL with <code>(go)</code>, but I’m going to set up a separate system that gets started and torn down as part of each test run. This way the tests are independent of the state of the REPL.</p>
+<pre><code class="language-clojure">(keys reloaded.repl/system)
+;;=&gt; (:spicerack :routes :middleware :handler :http :figwheel-system :css-watcher :garden-watcher)
+</code></pre>
+<p>This is a fairly standard Ring-based project. The overall application structure is defined in <code>booklog.application</code>, where an <code>app-system</code> function uses Stuart Sierra’s Component to create a system map.</p>
+<p>The argument to <code>app-system</code> is a map of configuration options, at the moment it allows you to set the HTTP port, and the path to the database.</p>
+<p>As a data store it uses Spicerack, which lets you store maps of Clojure values simply in a file on the filesystem.</p>
+<pre><code class="language-clojure">(ns booklog.application
+  (:gen-class)
+  (:require [com.stuartsierra.component :as component]
+            ,,,))
+
+(defn app-config []
+  {:http-port 1234
+   :db-path "./booklog.db"})
+
+(defn app-system [config]
+  (component/system-map ,,,))
+</code></pre>
+<p>For testing you can reuse the <code>app-system</code> function, but configure it differently.</p>
+<p>The test configuration will make sure the test system uses a different HTTP port to listen on, and that it uses an different database path. This way tests always start with a clean slate, and don’t interfere with the development system. I’ll use a little helper function defined in <code>booklog.util</code> to generate a unique pathname for the database file.</p>
+<pre><code class="language-clojure">(ns booklog.test-helper
+  (:require [booklog.util :as util]))
+
+(def test-http-port 59800)
+
+(defn test-config []
+  {:http-port test-http-port
+   :db-path (util/temp-file-name "test" "db")})
+</code></pre>
+<p><code>clojure.test</code> lets you write “fixtures”, these are functions that prepare the stage for the test to run, and clean things up afterwards. I’ll write such a fixture function to set up and tear down the test system. It’s called <code>wrap-test-system</code> because it “wraps” the tests, Its argument is a function which runs the actual tests, so that you can control what happens before or after.</p>
+<p>So in a let block create a test system configuration map. <code>app-system</code> turns it into a <code>SystemMap</code>, which you start with <code>component/start</code>. The result being the updated system. Now the web server and database are and running, and you can invoke the tests. When the tests are done you stop the system again. This will still leave the Spicerack database file lying around, so let’s delete that one as well.</p>
+<pre><code class="language-clojure">(ns booklog.test-helper
+  (:require [booklog.util :as util]
+            [booklog.application :as app]
+            [com.stuartsierra.component :as component]
+            [clojure.java.io :as io]))
+
+(defn test-config [] ,,,)
+
+(defn wrap-test-system
+  "A fixture function which sets up the system before tests and tears it down afterwards."
+  [tests]
+  (let [config (test-config)
+        system (-&gt; config app/app-system component/start)]
+    (tests)
+    (component/stop system)
+    (io/delete-file (:db-path config))))
+</code></pre>
+<p>Now in the test file I’m requiring both <code>clojure.test</code> and <code>booklog.test-helper</code> with <code>:refer :all</code>, so all those functions are immediately available. The first one provides <code>use-fixtures</code>, while the second one contains our own <code>wrap-test-system</code>.</p>
+<p><code>use-fixtures</code> takes a keyword followed by one or more functions. The keyword can be either <code>:once</code>, meaning these fixtures are called once for all tests in the namespace, or <code>:each</code> meaning they get called again for each individual test.</p>
+<pre><code class="language-clojure">(ns booklog.acceptance-test
+  (:require [clojure.test :refer :all]
+            [booklog.test-helper :refer :all]
+            [sparkledriver.core :as sd]))
+
+(use-fixtures :once wrap-test-system)
+</code></pre>
+<p><code>use-fixtures</code> works by changing the namespace’s metadata, adding either a <code>:clojure.test/each-fixture</code> or <code>:clojure.test/once-fixture</code> key. You can pass multiple functions to <code>use-fixtures</code>, and it will correctly combine them, but if you call <code>use-fixtures</code> multiple times with the same keyword, then the last call will overwrite any previous calls.</p>
+<pre><code class="language-clojure">(:clojure.test/once-fixtures
+ (meta *ns*))
+;;=&gt; (#function[booklog.test-helper/wrap-test-system])
+</code></pre>
+<p>At long last you are now ready to start writing a test. This is standard stuff, use the <code>deftest</code> macro to define <code>sign-up-test</code>. You’ll need to create a browser instance with <code>make-browser</code>, and then use <code>with-browser</code> to make sure it gets closed again.</p>
+<p>Let’s just visit the home page, and print out all text on the page, just to see how we’re doing.</p>
+<pre><code class="language-clojure">(deftest sign-up-test
+  (sd/with-browser [browser (sd/make-browser)]
+    (sd/fetch! browser "http://localhost:59800")
+    (println (sd/page-text browser))))
+</code></pre>
+<p>Run it with <code>(run-tests)</code>, You can pass it a namespace it needs to test, but if you don’t give it any arguments it just runs all tests in the current namespace. Now keep an eye on the REPL, as that’s where you’ll see the test output.</p>
+<p>Cool, that seems to work! Here you can see the page text.</p>
+<p>If you get a big noisy error message from jBrowserDriver at the start then don’t panic. There seems to be a known issue with jBrowserDriver printing out an error message when starting a new browser. While annoying, it doesn’t seem to stop the browser from working as expected.</p>
+<pre><code class="language-clojure">(run-tests)
+;; Testing booklog.acceptance-test
+;; Booklog
+;;
+;; TimelineLog in
+;; Timeline
+;;
+;; Ran 1 tests containing 0 assertions.
+;; 0 failures, 0 errors.
+</code></pre>
+<p>Before moving on I’m going to pull some more things into helper functions. Because of the nature of these tests I really want them to be easy on the eyes. These tests document the features of the app. You have to imagine they are scripts you could give to a QA person. They need to tell a story.</p>
+<p>For starters let’s pull out that browser setup into another fixture function, storing the browesr instance in <code>:dynamic</code> var. This is a var which has <code>{:dynamic true}</code> in its metadata, and which has a name with asterisks around it, colloquially known as “earmuffs”. Clojure will complain if you use the earmuffs without declaring a var as <code>:dynamic</code>, or vice versa.</p>
+<pre><code class="language-clojure">(def ^:dynamic *browser* nil)
+</code></pre>
+<p>Let’s call this fixture <code>wrap-browser</code>, to stick with the same naming convention. I’m using the same pattern I showed before, using <code>with-browser</code> and <code>make-browser</code> to get hold of a browser instance. Inside there I’m using <code>binding</code> to assign the browser instance to the dynamic <code>*browser*</code> var.</p>
+<p><code>binding</code> is like a special kind of <code>let</code>, but where <code>let</code> assigns local variables and makes them accessible in the current lexical scope, <code>binding</code> dynamically rebinds the var, temporarily giving it a value which can be seen from any code running in the same thread.</p>
+<p>Just like with <code>let</code>, the assignment ends when you leave the scope of the <code>binding</code> block.</p>
+<pre><code class="language-clojure">(ns booklog.test-helper ,,,)
+
+(def ^:dynamic *browser*)
+
+(defn wrap-browser [tests]
+  "A fixture function which binds *browser* to a new browser instance."
+  (sd/with-browser [browser (sd/make-browser)]
+    (binding [*browser* browser]
+      (tests))))
+</code></pre>
+<p>Add <code>wrap-browser</code> to the <code>use-fixtures</code> call. When passing in multiple functions like this, they wrap the tests in reverse order, so the first function ends up on the “outside” of the onion, meaning it gets to initialize things first, and clean up last.</p>
+<pre><code class="language-clojure">(use-fixtures :once wrap-test-system wrap-browser)
+</code></pre>
+<p>This makes it possible to access the current browser instance from helper functions. The plan is to define our own versions of some of the SparkleDriver API, where the browser argument can be omitted. Take <code>fetch!</code>, normally it would take a browser and a url, but our version can also take just a URL, because it already has a browser to work with.</p>
+<pre><code class="language-clojure">(defn fetch!
+  ([url]
+   (sd/fetch! *browser* url))
+  ([browser url]
+   (sd/fetch! browser url)))
+</code></pre>
+<p>Let’s do the same for <code>find-by-css</code>, <code>find-by-xpath</code>, and <code>page-text</code>. They all get a version where you pass the browser in explicitly, and one where it implictly uses the dynamic <code>*browser*</code> var.</p>
+<pre><code class="language-clojure">(defn find-by-css
+  ([css]
+   (sd/find-by-css *browser* css))
+  ([browser css]
+   (sd/find-by-css browser css)))
+
+(defn find-by-xpath
+  ([xpath]
+   (sd/find-by-xpath *browser* xpath))
+  ([browser xpath]
+   (sd/find-by-xpath browser xpath)))
+
+(defn page-text
+  ([]
+   (sd/page-text *browser*))
+  ([browser]
+   (sd/page-text)))
+</code></pre>
+<p>Finally I’ll add two helpers to deal with URLs. In the tests you don’t really want to care about the domain and port of the application, it’ll always be the same, what you care about is the part that comes after that, the “path”. <code>app-url</code> takes such a path, and returns a full URL, something you could pass to <code>fetch!</code>.</p>
+<p>I’m making use of the <code>lambdaisland.uri</code> library to easily manipulate the URL. It’s already required in the namespace, aliased to <code>uri</code>.</p>
+<pre><code class="language-clojure">(ns booklog.test-helper
+  (:require ,,,
+            [lambdaisland.uri :as uri]))
+
+(defn app-url [path]
+  (assoc (uri/uri "http://localhost")
+         :port test-http-port
+         :path path))
+
+(app-url "/login")
+;;=&gt; "http://localhost:59800/login"
+</code></pre>
+<p><code>current-path</code> is kind of the opposite, once you’ve browsed around, what is the path of the application you ended up at? Again I’m using <code>lambdaisland.uri</code> to parse the current browser location, and pull out just the path.</p>
+<pre><code class="language-clojure">(defn current-path []
+  (:path (uri/uri (sd/current-url *browser*))))
+</code></pre>
+<p>Now let’s use those helpers in the test. First of all the <code>with-browser</code> macro can go, that’s now being handled by the <code>wrap-browser</code> fixture. The custom versions of the SparkleDriver functions that are defined in <code>booklog.test-helper</code> are required directly, so just remove the <code>sd</code> namespace prefix, as well as the browser argument.</p>
+<p>Finally instead of hardcoding the home page url, you can use <code>app-url</code>. This is a bit more robust, if for instance you want to run this on a different port it’ll be easier to change.</p>
+<pre><code class="language-clojure">(ns booklog.acceptance-test
+  (:require [clojure.test :refer :all]
+            [booklog.test-helper :refer :all]
+            [sparkledriver.core :refer [click! send-text!]]))
+
+(use-fixtures :once wrap-test-system wrap-browser)
+
+(deftest sign-up-test
+  (fetch! (app-url "/"))
+  (println (page-texot)))
+</code></pre>
+<p>I want to add a test for the sign up process, so let’s see what that looks like.</p>
+<p>From the home page you navigate to the registration page, first by clicking on “log in” and then on “Register instead”. Then you fill in and submit the username and password, and if all went well there should be a message saying “Thanks for registering! Please log in.”.</p>
+<p>The log in link has a class that makes it easy to select. So find it using a CSS selector, then click it. You should now be at <code>/login</code>.</p>
+<pre><code class="language-clojure">(deftest sign-up-test
+  (fetch! (app-url "/"))
+  (click! (find-by-css "a.log-in"))
+  (is (= (current-path) "/login")))
+</code></pre>
+<p>Let’s run that already… ok, so far so good.</p>
+<pre><code class="language-clojure">(run-tests)
+;; Testing booklog.acceptance-test
+;;
+;; Ran 1 tests containing 1 assertions.
+;; 0 failures, 0 errors.
+</code></pre>
+<p>Next up click on the “Register instead” link. This one doesn’t have any special classes. You could of course add them. Sometimes people even add specific data attributes specifically for locating elements in tests.</p>
+<p>But you can also select the link based on its link text using a bit of xpath. This is a bit more likely to break when someone tweaks the UI, but it does mean your test reflects nicely what a real user would see and do.</p>
+<p>Now you should be on the <code>/register</code> page.</p>
+<pre><code class="language-clojure">(deftest sign-up-test
+  (fetch! (app-url "/"))
+  (click! (find-by-css "a.log-in"))
+  (is (= (current-path) "/login"))
+
+  (click! (find-by-xpath "//a[text()='Register instead']"))
+  (is (= (current-path) "/register")))
+</code></pre>
+<p>The form fields have individual id’s corresponding with the form parameter name. First find the <code>#username</code> field. Filling in form fields is done with <code>send-text!</code>. Now do the same for the password field. Finally locate the submit button, and click it.</p>
+<p>If all went well you should now see the “thank you” message, which I’ll check by seeing if it occurs anywhere on the page. Writing it this way has the benefit that if the message isn’t found, the test failure shows the current page text, so you can easily see what went wrong.</p>
+<pre><code class="language-clojure">(deftest sign-up-test
+  (fetch! (app-url "/"))
+  (click! (find-by-css "a.log-in"))
+  (is (= (current-path) "/login"))
+
+  (click! (find-by-xpath "//a[text()='Register instead']"))
+  (is (= (current-path) "/register"))
+
+  (send-text! (find-by-css "#username") "Arne")
+  (send-text! (find-by-css "#password") "sekrit")
+  (click! (find-by-css "input[type=submit]"))
+
+  (is (re-find #"Thanks for registering! Please log in" (page-text))))
+</code></pre>
+<p>Next up I want to test logging in, but in order to log in you need to be registered first, meaning a user needs to exist in the database. This <code>sign-up-test</code> does add a user to the database, but you can’t rely on that in the next test. In fact this is a bit of a problem: this test changes the database without cleaning up after itself. The next test will now start from that new database state, so its behavior depends on what tests ran before it, which is a recipe for disaster.</p>
+<p>You could sidestep the problem for a moment by extending this <code>sign-up-test</code> to also log in. It’s a valid approach, but beware of tests that do too much. Acceptance tests may look a lot like stories, but make them short stories. Instead of rambling on and on, try to get to the point and move on.</p>
+<p>To fix the root cause I’m going to make sure the database is empty again before each test, and I’m also going to provide some helpers for loading test data into the database. How to do these things will depend a lot on the database and access library you’re using, in this case that’s MapDB and Spicerack, but regardless of what you’re using you should be able to do something similar. Have a look around, there might be libraries to help you out. I’ll link to some in the show notes.</p>
+<p>Together with the Spicerack component you’ll find a few helper functions for dealing with the contents of the database as a single value. <code>dump-db</code> returns a hash-map of all data in the database, <code>load-db!</code> populates the database with the given data, and <code>clear-db!</code> makes the database all empty again.</p>
+<p>I’ll start with the last one, <code>clear-db!</code>, turning it into a fixture function which empties out the databse before each test.</p>
+<p>But first we need to be able to access the spicerack component, which is part of the system map, and this system map is currently confined to the <code>wrap-test-system</code> fixture.</p>
+<p>By introducing another dynamic var you can expose it though, so helpers can use it. Inside the fixture you use <code>binding</code> again to assign it, just as you did with <code>wrap-browser</code>.</p>
+<pre><code class="language-clojure">(def ^:dynamic *system* nil)
+
+(defn wrap-test-system
+  "A fixture function which sets up the system before tests and tears it down afterwards."
+  [tests]
+  (let [config (test-config)
+        system (-&gt; config app/app-system component/start)]
+    (binding [*system* system]
+      (tests))
+    (component/stop system)
+    (io/delete-file (:db-path config))))
+</code></pre>
+<p>Now you can write a new fixture function, <code>wrap-clear-db</code> which cleans out the database. It pulls the <code>spicerack</code> component out of the system map, and calls <code>clear-db!</code> on it, before running the test.</p>
+<pre><code class="language-clojure">(defn wrap-clear-db
+  "Test fixture which clears the database before each test."
+  [test]
+  (sc/clear-db! (:spicerack *system*))
+  (test))
+</code></pre>
+<p>I said “test” and not “tests”, because this fixture will wrap each individual tests, rather than the whole lot of tests in a single namespace, so you use it with <code>(use-fixtures :each ...)</code>.</p>
+<p>With this in place there will no longer be data leaking from one test into the next.</p>
+<pre><code class="language-clojure">(use-fixtures :each wrap-clear-db)
+</code></pre>
+<p>Now add two more test helpers, which wrap the <code>dump-db</code> and <code>load-db!</code> functions from Spicerack, using the current system’s spicerack component as input.</p>
+<pre><code class="language-clojure">(defn dump-db []
+  (sc/dump-db (:spicerack *system*)))
+
+(defn load-db! [data]
+  (sc/load-db! (:spicerack *system*) data))
+</code></pre>
+<p>The reason I’m doing all this, is that I want to write a <code>login-test</code>, and at the start of it I want to use <code>load-db!</code> to populate the database with some user data, so that I can then proceed to test logging in that user.</p>
+<pre><code class="language-clojure">(deftest login-test
+  (load-db! {;; ?
+            })
+</code></pre>
+<p>By looking at the database at the end of the <code>sign-up-test</code>, I can see exactly what things look like after a person has registered, and then use that as a starting point for my next test.</p>
+<p>Let’s run this test and watch the output, and you’ll see a hash map literal you can copy directly into your code.</p>
+<pre><code class="language-clojure">(deftest sign-up-test
+  ,,,
+  (prn (dump-db)))
+
+;; output:
+;;
+;; {"books" {},
+;;  "users" {"Arne" "bcrypt+sha512$445d2014419411cd0cb8f86ecf7b9f46$12$a47115cbae94fc575ebfac0762ee2cf338876c81a8fb6af1"}}
+</code></pre>
+<p>Now you can write the login test. It sets up the state of the database, navigates to the login page, fills in and submits the form, and finally checks for the welcome message. It’s really quite similar to the sign up test.</p>
+<pre><code class="language-clojure">(deftest login-test
+  (load-db! {"users" {"Arne" "bcrypt+sha512$e0cf0035cd4f616d180119d2c3cd4c12$12$a841ed436714247677f0342268ede7aa9e681b71d6060b46"}})
+
+  (fetch! (app-url "/login"))
+  (send-text! (find-by-css "#username") "Arne")
+  (send-text! (find-by-css "#password") "sekrit")
+  (click! (find-by-css "input[type=submit]"))
+
+  (is (re-find #"Login successful, welcome back!" (page-text))))
+</code></pre>
+<p>However, when you run the tests, this is what you get, a wall of errors. Time to investigate. Here’s your first clue: “Element not found”. Not the most informative error message ever, but it’ll have to do. You can also see that the error occured in the <code>sign-up-test</code>, not in the <code>login-test</code>. This is somewhat surprising, since it was working fine a minute ago.</p>
+<p>Next up let’s check out that stack trace, to see exactly things went wrong. Usually the first thing to look for in a stack trace are lines relating to any of your own code. It seems like things went wrong on line 10 and line 12 of <code>acceptance_test.clj</code>.</p>
+<p>Line 10 is just the <code>deftest</code>, but line 12 is interesting, apparently it can’t find the login link.</p>
+<p>The reason this happened is that these two tests share the same browser instance, and the login test happened to run before the sign-up test. This means that by the time the sign-up test starts, there’s already an active session, and so the login link is no longer visible. You can see that properly isolating tests can be tricky.</p>
+<p>It’s also worth noting that <code>clojure.test</code> makes no guarantees about the order in which your tests will run. This is actually a good thing, since it forces you to make sure tests don’t influence each other.</p>
+<p>I’ll add one more fixture, this time to clear the browser’s cookies before each test.</p>
+<pre><code class="language-clojure">(defn wrap-clear-cookies [test]
+  (sd/delete-all-cookies! *browser)
+  (test))
+</code></pre>
+<p>Add it as a fixture to run before each test.</p>
+<pre><code class="language-clojure">(use-fixtures :each wrap-clear-db wrap-clear-cookies)
+</code></pre>
+<p>And finally the tests are all green.</p>
+<pre><code class="language-clojure">(run-tests)
+;; Testing booklog.acceptance-test
+;;
+;; Ran 2 tests containing 4 assertions.
+;; 0 failures, 0 errors.
+</code></pre>
+<p>Before committing your code and calling it a day, remove that call to <code>(run-tests)</code>, it’s only there for testing against a REPL, you don’t want to commit that.</p>
+<pre><code>(comment
+  (run-tests)
+</code></pre>
+<p>Finally switch to a terminal, and run <code>lein test</code>. This way you’re sure they actually work, instead of accidentally due to the state your REPL is in.</p>
+<p>And that looks good! I think we’re done here. I hope you enjoyed this episode, till next time!</p>
+<pre><code class="language-shell">$ lein test
+
+lein test booklog.acceptance-test
+
+lein test booklog.test-helper
+
+Ran 2 tests containing 4 assertions.
+0 failures, 0 errors.
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/booklog">browse source code</a></p>
+<p>Staring point for this episode is the <code>ep34-start</code> branch, the final code is in the <code>ep34-end</code> branch.</p>
+<p><strong>WARNING:</strong> The Sparkledriver API is now split up into two namespaces, <code>sparkledriver.browser</code> and <code>sparkledriver.element</code>. Either stick to version 0.1.10, or adjust your namespace declarations accordingly.</p>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="https://plexus.github.io/sparkledriver/">SparkleDriver 0.1.10 API docs</a></li>
+<li><a shape="rect" href="https://jackrusher.github.io/sparkledriver/">Current SparkleDriver API docs</a></li>
+<li><a shape="rect" href="https://clojure.github.io/clojure/clojure.test-api.html">clojure.test API docs</a></li>
+<li><a shape="rect" href="https://lambdaisland.github.io/uri/">lambdaisland.uri docs</a></li>
+<li><a shape="rect" href="https://clojuredocs.org/clojure.core/binding">docs for clojure.core/binding</a></li>
+<li><a shape="rect" href="https://github.com/jackrusher/spicerack">Spicerack</a></li></ul>
+<h3 id="test-fixture-libraries">Test fixture libraries</h3>
+<ul>
+<li><a shape="rect" href="https://github.com/stylefruits/fixpoint">Fixpoint</a> Clojure Test Fixtures &amp; Datasources <a shape="rect" href="http://blog.stylefruits.tech/fixpoint/">See also this blog post</a></li>
+<li><a shape="rect" href="https://github.com/brabster/docker-fixture">docker-fixture</a> Docker containers as clojure.test fixtures</li>
+<li><a shape="rect" href="https://github.com/reifyhealth/specmonstah">Specmonstah</a> Specmonstah lets you use the power of clojure.spec to concisely set up “the state of the world” for unit tests.</li>
+<li><a shape="rect" href="https://github.com/vvvvalvalval/datomock">Datomock</a> “Fork” datomic connections</li></ul>
+<p>These are libraries I came across in my research and seemed promising, but which I haven’t had the chance to put to real-world use. As always, apply good taste and careful judgement when picking dependencies for your projects.</p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

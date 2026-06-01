@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/re-frame" />
+<meta name="twitter:title" content="re-frame, part 1" />
+<meta name="twitter:description" content="Reagent is a popular and easy to use option for using React with ClojureScript. re-frame builds on top of Reagent, providing an elegant and opinionated way to structure..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/596261054-9c94167b86f0bf4868da285ade2ccd95f2fe300c38a0f2476da6a69875ead641-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="re-frame, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/re-frame" />
+<meta name="video:duration" content="829" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/596261054-9c94167b86f0bf4868da285ade2ccd95f2fe300c38a0f2476da6a69875ead641-d_1280x720?r=pad" />
+<meta name="og:description" content="Reagent is a popular and easy to use option for using React with ClojureScript. re-frame builds on top of Reagent, providing an elegant and opinionated way to structure..." />
+<meta name="video:release_date" content="2016-10-10T14:28:17.609Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">re-frame, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/186249913?h=5f6c9ca41a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="re-frame"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Reagent is a popular and easy to use option for using React with ClojureScript.
+re-frame builds on top of Reagent, providing an elegant and opinionated way to
+structure applications and deal with application state. The documentation for
+re-frame can easily overwhelm. With this episode you get a practical hands-on
+introduction, so you can be making your own apps in no time.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Reagent is one of the more popular ClojureScript libraries for building React
+apps. It gives you an easy way to define components, and some basic tools for
+working with application state.</p>
+<p>Using Reagent atoms and cursors directly is fine for simple apps, but as your
+application gets more complex this can easily get messy. This is where re-frame
+comes in, it’s designed to be functional, reactive, and fast, and it provides
+structure to keep your code maintainable.</p>
+<p>re-frame is both an architecture, a library implementing that architecture, and
+an application template to easily get you started. As an example I’m going to
+implement a level editor for the retro game “breakout”.</p>
+<p>To get started I’ll generate an application skeleton using the re-frame
+leiningen template. I’m passing some options to the generator here, one for CIDER
+support, so I can launch Figwheel from Emacs, and one for Garden, because I like
+to write my CSS in Clojure.</p>
+<pre><code class="language-shell">lein new re-frame breakout +cider +garden
+</code></pre>
+<p>The directory layout is fairly typical. Notice though that there are already a
+handful of cljs files, each with a specific purpose.</p>
+<pre><code>~/breakout $ tree
+.
+├── project.clj
+├── README.md
+├── resources
+│   └── public
+│       └── index.html
+└── src
+    ├── clj
+    │   └── breakout
+    │       ├── core.clj
+    │       └── css.clj
+    └── cljs
+        └── breakout
+            ├── config.cljs
+            ├── core.cljs
+            ├── db.cljs
+            ├── events.cljs
+            ├── subs.cljs
+            └── views.cljs
+
+7 directories, 11 files
+</code></pre>
+<p>Looking at <code>project.clj</code> you can see the dependencies for Reagent and re-frame.
+The project comes with two ClojureScript builds configured, a development build
+without optimizations, and a minified production build.</p>
+<pre><code class="language-clojure">(defproject breakout "0.1.0-SNAPSHOT"
+  :dependencies [,,,
+                 [reagent "0.6.0"]
+                 [re-frame "0.8.0"]]
+  ,,,)
+</code></pre>
+<p>Of the six generated ClojureScript files, the one that should look most familiar
+is <code>views.cljs</code>. This is where you define Reagent components. One component
+called <code>main-panel</code> is already there.</p>
+<pre><code class="language-clojure">(ns breakout.views
+    (:require [re-frame.core :as re-frame]))
+
+(defn main-panel []
+  (let [name (re-frame/subscribe [:name])]
+    (fn []
+      [:div "Hello from " @name])))
+</code></pre>
+<p>You might be most familiar with Reagent components that immediately return
+Hiccup, so called “form-1” components.</p>
+<pre><code class="language-clojure">(defn main-panel []
+  [:div "Hello from re-frame"])
+</code></pre>
+<p>In re-frame you’ll mostly use form-2 components. These return an anonymous
+function which does the actual rendering. When Reagent needs to re-render this
+component only the inner anonymous function is called again. The outer function
+is only called once, and so it’s a good place for initialization code.</p>
+<pre><code class="language-clojure">(defn main-panel []
+  ;; initialization code here, only runs once
+  (fn []
+    ;; called every time component re-renders
+    [:div "Hello from re-frame"]))
+</code></pre>
+<p>Be aware that if the component function takes any properties as arguments, then
+the inner render function should do the same.</p>
+<pre><code class="language-clojure">(defn main-panel [prop1 prop2]
+  ;; initialization code here, only runs once
+  (fn [prop1 prop2]
+    ;; called every time component re-renders
+    [:div "Hello from re-frame"]))
+</code></pre>
+<p>Notice there’s no call to <code>reagent/render</code> here. Let’s have a quick look how the
+application boots up.</p>
+<p>In <code>index.html</code> the compiled JavaScript code is loaded, and then an inline
+script is used to call the <code>init</code> function in the core namespace.</p>
+<pre><code class="language-clojure">&lt;script src="js/compiled/app.js"&gt;&lt;/script&gt;
+&lt;script&gt;breakout.core.init();&lt;/script&gt;
+</code></pre>
+<p>Here’s the <code>init</code> function in <code>core.cljs</code>, exported so it can be called from
+JavaScript. It calls <code>mount-root</code>, which takes care of rendering the
+<code>main-panel</code> component we just saw under views.</p>
+<p>You can also see a glimpse of re-frame’s state management here. <code>init</code> triggers
+an event to initialize the re-frame database, a Reagent atom managed by
+re-frame. We’ll have a lot more to say about that later on.</p>
+<pre><code class="language-clojure">(defn mount-root []
+  (reagent/render [views/main-panel]
+                  (.getElementById js/document "app")))
+
+(defn ^:export init []
+  (re-frame/dispatch-sync [:initialize-db])
+  (dev-setup)
+  (mount-root))
+</code></pre>
+<p>Instead of building up the app from scratch, I’m going to start with some
+Reagent components already implemented, this way I can focus on the parts that
+are specific to re-frame. At the moment these components are 100% static, their
+inputs are hard-coded, and they don’t have any event handlers.</p>
+<p>As always the code is on Github if you want to follow along or play around with.
+You can find instructions in the show notes.</p>
+<p><code>main-panel</code> is the top level component. It renders a heading, and then an SVG
+containing three things: there’s a gray rectangle which forms the background,
+there are the blocks in the game, and then there’s a color picker with a number
+of color swatches. I’m using this <code>translate</code> helper component to move it to the
+side.</p>
+<pre><code class="language-clojure">(defn main-panel []
+  [:div.game
+   [:h1 "BREAKOUT LEVEL EDITOR"]
+   [:svg {:style {:width (+ g/width 70) :height g/height}}
+    [background-box {:x 0 :y 0 :width g/width :height g/height}]
+    [blocks]
+    [translate {:x 1009 :y 0}
+     [color-picker]]]])
+</code></pre>
+<p>This is the component which renders the collection of blocks. At the moment the
+list of blocks is hard coded. Each block is represented by a vector containing
+the column number, the row number, and the color number.</p>
+<p><code>:g</code> stands for “group”, it’s the SVG equivalent of a “div”, just a generic way
+to group some elements together.</p>
+<p>Note that, since we have siblings components of the same type, we give them a
+unique key, otherwise React will complain and we’ll get degraded performance.</p>
+<pre><code class="language-clojure">(defn blocks []
+  (let [blocks [[3 5 0] [2 8 1] [1 1 4]]]
+    [:g
+     (for [[x y color] blocks]
+       [block {:x x
+               :y y
+               :color color
+               :key (str x "--" y)}])]))
+</code></pre>
+<p>Finally there’s the color picker. It renders another gray background box, then
+the six color swatches, and finally the white border which indicates which color
+is selected.</p>
+<pre><code class="language-clojure">(defn color-picker []
+  [:g
+   [background-box 0 0 60 310]
+   (for [idx (range 6)]
+     [color-swatch {:index idx
+                    :key (str "color-" idx)}])
+   [selection-marker {:index 0
+                      :key "marker"}]])
+</code></pre>
+<p>There are two pieces of state that are currently hard coded that we want to be
+able to change, the blocks, and the selected color.</p>
+<p>In a vanilla Reagent app you might store these in a single Reagent atom, and use
+that atom directly. With re-frame the same will happen under the hood, but the
+atom is managed by re-frame, you never deal with it directly.</p>
+<pre><code class="language-clojure">(def app-state (reagent.core/atom
+                {:selected-color 3
+                 :blocks [[3 5 0] [2 8 1] [1 1 4]]}))
+</code></pre>
+<p>re-frame encourages you to think of this single atom with application state as
+your application database. The initial value of this database is defined in
+<code>db.cljs</code>. Later on we will query this database through subscriptions, defined
+in <code>subs.cljs</code>, and  update it through event handlers, defined in <code>events.cljs</code>.q</p>
+<p>To give the database it’s initial value, change the <code>default-db</code> var in the <code>db</code>
+namespace. We need to store the currently selected color index, and the list of
+blocks. Before we were using a vector of vectors, but now we’ll use a map, using
+the <code>[column row]</code> coordinates as key, and the color as assoiciated value. This
+will make it easier later on to update or remove blocks based on their
+coordinates.</p>
+<pre><code class="language-clojure">(def default-db
+  {:color 0
+   :blocks {[3 5] 0
+            [2 8] 1
+            [1 1] 4}})
+</code></pre>
+<p>Next we need to write some queries to get this data out of the database and into
+our components. We do this by registering “subscription handlers”. So switch to
+the <code>subs</code> namespace.</p>
+<p>Registration a subscription handler is done with <code>reg-sub</code>, and since that’s the
+main thing we’ll be doing here, I prefer to refer to it directly.</p>
+<p><code>reg-sub</code> takes the name of the handler, and then the handler function itself.
+This needs to be a pure function which takes the current value of the database,
+and returns the result of the query.</p>
+<p>For the color we just need to pull the color number out of the database. For the
+blocks we do a bit more work. It’s easier for the view to deal with the vector
+format we were using earlier, so map over the blocks in the database,
+destructuring each MapEntry, and then in turn destructure each key into a column
+and row.</p>
+<pre><code class="language-clojure">(reg-sub :color
+         (fn [db _]
+           (:selected-color db)))
+
+(reg-sub :blocks
+         (fn [db _]
+           (map (fn [[[x y] color]]
+                  [x y color])
+                (:blocks db))))
+</code></pre>
+<p>Now we’re ready to update the views, using the <code>subscribe</code> function. Start by
+referring it from the <code>re-frame.core</code> namespace.</p>
+<p>Pass <code>subscribe</code> a vector with the name of the subscription. The result of
+calling <code>subscribe</code> is a special kind of Reagent atom called a “reaction”. Since
+it’s a kind of atom we need to dereference it to get to the actual value.</p>
+<p>Now there’s one more important change we need to make. Right now <code>subscribe</code>
+gets called every time this component gets re-rendered. Instead it should only
+be called once when the component is first created, and not for subsequent
+renderings.</p>
+<p>This is where those form-2 components I talked about earlier come in handy. Just
+introduce an extra anonymous render function, so the subscription lives outside
+of the render function, but the dereferencing is done inside.</p>
+<pre><code class="language-clojure">(defn blocks []
+  (let [blocks (subscribe [:blocks])]
+    (fn []
+      [:g
+       (for [[col row color] @blocks]
+         [block {:column col
+                 :row row
+                 :color color
+                 :key (str col "--" row)}])])))
+</code></pre>
+<p>Next up we do the same for the selected color. Use an outer let block to
+subscribe to the current value of <code>:color</code>, put in an anonymous function so the
+subscription only happens once, and then derefence <code>color-idx</code> inside the inner
+function to get the latest value.</p>
+<pre><code class="language-clojure">(defn color-picker []
+  (let [color-idx (subscribe [:color])]
+    [:g
+     [background-box {:x 0 :y 0 :width 60 :height 310}]
+     (for [idx (range 6)]
+       [color-swatch {:index idx
+                      :key (str "color-" idx)}])
+     [selection-marker {:index color-idx}]]))
+
+</code></pre>
+<p>With such a contrived example it may be hard to see why these subscriptions are
+useful. Why not fetch data from the main database atom directly?</p>
+<p>One good reason is performance. If we dereferenced the database atom directly in
+our components, then whenever the database gets updated, all the components
+would be re-rendered. This is how Reagent works: it tracks which components
+dereference a certain atom, and re-renders them when the atom changes.</p>
+<p>By using these focused subscriptions, components will only be re-rendered when
+their inputs change, so changing the selected color won’t cause the blocks
+to render, and vice versa.</p>
+<p>There’s a lot more to subscriptions than what I’m showing you here, but
+exploring them in-depth is beyond the scope of this episode.</p>
+<p>So now we’ve moved our app state into the database, but the app still isn’t
+doing anything. To make it do something we need to dispatch events.</p>
+<p>This is done with <code>dispatch</code>. Start by adding it to the namespace declaration.
+Dispatch is typically called from an React event-handler like <code>:on-click</code>. It
+has a similar signature to <code>subscribe</code>, you pass it a vector containing the
+event type, and any arguments. Make sure to wrap the <code>subscribe</code> call in an
+anonymous function. I forget that all the time.</p>
+<p>When the event is dispatched it will go into re-frame’s event queue and will be
+handled asynchronously.</p>
+<pre><code class="language-clojure">[color-swatch {:index idx
+               :key (str "color-" idx)
+               :on-click #(dispatch [:select-color idx])}]
+</code></pre>
+<p>To respond to this event we need an event “handler”. These are defined in
+<code>events.cljs</code>. If you used an older version of the re-frame template then this
+file may also be called <code>handlers.cljs</code>.</p>
+<p>There’s already one event handler there, which sets the database to its initial
+value. You may remember seeing this event get triggered in the <code>core</code> namespace.</p>
+<pre><code class="language-clojure">(reg-event-db :initialize-db
+              (fn  [_ _]
+                db/default-db))
+</code></pre>
+<p>Events will typically cause some kind of side effect, but the most common side
+effect by far is updating the database, so there’s a dedicated function to
+create these, called <code>reg-event-db</code>. I’ll refer to it directly again for
+convenience.</p>
+<p><code>reg-event-db</code> takes the name of the handler, and the handler function itself.
+This has to be a pure function which returns the updated database.</p>
+<p>The second argument to the handler is the event vector, containing the event
+type followed by any arguments, so you can destructure that to get the color
+index we passed in earlier.</p>
+<p>Note how this is just a pure function, there’s no <code>swap!</code>, we’re not
+manipulating state, all of that is handled behind the scenes by re-frame.</p>
+<pre><code class="language-clojure">(reg-event-db :select-color
+              (fn [db [_ idx]]
+                (assoc db :color idx)))
+</code></pre>
+<p>Finally we need event handlers to create, change, or delete blocks.</p>
+<p>When a person clicks on the background, we want to add a block where they
+clicked, so we’ll dispatch a “create-block” event. I’m using a little helper
+function which takes the incoming click event, and returns the x and y
+coordinates where the click happened.</p>
+<pre><code class="language-clojure">[background-box {:x 0
+                 :y 0
+                 :width g/width
+                 :height g/height
+                 :on-click #(dispatch [:create-block (helpers/click-pos %)])}]
+</code></pre>
+<p>The handler for this event uses <code>update</code> to add a new coordinate pair with
+associated color into the blocks map. In the process we convert from pixel
+coordinates to row and column numbers.</p>
+<pre><code class="language-clojure">(reg-event-db :create-block
+              (fn [db [_ [x y]]]
+                (update db :blocks
+                        assoc [(g/px-&gt;col x)
+                               (g/px-&gt;row y)]
+                        (:selected-color db))))
+</code></pre>
+<p>Take a moment to try that out, this is actually fun. There’s only one thing left
+to do. When clicking an existing block we need to either update its color, or
+remove the block, depending on what’s selected in the color picker.</p>
+<p>So in the block component, dispatch a <code>:block-clicked</code> event with the block
+coordinates.</p>
+<pre><code class="language-clojure">(defn block [{:keys [column row color]}]
+  [:rect {,,,
+          :on-click #(dispatch [:block-clicked column row])}])
+</code></pre>
+<p>This time the effect handler needs to decide wether to update or remove a block.
+It could do that in one go, but to make it more interesting we’ll have it
+dispatch either a <code>:remove-block</code> or an <code>:update-block</code> event, and handle those
+separately.</p>
+<p>When you want an event handler to trigger another event, your first instinct may
+be to just use the <code>dispatch</code> function the way we did in the views, but event
+handlers have to be pure, and dispatching an event is a side effect, so we can’t
+do that.</p>
+<p>The solution is to use an age old functional programming trick: instead of
+actually performing the side effect, represent what needs to happen in data, and
+deal with it elsewhere. To do that we use <code>reg-event-fx</code> instead of
+<code>reg-event-db</code>.</p>
+<p>The first argument of the handler function is now no longer the database, but
+instead its a map which can contain any number of available inputs. These are
+known as “co-effects”. One of these is the current value of the database.</p>
+<p>The result of the handler function is an “effects map”. If we wanted to update
+the database we would return an effects map with a <code>:db</code> key, and associate it
+with the new database value. In this case we want to dispatch an event, for that
+there’s the <code>:dispatch</code> effect, which takes an event vector.</p>
+<p>re-frame comes with <code>:db</code> and <code>:dispatch</code> effects built-in, other are provided
+by extensions, for instance to deal with localStorage, or to perform AJAX
+requests.</p>
+<pre><code class="language-clojure">(reg-event-fx :block-clicked
+              (fn [cofx [_ x y]]
+                (if (= (-&gt; cofx :db :selected-color) 5)
+                  {:dispatch [:remove-block [x y]]}
+                  {:dispatch [:update-block [x y]]})))
+</code></pre>
+<p>All that’s left is implement the <code>:remove-block</code> and <code>:update-block</code> events. And
+because of the way we structured our database that’s just a matter of doing an
+assoc or a dissoc respectively.</p>
+<pre><code class="language-clojure">(reg-event-db :update-block
+              (fn [db [_ coords]]
+                (update db :blocks assoc coords (:selected-color db))))
+
+(reg-event-db :remove-block
+              (fn [db [_ coords]]
+                (update db :blocks dissoc coords)))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/breakout">browse source code</a></p>
+<p>In this episode you’ll build a level editor for the retro game Breakout. You can <a shape="rect" href="https://lambdaisland.github.io/breakout/">try it out on-line</a>.</p>
+<p>If you want to follow along, then check out the
+<a shape="rect" href="https://github.com/lambdaisland/breakout/tree/re-frame-start">re-frame-start</a>
+branch, and start from there. The final result is in the
+<a shape="rect" href="https://github.com/lambdaisland/breakout/tree/re-frame-episode-1">re-frame-episode-1</a> branch.</p>
+<pre><code>git clone https://github.com/lambdaisland/breakout.git
+cd breakout
+git checkout re-frame-start
+</code></pre>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This episode assumes you are somewhet familiar with Reagent, and hence, React. These episode will get you up to speed</p>
+<ul>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/react-app-clojurescript">6. Building a React app with ClojureScript</a></li>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/reagent">9. Reagent</a></li>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/reagent-2-cursors">10. Reagent part 2: Cursors</a></li>
+<li><a shape="rect" href="https://lambdaisland.com/episodes/reagent-3-keys-lifecycle-methods">11. Reagent part 3: Keys &amp; Lifecycle Methods</a></li></ul>
+<p>If you weren’t familiar with the distinction of form-1, form-2, and form-3
+components, then the
+<a shape="rect" href="https://github.com/Day8/re-frame/wiki/Creating-Reagent-Components">re-frame wiki page “Creating Reagent Components”</a>
+will be helpful.</p>
+<p><strong>UPDATE:</strong> it is no longer necessary to use form-2 components when using re-frame subscriptions, see <a shape="rect" href="../blog/11-02-2017-re-frame-form-1-subscriptions.html">this blog post on the topic</a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>The <a shape="rect" href="https://github.com/Day8/re-frame/blob/master/README.md">re-frame README</a> is
+practically a novel, with lots of philosophical discourse regarding “Reactive
+Programming”. It’s great if you have an afternoon and want to dig into the “big
+ideas” behind re-frame.</p>
+<h2 id="notes">Notes</h2>
+<p>The <a shape="rect" href="https://github.com/Day8/re-frame-template">re-frame template</a> supports these optional flags</p>
+<ul>
+<li>cider (+cider)</li>
+<li>garden (+garden)</li>
+<li>cljs.test and doo (+test)</li>
+<li>compojure (+handler)</li>
+<li>less (+less)</li>
+<li>RE-COM (+RE-COM)</li>
+<li>SECRETARY (+ROUTES)</li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

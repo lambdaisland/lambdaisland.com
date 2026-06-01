@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://lambdaisland.com/img/favicons/apple-touch-icon.png?v=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://lambdaisland.com/img/favicons/favicon-32x32.png?v=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="https://lambdaisland.com/img/favicons/android-chrome-192x192.png?v=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://lambdaisland.com/img/favicons/favicon-16x16.png?v=2" />
+<link rel="manifest" href="https://lambdaisland.com/img/favicons/site.webmanifest?v=2" />
+<link rel="mask-icon" href="https://lambdaisland.com/img/favicons/safari-pinned-tab.svg?v=2" color="#5bbad5" />
+<link rel="shortcut icon" href="https://lambdaisland.com/img/favicons/favicon.ico?v=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/ring-3" />
+<meta name="twitter:title" content="Ring, part 3: Return of the Middleware" />
+<meta name="twitter:description" content="We add `GET`, `PUT`, `DELETE` operations to the contact book API. In the process we pull out the EDN handling into its own middleware, and come across some handy Regex tips...." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/590872744-c86b40722cb0af06077a15efb9052b319698cbee1bb900695c76a3d5734dace4-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Ring, part 3: Return of the Middleware" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/ring-3" />
+<meta name="video:duration" content="741" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/590872744-c86b40722cb0af06077a15efb9052b319698cbee1bb900695c76a3d5734dace4-d_1280x720?r=pad" />
+<meta name="og:description" content="We add `GET`, `PUT`, `DELETE` operations to the contact book API. In the process we pull out the EDN handling into its own middleware, and come across some handy Regex tips...." />
+<meta name="video:release_date" content="2016-09-09T17:57:35.955Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="https://lambdaisland.com/css/project_discovery.css?07E4626E8886EF50FD28CA67FE569812" as="style" />
+<link rel="stylesheet" href="https://lambdaisland.com/css/project_discovery.css?07E4626E8886EF50FD28CA67FE569812" />
+<link rel="stylesheet" href="https://lambdaisland.com/css/compiled/ornament.css?44CB9048E2A68B0597752D6AB1AAF1EE" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="https://lambdaisland.com/" class="project-discovery_parts__Logo"><img src="https://lambdaisland.com/img/new-logo-day.svg?1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="https://lambdaisland.com/episodes">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="https://lambdaisland.com/collections">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../../guides/clojure-repls.mobi.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../../coupon/CLOJUTRE2016.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="https://lambdaisland.com/episodes" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Ring, part 3: Return of the Middleware</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/182088853?h=995c7cb2ce&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="17. Ring III, Return of the Middleware"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>We add <code>GET</code>, <code>PUT</code>, <code>DELETE</code> operations to the contact book API. In the process we pull out the EDN handling into its own middleware, and come across some handy Regex tips. This third episode picks up the pace a bit, but by now that shouldn’t be a problem.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>This episode builds upon episodes 13 and 16 about Ring, although you can watch
+it by itself if you’re already familiar with the basics of Ring request and
+response maps.</p>
+<p>All code is on Github, in the <code>lambdaisland/rolodex</code> repository. The starting
+point for this episode is the <code>ring-part-2</code> branch, the final code can be found
+in <code>ring-part-3</code>.</p>
+<p>There’s a supporting Reagent app that you can use to test the API. You can find
+instructions in the show notes.</p>
+<p>Let’s have another look at the code we have so far. It consists of an atom
+containing our contact database, and two functions corresponding with the two
+API operations we already support. Then there’s the handler which takes care of
+the routing, and finally the invocation to start Jetty.</p>
+<p>The assumption that we’re using EDN is encoded in five different places. It
+determines which Content-Type header to set, how to parse the request, and how
+to encode the response.</p>
+<p>What if we want to switch to JSON or Transit later on? What if we want to
+support multiple formats through content negotiation? As it stands that will be
+much harder than it needs to be. Let’s clean this up.</p>
+<p>Instead of repeating the content-type in every response, we can just set it once
+in the handler.</p>
+<pre><code class="language-clojure">(defn handler "request -&gt; response"
+  [req]
+  (-&gt; (if (= (:uri req) "/")
+        (case  (:request-method req)
+          :get (get-all-contacts)
+          :post (create-new-contact req)))
+      (assoc-in [:headers "Content-Type"] "application/edn; charset=UTF-8")))
+</code></pre>
+<p>Now look at these two response maps, each time we’re calling <code>prn-str</code> to
+convert the result. There are only two of these now, but we’ll add more soon, so
+let’s move that prn-str into the handler as well.</p>
+<p>We’ll first assign the unencoded response to <code>:body</code>, then convert the body
+before passing it on.</p>
+<pre><code class="language-clojure">(defn handler "request -&gt; response"
+  [req]
+  (-&gt; ,,,
+      ,,,
+   (update :body prn-str)))
+</code></pre>
+<p>So now the content-type header and encoding of the result are handled in one
+place, but we’re still manually parsing the request body. Let’s handle that
+centrally as well.</p>
+<p>We’ll add some pre-processing on the request map. Like before check if a request
+body is present, then slurp and parse it. The result gets added to the request
+map under <code>:params</code>. If there was no body in the request then do nothing.</p>
+<p><code>:params</code> is not part of the Ring spec, but since Ring requests are just maps we
+can add new keys to them, it’s an open ended system.</p>
+<pre><code class="language-clojure">(defn- create-new-contact [req]
+  (let [contact (:params req)]
+    (swap! contacts assoc (:id contact) contact)
+    {:status 201
+     :body contact}))
+
+(defn- parse-params [req]
+  (if-let [instream (:body req)]
+    (assoc req :params (-&gt; instream slurp edn/read-string))
+    req))
+
+(defn handler "request -&gt; response"
+  [req]
+  (let [req (parse-params req)]
+    (-&gt; (if (= (:uri req) "/")
+          (case  (:request-method req)
+            :get (get-all-contacts)
+            :post (create-new-contact req)))
+        (assoc-in [:headers "Content-Type"] "application/edn; charset=UTF-8")
+        (update :body prn-str))))
+
+</code></pre>
+<p>Take a step back and have a look at this function. It consists of three parts.
+We get the request map from the Ring adapter, and do some pre-processing. Then
+comes the code that actually implements the business logic, which works with
+this new request map.</p>
+<p>We get a response map back, and then do some post-processing, making it ready to
+be passed back to the handler.</p>
+<p>Only the middle part implements the logic of our app. The rest is just
+infrastructure, plumbing. It would be nice if we could pull that out into a
+separate function that handles all the details of sending and receiving EDN
+data. However since some of it would have to run at the start of the handler,
+and some of it at the end, we would need two functions.</p>
+<p>The function decorator pattern allows us to do it in a single function. In the
+context of Ring this kind of function is called a Ring middleware.</p>
+<pre><code class="language-clojure">
+(defn handler "request -&gt; response"
+  [req]
+  (let [req (parse-params req)]
+
+    (-&gt; (if (= (:uri req) "/")
+          (case  (:request-method req)
+            :get (get-all-contacts)
+            :post (create-new-contact req)))
+
+        (assoc-in [:headers "Content-Type"] "application/edn; charset=UTF-8")
+        (update :body prn-str))))
+</code></pre>
+<p>So let’s make an EDN middleware. A middleware is a function which takes a
+handler function and returns a new handler function. You can think of it as
+“wrapping” the old handler with some extra functionality, which is why their
+names commonly start with <code>wrap-</code>.</p>
+<p>You can have many middlewares wrapped around your handler, like rings of an
+onion, or Russion dolls. A request will pass through all the middlewares on the
+way in, and the response passes through them all again in reverse order on the
+way out.</p>
+<p><code>wrap-edn</code> returns an anonymous function which will be the new handler. All that
+EDN handling we already had in the old handler, so I’ll copy that over, and just
+remove the logic bit in the middle.</p>
+<p>So what goes in the middle? Well, <code>wrap-edn</code> doesn’t care, we’ll just delegate
+to the original handler.</p>
+<p>Now all of that pre- and post-processing can go, and our handler is back to
+being nothing but application logic. All that’s left is actually wrapping the
+old handler.</p>
+<pre><code class="language-clojure">(defn wrap-edn "handler -&gt; handler"
+  [handler]
+  (fn [req]
+    (let [req (parse-params req)]
+
+      (-&gt; (handler req)
+
+          (assoc-in [:headers "Content-Type"] "application/edn; charset=UTF-8")
+          (update :body prn-str)))))
+
+(defn handler "request -&gt; response"
+  [req]
+  (if (= (:uri req) "/")
+    (case  (:request-method req)
+      :get (get-all-contacts)
+      :post (create-new-contact req))))
+
+(defonce server
+  (run-jetty (wrap-edn #'handler) {:port 3000
+                                       :join? false}))
+</code></pre>
+<p>There’s one small issue with this code. Normally if a the handler returns nil,
+then Jetty will turn that into a 404 Not Found repsonse, but this middleware
+will turn nil into a valid response map, and so it becomes a 200 OK instead.</p>
+<p>You can try that out, suppose we have a handler that always returns nil, and
+then we wrap it with <code>wrap-edn</code>, and call it with a request map. The result
+should be nil, bit it’s not.</p>
+<pre><code class="language-clojure">((wrap-edn (constantly nil)) {})
+;;=&gt; {:headers {"Content-Type" "application/edn; charset=UTF-8"}, :body "nil\n"}
+</code></pre>
+<p>So get the response from the handler first, and only do the post-processing when
+the response is not nil.</p>
+<pre><code>(defn wrap-edn "handler -&gt; handler"
+  [handler]
+  (fn [req]
+    (let [req (parse-params req)
+          res (handler req)]
+      (if res
+        (-&gt; res
+            (assoc-in [:headers "Content-Type"] "application/edn; charset=UTF-8")
+            (update :body prn-str))))))
+</code></pre>
+<p>Cool, with that EDN stuff out of the way let’s move on to the next three API
+endpoints. These all work on a specific contact, identified by putting the UUID
+in the URI. So let’s try to parse that.</p>
+<pre><code class="language-fundamental">GET /:id
+  Retrieve a single contact
+
+PUT /:id
+  Update a contact
+
+DELETE /:id
+  Delete a contact
+</code></pre>
+<p>We’ll have to check if the current URI path is a slash followed by a UUID, which
+is represented by sections of hexadecimal digits separated by dashes. This is
+easy to check with a regex.</p>
+<p>Whenever you need to do anything non-trivial with a regular expression, pull up
+the
+<a shape="rect" href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html">documentation for the Java regex pattern class</a>.
+Clojure’s regular expressions are the same as Java’s, and this one page is
+basically the full manual. A quick search shows that there’s a specific notation
+for matching hexadecimal digits.</p>
+<p>We need 8 hexadecimal digits, then three times 4, then 12, with dashes in
+between.</p>
+<p><code>\A</code> and <code>\z</code> match the beginning and end of the string, to make sure we match
+the whole input. We want to match an initial slash, and then the UUID, which I’m
+putting in a capturing group so it’s easy to get out again. Now match a hex
+digit, repeated 8 times, then a dash. Next we want 4 - 4 - 4 and 12.</p>
+<p>Now let’s try that. Because of the capturing group <code>re-find</code> returns a vector
+with two strings: the first is the complete match, the second is just the UUID
+without the leading slash.</p>
+<pre><code class="language-clojure">(def uuid-uri-pattern #"\A/(\p{XDigit}{8}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{12})\z")
+
+(re-find uuid-uri-pattern "/df0bf48f-f02f-4b7f-8aa8-28b16e1d8af1")
+;;=&gt; ["/df0bf48f-f02f-4b7f-8aa8-28b16e1d8af1" "df0bf48f-f02f-4b7f-8aa8-28b16e1d8af1"]
+</code></pre>
+<p>Add another let here to already pull the uri out of the request. Now add an else
+clause to this if, where we check if the uri matches the UUID pattern. <code>re-find</code>
+returns a vector of two strings, but we’re only interested in the second one.</p>
+<p><code>uuid</code> here contains a String, but Clojure (actually, Java) has a specific UUID
+type, and that’s what we’ve been using in our contacts database, so we need to
+convert. Make sure to import the UUID class in your namespace.</p>
+<p>Use a case to switch based on the request method like we did earlier. <code>GET</code> will
+just fetch a single contact, let’s make a function for that.</p>
+<p>Also let’s pull this <code>:request-method</code> into the let as well to make this
+function a little less dense.</p>
+<p>Now all that’s left is to return the response map with the contact’s details. Uh
+yeah we don’t need the whole request here, just the uuid.</p>
+<p>I hope you’re starting to see the pattern. What we’re doing in the api handler
+function is called the “routing” (or “routing”). Based on request method and URI
+it delegates to functions that will take care of handling the request.</p>
+<p>If you’re following along with the GUI then select a contact, and clear all
+fields except the id field. Now you can do a GET to load the missing data from
+the API.</p>
+<pre><code class="language-clojure">(defn- get-contact [uuid]
+  {:status 200
+   :body (@contacts uuid)})
+
+(defn api "request -&gt; response"
+  [req]
+  (let [{uri :uri params :params} req]
+    (if (= uri "/")
+      (case ,,,)
+      (if-let [uuid (second (re-find uuid-uri-pattern uri))]
+        (let [uuid (UUID/fromString uuid)]
+          (case (:request-method req)
+            :get (get-contact uuid)))))))
+</code></pre>
+<p>Almost there, the rest is straightforward now. Doing a PUT request will update
+the contact based on the incoming params, so let’s get those from the request.
+Next add a case for a <code>:put</code> request, and delegate it to a new <code>update-contact</code>
+function.</p>
+<p>The incoming “params” are the updated contact data. They might already contain
+the contact id, but we’ll give preference to the id that we found in the URI.</p>
+<p>Use <code>swap!</code> to update the contacts atom, and finally return another Ring
+response, a 200 OK with the contact as its body.</p>
+<p>Let’s also clean up this <code>create-new-contact</code> function, it doesn’t need access
+to the whole request, just the params is enough.</p>
+<pre><code class="language-clojure">(defn handler "request -&gt; response"
+  [req]
+  (let [,,,
+        params (:params req)]
+    (if (= uri "/")
+      ,,,
+      (if-let [uuid ,,,]
+        (case method
+          ,,,
+          :params (update-contact uuid params))))))
+</code></pre>
+<pre><code class="language-clojure">(defn- update-contact [uuid params]
+  (let [contact (assoc params :id uuid)]
+    (swap! contacts assoc uuid contact)
+    {:status 200
+     :body contact}))
+</code></pre>
+<pre><code class="language-clojure">(defn- create-new-contact [contact]
+  (swap! contacts assoc (:id contact) contact)
+  {:status 201
+   :body contact})
+
+(defn handler [req]
+  (let [,,,
+        params (:params req)])
+  ,,, (create-new-contact params))
+</code></pre>
+<p>Finally we get to delete, add the delete case, delegate to a <code>delete-contact</code>
+function, which uses <code>dissoc</code> to remove the id and its associated contact from
+the contacts atom.</p>
+<p>We return “204 No Content” since the request was succesful, but there’s nothing
+to send back.</p>
+<pre><code class="language-clojure">(defn- delete-contact [uuid]
+  (swap! contacts dissoc uuid)
+  {:status 204})
+</code></pre>
+<p>We’ve implemented the complete API now, only the full text search is still
+missing. And we did it with nothing but pure Clojure.</p>
+<p>You should be comfortable now working with Ring requests and responses,
+including writing and using Ring middleware. These are fundamentals that will
+serve you for the rest of your Clojure career.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/rolodex">browse source code</a></p>
+<p>At the start of this episode, the code is as found in the <code>ring-part-2</code> branch. The end result is in the <code>ring-part-3</code> branch.</p>
+<h2 id="rolodex-gui">rolodex-gui</h2>
+<p>To test out and play around with the API there’s a web app that you can also <a shape="rect" href="https://github.com/lambdaisland/rolodex-gui"><img src="../../img/github-small-icon.png" alt="" /> grab from github</a>. Make sure your API is running at port 3000, and then start the app by issuing</p>
+<pre><code>lein run
+</code></pre>
+<p>and surfing to <a shape="rect" href="http://localhost:3449/">http://localhost:3449</a>.</p>
+<p>To get around cross-origin restrictions in browsers the server part of this app will proxy requests to <code>/api</code> to <code>http://localhost:3000/</code>.</p>
+<h2 id="documentation">Documentation</h2>
+<p>If you’re still a bit fuzzy on the core Ring concepts, request maps, response maps, handlers, and middleware, then you should go and read the <a shape="rect" href="https://github.com/ring-clojure/ring/wiki/Concepts">Concepts</a> page in the Ring wiki.</p>
+<p>The documentation for Clojure’s regular expression can be found in the JavaDoc for <a shape="rect" href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html">java.util.regex.Pattern</a></p>
+<h2 id="final-code">Final code</h2>
+<pre><code class="language-clojure">(ns rolodex.core
+  (:require [clojure.edn :as edn]
+            [ring.adapter.jetty :refer [run-jetty]]
+            [rolodex.generator :as gen])
+  (:import java.util.UUID))
+
+(defonce contacts (atom (into {} (map (juxt :id identity)
+                                      (map gen/contact gen/names)))))
+
+(def uuid-uri-pattern #"\A/(\p{XDigit}{8}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{12})\z")
+
+;; individual routes
+
+(defn- get-all-contacts []
+  {:status 200
+   :body (vals @contacts)})
+
+(defn- create-new-contact [contact]
+  (swap! contacts assoc (:id contact) contact)
+  {:status 201
+   :body contact})
+
+(defn- get-contact [uuid]
+  {:status 200
+   :body (@contacts uuid)})
+
+(defn- update-contact [uuid params]
+  (let [contact (assoc params :id uuid)]
+    (swap! contacts assoc uuid contact)
+    {:status 200
+     :body contact}))
+
+(defn- delete-contact [uuid]
+  (swap! contacts dissoc uuid)
+  {:status 204}) ;; 204 = empty response
+
+;; EDN middleware
+
+(defn- parse-params [req]
+  (if-let [instream (:body req)]
+    (assoc req :params (-&gt; instream slurp edn/read-string))
+    req))
+
+(defn wrap-edn "handler -&gt; handler"
+  [handler]
+  (fn [req]
+    (let [req (parse-params req)
+          res (handler req)]
+      (if res
+        (-&gt; res
+            (assoc-in [:headers "Content-Type"] "application/edn; charset=UTF-8")
+            (update :body prn-str))))))
+
+;; handler performing the routing
+
+(defn handler "request -&gt; response"
+  [req]
+  (let [uri (:uri req)
+        method (:request-method req)
+        params (:params req)]
+    (if (= uri "/")
+      (case method
+        :get (get-all-contacts)
+        :post (create-new-contact params))
+      (if-let [uuid (second (re-find uuid-uri-pattern uri))]
+        (let [uuid (UUID/fromString uuid)]
+          (case method
+            :get (get-contact uuid)
+            :put (update-contact uuid params)
+            :delete (delete-contact uuid)))))))
+
+(defonce server
+  (run-jetty (wrap-edn #'handler) {:port 3000
+                                   :join? false}))
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="https://lambdaisland.com/js/compiled/cljs_base.js?3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="https://lambdaisland.com/js/compiled/public.js?80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="https://lambdaisland.com/highlightjs-10.3.2/highlight.pack.js?AD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

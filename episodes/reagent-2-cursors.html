@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/reagent-2-cursors" />
+<meta name="twitter:title" content="Reagent, part 2: Cursors" />
+<meta name="twitter:description" content="We continue building a Kanban board with Reagent, adding functionality to edit cards. In the process you'll learn all about Reagent's cursors and event handlers." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/580311614-177303ae99c4f0759af8de2ec314d16910f25a3287365dde080660e49088871f-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Reagent, part 2: Cursors" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/reagent-2-cursors" />
+<meta name="video:duration" content="780" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/580311614-177303ae99c4f0759af8de2ec314d16910f25a3287365dde080660e49088871f-d_1280x720?r=pad" />
+<meta name="og:description" content="We continue building a Kanban board with Reagent, adding functionality to edit cards. In the process you'll learn all about Reagent's cursors and event handlers." />
+<meta name="video:release_date" content="2016-07-07T17:43:15.830Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Reagent, part 2: Cursors</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/173792554?h=e9db39a2d1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="10. Reagent part 2: Cursors"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>We continue building a Kanban board with Reagent, adding functionality to edit cards. In the process you’ll learn all about Reagent’s cursors and event handlers.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In Episode 9. about Reagent we ended with a mock version of our Kanban board. If
+you want to follow along from where we left off you can grab the code from
+Github. Just follow the instructions in the show notes.</p>
+<p>All parts of the board are already there, but they don’t do anything yet, it
+could just as well have been static HTML. To change that we’ll be using
+Reagent’s cursors. Let’s get started!</p>
+<p>Before diving into our app we’ll have to learn how cursors work. Suppose you
+have a single card stored in a Reagent atom, the card has the <code>:title</code> “Hello
+Island.”.</p>
+<pre><code class="language-clojure">(def card-atom (r/atom {:title "Hello Island."}))
+</code></pre>
+<p>Updating it is straightforward, here’s a function that changes the card’s title.
+We change the atom with <code>swap!</code>, which takes an atom and a function to apply to
+the value in the atom. Any extra arguments to <code>swap!</code> are passed through as
+extra arguments to the function, so we can actually simplify this.</p>
+<p>Now we can use this function to change the value in the atom, here’s the result.</p>
+<pre><code class="language-clojure">(defn set-title! [card title]
+  (swap! card assoc :title title))
+
+;; same as
+(defn set-title! [card title]
+  (swap! card (fn [c] (assoc c :title title))))
+
+(set-title! card-atom "Hello Turtles")
+
+card-atom ;;=&gt; #&lt;Atom: {:title "Hello Turtles"}&gt;
+</code></pre>
+<p>Things get a bit more complex when that card data is deep inside a nested
+structure. Suppose we have this representation of a kanban board: two columns,
+the second one containing a card with the title “Hello World”.</p>
+<pre><code class="language-clojure">(def board (r/atom {:columns [{:cards []}
+                              {:cards [{:title "Hello Island."}]}]}))
+</code></pre>
+<p>Now to change the title of the card we need to know the “path” to the card. Let
+ me demonstrate what that means using <code>get-in</code>. <code>get-in</code> is like <code>get</code>, but
+ instead of just a key it takes a sequence of keys. This sequence is called a
+ “path”. Each key or numeric index is used to descend another level in the data
+ structure. It works with both maps and vectors because they are both considered
+ associative data structures.</p>
+<p>Other functions that work with a path instead of just a key, are <code>assoc-in</code> and
+<code>update-in</code>.</p>
+<pre><code class="language-clojure">(get-in @board [])                           ;;=&gt; {:columns [{:cards []} {:cards [{:title "Hello Turtles."}]}]}
+(get-in @board [:columns])                   ;;=&gt; [{:cards []} {:cards [{:title "Hello Turtles."}]}]
+(get-in @board [:columns 1])                 ;;=&gt; {:cards [{:title "Hello Turtles."}]}
+(get-in @board [:columns 1 :cards])          ;;=&gt; [{:title "Hello Turtles."}]
+(get-in @board [:columns 1 :cards 0])        ;;=&gt; {:title "Hello Turtles."}
+(get-in @board [:columns 1 :cards 0 :title]) ;;=&gt; "Hello Turtles."
+</code></pre>
+<p>So now to update the card’s title we use <code>assoc-in</code> instead of <code>assoc</code>, passing
+it the path from the root to the title.</p>
+<pre><code class="language-clojure">(swap! board assoc-in [:columns 1 :cards 0 :title] "Hello Turtles.")
+</code></pre>
+<p>We can update <code>set-title!</code> to work with this board structure, but we need to
+tell it how to find the column and card in the board, by giving it the right
+indices.</p>
+<p>This isn’t great though, our function which previously just had to know about
+cards now also has to deal with boards and columns. It has become tightly
+coupled to the structure of the board.</p>
+<pre><code class="language-clojure">(defn set-title! [board col-idx card-idx title]
+  (swap! board assoc-in [:columns col-idx :cards card-idx :title] title))
+
+(set-title! board 1 0 "Hello Octopi.")'
+;;=&gt; {:columns [{:cards []} {:cards [{:title "Hello Octopi."}]}]}
+</code></pre>
+<p>We face the same problem in our Column and card components. To render themselves
+they only need to know about a single column or card, but to perform updates
+they need to know where those columns and cards are in the overall application
+state.</p>
+<p>We can do slightly better by passing in a path together with the board atom,
+that way each component knows where to find the data it needs, without having to
+worry where in the application state that data lives exactly.</p>
+<p>By having both the path and the atom available a component can retrieve its data
+as well as update it.</p>
+<p>Let’s see how that looks for a Column. It’s not a big change, before we got the
+column data directly, and now we  to look it up with <code>get-in</code>.</p>
+<pre><code class="language-clojure">(defn Column [board col-path]
+  (let [{:keys [title cards editing]} (get-in @board col-path)]
+    [:div.column
+     (if editing
+       [:input {:type "text" :value title}]
+       [:h2 title])
+     (for [c cards]
+       [Card c])
+     [NewCard]]))
+</code></pre>
+<p>We also need to update our <code>Board</code> code, since that’s rendering these columns.
+Before we could simply loop over the column values, but now we need to build up
+the path for each column using numeric indices. I’m doing that by counting the
+columns first, and then using <code>range</code> to get a sequence from 0 up to the number
+of columns. Now for each index I can build up the correct path, and pass that
+together with the board to the Column component.</p>
+<pre><code class="language-clojure">(defn Board [board]
+  [:div.board
+   (for [idx (range (count (:columns @board)))]
+     (let [col-path [:columns idx]]
+       [Column board col-path]))
+   [NewColumn]])
+</code></pre>
+<p>Maybe you were thinking it would be nice to somehow bundle an atom and a path
+together, since we’re always passing them around together. Congratulations, you
+just invented cursors!</p>
+<p>You create a cursor by passing the atom and the path to Reagent’s cursor function.</p>
+<pre><code class="language-clojure">(r/cursor board [:columns 0])
+;;=&gt; #&lt;Cursor: [:columns 0] {:title "Todos", :cards [{:title "Learn about Reagent"} {:title "Tell my friends about Lambda Island"}]}&gt;
+</code></pre>
+<p>A cursor behaves like an atom, you can call, <code>deref</code>, <code>swap!</code>, or <code>reset</code> on it.
+All operations are scoped to the cursor’s path, but any updates are performed on
+the original atom. This way you can ignore the rest of the application state,
+and only focus on the bits you care about.</p>
+<p>So here I’m adding a card to the first column through a cursor, and you can see
+that this change is reflected in the app-state.</p>
+<pre><code class="language-clojure">(def cards-cursor
+  (r/cursor board [:columns 0 :cards]))
+
+@cards-cursor
+
+(swap! cards-cursor conj {:title "New card in column 0"})
+
+@cards-cursor ;;=&gt; [{:title "New card in column 0"}]
+@board ;;=&gt; {:columns [{:cards [{:title "New card in column 0"}]} {:cards [{:title "Hello Island!"}]}]}
+</code></pre>
+<p>Let’s see how these cursors can help to hook up our components. First we do the
+columns. Since we already changed this code to use an atom plus a path, this is
+a small transformation.</p>
+<pre><code class="language-clojure">(defn Column [col-cur]
+  (let [{:keys [title cards editing]} @col-cur]
+    [:div.column
+     (if editing
+       [:input {:type "text" :value title}]
+       [:h2 title])
+     (for [c cards]
+       [Card c])
+     [NewCard]]))
+
+(defn Board [board]
+  [:div.board
+   (for [i (range (count (:columns @board)))]
+     [Column (r/cursor board [:columns i])])
+   [NewColumn]])
+</code></pre>
+<p>For cards we use the same pattern, loop over the indices, and build up a cursor
+for each card. Notice though that I’m creating a cursor based on another cursor,
+instead of on the original atom. This is another way in which a cursor simply
+behaves as an atom, but the path of the new cursor is now relative to the path
+of the old one.</p>
+<pre><code class="language-clojure">(defn Card [card-cur]
+  (let [card @card-cur]
+    (if (:editing card)
+      [:div.card.editing [:input {:type "text" :value (:title card)}]]
+      [:div.card (:title card)])))
+
+(defn Column [col-cur]
+  (let [{:keys [title cards editing]} @col-cur]
+    [:div.column
+     (if editing
+       [:input {:type "text" :value title}]
+       [:h2 title])
+     (for [i (range (count cards))]
+       [Card (r/cursor col-cur [:cards i])])
+     [NewCard]]))
+</code></pre>
+<p>While we’re add it I’d like to clean this Card component up a bit, I find this
+outer let is a nice place to destructure the data we need.</p>
+<pre><code class="language-clojure">(defn Card [card-cur]
+  (let [{:keys [editing title]} @card-cur]
+    (if editing
+      [:div.card.editing [:input {:type "text" :value title}]]
+      [:div.card title])))
+</code></pre>
+<p>Now we’re finally ready to start adding functionality. The first thing we do is
+make a card editable by clicking on it. Now you’ll see how those cursors come in
+handy!</p>
+<p>Just like in plain React event handlers are passed in as properties of the
+element. The only difference when using Reagent is that you now use kebap-case
+instead of camelcase for the event name, so “on-click” is written with a dash,
+instead of with an uppercase “C”.</p>
+<p>Click on a card to see it’s working, and indeed we get the text field.</p>
+<pre><code class="language-clojure">(defn card [card-cur]
+  ,,,
+  [:div.card {:on-click #(swap! card-cur assoc :editing true)} title]
+  ,,,)
+</code></pre>
+<p>Now we can turn a card into a text field now, but we still can’t edit it. As I
+said in episode 9 this has to do with how React works, we use a certain string
+as the input element’s value property, and the only way to change that value is
+to pass a different value.</p>
+<p>There’s two ways to solve this. The first is to use <code>:defaultValue</code> instead of
+<code>:value</code>. Now React will take care of managing the input field so you can edit
+it, but any changes you make won’t be reflected in the app-state, and you would
+have to read the final value of the text field directly out of the DOM.</p>
+<pre><code class="language-clojure">(defn Card [card-cur]
+  ,,,
+  [:div.card.editing [:input {:type "text" :defaultValue title}]]
+  ,,,)
+</code></pre>
+<p>The better solution in this case is to use an on-change event handler. This
+anonymous function will receive a change event. The event’s target is the object
+that triggered the event, in this case the <code>&lt;input&gt;</code> DOM element. We get the new
+value from the DOM element, update the application state, and now through
+React’s render loop that new value is reflected again in the UI.</p>
+<pre><code class="language-clojure">(defn Card [card-cur]
+  ,,,
+  [:div.card.editing [:input {:type "text"
+                              :value title
+                              :on-change #(swap! card-cur assoc :title (.. % -target -value))}]]  ,,,)
+</code></pre>
+<p>Now when you click on a card it becomes editable, but how do we make the edit
+field go away again? We’ll implement two event handlers for that, first an
+<code>on-blur</code> handler, so that when another element gets focus the text-field
+automatically goes away, and then an <code>on-key-press</code> handler so that you can stop
+editing simply by pressing enter.</p>
+<p>The <code>:on-blur</code> handler is straightforward, we just remove the editing flag again with <code>dissoc</code>.</p>
+<pre><code class="language-clojure">[:div.card.editing [:input {:type "text"
+                            :value title
+                            :on-change #(swap! card-cur assoc :title (.. % -target -value))
+                            :on-blur #(swap! card-cur dissoc :editing)}]]
+</code></pre>
+<p>Before implementing the key-press handler that will detect the Enter key, let’s
+do some refactoring. We are defining all these event handlers inline, maybe it’s
+better to pull those out into functions.</p>
+<p><code>on-change</code> updates the title</p>
+<p><code>on-blur</code> stops the editing</p>
+<p>and <code>on-click</code> starts the editing</p>
+<p>Now we can see straight away what these events do.</p>
+<pre><code class="language-clojure">(defn- update-title [card-cur title]
+  (swap! card-cur assoc :title title))
+
+(defn- stop-editing [card-cur]
+  (swap! card-cur dissoc :editing))
+
+(defn- start-editing [card-cur]
+  (swap! card-cur assoc :editing true))
+
+(defn- Card [card-cur]
+  (let [{:keys [editing title]} @card-cur]
+    (if editing
+      [:div.card.editing [:input {:type "text"
+                                  :value title
+                                  :on-change #(update-title card-cur (.. % -target -value))
+                                  :on-blur #(stop-editing card-cur)}]]
+      [:div.card {:on-click #(start-editing card-cur)} title])))
+</code></pre>
+<p>Finally the <code>key-press</code> handler checks for the “enter” key, which has character
+code 13, and also stops the editing.</p>
+<pre><code class="language-clojure">(defn Card [card-cur]
+  ,,,
+  [:div.card.editing [:input {:type "text"
+                              :value title
+                              :on-change #(update-title card-cur (.. % -target -value))
+                              :on-blur #(stop-editing card-cur)
+                              :on-key-press #(if (= (.-charCode %) 13)
+                                               (stop-editing card-cur))}]]
+  ,,,)
+</code></pre>
+<p>There’s just one more thing that’s a bit annoying, when you click on a card it
+turns into a text field, but then you need to click on the text field again so
+it gets focus.</p>
+<p>The easy way to solve this is with the <code>autoFocus</code> attribute added in HTML5.
+Autofocus works in Firefox and Chrome since their very early versions, but it
+was only added to internet explorer in version 9, and Safari on iOS doesn’t
+support autofocus at all. We’ll look at a more general solution in the next
+episode.</p>
+<p>That’s it for this episode, you now know everything to build functioning Reagent
+applications. In the next episode about Reagent we’ll add the finishing touches,
+talk about performance, and deal with React’s lifecycle methods.</p>
+<p>In the meanwhile I would love to hear from you! I’m on Twitter and Clojurians
+Slack as plexus, or you can simply send an email to arne@lambdaisland.com. Til next time!</p>
+<pre><code class="language-clojure">(defn Card [card-cur]
+  ,,,
+  [:div.card.editing [:input {:type "text"
+                              :value title
+                              :autoFocus true
+                              :on-change #(update-title card-cur (.. % -target -value))
+                              :on-blur #(stop-editing card-cur)
+                              :on-key-press #(if (= (.-charCode %) 13)
+                                               (stop-editing card-cur))}]]
+  ,,,)
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png%3F7C766C55321639B4E263DDD9323EA560" alt="" /><a shape="rect" href="https://github.com/lambdaisland/kanban">browse source code</a></p>
+<p>The starting point of this episode is the branch <code>ep-9-reagent</code>, the end point is <code>ep-10-reagent-cursors</code>. You can follow along by starting with</p>
+<pre><code class="language-sh">git clone https://github.com/lambdaisland/kanban.git -b ep-9-reagent
+</code></pre>
+<h2 id="cursors">Cursors</h2>
+<p>Creating cursors:</p>
+<pre><code class="language-clojure">(require '[reagent.core :as r])
+
+(r/cursor &lt;atom&gt; &lt;path)
+
+;; example
+(def board (r/atom {:columns []}))
+
+(def cols-cursor (r/cursor board [:columns]))
+
+(swap! cols-cursor conj {:title "todos" :cards []})
+
+@board ;;=&gt; {:columns [{:title "todos" :cards []}]}
+</code></pre>
+<p>Reagent cookbook has a <a shape="rect" href="https://github.com/reagent-project/reagent-cookbook/tree/master/basics/cursors">cursors recipe</a></p>
+<h2 id="event-handlers">Event handlers</h2>
+<ul>
+<li><code>:on-click</code><br clear="none" />Called whenever an element is clicked (<a shape="rect" href="https://developer.mozilla.org/en-US/docs/Web/Events/click">mdn</a>)</li>
+<li><code>:on-change</code><br clear="none" />Useful on text fields, you can get the new value of the field with <code>(fn [e] (.. e -target -value))</code>  (<a shape="rect" href="https://developer.mozilla.org/en-US/docs/Web/Events/change">mdn</a>)</li>
+<li><code>:on-blur</code><br clear="none" />Called when an element loses focus (<a shape="rect" href="https://developer.mozilla.org/en-US/docs/Web/Events/blur">mdn</a>)</li>
+<li><code>:on-key-press</code><br clear="none" />Useful to React to single key press events. Find which key was pressed with <code>(fn [e] (.-charCode e))</code> (<a shape="rect" href="https://developer.mozilla.org/en-US/docs/Web/Events/keypress">mdn</a>)</li></ul>
+<h2 id="autofocus">Autofocus</h2>
+<p>The HTML attribute is called <code>autofocus</code>, but the DOM property is called <code>autoFocus</code> with a capital <code>F</code>.</p>
+<p><a shape="rect" href="http://caniuse.com/#feat=autofocus">Chart with browser support</a></p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

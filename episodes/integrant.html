@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/integrant" />
+<meta name="twitter:title" content="Integrant" />
+<meta name="twitter:description" content="Integrant is a &quot;micro-framework for data-driven architecture&quot;. It manages the lifecycle of your application, and the dependencies between components, similar to Component or..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/688845330-5d487495e41fced3c69e7f4978a337664e7432080fe876e73860574739dae9ef-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Integrant" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/integrant" />
+<meta name="video:duration" content="1237" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/688845330-5d487495e41fced3c69e7f4978a337664e7432080fe876e73860574739dae9ef-d_1280x720?r=pad" />
+<meta name="og:description" content="Integrant is a &quot;micro-framework for data-driven architecture&quot;. It manages the lifecycle of your application, and the dependencies between components, similar to Component or..." />
+<meta name="video:release_date" content="2018-03-15T06:49:39.902Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Integrant</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/260186816?h=e2b303fea5&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="39. Integrant"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Integrant is a “micro-framework for data-driven architecture”. It manages the
+lifecycle of your application, and the dependencies between components, similar
+to Component or Mount, but with some very different design decisions.</p>
+<p>Integrant forms the foundation for Duct, a Clojure web framework by James
+Reeves, aka Weavejester.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Integrant describes itself as a “micro-framework for data-driven architecture”.
+It’s a library that lets you split your app into parts, and manage their
+interdependencies and start/stop life cycle.</p>
+<p>Integrant was created by James Reeves, a prolific Clojure programmer known
+online as Weavejester. It occupies the same space as Stuart Sierra’s Component
+library, which we’ve covered in detail in episode 26 and 31, but makes some very
+different design decisions.</p>
+<p>Integrant forms the basis for Duct, a highly modular Clojure Web Framework. If
+you’re interested in learning Duct then you should get a good grip on Integrant
+first.</p>
+<p>To demonstrate Integrant we’ll take a very basic web app, and look at different
+ways to approach its implementation. The app implements a HTTP single endpoint,
+which responds with the current date and time.</p>
+<p>This episode will be self-contained, if you just follow along you should have everything you need. I will link to a github repo with the resulting code in the show notes, in case you want to have a look at the final result.</p>
+<pre><code>$ curl localhost:3000
+It's Thu Mar 08 16:41:59 CST 2018
+</code></pre>
+<p>I’m using the Clojure CLI tools that came out together with Clojure 1.9. This
+<code>deps.edn</code> file contains all dependencies used in this episode.</p>
+<p>There’s Integrant of course, and also Integrant REPL, which we’ll be using later
+on. The Ring Jetty adapter will make it easy to bootstrap a web server.</p>
+<pre><code class="language-clojure">{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.9.0"}
+        integrant {:mvn/version "0.7.0-alpha1"}
+        integrant/repl {:mvn/version "0.3.0"}
+        ring/ring-jetty-adapter {:mvn/version "1.6.3"}}}
+</code></pre>
+<p>As a starting point, here’s the most basic, hard coded version of this web app I
+could come up with. There’s a handler which handles individual HTTP requests.
+It’s a plain, pure function which takes a request map and returns a response
+map.</p>
+<p>The final line starts the actual web server, we invoke Ring’s Jetty adapter,
+passing it the handler we just defined, and some configuration data.</p>
+<pre><code class="language-clojure">(ns li38.hard-coded
+  "Hard coded web service"
+  (:require [ring.adapter.jetty :as ring-jetty]))
+
+(defn handler [{:keys [request-method uri] :as req}]
+  {:status 200
+   :body (str "It's " (java.util.Date.))
+   :headers {"Content-Type" "text/plain"}})
+
+(ring-jetty/run-jetty handler {:port 3000 :join? false})
+</code></pre>
+<p>Now as always I’m using a REPL connected to my editor, so I can easily evaluate
+these forms one by one. For instance I can change this handler, and re-evaluate
+the <code>defn</code> form to redefine it.</p>
+<pre><code class="language-clojure">(defn handler [{:keys [request-method uri] :as req}]
+  {:status 200
+   :body (str "It's currently " (java.util.Date.) ". Coding time!")
+   :headers {"Content-Type" "text/plain"}})
+</code></pre>
+<p>However when I test this out, I’m still seeing the old result. That’s because
+the jetty adapter is still using the old handler.</p>
+<p>I can try evaluating the <code>run-jetty</code> function again, but that only gets me an
+error because the port is already in use.</p>
+<p>The first problem has to do with Clojure being stateful, the second has to do
+with the application itself being stateful.</p>
+<p>There are ways around this. You could save a reference to the Jetty server, so you can stop it, redefine the handler, and start a new one.</p>
+<pre><code class="language-clojure">(def server
+  (ring-jetty/run-jetty handler {:port 3000 :join? false}))
+
+(.stop server)
+</code></pre>
+<p>In our ten line program this is still manageable, but for anything more complex
+your only choice will be to kill the Clojure process and start over, which isn’t
+great.</p>
+<p>A lot has been said and done about solving this problem through what is known as
+the “reloaded workflow”. In this episode I’ll skip the discourse and focus on
+how Integrant does it, but I’ll leave several links in the show notes if you
+want to dig into this topic.</p>
+<p>So without further ado let’s convert this mini app to Integrant.</p>
+<p>Add <code>integrant.core</code> to the namespace, aliasing it to <code>ig</code>.</p>
+<p>Integrant calls itself a mini framework for data-driven architecture, so it
+follows that we’ll have to start with data. In particular you start with a map
+which describes your application. Each key corresponds with one part of your
+application, and the corresponding value is the configuration for that part.</p>
+<p>This config is most likely to come from an EDN file, but here I’ll just define
+it inline.</p>
+<p>Let’s start with the handler. I’ll call it <code>:handler/time</code>, since it’s a handler
+that returns time information, and I’ll make the prefix and suffix configurable.</p>
+<pre><code class="language-clojure">(ns li38.with-ig
+  (:require [integrant.core :as ig]
+            [ring.adapter.jetty :as ring-jetty]))
+
+(def config
+  {:handler/time {:prefix "It's ", :suffix "."}})
+</code></pre>
+<p>Now for each of these pieces of your application you need to tell integrant how
+to turn the configuration into a implementation, by implementing the
+<code>integrant.core/init-key</code> multimethod.</p>
+<p>The multimethod’s “dispatch value” is the key you used in the configuration map,
+namely <code>:handler/time</code>. The method receives two arguments, the keyword, and the
+configuration, and it returns the actual handler.</p>
+<pre><code class="language-clojure">(defmethod ig/init-key :handler/time [_ config]
+  (fn [{:keys [request-method uri] :as req}]
+    {:status 200
+     :body (str (:prefix config) (java.util.Date.) (:suffix config))
+     :headers {"Content-Type" "text/plain"}}))
+</code></pre>
+<p>You can try calling <code>init-key</code> yourself, and you’ll see you get a handler
+function back, which indeed when called returns a response map.</p>
+<pre><code class="language-clojure">(ig/init-key :handler/time {:prefix "It's " :suffix "."})
+;;=&gt; #function[li38.v1/eval8089/fn--8090/fn--8092]
+
+((ig/init-key :handler/time {:prefix "It's " :suffix "."}) {:request-method :get, :uri "/"})
+;;=&gt; {:status 200, :body "It's Fri Mar 09 11:58:07 CST 2018.", :headers {"Content-Type" "text/plain"}}
+</code></pre>
+<p>Normally you don’t call <code>init-key</code> directly however, but instead you use
+integrant’s <code>init</code> function, passing it a configuration map.</p>
+<p>What you get back is again a map, with the same keys, but with each configuration value replaced by the implementation returned from <code>init-key</code>.</p>
+<pre><code class="language-clojure">(ig/init config)
+;;=&gt; {:handler/time #function[li38.v1/eval8089/fn--8090/fn--8092]}
+</code></pre>
+<p>So far so good, now let’s add in the Jetty Ring adapter. Now it gets
+interesting, because besides the regular pieces of configuration like the HTTP
+port to listen on, the adapter also needs access to another piece of the
+application, the handler. You achieve this with an integrant reference.</p>
+<p>This reference isn’t anything magical, it’s just a placeholder that integrant
+will recognize, and replace with the actual handler, before initializing
+<code>:ring/jetty</code>.</p>
+<p>If you look at what <code>config</code> looks like now, you’ll see that there’s an instance there of <code>integrant.core.Ref</code>.</p>
+<pre><code class="language-clojure">(def config
+  {:handler/time {:prefix "It's "
+                  :suffix "."}
+   :ring/jetty   {:port 3002
+                  :join? false
+                  :handler (ig/ref :handler/time)}})
+
+config
+;;=&gt;
+{:handler/time {:prefix "It's "
+                :suffix "."},
+ :ring/jetty   {:port    3002
+                :join?   false
+                :handler #integrant.core.Ref{:key :handler/time}}}
+</code></pre>
+<p><code>init-key</code> for <code>:ring/jetty</code> is straightfoward, just call <code>run-jetty</code> like
+before.</p>
+<pre><code class="language-clojure">(defmethod ig/init-key :ring/jetty [_ {:keys [handler port join?]}]
+  (ring-jetty/run-jetty handler {:port port :join? join?}))
+</code></pre>
+<p>This time when you call <code>init</code>, integrant will figure out that <code>:ring/jetty</code>
+needs to acecss the handler, so it will initialize the handler first, and then
+move on to initialize <code>:ring/jetty</code>. The end result is again a map with each
+value replaced with its implementation.</p>
+<pre><code class="language-clojure">(def system
+  (ig/init config))
+;;=&gt; {:handler/time #function[li38.v1/eval8065/fn--8066/fn--8068],
+;;    :ring/jetty   #object[org.eclipse.jetty.server.Server@31d65f2b"]}
+</code></pre>
+<p>In a real world app you’re more likely to be loading your configuration from an
+EDN file, such as this one. Notice that this time you can’t use integrant’s
+<code>ref</code> function, but you <em>can</em> use the <code>#ig/ref</code> reader tag to mark something as
+being a reference.</p>
+<pre><code class="language-clojure">;; config.edn
+{:handler/time {:prefix "It's "
+                :suffix "."}
+ :ring/jetty   {:port 3002
+                :join? false
+                :handler #ig/ref :handler/time}}
+</code></pre>
+<p>Now use integrant’s <code>read-string</code> function to load this EDN. It’s similar to
+<code>read-string</code> in <code>clojure.core</code>, but it makes sure those references are read
+correctly.</p>
+<pre><code class="language-clojure">(ig/read-string (slurp "config.edn"))
+</code></pre>
+<p>Now you know how to start the application, but to get back to a clean slate you
+also need to be able to stop it. This is where the <code>halt!</code> function and
+<code>halt-key!</code> multimethods come in.</p>
+<p>The handler isn’t stateful, so there’s no need for a <code>halt-key!</code> implementation,
+but for the web server it does make sense to be able to stop it. <code>halt-key!</code> is
+similar to <code>init-key</code>, but instead of receiving the configuration for the key,
+it receives the implementation that <code>init-key</code> returned. The Jetty instance, in
+other words.</p>
+<p>The return value of <code>halt-key!</code> is ignored, it only cares about side effects.</p>
+<p>If you’re familiar with Component than you’ll notice that this is markedly
+different. In component every operation returns an updated component or system
+map, whereas in integrant any function or method that ends in a bang ignores its
+return value.</p>
+<pre><code class="language-clojure">(defmethod ig/halt-key! :ring/jetty [_ server]
+  (.stop server))
+</code></pre>
+<p>Now you can <code>halt!</code> the system, which will call <code>halt-key!</code> for each piece of
+the app. Pieces are stopped in the opposite order in which they were started, so
+in this contrived example Jetty will be halted first, and then the handler. This
+prevents the situation where one piece is already halted, while another one
+still depends on it.</p>
+<pre><code class="language-clojure">(ig/halt! system)
+</code></pre>
+<p>Calling <code>halt!</code> always returns <code>nil</code>, in Integrant once you halt a system you
+simply throw it away. Sometimes however you do want to “pause” a system, and
+start it up again later on. Integrant calls these operations suspend and resume,
+respectively, and just like with <code>init</code> and <code>halt!</code> they each have a
+corresponding function and multimethod.</p>
+<p>When you stop a Jetty instance it stops listening to the network, but you can
+start it again later on to resume its work, so let’s implement suspend and
+resume for the jetty adapter.</p>
+<p><code>suspend-key!</code> is similar to <code>halt-key!</code>, it receives the implementation
+returned from <code>init-key</code>, and stops it, whatever that means for this particular
+key. Notice that the name ends with a bang, so the return value of
+<code>suspend-key!</code> is ignored. It’s strictly there for side-effects, in other words.
+Our <code>suspend-key!</code> will simply stop the Jetty adapter, just like <code>halt-key!</code>.</p>
+<pre><code class="language-clojure">(defmethod ig/suspend-key! :ring/jetty [_ server]
+  (.stop server))
+</code></pre>
+<p>The final lifecycle method we’ll look at is <code>resume-key</code>. It’s the most
+intricate of all these operations, receiving not two but four arguments: the
+config key, the old configuration map, the new configuration and the
+implementation coming from <code>init-key</code>, the same one that was suspended by
+<code>suspend-key!</code>.</p>
+<p>Before starting up the server again we should check if the configuration has
+changed, maybe we should actually be listening on a different port, for example.
+In that case we simply discard the old server instance and fall back to <code>init-key</code> instead.</p>
+<p>I should mention that this approach to suspending and resuming Jetty is really a little too naive, but it illustrates the concept. The Integrant README has a more complete example of how to implement this.</p>
+<pre><code class="language-clojure">(defmethod ig/resume-key :ring/jetty [key config old-config server]
+  (if (= config old-config)
+    (.start server)
+    (ig/init-key key config)))
+</code></pre>
+<p>Now <code>suspend!</code> the system. Notice how this looks very similar to calling
+<code>halt!</code>, and in fact for any keys without a <code>suspend-key!</code> implementation
+integrant will simply fall back to calling <code>halt-key!</code> instead.</p>
+<p>The main difference is that after calling <code>halt!</code> you’re expected to discard the
+system, if you want to start it again later on you initialize a new one from
+scratch, whereas with <code>suspend!</code> you hold on to the system, so you can resume it
+later on.</p>
+<p>Notice that suspend is still strictly side-effectful, it doesn’t return
+anything, instead you hold on to the system you pass into suspend, and pass that
+same system later on to resume.</p>
+<pre><code class="language-clojure">(ig/suspend! system)
+;;=&gt; nil
+</code></pre>
+<p>Now when you resume the system, you pass in the new configuration, and the old,
+suspended system. Any keys that have their own <code>resume-key</code> get access to both,
+and can figure out how much of the old system they want to reuse, and how much
+they want to initialize afresh.</p>
+<p>Keys without a <code>resume-key</code> implementation fall back to <code>init-key</code> instead, and
+so are always created anew.</p>
+<pre><code class="language-clojure">(def system
+  (ig/resume config system))
+;;=&gt; {:handler/time ,,, :ring/jetty ,,,}
+</code></pre>
+<p>So, to recap, Integrant has four lifecycle functions you can call: <code>init</code>,
+<code>halt!</code>, <code>suspend!</code>, and <code>resume</code>.</p>
+<pre><code class="language-clojure">(init config)
+(halt! system)
+(suspend! system)
+(resume config system)
+</code></pre>
+<p>And four corresponding multimethods for you to implement.</p>
+<pre><code class="language-clojure">(init-key key value)
+(halt-key! key impl)
+(suspend-key! key impl)
+(resume-key key value old-value old-impl)
+</code></pre>
+<p><code>init</code> and <code>resume</code> also have a version that lets you start only specific keys.
+This can be useful if you only want to start part of your application, or want
+to initialize different parts at different times.</p>
+<pre><code class="language-clojure">(init config [:your/key])
+(resume config system [:your/key])
+</code></pre>
+<p>There’s one more multimethod that you can use, called <code>prep-key</code>, which lets you
+do some preprossing on a key’s configuration. It’s a good place for instance to
+set some default values, or to look up symbolic references.</p>
+<p>Let’s add a <code>prep-key</code> method for <code>:ring/jetty</code>, so that we can omit some common
+values in the configuration map. Convention over configuration, so to speak.</p>
+<pre><code class="language-clojure">(def config
+  {:handler/time {:prefix "It's " :suffix " ."}
+   :ring/jetty   {:handler (ig/ref :handler/time)}})
+
+(defmethod ig/prep-key :ring/jetty [_ config]
+  (merge {:port 3000
+          :join? false}
+         config))
+</code></pre>
+<p><code>prep-key</code> again has a corresponding function, <code>prep</code>, I hope you’re starting to
+see a pattern by now.</p>
+<pre><code class="language-config">(def system (ig/init (ig/prep config)))
+</code></pre>
+<p>Now you might wonder what the benefit is of this <code>prep</code> operation, since you
+might as well do all of it inside <code>init</code>. There’s the simple benefit of
+splitting up responsibilities, making the code easier to reason about, but
+there’s also a potentially a real difference, but to understand that we first
+need to look at Clojure’s keyword hierarchies.</p>
+<p>Keywords are generally just plain, isolated identifiers, but by using Clojure’s
+<code>derive</code> function you can specify that one keyword is a more specific instance
+of another keyword.</p>
+<p>So when you say <code>(derive :ring/jetty :http/server)</code>, you’re really saying that
+<code>:ring/jetty</code> is a specific instance of a <code>:http/server</code>. This lets you ask the
+question afterwards: <em>is</em><code>:ring/jetty</code> a <code>:http/server</code>, and Clojure will tell
+you that yes, it is.</p>
+<pre><code class="language-clojure">(derive :ring/jetty :http/server)
+
+(isa? :ring/jetty :http/server)
+;;=&gt; true
+</code></pre>
+<p>This <code>isa?</code> function has some interesting properties. It’s what mathematicians
+call “transitive”, meaning that if “A is a B” and “B is a C”, then “A is also a
+C”.</p>
+<pre><code class="language-clojure">(derive ::A ::B)
+(derive ::B ::C)
+
+(isa? ::A ::C)
+;;=&gt; true
+</code></pre>
+<p>Another thing to note is that when two things are equal according to Clojure’s
+<code>=</code> equality check, then <code>isa?</code> will also be true. To put it another way, <code>isa?</code>
+is really just <code>=</code>, except that it also checks for derived keywords.</p>
+<pre><code class="language-clojure">(isa? ::A ::A)
+;;=&gt; true
+
+(isa? 7 7)
+;;=&gt; true
+</code></pre>
+<p>The interesting thing is that when Clojure tries to find a multimethod
+implementation to dispatch to, it will use <code>isa?</code>, so if you don’t have a
+<code>prep-key</code> implementation for <code>:ring/jetty</code>, but you do have one for
+<code>:http/server</code>, then Clojure will use that one.</p>
+<p>This allows you to implement a generic <code>prep-key</code> method for all HTTP servers.
+Only if a specific server has some special prepping needs would you add another
+<code>defmethod</code> that overrides the general one.</p>
+<pre><code class="language-clojure">(derive :ring/jetty :http/server)
+
+(defmethod ig/prep-key :http/server [_ config]
+  (merge {:port 3000
+          :join? false}
+         config))
+</code></pre>
+<p>Making good use of <code>derive</code> also means you’re adding extra semantic information
+to your configuration, which you can query with the help of integrant.</p>
+<p>Suppose you actually have multiple ring handlers in your configuration. By
+having them all derive from <code>:ring/handler</code>, you can find them all using
+integrant’s <code>find-derived</code> function.</p>
+<p>This mechanism is used heavily in Duct to provide defaults, and automatically
+wire things up.</p>
+<pre><code class="language-clojure">(derive :handler/time :ring/handler)
+(derive :handler/lime :ring/handler)
+
+(ig/find-derived {:handler/time "timey"
+                  :handler/lime "tasty"}
+                 :ring/handler)
+
+;;=&gt;([:handler/time "timey"] [:handler/lime "tasty"])
+</code></pre>
+<p>Notice that we have a pretty big pile of multimethods stacked together in a
+single namespace. In a real-world app you might be better off splitting these up
+into separate namespaces.</p>
+<p>You can put them wherever you like, but Integrant does offer some conventions.
+Say you have a key like this: <code>:my-app.ring/adapter</code>, then the corresponding
+mulimethod defintions should go either in <code>my-app.ring</code>, or
+<code>my-app.ring.adapter</code>.</p>
+<p>When you do this you face a new problem though: because these multimethod
+definitions are all in separate files, you need to make sure they’re all loaded
+before trying to initialize the system.</p>
+<p>The good news is that if you’ve followed these conventions, than Integrant can
+help you out. Simply call <code>load-namespaces</code>, passing it your configuration map,
+and Integrant will try all these namespaces in turn to see if they can be
+loaded. This way you don’t have to add dummy <code>:require</code> statements just to load
+these files.</p>
+<p>Just as with <code>init</code> and <code>resume</code> you can optionally pass a list of keys.
+Integrant will assume you’re only planning to start these keys, and will only
+load the namespaces that are needed.</p>
+<pre><code class="language-clojure">(defmethod init-key :my-app.ring/adapter [_ _])
+;;=&gt; put this in (ns my-app.ring) or (ns my-app.ring.adapter)
+
+(ig/load-namespaces config)
+(ig/load-namespaces config keys)
+</code></pre>
+<p>At this point you’ve really seen all there is to know about <code>integrant.core</code>.
+There are a few more utility functions that might occasionally be helpful, if
+you really want to know all the details then I suggest taking ten minutes out of
+your day to read through the API documentation, or to take an hour and read
+through the source, Jame’s code is really quite instructive.</p>
+<p>So that’s all good, but we still haven’t solved the problem we started with. If
+you change the handler function then you still need to manually halt the system,
+reload the handler code, and then restart the system.</p>
+<p>Admittedly this has already gotten a little easier, you can now start and stop a
+complex application with a single function, and code reloading is really also a
+solved problem. The <code>clojure.tools.namespace</code> library implements intelligent
+unloading and reloading, to make sure Clojure’s view of the world is consistent
+with what’s on the file system.</p>
+<p>What you need is something that ties the two together, so you can get a clean
+slate of both application slate and Clojure slate. This is where
+<code>integrant.repl</code> comes in.</p>
+<p>A good place to load <code>integrant.repl</code> is in your <code>user.clj</code>, since that’s where
+code goes that should only be loaded during development. If you’re using
+Leiningen or the Clojure CLI tools than <code>user.clj</code> will be loaded automatically,
+so anything defined here can easily be called from the REPL.</p>
+<p>Load <code>integrant.core</code> as well, you’ll be needing it soon enough.</p>
+<pre><code class="language-clojure">(ns user
+  (:require [integrant.core :as ig]
+            [integrant.repl :as ig-repl]))
+</code></pre>
+<p>Now you need to tell integrant.repl how to get to your app’s configuration with
+<code>set-prep!</code>, passing it a zero-argument function which returns the Integrant
+configuration map.</p>
+<pre><code class="language-clojure">(ig-repl/set-prep! (fn [] {:app/key {:the :config}}))
+</code></pre>
+<p>This time we’ll get the configuration from an EDN file. First define this
+<code>load-config</code> helper function that loads the configuration from an EDN file,
+using Integrant’s own version of <code>read-string</code>, to make sure references are read
+correctly.</p>
+<pre><code class="language-clojure">(defn load-config []
+  (ig/read-string (slurp "config.edn")))
+</code></pre>
+<p>Here’s <code>config.edn</code>, it’s pretty much the same as before, but I’ve given the
+keys an extra prefix, so that they make a bit more sense as namespace names.
+This way we can follow Integrant’s conventions of putting multimethod defintions
+in namespaces that match the names of the keys.</p>
+<pre><code class="language-clojure">{:li38.handler/time {:prefix "It's "
+                     :suffix "."}
+ :li38.ring/jetty   {:port 3000
+                     :join? false
+                     :handler #ig/ref :li38.handler/time}}
+</code></pre>
+<p>This allows me to split the implementations of each key into their own file, and
+have them be loaded automatically. Here’s the implementation for the handler.</p>
+<pre><code class="language-clojure">(ns li38.handler
+  (:require [integrant.core :as ig]))
+
+(defmethod ig/init-key :li38.handler/time [_ config]
+  (fn [{:keys [request-method uri] :as req}]
+    {:status 200
+     :body (str (:prefix config) (java.util.Date.) (:suffix config))
+     :headers {"Content-Type" "text/plain"}}))
+</code></pre>
+<p>And here’s the Jetty server. Notice that this is simply the code from before, split up into separate files.</p>
+<pre><code class="language-clojure">(ns li38.ring
+  (:require [integrant.core :as ig]
+            [ring.adapter.jetty :as ring-jetty]))
+
+(defmethod ig/init-key :li38.ring/jetty [_ {:keys [handler port join?]}]
+  (ring-jetty/run-jetty handler {:port port :join? join?}))
+
+(defmethod ig/halt-key! :li38.ring/jetty [_ server]
+  (.stop server))
+
+(defmethod ig/suspend-key! :li38.ring/jetty [_ server]
+  (.stop server))
+
+(defmethod ig/resume-key :li38.ring/jetty [key opts old-opts server]
+  (if (= opts old-opts)
+    (.start server)
+    (ig/init-key key opts)))
+</code></pre>
+<p>Now in the <code>set-prep!</code> function load the configuration, make sure all necessary
+namespaces are loaded, and finally call <code>prep</code>, to make sure the configuration
+is all filled in and ready.</p>
+<pre><code class="language-clojure">(ig-repl/set-prep! (fn []
+                     (let [config (load-config)]
+                       (ig/load-namespaces config)
+                       (ig/prep config))))
+</code></pre>
+<p>With that done all that’s left to do is call <code>(go)</code>, and you’re up and running.</p>
+<pre><code class="language-clojure">(ig-repl/go)
+;;=&gt; :initiated
+</code></pre>
+<p>integrant.repl takes care of storing your system behind the scenes, so for
+instance to stop it again, you just call <code>integrant.repl/halt!</code> without any
+arguments.</p>
+<pre><code class="language-clojure">(ig-repl/halt)
+;;=&gt; :halted
+</code></pre>
+<p>The same goes for <code>suspend</code> and <code>resume</code>. Note that this time none of the method
+names end in a bang. It’s a bit of an inconsitency, that’s why I’m pointing it
+out.</p>
+<pre><code class="language-clojure">(ig-repl/suspend)
+;;=&gt; :suspended
+
+(ig-repl/resume)
+;;=&gt; :resumed
+</code></pre>
+<p>Finally we get to the real workhorses: <code>reset</code> and <code>reset-all</code>. These combine
+the code reloading facilities from <code>clojure.tools.namespace</code> with Integrant’s
+lifecycle functionality.</p>
+<p>Calling <code>reset</code> will suspend the system, reload and namespaces that have changed
+since the last time you called <code>reset</code>, and then resume. Note that this calls
+the “prep” function again, so if the configuration changed it will pick up on
+that.</p>
+<pre><code class="language-clojure">user&gt; (ig-repl/reset)
+:reloading (li38.handler li38.ring user)
+:resumed
+user&gt;
+</code></pre>
+<p>Consequent calls to <code>reset</code> will only reload files that changed in the meantime.
+If you want to make sure everything gets reloaded anyway, then you use
+<code>reset-all</code>.</p>
+<pre><code class="language-clojure">user&gt; (ig-repl/reset-all)
+:reloading (li38.handler li38.ring user)
+:resumed
+user&gt;
+</code></pre>
+<p>Integrant is one of those small libraries that can be used in really novel and
+creative ways, and I encourage you to play around it with it and to observe how
+it influences your designs. I feel it encodes a really useful pattern for
+dynamically linking parts together, and I expect to see it pop up in surprising
+places in the future.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/li39-integrant">browse source code</a></p>
+<p>The master branch contains all code shown in the episode. If you want to follow along with the episode then you don’t need any code to get started, all you need are the Clojure CLI tools (tools.deps).</p>
+<p>If you’re using an nREPL based environment that doesn’t yet have support for tools.deps, then check out the repo at tag <code>ep39-start</code>, and launch nREPL with <code>clj -Anrepl</code>.</p>
+<h3 id="cheat-sheet">Cheat sheet</h3>
+<h4 id="integrantcore">integrant.core</h4>
+<pre><code class="language-clojure">;; lifecycle functions in integrant.core
+(init config)
+(halt! system)
+(suspend! system)
+(resume config system)
+(prep config)
+
+;; accompanying multimethods
+(defn init-key :your/key [key value]
+  ;; return implementation
+  )
+
+(defn halt-key! :your/key [key implementation]
+  ;; stop component, return value is ignored
+  )
+
+(defn suspend-key! :your/key [key implementation]
+  ;; pause component, return value is ignored
+  )
+
+(defn resume-key :your/key [key config old-config implementation]
+  ;; resume implementation, must return implementation
+  )
+
+(defn prep-key :your/key [key config]
+  ;; return updated config
+  )
+
+;; other useful functions in integrant.core
+(read-string "...edn...")   ;; like clojure.core/read-string, but knows how to read #ig/ref
+(load-namespaces config)    ;; Tries loading namespaces based on config map keys
+(find-derived config key)   ;; Find any keys in config (map) that derive from the given key
+
+;; not mentioned in the episode, but still useful
+(defmethod pre-init-spec :your/key [key]
+  ;; return a clojure.spec that can validate a key's configuration
+  )
+
+(fold system-map f v)       ;; similar to `clojure.core/reduce`, but folds over a config/system map in dependency order
+</code></pre>
+<h4 id="integrantrepl">integrant.repl</h4>
+<pre><code class="language-clojure">(set-prep! f)            ;; Sets the function f that returns an integrant config map
+
+(prep)                   ;; Calls the prep function, and stores the resulting config
+(init)                   ;; Uses the stored config to start the system
+(go)                     ;; Same as (do (prep) (init))
+
+(halt)                   ;; Call the corresponding integrant function on the current config/system
+(suspend)
+(resume)
+
+(clear)                  ;; Stop the system and clear out the stored config and system map
+
+(reset)                  ;; Suspend - reload modified - resume
+(reset-all)              ;; Suspend - reload all - resume
+</code></pre>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="https://github.com/weavejester/integrant">integrant</a></li>
+<li><a shape="rect" href="https://github.com/weavejester/integrant-repl">integrant.repl</a></li>
+<li><a shape="rect" href="https://github.com/duct-framework/duct">duct</a></li></ul>
+<p>To learn more about Clojure’s hierarchy features, check out the <a shape="rect" href="https://clojure.org/reference/multimethods">official guide about multimethods</a>.</p>
+<p>For a better understanding of “the reloaded workflow”, as well as several gotchas to watch out for, have a look at this <a shape="rect" href="../blog/09-02-2018-reloading-woes.html">Lambda Island blog post: reloading woes</a>.</p>
+<p><a shape="rect" href="https://lambdaisland.com/episodes/stuartsierra-component-system">Episode 26, Component and System</a> and <a shape="rect" href="https://lambdaisland.com/episodes/component-in-practice">episode 31, Component in Practice</a> talk a lot more about Component and the reloaded workflow. They’re by no means a requirement for working with Integrant, but might provide a better understanding of the context that Integrant was born out of.</p>
+<p>If all the talk about Ring handlers and adapters confused you, then check out the <a shape="rect" href="https://lambdaisland.com/collections/ring-compojure">video collection about Ring and Compojure</a>, it’s made with beginners in mind, and walks you through these fundamental concepts.</p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

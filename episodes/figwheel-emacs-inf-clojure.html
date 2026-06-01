@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/figwheel-emacs-inf-clojure" />
+<meta name="twitter:title" content="Using Figwheel With Emacs, part 1: inf-clojure-mode" />
+<meta name="twitter:description" content="Learn how to integrate Figwheel's browser connected REPL into Emacs, for an ever greater degree of interactive development, using inf-clojure-mode." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/586838043-7cce2684b3c02b549a9daf4fd907c761e8e5d5de0ddd76147cd40683fadd6843-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Using Figwheel With Emacs, part 1: inf-clojure-mode" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/figwheel-emacs-inf-clojure" />
+<meta name="video:duration" content="716" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/586838043-7cce2684b3c02b549a9daf4fd907c761e8e5d5de0ddd76147cd40683fadd6843-d_1280x720?r=pad" />
+<meta name="og:description" content="Learn how to integrate Figwheel's browser connected REPL into Emacs, for an ever greater degree of interactive development, using inf-clojure-mode." />
+<meta name="video:release_date" content="2016-08-16T13:40:29.523Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Using Figwheel With Emacs, part 1: inf-clojure-mode</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/179040644?h=d984f01a8f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="14. Using Figwheel With Emacs, part 1: inf-clojure-mode"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Learn how to integrate Figwheel’s browser connected REPL into Emacs, for an ever greater degree of interactive development, using inf-clojure-mode.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Figwheel is one of the greatest tools available for ClojureScript. It provides
+hot code reloading, so every time you save a ClojureScript file, your browser is
+updated live. It does the same for CSS, and also provides a browser connected
+REPL, so you can interact with your running application.</p>
+<p>I’ll set up a basic project skeleton, containing a single ClojureScript source
+file, a <code>resources</code> directory for things like HTML and CSS, which will also
+contain the compiled ClojureScript, and a <code>project.clj</code> for Leiningen.</p>
+<p>The easiest way to use Figwheel is through its Leiningen plugin. Add it to
+<code>project.clj</code>, and also configure a single ClojureScript build with the
+<code>figwheel: true</code> flag set. This config compiles each ClojureScript file under
+<code>src</code> to a JavaScript file under <code>resources/public/js/out</code>. The entry point for
+the browser will be <code>js/figmacs.js</code>.</p>
+<pre><code class="language-clojure">(defproject figmacs "0.1.0"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha10"]
+                 [org.clojure/clojurescript "1.9.89"]]
+
+  :plugins [[lein-figwheel "0.5.4-7"]]
+
+  :cljsbuild {:builds
+              [{:id "figmacs"
+                :source-paths ["src/"]
+                :figwheel true
+                :compiler {:main "figmacs.core"
+                           :asset-path "js/out"
+                           :output-to "resources/public/js/figmacs.js"
+                           :output-dir "resources/public/js/out"}}]})
+</code></pre>
+<p>It’s possible to integrate the Figwheel REPL with Emacs, which gives you the
+type of interactive development that LISP and Emacs developers are used to.
+There’s a couple ways to go about it though, so I want to dig into this a bit.</p>
+<p>We configured our ClojureScript build to use <code>figmacs.core</code> as main namespace,
+so let’s create that. I’ll enable console print, and then print something to the
+console so we see it’s working.</p>
+<pre><code class="language-clojure">(ns figmacs.core)
+
+(enable-console-print!)
+
+(println "Figwheel is live!")
+</code></pre>
+<p>Like any browser-based ClojureScript project you’ll also need an <code>index.html</code> as
+entry point, this one goes under <code>resources/public</code>. From there load the output
+target and you’re good to go.</p>
+<pre><code class="language-html">&lt;script src="js/figmacs.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>Now from a terminal you can start <code>lein figwheel</code>, and off you go. The first
+time it needs a moment to do the first compilation. Figwheel starts a web server
+on port 3449 that you can connect to.</p>
+<p>Ok Figwheel is waiting for your browser to connect back to Figwheel over a
+websocket, so compiled code can be sent back back to the browser, so open your
+browser at port 3449. You can see your code is already running. And now that the
+connection is established the REPL prompt appears.</p>
+<p>Now if we type some ClojureScript code into the REPL, it gets compiled to
+JavaScript, sent to the browser and executed. Pretty neat.</p>
+<p>Similarly when we change our source file, and then save it, the browser
+immediately reflects those changes. The whole file gets evaluated every time you
+save it, so that’s something you’ll have to keep in mind, by making sure your
+code is reloadable.</p>
+<p>So that’s all great, but we’ve seen some of that cool Emacs live evaluation from
+a Clojure source buffer, and we want some of that for our ClojureScript. For
+Clojure it seems most people can figure things out, but when it comes to
+ClojureScript and Figwheel a lot of folks are getting stuck. This isn’t too
+surprising, there’s a lot more machinery involved, and there are least three
+different ways to approach it.</p>
+<p>I’ll show you the simplest way first using inferior Lisp mode and inf-clojure,
+before moving on to more full-featured nREPL based solutions with CIDER.</p>
+<p>Here’s the secret that no-one is telling you: you don’t need to install a single
+package to interact with a ClojureScript REPL from Emacs. The built-in
+functionality for working with an external LISP process is all you need to get
+started. Emacs calls this “inferior” because the Lisp process runs as a
+sub-process, but it doesn’t mean it’s any less valuable!</p>
+<p>To tell Emacs that Figwheel will provide our REPL, we need to set the
+<code>inferior-lisp-program</code> variable. I’m just doing that from Emacs <code>*scratch*</code>
+buffer here (<code>C-x C-e</code>). If you want this to persist you’ll have to add the code
+to you emacs configuration. This variable contains the incantation to start the
+REPL, in our case that’s <code>lein figwheel</code>.</p>
+<pre><code class="language-emacs-lisp">(setq inferior-lisp-program "lein figwheel")
+</code></pre>
+<p>Now switch back to one of the files in your project, this is simply so the
+working directory of leiningen is inside your project, that way leiningen will
+use the right <code>project.clj</code>. Now you can run the built-in <code>M-x run-lisp</code>
+command, and assuming <code>inferior-lisp-program</code> is set correctly you should see
+Figwheel booting up. If you still have your browser open it should straight away
+drop to a REPL prompt, although it might take a minute for Figwheel to
+reconnect.</p>
+<p>If you get an error message saying “figwheel is not a task” then either you
+didn’t correctly add the Figwheel plugin in <code>project.clj</code>, or more likely you’re
+starting the REPL from a different directory.</p>
+<p>You can use the REPL directly, but we could do that from the terminal as well.
+It gets more fun when we interact with it from a source buffer. Open
+<code>core.cljs</code>, and use split windows so you can see the REPL and the source code
+side by side (<code>C-x 3</code><code>C-x o</code><code>C-x b *inferior-lisp*</code>).</p>
+<p>Now you can send forms to the REPL with <code>M-x lisp-eval-last-sexp</code>, and the
+result will show up in the REPL. This causes Emacs to find the form (sexp)
+before “point” (your cursor position), and send that form to the REPL process,
+which then returns the result.</p>
+<p>Having to type <code>M-x lisp-eval-last-sexp</code> is tedious, we can quickly set up some
+keybindings so they behave as they do in most Lisp modes in Emacs.</p>
+<pre><code class="language-emacs-lisp">(define-key clojure-mode-map (kbd "C-x C-e") 'lisp-eval-last-sexp)
+(define-key clojure-mode-map (kbd "C-M-x")   'lisp-eval-defun)
+(define-key clojure-mode-map (kbd "C-x C-r") 'lisp-eval-region)
+</code></pre>
+<p>If you were already using inf-clojure or CIDER then these new keybindings will
+clash with the ones provided by those packages. I wouldn’t worry about, we’ll get to
+better solutions soon, but if you do feel like trying these out then make sure
+<code>cider-mode</code> and <code>inf-clojure-minor-mode</code> are disabled.</p>
+<p>Having inferior-lisp built-in is great, but there’s a version of inferior-lisp
+specifically tailored for Clojure, so we might as well use that. It’s called
+<a shape="rect" href="https://github.com/clojure-emacs/inf-clojure">inf-clojure</a> and is available on
+MELPA.</p>
+<p>If you’ve ever installed something from MELPA then just a <code>M-: (package-install
+'inf-clojure)</code> will do the trick. I have slightly more elaborate instructions in
+the show notes in case that command fails for you.</p>
+<pre><code class="language-lisp">(package-install 'inf-clojure) ;;  Install inf-clojure
+</code></pre>
+<p>The equivalent of the <code>inferior-lisp-program</code> variable for <code>inf-clojure</code> is
+called <code>inf-clojure-program</code>. By default it runs <code>lein repl</code>, giving you a
+standard Clojure REPL. To get a Figwheel REPL instead we’ll change it to <code>lein
+figwheel</code>.</p>
+<pre><code class="language-emacs-lisp">(setq inf-clojure-program "lein figwheel")
+</code></pre>
+<p>Now go back to <code>core.cljs</code>, and enable <code>inf-clojure-minor-mode</code>. This minor mode
+adds all the relevant keybindings. If you’re planning to use <code>inf-clojure</code>
+regularly you should set up a hook so <code>inf-clojure-minor-mode</code> is enabled
+wherever <code>clojure-mode</code> is active.</p>
+<pre><code class="language-emacs-lisp">(add-hook 'clojure-mode-hook 'inf-clojure-minor-mode)
+</code></pre>
+<p>If you were already using CIDER then make sure it’s disabled! The functionality
+of inf-clojure and CIDER largely overlaps, and having them both enabled will
+only cause a mess. <code>cider-mode</code> is a minor mode, so running the <code>cider-mode</code>
+command will toggle it on or off. Check the modeline to make sure it’s not there.</p>
+<pre><code>M-x cider-mode
+</code></pre>
+<p>You can’t tell looking at the modeline wether <code>inf-clojure-minor-mode</code> is
+enabled or not, but you can see it when looking at the list of active modes (<code>C-h m</code>).</p>
+<p>You will also see a list of all the keybindings that <code>inf-clojure-minor-mode</code>
+adds. The starting point is <code>C-c C-z</code>, <code>inf-clojure-switch-to-repl</code>, which will
+start the REPL if it’s not running already, and then switch to the REPL buffer.</p>
+<p>Now just like before we can evaluate forms, but we also get keybindings to look
+up documentation, look at macroexpansions, switch namespaces, and more.
+<code>inf-clojure</code>’s README is pretty sparse, but I’ve documented all it’s key
+combinations in the show notes, and of course you can also find them through
+Emacs’ help system.</p>
+<p>I told you you can configure <code>inf-clojure-program</code> in your Emacs config, but
+what if it’s not the same for all projects?</p>
+<p>How can you configure one project to use <code>lein repl</code>, and another to use <code>lein
+figwheel</code>? The answer is Emacs’ Directory Local Variables.</p>
+<p>In the project root create a file named <code>.dir-locals.el</code>. In there you can
+configure variables that will only be set inside this project. The syntax is a
+bit tedious I admit, but it’s a powerful mechanism.</p>
+<p>The file contains a list of cons pairs. If the first element of the pair is
+<code>nil</code> then these variables are applied to all files under this directory. It can
+also be the name of a major mode (a symbol), or a subdirectory (a string), and
+then the variables will only be applied to the files that match.</p>
+<pre><code class="language-emacs-lisp">((clojure-mode . ((inf-clojure-program . "lein figwheel"))))
+</code></pre>
+<p>Here’s a formatted example that shows all the possibilities. <code>snacks</code> and
+<code>drinks</code> will be set in all file buffers for this project. Buffers set to
+<code>clojure-mode</code> as their major mode will also have the <code>music</code> and <code>vibes</code>
+variables set, whereas files under <code>src/example</code> also get the <code>hours</code> and
+<code>light</code> variables.</p>
+<pre><code class="language-emacs-lisp">(
+ (nil .
+   ((snacks . "tasty")
+    (drinks . "cold")))
+
+ (clojure-mode .
+   ((music . "loud")
+    (vibes . "good")))
+
+ ("src/example" .
+   ((hours . "small")
+    (light . "disco")))
+)
+
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="inferior-lisp">Inferior LISP</h2>
+<p><a shape="rect" href="https://www.gnu.org/software/emacs/manual/html_node/emacs/External-Lisp.html">Emacs Manual: External Lisp</a></p>
+<h2 id="inf-clojure">inf-clojure</h2>
+<p><a shape="rect" href="https://github.com/clojure-emacs/inf-clojure">GitHub: clojure-emacs/inf-clojure</a></p>
+<p>If you don’t have MELPA set up yet something like this should do the trick</p>
+<pre><code class="language-clojure">(add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t) ;; append MELPA to the list of package sources
+
+(package-initialize) ;; initialize the package system
+
+(unless (file-exists-p "~/.emacs.d/elpa/archives/melpa")
+  (package-refresh-contents)) ;; fetch the list of packages
+
+(package-install 'inf-clojure)
+</code></pre>
+<p>Keybindings (<code>inf-clojure-minor-mode</code>). All the “eval” commands take an optional
+prefix argument which makes them switch to the REPL buffer.</p>
+<dl>
+<dt><code>C-c C-z</code> (<code>inf-clojure-switch-to-repl</code>)</dt>
+<dd>Switch to the inferior
+Clojure process buffer. With prefix argument, positions
+cursor at end of buffer</dd>
+<dt><code>M-C-x</code> / <code>C-c C-c</code> (<code>inf-clojure-eval-defun</code>)</dt>
+<dd>Send the current defun to
+the inferior Clojure process.</dd>
+<dt><code>C-x C-e</code> / <code>C-c C-e</code> (<code>inf-clojure-eval-last-sexp</code>)</dt>
+<dd>Send the previous sexp
+to the inferior Clojure process.</dd>
+<dt><code>C-c C-b</code> (<code>inf-clojure-eval-buffer</code>)</dt>
+<dd>Send the current buffer
+to the inferior Clojure process.</dd>
+<dt><code>C-c C-r</code> (<code>inf-clojure-eval-region</code>)</dt>
+<dd>Send the current region
+to the inferior Clojure process.</dd>
+<dt><code>C-c C-n</code> (<code>inf-clojure-eval-form-and-next</code>)</dt>
+<dd>Send the previous
+sexp to the inferior Clojure process and move to the next</dd>
+<dt><code>C-c C-i</code> (<code>inf-clojure-show-ns-vars</code>)</dt>
+<dd>Send a query to the
+inferior Clojure for the public vars in NS. Like doing <code>(dir
+,,,)</code> in a REPL.</dd>
+<dt><code>C-c C-A</code> (<code>inf-clojure-apropos</code>)</dt>
+<dd>Send a command to the
+inferior Clojure to give apropos for VAR.</dd>
+<dt><code>C-c C-m</code> (<code>inf-clojure-macroexpand</code>)</dt>
+<dd>Send a command to the
+inferior Clojure to give apropos for VAR. With a prefix arg
+uses ‘macroexpand-1’.</dd>
+<dt><code>C-c C-l</code> (<code>inf-clojure-load-file</code>)</dt>
+<dd>Load a Clojure file
+into the inferior Clojure process.</dd>
+<dt><code>C-c C-a</code> (<code>inf-clojure-show-arglist</code>)</dt>
+<dd>Show the arglist for
+a function in the mini-buffer.</dd>
+<dt><code>C-c C-v</code> (<code>inf-clojure-show-var-documentation</code>)</dt>
+<dd>Send a command
+to the inferior Clojure to give documentation for a var.</dd>
+<dt><code>C-c C-s</code> (<code>inf-clojure-show-var-source</code>)</dt>
+<dd>Send a command to the
+inferior Clojure to give source for a var.</dd>
+<dt><code>C-c M-n</code> (<code>inf-clojure-set-ns</code>)</dt>
+<dd>Set the ns of the inferior
+Clojure process to NS. Defaults to the ns of the current
+buffer.</dd></dl>
+<h2 id="emacs-per-directory-variables">Emacs Per-directory Variables</h2>
+<p><a shape="rect" href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html">Emacs Manual Entry</a></p>
+<h2 id="code">Code</h2>
+<pre><code class="language-clojure">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; inferior lisp
+(setq inferior-lisp-program "lein figwheel")
+
+(define-key clojure-mode-map (kbd "C-x C-e") 'lisp-eval-last-sexp)
+(define-key clojure-mode-map (kbd "C-M-x")   'lisp-eval-defun)
+(define-key clojure-mode-map (kbd "C-x C-r") 'lisp-eval-region)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; inf-clojure
+
+(setq inf-clojure-program "lein figwheel")
+(add-hook 'clojure-mode-hook 'inf-clojure-mode)
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

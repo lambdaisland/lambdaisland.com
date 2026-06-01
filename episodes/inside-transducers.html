@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/inside-transducers" />
+<meta name="twitter:title" content="Inside Transducers" />
+<meta name="twitter:description" content="Clojure allows processing data in a way that is composable, reusable, and performs well, all through the power of Transducers. Episode 38 provided a general overview of what's..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/709766317-401c19d4ba9b6ed28efa4915e6f6d509abca9047b78e86de21b121e8fb5c6db8-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Inside Transducers" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/inside-transducers" />
+<meta name="video:duration" content="1041" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/709766317-401c19d4ba9b6ed28efa4915e6f6d509abca9047b78e86de21b121e8fb5c6db8-d_1280x720?r=pad" />
+<meta name="og:description" content="Clojure allows processing data in a way that is composable, reusable, and performs well, all through the power of Transducers. Episode 38 provided a general overview of what's..." />
+<meta name="video:release_date" content="2018-06-26T20:26:28.985Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Inside Transducers</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/277087713?h=11dbf37020&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="42. Inside Transducers"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Clojure allows processing data in a way that is composable, reusable, and
+performs well, all through the power of Transducers. Episode 38 provided a
+general overview of what’s in the box, the transducers and transducing contexts
+provided by clojure.core. This episode digs deeper into the internals of
+transducers and reducing functions, and looks at some powerful libraries for
+real-world data processing and statistics.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>This episode digs deeper into the topics explored in episode 38 about
+Transducers. If you’re not yet comfortable using and composing Clojure’s
+built-in transducers with <code>into</code> and <code>transduce</code>, then check out episode 38
+first.</p>
+<p>But before we get to the topic du jour, we need to take a step back and look at
+the humble <code>reduce</code> function. While transducers are a relatively new addition to
+Clojure, their design is largely based on <code>reduce</code>, which has been part of
+clojure.core from the very beginning.</p>
+<p>At its simplest <code>reduce</code> “reduces” a collection to a single value. An example
+would be to reduce a collection of numbers to their sum.</p>
+<pre><code class="language-clojure">(reduce + [1 2 3 4]) ;;=&gt; 10
+</code></pre>
+<p>Reduce optionally takes a starting value, but if you leave it out it uses the first
+item of the collection as the starting point.</p>
+<pre><code class="language-clojure">(reduce + 100 [1 2 3]) ;;=&gt; 106
+</code></pre>
+<p>Let’s unpack this a bit. <code>reduce</code> takes a two argument “step function”.
+The first argument to the step function is called the “accumulator”, since this
+is where bit by bit the final result accumulates. The second argument is fed each item of the input, one by one.</p>
+<p><code>reduce</code> applies the step function step by step, first to the starting value and
+the first item in the collection, then to the result so far and the second item,
+and so on, until the collection is fully consumed and a result is returned.</p>
+<pre><code class="language-clojure">(reduce (fn [acc x]
+          (+ acc x))
+        0
+        [1 2 3])
+;;=&gt; 6
+</code></pre>
+<p>With <code>reductions</code> you can get a better appreciation of how <code>reduce</code> works, it
+returns a sequence of the successive accumulator values, so you can see exactly
+how each intermediate value is calculated.</p>
+<pre><code class="language-clojure">(reductions (fn [acc x] (+ acc x)) 0 [1 2 3 4])
+;;=&gt; (0 1 3 6 10)
+</code></pre>
+<p>The accumulator can take many forms, including rich composite types like
+collections. This makes it possible to express pretty much any operation over a
+collection with <code>reduce</code>. You could do the equivalent of a <code>map</code>, or a <code>filter</code>,
+using only reduce.</p>
+<p>In this case the accumulator is a collection, that gradually accumulates
+computed values, mapping a vector of numbers to their squared values.</p>
+<pre><code class="language-clojure">(reduce (fn [acc x]
+          (conj acc (* x x)))
+        []
+        [1 2 3])
+;;=&gt; [1 4 9]
+</code></pre>
+<p>Similarly you can reimplement Clojure’s <code>into</code> function as <code>reduce conj</code>, since
+this is exactly what into does, just continously applying <code>conj</code>.</p>
+<pre><code class="language-clojure">(defn my-into [target src]
+  (reduce conj target src))
+
+(my-into #{} [1 2 3])
+;;=&gt; #{1 3 2}
+</code></pre>
+<p>The <code>reduce</code> function is a staple of functional programming, but Clojure added
+something extra to make it even more general purpose: you can terminate the
+iteration early by returning a “reduced” value.</p>
+<p>This <code>reduce</code> again computes a sum, but as soon as the total is greater than
+five, the reduction stops and the accumulator is returned.</p>
+<pre><code class="language-clojure">(reduce (fn [acc x]
+          (if (&gt; acc 5)
+            (reduced acc)
+            (+ acc x)))
+        [1 2 3 4])
+;;=&gt; 6
+</code></pre>
+<p><code>reduced</code> isn’t anything magical, it merely wraps a value in a special type of
+object, of type <code>clojure.lang.Reduced</code>. If <code>reduce</code> notices that the step
+function returned such an object, then it unwraps it, and returns that result
+immediately.</p>
+<p>A <code>reduced</code> is a reference type, like an atom or ref, meaning you can <code>deref</code> it
+to get to the value inside of it. If you’re dealing with values that could
+potentially be wrapped in a reduced, then you can use <code>unreduced</code> to make sure
+you’re dealing with an unwrapped value again. Using unreduced on a plain value
+simply returns the value.</p>
+<pre><code class="language-clojure">(reduced 42)
+;; =&gt; #&lt;Reduced@4f3c2254: 42&gt;
+
+(type (reduced 42))
+;; =&gt; clojure.lang.Reduced
+
+@(reduced 42)
+;; =&gt; 42
+
+(unreduced (reduced 42))
+;; =&gt; 42
+
+(unreduced 42)
+;; =&gt; 42
+</code></pre>
+<p>Back to the step function. It’s a powerful vehicle for describing all kinds of
+transformations, and you can imagine defining generic step functions and reusing
+them, but there are some limitations.</p>
+<p>Sometimes the step function needs more information than just the accumulated
+result and the next item. Consider this example, I’d like to use <code>reduce</code> to
+prefix a list of strings with index numbers.</p>
+<pre><code class="language-clojure">["wulong" "red" "black" "green"]
+;;=&gt; ["1. wulong" "2. red" "3. black" "4. green"]
+</code></pre>
+<p>You can imagine that, besides the actual result that gets built up step by step,
+I also need to keep track of a counter somewhere. I can do that by using a
+vector as the accumulator, containing the counter value, and the actual result.</p>
+<p>The step functions destructures this vector to get to all the pieces, and then
+returns again a two element vector as the new accumulator, containing with the
+incremented index counter, and the result vector, with an extra string conj’ed
+onto it.</p>
+<p>In the end I add a call to <code>second</code>, since I’m not interested in the count, only
+in the result.</p>
+<pre><code class="language-clojure">(second
+ (reduce (fn [[idx res] s]
+           [(inc idx) (conj res (str idx ". " s))])
+         [1 []]
+         ["wulong" "red" "black" "green"]))
+;;=&gt; ["1. wulong" "2. red" "3. black" "4. green"]
+</code></pre>
+<p>Using a vector or map like this is a common pattern, as it allows the step
+function to track multiple pieces of state, but now we’re placing an extra
+burden on the caller, who needs to supply a suitable initial state, and pull out
+the relevant bits of the final result.</p>
+<p>Let’s pull out this step function and take a better look at it. It’s clear that
+it only described the very heart of a process, if a specific initial value is
+needed at the start, or if some finalization needs to happen on the result, then
+you need to capture that information in the surrounding code, easily causing
+duplication and mistakes.</p>
+<p>In the end you need three pieces of information, an initial value, a
+step function, and a “completing” step. You can encode all of these together by
+turning this step function into a reducing function.</p>
+<p>A reducing function is a generalization of the step function. It’s two-arity
+version is the equivalent of the step function, but it also has a zero-argument
+version for initialization, and a one-argument version as a final “completing”
+step.</p>
+<pre><code class="language-clojure">(defn add-index-prefix
+  ([] [1 []])
+  ([acc] (second acc))
+  ([[idx res] x]
+   [(inc idx) (conj res (str idx ". " x))]))
+</code></pre>
+<p>So what can you do with this? Unfortunately the <code>reduce</code> function itself ignores
+the extra arities, this is where <code>transduce</code> comes in.</p>
+<p>Remember that <code>transduce</code> is very similar to <code>reduce</code>, but it differs in two
+important ways. In the previous episode we focused on that first extra argument,
+called the “xform” or “transducer”, but here I’m calling it without a
+transducer, instead passing it the <code>indentity</code> function as a sort of
+“null-transducer”.</p>
+<p>The second argument to <code>transduce</code> is a reducing function, exactly as we’ve
+described it, with zero, one, and two-argument implementations. So while
+<code>reduce</code> only takes a two-arity step function, <code>transduce</code> takes a complete
+reducing function.</p>
+<pre><code class="language-clojure">(transduce identity add-index-prefix ["wulong" "red" "black" "green"])
+;; =&gt; ["1. wulong" "2. red" "3. black" "4. green"]
+</code></pre>
+<p>It’s fun to note that some built-in functions have done this long before
+<code>transduce</code> was around, take for instance <code>+</code>. If you call it with zero
+arguments you get <code>0</code>, which then forms the starting value. And if you call plus
+with a single argument it just returns the result, so it turns out <code>+</code> was a
+full reducing function long before it was cool.</p>
+<pre><code class="language-clojure">(transduce identity + [1 2 3 4])
+;;=&gt; 10
+</code></pre>
+<p>The same is true for multiplication, but not for subtraction. The <code>-</code> function
+doesn’t have a zero-arity version. Functions like these you can work around by
+explicitly providing a starting value to <code>transduce</code>.</p>
+<pre><code class="language-clojure">(-)
+;;=&gt; clojure.lang.ArityException: Wrong number of args (0) passed to: core/-
+
+(transduce identity - [1 2 3 4])
+;;=&gt; clojure.lang.ArityException: Wrong number of args (0) passed to: core/-
+
+(transduce identity - 0 [1 2 3 4])
+;;=&gt; 10
+</code></pre>
+<p>But why is the result <code>10</code>, and not <code>-10</code>? Remember that at the end the reducing
+function is called again with a single argument, so that <code>-10</code> turns again into
+a positive <code>10</code>.</p>
+<p>You can provide a separate “completing” step using <code>completing</code> from
+clojure.core. You give it your step function, and a function with a single
+argument that will be called all the way at the end. If you omit the function it
+defaults to <code>identity</code>, in other words it just returns the result unchanged.</p>
+<pre><code class="language-clojure">(transduce identity
+           (completing -
+                       (fn [res]
+                         (str "Result: " res)))
+           0
+           [1 2 3 4])
+;; =&gt; Result: -10
+
+
+(transduce identity
+           (completing -)
+           0
+           [1 2 3 4])
+;; =&gt; -10
+</code></pre>
+<p>To drive this all home lets look again at the original number prefixing example.
+This time by using <code>transduce</code> you can attach the completing step to the step
+function with <code>completing</code>, so that in the end you get again the same result.</p>
+<pre><code class="language-clojure">(second
+ (reduce (fn [[idx res] s]
+           [(inc idx) (conj res (str idx ". " s))])
+         [1 []]
+         ["wulong" "red" "black" "green"]))
+
+
+(transduce identity
+           (completing
+            (fn [[idx res] s]
+              [(inc idx) (conj res (str idx ". " s))])
+            second)
+           [1 []]
+           ["wulong" "red" "black" "green"])
+;; =&gt; ["1. wulong" "2. red" "3. black" "4. green"]
+</code></pre>
+<p>So what does all of this have to do with transducers? Listen up, because this is
+the big reveal of this episode, a transducer is nothing but a function which
+takes a reducing function as its input, and returns a new reducing function.</p>
+<p>Let me say that again because this is important: a transducer is a function that
+turns one reducing function into another reducing function.</p>
+<p>If you’ve ever come across the middleware pattern, for instance in a Ring
+application, then you’ll recognize this as middleware. Transducers are
+middleware for reducing functions.</p>
+<p>Mind… blown?</p>
+<pre><code>Transducer :: rf -&gt; rf
+</code></pre>
+<p>So the general shape of a transducer is like this: it’s a function which takes a
+single argument, a reducing function, and returns a function with one, two, and
+three argument arities.</p>
+<p>Notice how in each of the three arities this function calls the reducing
+function it was given, you can think of it as calling the next reducing function
+in the chain.</p>
+<pre><code class="language-clojure">(fn [rf]
+  (fn
+    ([] (rf))
+    ([acc] (rf acc))
+    ([acc x] (rf acc x))))
+</code></pre>
+<p>This also explains why transducers compose with a simple <code>comp</code>, if function A
+maps rf to rf, and function B maps rf to rf, then composing A after B also maps
+from rf to rf. It really is an elegant design.</p>
+<pre><code class="language-clojure">;; A :: rf -&gt; rf
+;; B :: rf -&gt; rf
+;;=&gt;
+;; (comp A B) :: rf -&gt; rf
+</code></pre>
+<p>You now know enough to start writing your own transducers, but before you start
+coding I should give you some words of warning. There are quite a lot of things
+to watch out for when writing real world transducers, as Christophe Grand found
+out when he created the xforms library. Christophe did a great talk at ClojureD
+2017 about all the things that you will get wrong, so before creating your own
+transducers at least watch that talk, I’ll link to it in the show notes.</p>
+<p>The good news is that combining existing transducers can be done without issue,
+and with the extra transducers and transducing contexts that xform provides you
+really have a lot of power at your fingertips.</p>
+<p>Let’s look at some of the things that xforms can do for you. You have to think
+of these functions as building blocks, they each do a small thing, but it’s
+their composability that makes them so great.</p>
+<p>There are several new transducer contexts, for instance <code>count</code> takes a
+transducer and a collection, and counts how many items are left after applying
+the transducer. <code>some</code> returns the first non-nil item.</p>
+<p>Keep in mind that these functions don’t need to realize the resulting
+collection, they directly compute their result with minimal overhead.</p>
+<pre><code class="language-clojure">(require '[net.cgrand.xforms :as x])
+
+(x/count (filter #(= 0 (mod % 3))) (range 1 20))
+;; =&gt; 6
+
+(x/some (filter #(= 0 (mod % 3))) (range 1 20))
+;; =&gt; 3
+</code></pre>
+<p><code>x/str</code> has two uses, it forms a transducing context which concatenates strings,
+which I’ve used here with Clojure’s built-in <code>map</code> and <code>interpose</code> transducers.</p>
+<p>You can also <code>x/str</code> stand-alone as a string concatenating transducer. In this
+case the result contains just a single item.</p>
+<pre><code class="language-clojure">(x/str (comp (map str/upper-case)
+             (interpose "-"))
+       ["foo" "bar" "baz"])
+;;=&gt; "FOO-BAR-BAZ"
+
+
+(into [] x/str ["foo" "bar" "baz"])
+;;=&gt; ["foobarbaz"]
+</code></pre>
+<p>There are several more of these transducers that produce a single item stream,
+chief among them is <code>x/reduce</code>. Like <code>transduce</code> but unlike
+<code>clojure.core/reduce</code>, this also calls the initialisation and completion steps.
+It’s an extremely useful function because it allows you to treat arbitrary
+reducing functions as transducers, which are more readily composable.</p>
+<pre><code class="language-clojure">(into [] (x/reduce +) [3 7 5])
+;; =&gt; [15]
+</code></pre>
+<p><code>x/count</code>, which I already demonstrated as a transducing context, can also be
+used as a transducer by itself.</p>
+<pre><code class="language-clojure">(into [] x/count [1 2 3])
+;; =&gt; [3]
+</code></pre>
+<p>You might notice a pattern here, a lot of xforms is clojure.core functions
+reimagined as transducers, or transducer contexts, or both.</p>
+<p>Clojure’s <code>into</code> function got reimplemented, but this time with the previously
+missing single-arity version, returning a transducer.</p>
+<pre><code class="language-clojure">(into [] (x/into #{}) [1 2 3])
+;; =&gt; [#{1 3 2}]
+</code></pre>
+<p>These single-result transducers are especially useful when combined with
+<code>by-key</code>, perhaps my favorite <code>xforms</code> function. <code>by-key</code> is one of several
+functions that not only return a transducer, but also take a transducer as one
+of their arguments.</p>
+<p>The <code>by-key</code> transducer outputs pairs, so it’s commonly used with <code>into</code> to get
+the output as a map.</p>
+<p>The first argument is a key function, used to group input items. Here we’ll
+group these maps by their <code>:color</code>. The last argument is a transducer that is
+used to process each group, so the result is a map where the input items are
+grouped in vectors by the value of their <code>:color</code> key.</p>
+<pre><code class="language-clojure">(into {}
+      (x/by-key :color (x/into []))
+      [{:color :blue, :size 1}, {:color :red, :size 2}, {:color :blue, :size 3}])
+;;=&gt; {:blue [{:color :blue, :size 1} {:color :blue, :size 3}],
+;;     :red [{:color :red, :size 2}]}
+</code></pre>
+<p>In between the key function and the transducer you can provide a value function,
+now instead of collecting the complete items, you get only the <code>:size</code> values.</p>
+<pre><code class="language-clojure">(into {}
+      (x/by-key :color :size (x/into []))
+      [{:color :blue, :size 1}, {:color :red, :size 2}, {:color :blue, :size 3}])
+;;=&gt; {:blue [1 3], :red [2]}
+</code></pre>
+<p>But the result doesn’t have to be a collection, by changing the transducer you
+could get the maximum size for each, or the total size. You could even nest
+calls to <code>by-key</code> to get complex roll-ups.</p>
+<pre><code class="language-clojure">(into {}
+      (x/by-key :color :size x/max)
+      [{:color :blue, :size 1}, {:color :red, :size 2}, {:color :blue, :size 3}])
+;; =&gt; {:blue 3, :red 2}
+
+(into {}
+      (x/by-key :color :size (x/reduce +))
+      [{:color :blue, :size 1}, {:color :red, :size 2}, {:color :blue, :size 3}])
+;; =&gt; {:blue 4, :red 2}
+</code></pre>
+<p>There’s so much gold in this library, I’d need a whole other episode just to
+scratch the surface, but I’ve created sample code that you can go through, that
+demonstrates the whole API.</p>
+<p>Before wrapping up this episode I’d like to introduce you to one more library
+called Redux. While xforms is like a swiss army knife for transducers, Redux is
+a utility belt for working with reducing functions. It’s just a handful of
+functions, lets go over them.</p>
+<p>The first of these is post-complete, which adds some additional completion
+logic. Note that this differs from clojure.core’s <code>completing</code> function.
+<code>completing</code> turns a step function into a full multi-arity reducing function.
+<code>post-complete</code> assumes you already have a reducing function, and will call the
+original completion step, before doing the extra processing.</p>
+<pre><code class="language-clojure">(transduce identity
+           (redux/post-complete
+            + (fn [x] {:result x}))
+           [1 2 3])
+</code></pre>
+<p>The complement to <code>post-complete</code> is <code>pre-step</code>, it does exactly what it says,
+apply a function to the input value before each step.</p>
+<pre><code class="language-clojure">(transduce identity
+           (redux/pre-step + :width)
+           [{:width 10} {:width 20}])
+;;=&gt; 30
+</code></pre>
+<p><code>fuse</code> is like a reducing version of <code>juxt</code>, it takes several reducing
+functions, and returns a reducing function that performs both at the same time.</p>
+<pre><code class="language-clojure">(transduce identity
+           (redux/fuse {:sum + :product *})
+           [1 2 3 4])
+;;=&gt; {:sum 10, :product 24}
+</code></pre>
+<p>I should mention that xforms contains similar functionality for reducers called
+<code>transjuxt</code>, which can be either a transducing context, or a transducer
+returning a single collection. Both fuse and transjuxt can take either a vector
+or a map, depending on whether you want to label the composite values or not.</p>
+<pre><code class="language-clojure">(x/transjuxt [x/min x/max (x/reduce +)] [1 10 100])
+;;=&gt; [1 100 111]
+
+(x/transjuxt {:min x/min
+              :max x/max
+              :sum (x/reduce +)}
+             [1 10 100])
+;;=&gt; {:min 1, :max 100, :sum 111}
+
+;; Can also be used as a single-result transducer
+
+(sequence (x/transjuxt [(x/reduce +) (x/reduce *)]) [1 4 9])
+</code></pre>
+<p>I’ll stop here with my exposition of these libraries, lest I start sounding like
+reading a dictionary out loud. In future installments you’ll see more ways of
+how to use these APIs in context. Still, you need to start somewhere, there is
+merit in actually studying what’s in the box, so you know what tools are at your
+disposal when you start solving problems.</p>
+<p>In preparation of this episode I went through both xforms and redux with a handy
+REPL, seeing if I could come up with an example for each function. I can highly
+encourage doing this exercise, or you can start with reading through my notes,
+I’ll link to them below.</p>
+<p>As I wrap up this episode, I think it’s worthwhile to take a step back, and
+think about why we use transducers in the first place. After all, the things I
+showed you could also have been accomplished with clojure’s trusty old map,
+reduce, and other collection functions. This can create the impression that
+transducers are just a lot of busywork, a fancy way of doing the same thing,
+just with a more complicated API.</p>
+<p>One counterargument to this is that transducers perform better. They allow
+calculating in a single pass what otherwise would have taken many passes over
+the data, significantly saving on memory allocation, and thus putting a lot less
+pressure on the garbage collector.</p>
+<p>This is all true, but it’s really just the icing on the cake. The real reason to
+use transducers is because they are composable, and allow for reuse in different
+contexts. You can build up and test your transformations step by step on the
+REPL, and once you are ready, ship them to production, to be used across
+core.async channels, or across an entire Apache Spark cluster using the
+Powderkeg library.</p>
+<p>The examples in this episode have been rather trivial, because I had to get
+these core concepts across first, but Clojure is increasingly used for real
+world data processing and analysis. I’ll show you how to get into the
+exciting world of data science in the next episode!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/xdemo/blob/master/src/lambdaisland/into_transducers.clj">browse source code</a></p>
+<h3 id="summary">Summary</h3>
+<pre><code class="language-clojure">;; step-function (use with clojure.core/reduce)
+(fn [acc x]
+  ,,,)
+
+;; Reducing function (use with transduce, xforms/reduce)
+(fn
+  ([] init)
+  ([acc] completion)
+  ([acc x]
+   ...step...))
+
+;; Transducer
+(fn [rf]
+  (fn
+    ([] (rf))
+    ([acc] (rf acc))
+    ([acc x] (rf acc x) ...)))
+</code></pre>
+<h3 id="xforms-and-redux-samples">xforms and redux samples</h3>
+<p>As preparation for this episode I went through the Xforms and Redux APIs, and wrote out some examples and notes for each function in there. This could be a great resource for getting more familiar with these libs. I also encourage you to do this exercise yourself, it’s very instructive.</p>
+<ul>
+<li><a shape="rect" href="https://github.com/lambdaisland/xdemo/blob/master/src/lambdaisland/xdemo/xforms_demo.clj">xforms demo</a></li>
+<li><a shape="rect" href="https://github.com/lambdaisland/xdemo/blob/master/src/lambdaisland/xdemo/redux_demo.clj">redux demo</a></li></ul>
+<h2 id="links">Links</h2>
+<p>Libraries</p>
+<ul>
+<li><a shape="rect" href="https://github.com/cgrand/xforms">cgrand/xforms</a> (<a shape="rect" href="https://cljdoc.xyz/d/net.cgrand/xforms/0.18.0">cljdoc</a>)</li>
+<li><a shape="rect" href="https://github.com/henrygarner/redux">redux</a> (<a shape="rect" href="https://cljdoc.xyz/d/redux/redux/0.1.4">cljdoc</a>)</li>
+<li><a shape="rect" href="https://github.com/MastodonC/kixi.stats">kixi.stats</a> (<a shape="rect" href="https://cljdoc.xyz/d/kixi/stats/0.4.0">cljdoc</a>)</li></ul>
+<p>Videos:</p>
+<ul>
+<li><a shape="rect" href="https://www.youtube.com/watch?v=XiCwN-fv7os">Lost in Transduction - Christophe Grand (ClojureD 2017)</a></li>
+<li><a shape="rect" href="https://www.youtube.com/watch?v=SpQpNM-p7Bg&amp;list=PLjzcwcP9P2LcUlqzwDHqDOUsm0JUxqjrL&amp;index=3">Online Statistical Analysis with Transducers and Sketch Algorithms - Simon Belak (Dutch Clojure Days 2018)</a></li>
+<li><a shape="rect" href="https://www.youtube.com/watch?v=OxUHgP4Ox5Q">Powderkeg: teaching Clojure to Spark - Igor Ges, Christophe Grand (Clojure/Conj 2016)</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

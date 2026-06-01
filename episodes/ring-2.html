@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/ring-2" />
+<meta name="twitter:title" content="Ring, part 2: the Two Routes" />
+<meta name="twitter:description" content="In this second installment of our beginner friendly introduction to Ring the API goes from being read-only to being read-write. You also learn about `juxt`, `slurp`, and how to..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/589492118-e1e857fa956325a6909a4a589ca970fe3fff438d6aa212f1f420fd6b35ba4dde-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Ring, part 2: the Two Routes" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/ring-2" />
+<meta name="video:duration" content="712" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/589492118-e1e857fa956325a6909a4a589ca970fe3fff438d6aa212f1f420fd6b35ba4dde-d_1280x720?r=pad" />
+<meta name="og:description" content="In this second installment of our beginner friendly introduction to Ring the API goes from being read-only to being read-write. You also learn about `juxt`, `slurp`, and how to..." />
+<meta name="video:release_date" content="2016-09-01T15:46:29.708Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Ring, part 2: the Two Routes</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/181042265?h=f0c0bc3a43&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Ring II: The Two Routes"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>In this second installment of our beginner friendly introduction to Ring the API goes from being read-only to being read-write. You also learn about <code>juxt</code>, <code>slurp</code>, and how to parse an incoming request body.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>&lt;– 001 –&gt;</p>
+<p>In the previous episode we started building an API for an address book
+application using Ring. This is what the code looks like so far. We use an atom
+containing a map as our database of contacts. The Ring handler so far only
+handles GET requests to the root path. We’re using the Ring Jetty adapter to
+talk to the outside world.</p>
+<pre><code class="language-clojure">(ns rolodex.core
+  (:require [ring.adapter.jetty :refer [run-jetty]]))
+
+(defn random-uuid []
+  (java.util.UUID/randomUUID))
+
+(def contacts (atom (let [id (random-uuid)]
+                      {id {:id id
+                           :full-name "Trish Turtle"
+                           :skills ["LISP" "Lambda Calculus"]}})))
+
+(defn handler "request -&gt; response"
+  [req]
+  (if (and (= (:request-method req) :get) (= (:uri req) "/"))
+    {:status 200
+     :headers {"Content-Type" "application/edn; charset=UTF-8"}
+     :body (prn-str (vals @contacts))}))
+
+(defonce server
+  (run-jetty #'handler {:port 3000
+                        :join? false}))
+</code></pre>
+<p>&lt;– 002 –&gt;</p>
+<p>Looking at <code>project.clj</code> you can I see I’ve kept the dependencies to a minimum.
+There’s just Clojure itself and then the Ring Jetty adapter. In real a world
+project you should pull in some libraries containing middleware and routing
+functionality, and we’ll cover some of those later in the series, but first I
+want you to grok the concepts of Ring, it will help a lot once you start
+combining these third party pieces.</p>
+<pre><code class="language-clojure">(defproject rolodex "0.1.0"
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [ring/ring-jetty-adapter "1.5.0"]])
+</code></pre>
+<p>If you want to follow along, which you should, then grab the
+<a shape="rect" href="https://github.com/lambdaisland/rolodex">Rolodex</a> repository from GitHub. Just
+do a <code>git clone</code>, then <code>cd</code> into it, and then checkout <code>ring-part-1</code> branch.
+This is the code we ended up with at the end of the previous episode.</p>
+<pre><code>git clone https://github.com/lambdaisland/rolodex.git
+cd rolodex
+git checkout ring-part-1
+</code></pre>
+<p>Building an API is a lot more fun if there’s an app that can use it, so I
+created this Reagent app that you can use to test your API. It’s also on Github
+in the <a shape="rect" href="https://github.com/lambdaisland/rolodex-gui">rolodex-gui</a> repository.
+Just clone it and then start the server with <code>lein run</code>, now you can open it on
+<code>http://localhost:3449</code>.</p>
+<pre><code>git clone https://github.com/lambdaisland/rolodex-gui.git
+cd rolodex-gui
+lein run
+</code></pre>
+<p>Another piece of supporting code that you get for free is this contact
+generator. It contains a list of names, and turns them into contact maps, with
+an id, twitter handle, and email address. It’s just something to have some data
+to play around with. If you cloned the repo from GitHub, then you can find the
+generator in the <code>origin/ring-part-2</code> branch. Add it to your current branch, by
+doing a git checkout, adding the specific path you want to check out. Now
+<code>generator.clj</code> has been added to the git staging area as a new file, and you
+can commit it. This is a neat trick for when you want to copy a file from one
+branch to another.</p>
+<pre><code class="language-sh">git checkout ring-part-2 -- src/rolodex/generator.clj
+git commit
+</code></pre>
+<p>Alright, let’s get coding. I have the GUI running in a terminal. For the API
+I’ll start CIDER with <code>cider-jack-in</code> (<code>C-c M-j</code>) so I can easily tinker with it
+from Emacs. You don’t have to use Emacs of course, but I still recommend some
+kind of interactive setup so you can easily redefine functions, otherwise you’ll
+be starting and stopping the server a lot.</p>
+<p>Evaluate the <code>rolodex.core</code> namespace (that’s <code>C-c C-k</code>) to start the server.</p>
+<p>To use the contact generator first add it to the namespace declaration, aliased
+to <code>gen</code>.</p>
+<pre><code class="language-clojure">(ns rolodex.core
+  (:require [clojure.edn :as edn]
+            [ring.adapter.jetty :refer [run-jetty]]
+            [rolodex.generator :as gen]))
+</code></pre>
+<p>The generator’s main function, <code>contact</code>, takes a name and returns a contact
+map, for example:</p>
+<pre><code class="language-clojure">(gen/contact "Master Sammy")
+;;=&gt; {:id #uuid "f36392f5-9b8e-4b1a-ab1d-6935edf43841", :full-name "Master Sammy", :email "mastersammy@hotmail.com", :twitter "@sammy91"}
+</code></pre>
+<p>There’s also a predefined list of names, although of course you can come up with
+your own wacky address book. With these two in hand we can map the <code>contact</code>
+function over the names to get an initial list of contacts.</p>
+<pre><code class="language-clojure">(map gen/contact gen/names)
+</code></pre>
+<p>To make it easy to find a contact by its unique id we use a map with ids as keys
+and the contact map as the associated value. Getting data into the right shape
+is something Clojure excels at, all we need is a dash of functional programming.</p>
+<p>The first ingredient we’ll use is the
+<a shape="rect" href="https://clojuredocs.org/clojure.core/juxt">juxt</a> function. “juxt” is short for
+“juxtapose”, which just means “putting things side by side”. <code>juxt</code> is a
+“function combinator”, it takes a number of functions, and combines them to
+create a new function.</p>
+<p>Calling this function that juxt created is like calling each of these functions
+with the same arguments, and collecting the results in a vector.</p>
+<p>Let me demonstrate that with the <code>inc</code> (increment) and <code>dec</code> (decrement)
+functions. If you increment 5, you get 6, and when you decrement 5 you get 4.
+When you pass <code>inc</code> and <code>dec</code> to <code>juxt</code> you get a new function which is the
+juxtaposition of <code>inc</code> and <code>dec</code>. Calling that function with the argument 5
+yields both results in a vector.</p>
+<pre><code class="language-clojure">(inc 5)              ;;=&gt; 6
+(dec 5)              ;;=&gt; 4
+(juxt inc dec)       ;;=&gt; #function[clojure.core/juxt/fn--4742]
+((juxt inc dec) 5)   ;;=&gt; [6 4]
+</code></pre>
+<p>Keywords are also a kind of function, so we can use these with juxt as well,
+which is great for pulling values out of a bunch of maps.</p>
+<p>Say you have this list of contacts, if you’re only interested in the names, then
+you can map using the <code>:full-name</code> keyword, the same goes for twitter handles.
+If you want to extract both, then you use <code>juxt</code>.</p>
+<pre><code class="language-clojure">(def contacts [{:id #uuid "352610a7-3e74-4c83-9d99-8f4c741cdaa0",
+                :full-name "Trish Turtle",
+                :email "trish.turtle@hotmail.com",
+                :twitter "@horse_trish"}
+               {:id #uuid "a6c5315e-ff5d-493e-bbe7-dbfede911a0a",
+                :full-name "Master Sammy",
+                :email "mastersammy@gmail.com",
+                :twitter "@master_ebooks"}
+               {:id #uuid "20e9efae-cede-4e1a-b88c-95d6518c8805",
+                :full-name "Brock Samson",
+                :email "brocksamson@gmail.com",
+                :twitter "@_samson_"}])
+
+(map :full-name contacts)
+;;=&gt; ("Trish Turtle" "Master Sammy" "Brock Samson")
+
+(map :twitter contacts)
+;;=&gt; ("@horse_trish" "@master_ebooks" "@_samson_")
+
+(map (juxt :full-name :twitter) contacts)
+;;=&gt; (["Trish Turtle" "@horse_trish"] ["Master Sammy" "@master_ebooks"] ["Brock Samson" "@_samson_"])
+</code></pre>
+<p>If you want to get a value from a map, but you also want to hang on to the map
+itself, then you can combine <code>juxt</code> with <code>identity</code>. The <code>identity</code> function
+always returns its argument, so if we <code>(juxt :id identity)</code>, then we get a
+vector containing the contact id, and the contact itself.</p>
+<p>If you look at the first result of mapping over the contacts you can see it’s a
+pair of the id and the contact itself. These are exactly the key-value pairs we
+want in our contacts map, all we need to do is put them “into” a map with the
+<code>into</code> function. Et voila, a map of contacts indexed by their id.</p>
+<pre><code class="language-clojure">(map (juxt :id identity) contacts)
+;; =&gt; ([#uuid "352610a7-3e74-4c83-9d99-8f4c741cdaa0" {:id #uuid "352610a7-3e74-4c83-9d99-8f4c741cdaa0", :full-name "Trish Turtle" ,,,}] ,,,)
+
+(into {} (map (juxt :id identity) contacts))
+</code></pre>
+<p>So let’s use that as our initial contacts database. We no longer need this
+<code>random-uuid</code>, the generator will create ids for us. Generate contacts, then map
+over them extracting the id and the contact itself. Add them all to a map with
+<code>into</code>, and then wrap the result in an atom again since this will the holder of
+our mutable application state.</p>
+<pre><code class="language-clojure">(def contacts (atom (into {} (map (juxt :id identity)
+                                  (map gen/contact gen/names)))))
+</code></pre>
+<p>Now that we have some dummy data let’s have a look at that GUI again. The only
+operation our API supports so far is to do a GET to the root of the API to
+retrieve the list of contacts. That seems to work. You can click in the list to
+see the contact details.</p>
+<p>The other operations work on individual contacts, hover over them if you’re not
+sure which is which. POST creates a new contact, GET fetches a single contact
+based on the given id, PUT updates it, and DELETE deletes. Since none of these
+are implemented yet they all return 404, as you can see at the bottom.</p>
+<p>This is what our handler looks like so far. We get a request map, and check its
+request method and uri, and if it’s a GET to the root then we return the list of
+contacts.</p>
+<p>The next operation we want to implement is a POST request at the same URI, which
+will create a new contact. So let’s pull that conditional apart, we’ll check for
+the URI first, and then put in a case statement to switch based on the request
+method.</p>
+<pre><code class="language-clojure">(defn handler "request -&gt; response"
+  [req]
+  (if (= (:uri req) "/")
+    (case (:request-method req)
+      :get
+      {:status 200
+       :headers {"Content-Type" "application/edn; charset=UTF-8"}
+       :body (prn-str (vals @contacts))})))
+</code></pre>
+<p>To keep the handler lean pull that response into its own function.</p>
+<pre><code class="language-clojure">(defn- get-all-contacts []
+  {:status 200
+   :headers {"Content-Type" "application/edn; charset=UTF-8"}
+   :body (prn-str (vals @contacts))})
+
+(defn handler "request -&gt; response"
+  [req]
+  (if (= (:uri req) "/")
+    (case (:request-method req)
+      :get (get-all-contacts))))
+</code></pre>
+<p>The POST operation will create a new contact, so create a function for that, and
+hook it up in the handler. <code>create-new-contact</code> needs access to the Ring request
+so it can find the submitted values. Let’s see how that request map looks like
+when a form is being submitted by printing it out, for the rest just return a
+hard-coded 200 OK, we’ll get to that in a bit. I’m using <code>pprint</code> for this,
+which is a bit like <code>prn</code> but formats the output for readability. Make sure to
+add the require statement to the ns form.</p>
+<pre><code class="language-clojure">(defn- create-new-contact [req]
+  (pprint req)
+  {:status 200})
+
+(defn handler "request -&gt; response"
+  [req]
+  (if (= (:uri req) "/")
+    (case (:request-method req)
+      :get (get-all-contacts)
+      :post (create-new-contact req))))
+</code></pre>
+<p>To create a new contact, pick a new random uuid, fill in the contact details,
+and then hit POST. You can see the empty 200 OK coming back.</p>
+<p>Now have a look at the REPL and you should find this pretty printed request map.
+If it’s not there check the <code>*nrepl-server*</code> buffer instead.</p>
+<pre><code class="language-clojure">{:ssl-client-cert nil,
+ :protocol "HTTP/1.1",
+ :remote-addr "127.0.0.1",
+ :headers
+ {"accept" "",
+  "connection" "close,keep-alive",
+  "user-agent"
+  "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0",
+  "referer" "http://lol:3449/",
+  "host" "localhost:3000",
+  "accept-language" "en-US,en;q=0.5",
+  "accept-encoding" "gzip, deflate",
+  "content-length" "83",
+  "content-type" "application/x-www-form-urlencoded;charset=UTF-8"},
+ :server-port 3000,
+ :content-length 83,
+ :content-type "application/x-www-form-urlencoded;charset=UTF-8",
+ :character-encoding "UTF-8",
+ :uri "/",
+ :server-name "localhost",
+ :query-string "",
+ :body
+ #object[org.eclipse.jetty.server.HttpInputOverHTTP 0x13db08ce "HttpInputOverHTTP@13db08ce"],
+ :scheme :http,
+ :request-method :post}
+</code></pre>
+<p>Now you would expect to find the values you submitted in there, but it doesn’t
+look like they’re there. So where are they?</p>
+<p>If you look at the Ring specification, you’ll see that the request body is a
+<code>java.io.InputStream</code>, in our case it’s a type of InputStream provided by Jetty.
+We’ll have to read from this stream to get to the submitted data.</p>
+<p>According to ancient LISP tradition, a function that provides this kind of
+functionality is called <code>slurp</code>.
+<a shape="rect" href="https://clojuredocs.org/clojure.core/slurp">Clojure’s version of <code>slurp</code></a> is
+pretty handy because it works with a bunch of different things, like files,
+urls, and input streams.</p>
+<p>So grab the body from the request and slurp it, this returns a string.</p>
+<pre><code class="language-clojure">(defn- insert-new-contact [req]
+  (let [instream (:body req)
+        body (slurp instream)]
+    ,,,)
+
+  {:status 200})
+</code></pre>
+<p>According to the Ring spec the request body is optional, it may be nil, and
+trying to slurp from nil will raise an exception, so let’s change that <code>let</code> to
+an <code>if-let</code>.</p>
+<p>We already used EDN format for the responses, and we’ll do the same for the
+requests, so the “body” string contains unparsed EDN data. To turn that into a
+Clojure data structure, we use the <code>read-string</code> function provided by
+<code>clojure.edn</code>.</p>
+<p>Note that <code>clojure.core</code> also contains a <code>read-string</code> function, and at first
+glance it may seem they do the same thing, the version in <code>clojure.core</code> is only
+intended to read Clojure code, it should <em>never</em> be used to read in data coming
+from untrusted sources, unless you want to sign up for a dose of remote code
+execution.</p>
+<p>Now we can update the contact atom by associating the submitted contact with its
+id. We’ll assume the client has already picked a unique random id. Since we’re
+using UUIDs they should be able to do that without risk of clashing.</p>
+<p>Finally we also need to hand back a response map. Since we’ve created a new
+resource the result is 201 CREATED, instead of just a 200 OK. We’re returning
+EDN, so make that clear with a Content-Type header, and finally put the contact
+again in the body.</p>
+<pre><code class="language-clojure">(ns rolodex.core
+  (:require [clojure.edn :as edn]
+    ,,,))
+
+(defn- create-new-contact [req]
+  (if-let [instream (:body req)]
+    (let [body (slurp instream)
+          contact (edn/read-string body)]
+      (swap! contacts assoc (:id contact) contact)
+      {:status 201
+       :body (prn-str contact)})))
+</code></pre>
+<p>That’s as far as we’ll go this episode. The API is now read-write, so
+you can try that out in the GUI. Generate a new id, fill in some
+values, and hit POST. When you do GET to refresh the list of contacts
+the new contact should show up in the list.</p>
+<p>Next episode we’ll implement our own middleware to deal with the
+details of reading and writing EDN.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/rolodex">browse source code</a></p>
+<p>At the start of this episode, the code is as found in the <code>ring-part-1</code> branch. The end result is in the <code>ring-part-2</code> branch.</p>
+<h2 id="rolodex-gui">rolodex-gui</h2>
+<p>To test out and play around with the API there’s a web app that you can also <a shape="rect" href="https://github.com/lambdaisland/rolodex-gui"><img src="../img/github-small-icon.png" alt="" /> grab from github</a>. Make sure your API is running at port 3000, and then start the app by issuing</p>
+<pre><code>lein run
+</code></pre>
+<p>and surfing to <a shape="rect" href="http://localhost:3449/">http://localhost:3449</a>.</p>
+<p>To get around cross-origin restrictions in browsers the server part of this app will proxy requests to <code>/api</code> to <code>http://localhost:3000/</code>.</p>
+<h2 id="code">Code</h2>
+<p>The final API code looks like this</p>
+<pre><code class="language-clojure">(ns rolodex.core
+  (:require [clojure.edn :as edn]
+            [ring.adapter.jetty :refer [run-jetty]]
+            [rolodex.generator :as gen]))
+
+(defonce contacts (atom (into {} (map (juxt :id identity)
+                                      (map gen/contact gen/names)))))
+
+(defn- get-all-contacts []
+  {:status 200
+   :headers {"Content-Type" "application/edn; charset=UTF-8"}
+   :body (prn-str (vals @contacts))})
+
+(defn- create-new-contact [req]
+  (if-let [instream (:body req)]
+    (let [body (slurp instream)
+          contact (edn/read-string body)]
+      (swap! contacts assoc (:id contact) contact)
+
+      {:status 201
+       :headers {"Content-Type" "application/edn; charset=UTF-8"}
+       :body (prn-str contact)})))
+
+(defn handler "request -&gt; response"
+  [req]
+  (if (= (:uri req) "/")
+    (case  (:request-method req)
+      :get (get-all-contacts)
+      :post (create-new-contact req))))
+
+(defonce server
+  (run-jetty #'handler {:port 3000
+                        :join? false}))
+</code></pre>
+<h2 id="links">Links</h2>
+<ul>
+<li><a shape="rect" href="https://clojuredocs.org/clojure.core/juxt">Clojure docs on <code>juxt</code></a></li>
+<li><a shape="rect" href="https://clojuredocs.org/clojure.core/slurp">Clojure docs on <code>slurp</code></a></li>
+<li><a shape="rect" href="https://github.com/ring-clojure/ring/blob/master/SPEC">Ring specification</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojure-seq-seqable" />
+<meta name="twitter:title" content="Seq and Seqable" />
+<meta name="twitter:description" content="Seqs are a key abstraction in how Clojure processes data, but what exactly is a &quot;seq&quot;, and how does it relate to &quot;seqable?&quot;. Time for a deep dive in Clojure and ClojureScript..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/608757428-21f94c340027794585b345966c1e6feb68f68866760bda881d3fcb13ded0e03c-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Seq and Seqable" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojure-seq-seqable" />
+<meta name="video:duration" content="513" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/608757428-21f94c340027794585b345966c1e6feb68f68866760bda881d3fcb13ded0e03c-d_1280x720?r=pad" />
+<meta name="og:description" content="Seqs are a key abstraction in how Clojure processes data, but what exactly is a &quot;seq&quot;, and how does it relate to &quot;seqable?&quot;. Time for a deep dive in Clojure and ClojureScript..." />
+<meta name="video:release_date" content="2016-12-23T11:32:23.324Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Seq and Seqable</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/196313870?h=01bbfbec76&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Seq and Seqable"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Seqs are a key abstraction in how Clojure processes data, but what exactly is a “seq”, and how does it relate to “seqable?”. Time for a deep dive in Clojure and ClojureScript source code to discover the finer points. Learn exactly what seqs and seqables are, what they do, and how you can use them to your advantage.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Clojure 1.9 introduced a new function called <code>seqable?</code>, which seemed like a
+good opportunity to have a closer look at what exactly a <code>seq</code> is, and what it
+does, both in Clojure and in Clojurescript.</p>
+<p>When modeling data in Clojure you mostly use Clojure’s persistent functional
+data structures: vectors, maps, sets, and occasionally lists. This may seem
+obvious now, but it’s a big departure from LISP tradition. Many Lisps only have
+one of these: the singly linked list.</p>
+<p>Having a single type may seem limiting, but it does have an important
+advantage:all data can be processed in the same way. In other words, you get a
+uniform interface, making it easy to write general purpose functions that work
+with a wide range of data.</p>
+<pre><code class="language-clojure">;; Clojure - specialized collection types
+[1 2 3]
+{:a :b :c :d}
+#{"red" "yellow" "blue"}
+
+;; LISP - lists are all you'll ever need
+'(1 2 3)
+'((:a :b) (:c :d))
+'("red" "yellow" "blue")
+</code></pre>
+<p>To process a list you only need two functions, one to get the first element of
+the list, and one to get the rest of the list. We know these as <code>first</code> and
+<code>rest</code>, originally they were called <code>car</code> and <code>cdr</code>, really for no good reason
+whatsoever.</p>
+<p>With these you can deconstruct a list incrementally, one piece at a time, which
+naturally leads to recursive functions.</p>
+<p>To construct a list in the same way we need a way to add one piece back on to
+it, which is done with <code>cons</code>.</p>
+<p>If everything is a list, then <code>first</code>, <code>rest</code>, and <code>cons</code> are all you’ll ever
+need to handle data.</p>
+<pre><code class="language-lisp">user&gt; (def x (list 1 2 3))
+#'user/x
+user&gt; (first x)
+1
+user&gt; (rest x)
+(2 3)
+user&gt; (cons 0 x)
+(0 1 2 3)
+user&gt;
+</code></pre>
+<p>Not everything in Clojure is a list though. To have its cake and eat it too,
+Clojure introduced seqs. There are many types of seqs. Plain lists are seqs,
+they are very similar to the lists from Lisp, but they also keep track of their
+count, so you can get the length of the list in constant time.</p>
+<p>Functions like <code>map</code> or <code>filter</code> return “lazy” seqs. This means the values in
+the end result are only computed as they are needed. Other things like maps and
+vectors are not seqs, this is something to keep in mind.</p>
+<pre><code class="language-clojure">user&gt; (type '(1 2 3))
+clojure.lang.PersistentList
+user&gt; (seq? '(1 2 3))
+true
+
+user&gt; (type (map identity '(1 2 3)))
+clojure.lang.LazySeq
+user&gt; (seq? (map identity '(1 2 3)))
+true
+
+user&gt; (type {:a :b})
+clojure.lang.PersistentArrayMap
+user&gt; (seq? {:a :b})
+false
+</code></pre>
+<p>Some functions like <code>range</code>, <code>vals</code>, or <code>keys</code> return their own specific type of seq.</p>
+<p>The good news is that you don’t have to care what type they are, they all
+support the same basic operations. They behave the same, because they all
+implement the <code>ISeq</code> interface. Sensitive viewers please be warned, in what
+follows we’ll be looking at some Java code.</p>
+<pre><code class="language-clojure">user&gt; (type (range 100))
+clojure.lang.LongRange
+user&gt; (seq? (range 100))
+true
+user&gt; (type (vals {:a :b :c :d}))
+clojure.lang.APersistentMap$ValSeq
+user&gt; (seq? (vals {:a :b :c :d}))
+true
+</code></pre>
+<p>This is the <code>ISeq</code> interface. An interface is a bit like a protocol in Clojure.
+Note how this interface defines four methods, but it doesn’t provide an
+implementation for those methods, that part is left up to the concrete seq
+implementations.</p>
+<p><code>first</code>, and <code>next</code> should look familiar, as well as <code>cons</code>. <code>more</code> is the
+equivalent of Clojure’s <code>rest</code>. This shows that the methods you see here are not
+the same as the <code>first</code>, <code>next</code> and <code>rest</code> functions you would call from
+Clojure. They’re related though. These Java methods are called under the hood by
+their counterparts defined in <code>clojure.core</code>.</p>
+<pre><code class="language-java">/**
+ *   Copyright (c) Rich Hickey. All rights reserved.
+ *   The use and distribution terms for this software are covered by the
+ *   Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+ *   which can be found in the file epl-v10.html at the root of this distribution.
+ *   By using this software in any fashion, you are agreeing to be bound by
+ * 	 the terms of this license.
+ *   You must not remove this notice, or any other, from this software.
+ **/
+
+package clojure.lang;
+
+/**
+ * A persistent, functional, sequence interface
+ * &lt;p/&gt;
+ * ISeqs are immutable values, i.e. neither first(), nor rest() changes
+ * or invalidates the ISeq
+ */
+public interface ISeq extends IPersistentCollection {
+
+    Object first();
+
+    ISeq next();
+
+    ISeq more();
+
+    ISeq cons(Object o);
+
+}
+</code></pre>
+<p>Seqs predate clojure protocols, and so they use Java interfaces instead. This
+isn’t likely to change, both for backwards compatibility, and for performance
+reasons. It’s hard to beat plain Java method dispatch.</p>
+<p>Clojurescript on the other hand got to start with a clean slate, and did decide
+to implement seqs as protocols. This is great, because it means you can extend
+the protocol to existing JavaScript objects, making them behave like seqs. This
+is something that isn’t possible with Java’s interfaces.</p>
+<p>The function names in these protocols start with a dash, which is a common
+pattern for protocols in <code>cljs.core</code>. The <code>first</code> and <code>rest</code> functions will
+again dispatch internally to <code>-first</code> and <code>-rest</code> based on the type of their
+argument.</p>
+<pre><code class="language-clojure">(defprotocol ISeq
+  "Protocol for collections to provide access to their items as sequences."
+  (-first [coll]
+    "Returns the first item in the collection coll. Used by cljs.core/first.")
+  (^clj -rest [coll]
+    "Returns a new collection of coll without the first item. It should
+     always return a seq, e.g.
+     (rest []) =&gt; ()
+     (rest nil) =&gt; ()"))
+
+(defprotocol INext
+  "Protocol for accessing the next items of a collection."
+  (^clj-or-nil -next [coll]
+    "Returns a new collection of coll without the first item. In contrast to
+     rest, it should return nil if there are no more items, e.g.
+     (next []) =&gt; nil
+     (next nil) =&gt; nil"))
+</code></pre>
+<p>So seqs are great, because they allow us to handle many different types of
+collections in the same way, but vectors, sets, and maps aren’t seqs, they don’t
+implement the <code>ISeq</code> interface, and yet we treat them just the same. This is
+thanks to a handy little function called, perhaps unsurpisingly, <code>seq</code>.</p>
+<p>This is the definition of <code>seq</code>. From the metadata you can tell it always
+returns an <code>ISeq</code>. There’s not much code because the real implementation is
+again in Java, in a special class called <code>clojure.lang.RT</code>, short for Runtime.</p>
+<p><code>seq</code> does its best to turn whatever you give it into a seq. Functions like
+<code>first</code>, <code>rest</code>, <code>map</code>, or <code>filter</code> all use <code>seq</code> internally to convert the
+argument to a seq if it isn’t one already. Anything that can be converted to a
+seq this way is considered “seqable”.</p>
+<pre><code class="language-clojure">(def ^{:arglists '(^clojure.lang.ISeq [coll])
+       :doc "Returns a seq on the collection. If the collection is
+    empty, returns nil.  (seq nil) returns nil. seq also works on
+    Strings, native Java arrays (of reference types) and any objects
+    that implement Iterable. Note that seqs cache values, thus seq
+    should not be used on any Iterable whose iterator repeatedly
+    returns the same mutable object."}
+  seq
+  (fn ^clojure.lang.ISeq [coll]
+    (.seq clojure.lang.RT coll)))
+</code></pre>
+<p>To see how that works in practice lets have a look at <code>first</code>. Here’s the
+implementation. Uh yeah, this one delegates its work to <code>clojure.lang.RT</code> again,
+so let’s look there.</p>
+<pre><code class="language-clojure">(def
+ ^{:arglists '([coll])
+   :doc "Returns the first item in the collection. Calls seq on its
+    argument. If coll is nil, returns nil."
+   :added "1.0"
+   :static true}
+ first (fn ^:static first [coll] (. clojure.lang.RT (first coll))))
+</code></pre>
+<p>If the object passed in is already a seq, then <code>first</code> know that it can call the
+<code>first</code> method from the <code>ISeq</code> interface.</p>
+<p>If not then <code>first</code> uses the <code>seq</code> function to try to convert its argument to a
+seq.</p>
+<p>If the collection is empty or nil, then the <code>seq</code> function returns <code>nil</code>,
+which in Java is called <code>null</code>, that’s why this check is needed.</p>
+<p>Now that the argument has been converted to a seq, it’s safe to call the <code>first</code>
+method, which will invoke the relevant code for the specific type of seq.</p>
+<pre><code class="language-java">static public Object first(Object x){
+    if (x instanceof ISeq) {
+        return ((ISeq) x).first();
+    }
+
+    ISeq seq = seq(x);
+
+    if (seq == null) {
+        return null;
+    }
+
+    return seq.first();
+}
+</code></pre>
+<p>So what can be turned into a seq? Quite a lot of things, it turns out.</p>
+<p>The first check is simply to see if the argument is already a concrete seq, if
+so then no coversion is needed.</p>
+<p>If the collection is lazy, then calling <code>seq</code> on it will “realize” it, computing
+the next chunk of values.</p>
+<p>All Clojure collections implement a one-method interface called <code>Seqable</code>,
+containing a single <code>seq</code> method. This is how things like vectors and sets get
+turned into seqs.</p>
+<p><code>seq</code> of <code>nil</code> is simply <code>nil</code>.</p>
+<p>In Java-land instead of seqs and seqables there are iterators and iterables. If
+an object is iterable then it is also seqable, in other words, Java collection
+types can be used transparently in Clojure. The same goes for Java native
+arrays.</p>
+<p>Strings and string-like things like buffers and stringbuilders are also seqable,
+in which case you get a seq of the individual characters in the string.</p>
+<p>The final check is for Java’s associative collections, which all implement the <code>java.util.Map</code> interface.</p>
+<pre><code class="language-java">static ISeq seqFrom(Object coll){
+    if(coll instanceof Seqable)
+        return ((Seqable) coll).seq();
+    else if(coll == null)
+        return null;
+    else if(coll instanceof Iterable)
+        return chunkIteratorSeq(((Iterable) coll).iterator());
+    else if(coll.getClass().isArray())
+        return ArraySeq.createFromObject(coll);
+    else if(coll instanceof CharSequence)
+        return StringSeq.create((CharSequence) coll);
+    else if(coll instanceof Map)
+        return seq(((Map) coll).entrySet());
+    else {
+        Class c = coll.getClass();
+        Class sc = c.getSuperclass();
+        throw new IllegalArgumentException("Don't know how to create ISeq from: " + c.getName());
+    }
+}
+</code></pre>
+<p>In Clojure <code>Seqable</code> is an interface again, so you can’t add support for it to
+existing classes, although if you were to implement new data types from scratch,
+you could use it to make them instantly Clojure compatible.</p>
+<p>Luckily Java iterables are also seqable, so most collection types from Java or
+other JVM languages will work out of the box with Clojure, even when provided by
+third party libraries.</p>
+<pre><code class="language-clojure">/**
+ *   Copyright (c) Rich Hickey. All rights reserved.
+ *   The use and distribution terms for this software are covered by the
+ *   Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+ *   which can be found in the file epl-v10.html at the root of this distribution.
+ *   By using this software in any fashion, you are agreeing to be bound by
+ * 	 the terms of this license.
+ *   You must not remove this notice, or any other, from this software.
+ **/
+
+/* rich Jan 28, 2009 */
+
+package clojure.lang;
+
+public interface Seqable {
+    ISeq seq();
+}
+</code></pre>
+<p>In ClojureScript there’s ISeqable, which is a protocol containing a single
+<code>-seq</code> function. This one you can extend to work with types from third party
+libraries.</p>
+<pre><code class="language-clojure">(defprotocol ISeqable
+  "Protocol for adding the ability to a type to be transformed into a sequence."
+  (^clj-or-nil -seq [o]
+    "Returns a seq of o, or nil if o is empty."))
+</code></pre>
+<p>For example, the Phaser game library contains a Phaser.Group type which is a
+kind of collection. I can extend Phaser.Group to implement ISeqable. By
+providing a custom implementation for <code>-seq</code> it’s now possible to use Group
+objects with <code>first</code>, <code>map</code>, or <code>doseq</code>, just like ClojureScript collections.</p>
+<pre><code class="language-clojure">(extend-type js/Phaser.Group
+  ISeqable
+  (-seq [group]
+    (let [children (.-children group)]
+      (map #(aget children %) (range (.-length children))))))
+</code></pre>
+<p>There’s one aspect we’ve glossed over so far, which is the distinction between
+<code>nil</code> and the empty list. In LISP these are one and the same thing. Writing an
+empty list is simply a different notation for nil.</p>
+<p>This is convenient, because it means that checking if a list is empty, such as
+for a termination clause of a recursive function, comes down to doing a
+nil-check.</p>
+<pre><code class="language-lisp"> % rlwrap sbcl
+This is SBCL 1.3.1.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at &lt;http://www.sbcl.org/&gt;.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* nil
+
+NIL
+* ()
+
+NIL
+*
+</code></pre>
+<p>In Clojure the empty list and nil are two separate concepts, so you would need
+two checks instead of one. The <code>seq</code> abstraction tries to collapse these though.
+When calling <code>seq</code> on the empty list the result is <code>nil</code>. This is why Clojure
+doesn’t have a dedicated function to check for emptiness. Instead you use <code>seq</code>.</p>
+<p>You can also treat <code>nil</code> as an empty list and add values onto it, or pass it to
+any other function that works with seqables, like <code>first</code> or <code>map</code>, and it will
+be treated as an empty list.</p>
+<pre><code class="language-clojure">user&gt; (seq nil)
+nil
+user&gt; (seq ())
+nil
+user&gt; (conj nil 1)
+(1)
+user&gt; (type (conj nil 1))
+clojure.lang.PersistentList
+user&gt; (map identity nil)
+()
+user&gt; (first nil)
+nil
+user&gt;
+</code></pre>
+<p>The point of this episode has been to encourage you to challenge your
+assumptions. Even basic and innocious looking concepts can have hidden depths.
+Doing a deep dive like this can help to adjust your mental model of how Clojure
+works, which ulimately makes you a better coder.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Things that are <code>seq?</code></p>
+<ul>
+<li>nil</li>
+<li>lists, <code>'(1 2 3)</code></li>
+<li>conses, <code>(cons 0 '(1 2 3))</code></li>
+<li>lazy sequences, e.g. the result of <code>map</code>, <code>filter</code>, <code>remove</code>, <code>for</code></li></ul>
+<p>Things that are <code>seqable?</code></p>
+<ul>
+<li>any seq</li>
+<li>instances of <code>Seqable</code> (Clojure) or <code>ISeqable</code> (ClojureScript)</li>
+<li>Java and Javascript arrays</li>
+<li>instances of <code>java.lang.Iterable</code> (most Java collections)</li>
+<li>Strings (also StringBuffer and StringBuilder)</li>
+<li>instances of <code>java.lang.Map</code> (Java associative collections)</li></ul>
+<h2 id="a-note-about-cons-and-conj">A note about <code>cons</code> and <code>conj</code></h2>
+<p>This episode makes frequent mention of <code>cons</code>, since it is one of the core
+operations implemented on <code>seq</code>. In idiomatic Clojure code however <code>cons</code> is
+rarely used, instead use <code>conj</code>.</p>
+<p>What are the differences?</p>
+<ul>
+<li>with <code>cons</code> the item to be added comes first, with <code>conj</code> it comes last</li>
+<li><code>conj</code> can add more than one thing at a time</li>
+<li><code>cons</code> will convert the collection to a seq, and return a seq, <code>conj</code> returns the same type as the input collection</li>
+<li><code>cons</code> always prepends the element, with <code>conj</code> it depends on the collection. For lists it prepends, when using a vector it adds to the end.</li></ul>
+<pre><code class="language-clojure">(cons 1 [4 5 6]) ;;=&gt; (1 4 5 6)
+(conj [4 5 6] 1 2 3) ;;=&gt; [4 5 6 1 2 4]
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

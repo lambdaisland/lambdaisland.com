@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video# books: http://ogp.me/ns/books#">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../highlightjs/styles/tomorrow-night.css%3FD372A77090F6A07251DFCE573D121EE2.css" />
+    <link rel="alternate" type="application/atom+xml" href="../../feeds/episodes.atom%3F2024-08-10T19:01:18.355Z" title="Episodes Feed" />
+    <link rel="author" href="https://plus.google.com/u/0/112268398775525141261" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="../../img/favicon/apple-touch-icon-57x57.png%3F8568A808400E2552E5E222872182E134" />
+    <link rel="apple-touch-icon" sizes="60x60" href="../../img/favicon/apple-touch-icon-60x60.png%3FD5D40CD8F4D66C5F5625C2FE608A1C62" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../../img/favicon/apple-touch-icon-72x72.png%3F56F65F0CF9BF8B56AB715B3C25CFA564" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon/apple-touch-icon-76x76.png%3F281598ACD732AF3F197055CC9299117F" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../../img/favicon/apple-touch-icon-114x114.png%3F5538ABAF7604AE49F772493B50C44965" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon/apple-touch-icon-120x120.png%3F22E764C660A6F1707D652F3323474058" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../../img/favicon/apple-touch-icon-144x144.png%3FDC9D8C3026F9BA39C67254340F39AA82" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon/apple-touch-icon-152x152.png%3FAA0CAD4FE20BAF96E5968C05DBE4CA4A" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon-180x180.png%3FDBB22011968E5211844EF573BC457A37" />
+    <link rel="icon" href="../../img/favicon/favicon-16.png%3F2D7E9361B714A93F9D05F20B8A0C64C9" sizes="16x16" type="image/png" />
+    <link rel="icon" href="../../img/favicon/favicon-32.png%3FB2E52FEB9900584CED066734EE47C5A8" sizes="32x32" type="image/png" />
+    <link rel="icon" href="../../img/favicon/favicon-48.png%3FE9DE59A5129E429DFA471F7DF2C41F97" sizes="48x48" type="image/png" />
+    <link rel="icon" href="../../img/favicon/favicon-62.png%3F04BB64567F52B37102B9EBF72399E74F" sizes="62x62" type="image/png" />
+    <link rel="icon" href="../../img/favicon/favicon-96.png%3F02F47BF05B5BF9569F4CD9FE798E3E6B" sizes="96x96" type="image/png" />
+    <link rel="icon" href="../../img/favicon/favicon-192.png%3F19D7BAACFF8E66837420787EEEA22DE2" sizes="192x192" type="image/png" />
+    <link rel="manifest" href="../../img/favicon/manifest.json%3FC6E1235FC7E6A8DBDDB9024592103D8D" />
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg%3FD4151DA457834B75154F1E839ECD9461" color="#1c558b" />
+    <meta name="msapplication-TileColor" content="#1c558b" />
+    <meta name="msapplication-TileImage" content="/img/favicon/favicon-144.png" />
+    <meta name="theme-color" content="#1c558b" />
+    <meta name="stripe-key" content="pk_live_0siMKhVvbX21viAAv97YgKsS" />
+
+    <script type="text/javascript">
+     // Resize Chargebee's iframes
+     window.addEventListener("message", function(ev) {
+         console.log("postMessage: ", ev);
+         if (typeof ev.data == "string") {
+             var data = JSON.parse(ev.data);
+             var iframe = document.getElementsByTagName("iframe")[0];
+             if (iframe) {
+                 console.log("message", data);
+                 if (data.height) {
+                     iframe.height = (data.height+50) + "px";
+                 }
+                 if (data.success) {
+                     window.location = "/thankyou";
+                 }
+             }
+         }
+     });
+    </script>
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//analytics.arnebrasseur.net/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+
+    <title>ClojureScript REPLs | The Ultimate Guide To Clojure REPLs Guide</title>
+  <link href="../../fonts/fonts.css" rel="stylesheet" /><link href="../../css/semantic.min.css" rel="stylesheet" /><link href="../../css/tachyons.min.css" rel="stylesheet" /><link href="../../css/styles.css" rel="stylesheet" /><link href="../../css/featherlight.min.css" rel="stylesheet" /><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@lambdaisland" /><meta name="twitter:creator" content="@lambdaisland" /><meta name="twitter:url" content="https://lambdaisland.com/guides/clojure-repls/clojurescript-repls" /><meta name="twitter:title" content="ClojureScript REPLs" /><meta name="twitter:description" content="Free ebook: The Ultimate Guide To Clojure REPLs" /><meta name="twitter:image" content="https://img.lambdaisland.com/80dc46cf47385a133bcbd9511cda0d9a.png" /><meta name="og:site-name" content="Lambda Island" /><meta name="og:title" content="ClojureScript REPLs" /><meta name="og:url" content="https://lambdaisland.com/guides/clojure-repls/clojurescript-repls" /><meta name="og:type" content="books.book" /><meta name="og:image" content="https://img.lambdaisland.com/80dc46cf47385a133bcbd9511cda0d9a.png" /><meta name="og:description" content="Free ebook: The Ultimate Guide To Clojure REPLs" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+  <body class="lambdaisland dropdown">
+    <div id="wrapper">
+      <header><div id="main-menu" class="ui inverted"><div class="ui grid container"><div class="computer only row"><nav class="ui inverted pointing menu top-bar"><a class="item" href="../../index.html"><img src="../../img/top-bar-logo.png" style="height: 3rem; width: 14.5rem;" alt="Home" /></a><a class="item" href="../../episodes.html">Episodes</a><a class="item" href="../../blog.html">Blog</a><a class="item" href="../../pricing.html">Pricing</a><a class="item" href="../../p/about.html">About</a><div class="right item"><div class="mini-cart pa2 mr3 dn"><i class="icon cart"></i><span class="count">0</span></div><a class="ui inverted button" href="../../login.html">Log in</a><a class="ui inverted button" href="../../register.html">Sign Up</a></div></nav></div><div class="mobile tablet only row"><nav class="ui inverted pointing menu top-bar menu--hamburger"><a class="item" href="../../index.html"><img src="../../img/top-bar-logo.png" style="height: 3rem; width: 14.5rem;" alt="Home" /></a><div class="ui inline dropdown right item"><div class="mini-cart pa2 mr3 dn"><i class="icon cart"></i><span class="count">0</span></div><i class="content icon"></i><div class="menu"><a class="item" href="../../episodes.html">Episodes</a><a class="item" href="../../blog.html">Blog</a><a class="item" href="../../pricing.html">Pricing</a><a class="item" href="../../p/about.html">About</a><a class="item" href="../../login.html">Log in</a><a class="item" href="../../register.html">Sign Up</a></div></div></nav></div></div></div></header>
+      
+      <div id="message" class="ui container"></div>
+      <div id="container" class="ui container"><div class="guide-page"><div class="guide-nav"><span class="prev">&lt; Previous: <a href="clojure-repls.html">Clojure REPLs</a></span><a href="../clojure-repls.html" class="toclink">Table of Contents</a><span class="next">Next: <a href="bootstrapped-clojurescript-repls.html">Bootstrapped ClojureScript REPLs</a> &gt;</span></div><hr /><div><div class="download-buttons"><div class="button"><a href="../clojure-repls.mobi.html"><img src="../../img/pdf.png" /><br />PDF</a></div><div class="button"><a href="../clojure-repls.mobi.html"><img src="../../img/epub.png" /><br />ePub</a></div><div class="button"><a href="../clojure-repls.mobi.html"><img src="../../img/mobi.png" /><br />Mobi</a></div></div></div><div class="content"><div id="outline-container-org6f7c847" class="outline-2">
+<h1 id="org6f7c847"><span class="section-number-2">3</span> ClojureScript REPLs</h1>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org388e424" class="outline-3">
+<h2 id="org388e424"><div class="local-toc"><h2>contents</h2><ul><li><a href="clojurescript-repls.html#org388e424"><span class="tocnumber">1</span><span class="toctext"> ClojureScript Built-in REPLs</span></a><ul><li><a href="clojurescript-repls.html#org59d091d"><span class="tocnumber">1.1</span><span class="toctext"> Rhino</span></a></li><li><a href="clojurescript-repls.html#org29cf7c4"><span class="tocnumber">1.2</span><span class="toctext"> Node.js</span></a></li><li><a href="clojurescript-repls.html#org36d1a68"><span class="tocnumber">1.3</span><span class="toctext"> Browser connected REPL</span></a></li></ul></li><li><a href="clojurescript-repls.html#org484b84a"><span class="tocnumber">2</span><span class="toctext"> Piggieback</span></a><ul></ul></li><li><a href="clojurescript-repls.html#org5590b92"><span class="tocnumber">3</span><span class="toctext"> Austin</span></a><ul></ul></li><li><a href="clojurescript-repls.html#org45f44e9"><span class="tocnumber">4</span><span class="toctext"> Weasel</span></a><ul></ul></li><li><a href="clojurescript-repls.html#org8300646"><span class="tocnumber">5</span><span class="toctext"> Figwheel</span></a><ul></ul></li><li><a href="clojurescript-repls.html#orge14a333"><span class="tocnumber">6</span><span class="toctext"> cljs-nashorn</span></a><ul></ul></li><li><a href="clojurescript-repls.html#org380d172"><span class="tocnumber">7</span><span class="toctext"> Further Reading</span></a><ul></ul></li></ul></div> ClojureScript Built-in REPLs</h2>
+<div class="outline-text-3" id="text-3-1">
+<p>
+ClojureScript is a variant of the Clojure language, which compiles (or
+"transpiles") to JavaScript code. That way you can write Clojure code, but
+run it anywhere JavaScript is available. It turns out that's quite a lot of
+places.
+</p>
+
+<p>
+When it comes to ClojureScript REPLs the story becomes a bit more involved.
+The ClojureScript compiler is written in Clojure, so it lives in the same
+environment Clojure lives in: the JVM (Java Virtual Machine).
+</p>
+
+<p>
+To evaluate compiled ClojureScript code, which has now turned into
+JavaScript, we need a separate JavaScript environment.
+</p>
+
+<p>
+So a ClojureScript REPL consists of two parts: the first part is written in
+Clojure, it handles the REPL UI, and takes care of compiling ClojureScript to
+JavaScript. This JavaScript code then gets handed over to the second part,
+the JavaScript environment, which evaluates the code and hands back the
+result.
+</p>
+
+<p>
+ClojureScript comes bundled with support for three JavaScript environments:
+Rhino, Node.js, and the browser.
+</p>
+</div>
+
+<div id="outline-container-org59d091d" class="outline-4">
+<h3 id="org59d091d"> Rhino</h3>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+<a href="https://en.wikipedia.org/wiki/Rhino_(JavaScript_engine)">Rhino</a> is a JavaScript engine written in Java. The project was started by
+Netscape in 1997, and is now managed by Mozilla. It comes bundled with Java
+(JDK or JRE), so if you have Java you should have Rhino available.
+</p>
+
+<p>
+Assuming your project includes ClojureScript, getting a Rhino-based REPL
+going is as easy as
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span>require '<span style="color: #8abeb7;">[</span>cljs.repl <span style="color: #81a2be;">:as</span> repl<span style="color: #8abeb7;">]</span><span style="color: #c5c8c6;">)</span>
+<span style="color: #c5c8c6;">(</span>require '<span style="color: #8abeb7;">[</span>cljs.repl.rhino <span style="color: #81a2be;">:as</span> rhino<span style="color: #8abeb7;">]</span><span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">repl</span>/repl <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">rhino</span>/repl-env<span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+Notice how there are clearly two parts, the <code>repl/repl</code> function takes a
+JavaScript environment as its argument.
+</p>
+
+<p>
+Rhino is a good option if you want a quick ClojureScript REPL to experiment
+with, but it has its limitations. Since it's not tied to a browser there is
+no DOM, and although people are still working on Rhino, don't expect your
+favorite HTML5 or ES6 features to be available.
+</p>
+
+<p>
+One fun thing you get with Rhino (a gimmick, really), is Java interop!
+That's right, you can use all your favorite Java classes straight from
+ClojureScript.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">cljs.user&gt; <span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">def</span> <span style="color: #f0c674;">f</span> <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">js</span>/java.io.File. <span style="color: #8abeb7;">"/etc/hosts"</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+#'<span style="color: #81a2be;">cljs.user</span>/f
+cljs.user&gt; <span style="color: #c5c8c6;">(</span>.exists f<span style="color: #c5c8c6;">)</span>
+<span style="color: #81a2be;">true</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org29cf7c4" class="outline-4">
+<h3 id="org29cf7c4"> Node.js</h3>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+The most popular JavaScript engine outside the browser is without a doubt
+Node.js. To get a Node.js-based REPL going you have a couple of options.
+There's a <a href="https://github.com/bodil/cljs-noderepl">leiningen plugin called cljs-noderepl</a>, and then there is <a href="bootstrapped-clojurescript-repls.html#orgeae435f">Lumo</a>, a
+standalone Node.js based REPL which will be covered in the section
+on <a href="bootstrapped-clojurescript-repls.html#org3984a34">Bootstrapped ClojureScript REPLs</a>.
+</p>
+
+<p>
+It's easy enough to do it youreslf though. To run your own node-based REPL
+simply swap out the Rhino env from the previous section with the Node.js
+repl-env.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span>require 'cljs.repl<span style="color: #c5c8c6;">)</span>
+<span style="color: #c5c8c6;">(</span>require 'cljs.repl.node<span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">cljs.repl</span>/repl <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">cljs.repl.node</span>/repl-env<span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+Assuming you have a recent enough (&gt;= 0.12.0) Node.js on your system, this
+will spin up node in the background and drop into a REPL. There's still no
+DOM since we're not targeting a browser, but you should get significantly
+better performance, and you have access to the Node APIs, so you can do
+things like access the network or work with files.
+</p>
+
+<p>
+If your ClojureScript project targets Node.js, you will want a REPL that has
+your project code loaded. The <a href="https://clojurescript.org/guides/quick-start#running-clojurescript-on-node.js">ClojureScript Quick Start</a> page provides more
+info.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org36d1a68" class="outline-4">
+<h3 id="org36d1a68"> Browser connected REPL</h3>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+ClojureScript also comes with a REPL environment that uses a running web
+browser to evaluate expressions typed in to the REPL. This is especially
+useful because it allows you to inspect the state of, and interact with, a
+running web app.
+</p>
+
+<p>
+Just like with Rhino or Node.js there's a <code>repl-env</code> function that you can
+plug into <code>cljs.repl/repl</code>, this particular <code>repl-env</code> is defined in
+<code>cljs.repl.browser</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span>require 'cljs.repl<span style="color: #c5c8c6;">)</span>
+<span style="color: #c5c8c6;">(</span>require 'cljs.repl.browser<span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">cljs.repl</span>/repl <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">cljs.repl.browser</span>/repl-env<span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+This time the REPL won't immediately pop up though, instead it spins up a
+web server and waits for the browser app to connect back to it, so somewhere
+in the ClojureScript code for your web app you'll have to initiate this
+connection.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">ns</span> <span style="color: #81a2be;">repl-test.core</span>
+  <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">:require</span> <span style="color: #f0c674;">[</span>clojure.browser.repl <span style="color: #81a2be;">:as</span> repl<span style="color: #f0c674;">]</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">defonce</span> <span style="color: #f0c674;">conn</span>
+  <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">repl</span>/connect <span style="color: #8abeb7;">"http://localhost:9000/repl"</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+You'll need a build script (or use something like <code>lein-cljsbuild</code>) to
+compile this code, and an <code>index.html</code> to deliver it to the browser. The
+<a href="https://github.com/clojure/clojurescript/wiki/Quick-Start#browser-repl">relevant section in the ClojureScript Quick Start guide</a> goes into greater
+depth about how to do this, including stand-alone examples.
+</p>
+
+<p>
+In HTTP interactions are always initiated by the client. To enable the REPL
+(the server) to send data back to the browser (the client), it uses a
+technique called "long-polling". With this technique the client will
+initiate an HTTP request, and wait as long as necessary for the server to
+respond. This effectively reverses the role of client and server.
+</p>
+
+<p>
+It's a crude mechanism, but has the benefit that it works across browsers.
+Newer ClojureScript REPLs like <a href="clojurescript-repls.html#org45f44e9">Weasel</a> and <a href="clojurescript-repls.html#org8300646">Figwheel</a> use websockets which are
+ideal for this use case, but only supported in more recent browsers.
+</p>
+
+<p>
+The HTTP server that the REPL uses is often not the one serving up your
+application, and so it will have a different domain or port. For security
+reasons browsers will prevent these two from interacting with each other,
+this is called the same-origin policy. To circumvent this restriction
+<code>cljs.repl.browser</code> uses <code>CrossPageChannel</code>, a part of the Google Closure
+Library. <code>CrossPageChannel</code> allows scripts from different origins to
+communicate via an <code>iframe</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org484b84a" class="outline-3">
+<h2 id="org484b84a"> Piggieback</h2>
+<div class="outline-text-3" id="text-3-2">
+<p>
+If you haven't read the section about <a href="clojure-repls.html#org44377fd">nREPL</a> yet you better go and read that
+first.
+</p>
+
+<p>
+Piggieback forms the bridge between ClojureScript and nREPL. It's an nREPL
+middleware which intercepts "eval" messages, and routes them to a
+ClojureScript REPL. Most editors and IDEs for Clojure are based on nREPL, so
+you'll need Piggieback to use them with ClojureScript.
+</p>
+
+<p>
+There are two steps to using Piggieback. First make sure the Piggieback
+middleware is added to the middleware stack when starting the nREPL server.
+Now when you start nREPL Piggieback will be dormant, waiting to be woken up.
+</p>
+
+<p>
+Calling <code>(cider.piggieback/cljs-repl (repl-env))</code> from the REPL spurs
+Piggieback into action. From now on any code that's being evaluated will be
+passed to the given ClojureScript REPL env.
+</p>
+
+<p>
+How to add the nREPL middleware depends on how you're starting nREPL.
+</p>
+
+<p>
+In Leiningen the project map takes a <code>:repl-options</code> key where you can
+configure middleware that will be added to the default stack when running
+<code>lein repl</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">defproject</span> <span style="color: #de935f;">cljsrepl</span> <span style="color: #8abeb7;">"0.1.0"</span>
+  <span style="color: #81a2be;">:dependencies</span> <span style="color: #8abeb7;">[</span><span style="color: #f0c674;">[</span><span style="color: #81a2be;">org.clojure</span>/clojure <span style="color: #8abeb7;">"1.8.0"</span><span style="color: #f0c674;">]</span>
+                 <span style="color: #f0c674;">[</span><span style="color: #81a2be;">org.clojure</span>/clojurescript <span style="color: #8abeb7;">"1.9.183"</span><span style="color: #f0c674;">]</span>
+                 <span style="color: #f0c674;">[</span><span style="color: #81a2be;">cider</span>/piggieback <span style="color: #8abeb7;">"0.4.0"</span><span style="color: #f0c674;">]</span><span style="color: #8abeb7;">]</span>
+  <span style="color: #81a2be;">:repl-options</span> <span style="color: #8abeb7;">{</span><span style="color: #81a2be;">:nrepl-middleware</span> <span style="color: #f0c674;">[</span><span style="color: #81a2be;">cider.piggieback</span>/wrap-cljs-repl<span style="color: #f0c674;">]</span><span style="color: #8abeb7;">}</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+In Boot <code>boot.repl/*default-middleware*</code> can be modified to insert
+middleware. Here's a sample <code>build.boot</code>. You can also configure this for all
+projects at once in <code>\~/boot/profile.boot</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span>require 'boot.repl<span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span>swap! <span style="color: #81a2be;">boot.repl</span>/<span style="color: #f0c674;">*default-dependencies*</span>
+       concat '<span style="color: #8abeb7;">[</span><span style="color: #f0c674;">[</span><span style="color: #81a2be;">cider</span>/piggieback <span style="color: #8abeb7;">"0.4.0"</span><span style="color: #f0c674;">]</span><span style="color: #8abeb7;">]</span><span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span>swap! <span style="color: #81a2be;">boot.repl</span>/<span style="color: #f0c674;">*default-middleware*</span>
+       conj '<span style="color: #81a2be;">cider.piggieback</span>/wrap-cljs-repl<span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+If you're starting your own nREPL server then pass the middleware to the
+<code>default-handler</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span>require '<span style="color: #8abeb7;">[</span>nrepl.server <span style="color: #81a2be;">:as</span> nrepl<span style="color: #8abeb7;">]</span>
+         '<span style="color: #8abeb7;">[</span>cider.piggieback <span style="color: #81a2be;">:as</span> piggieback<span style="color: #8abeb7;">]</span><span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">nrepl</span>/start-server <span style="color: #81a2be;">:handler</span> <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">server</span>/<span style="color: #b5bd68;">default-handler</span> <span style="color: #de935f;">piggieback/wrap-cljs-repl</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+Now start your REPL (whichever way you choose), and evaluate
+<code>(cider.piggieback/cljs-repl)</code>, passing in the ClojureScript repl-env you
+would like to use. This signals to Piggieback that it should start
+intercepting and redirecting "eval" type messages.
+</p>
+
+<p>
+To get your regular Clojure REPL back type <code>:cljs/quit</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">$ boot repl
+nREPL server started on port <span style="color: #81a2be;">44543</span> on host <span style="color: #81a2be;">127.0.0.1</span> - nrepl<span style="color: #81a2be;">://127.0.0.1:44543</span>
+REPL-y <span style="color: #81a2be;">0.3.7</span>, nREPL <span style="color: #81a2be;">0.6.0</span>
+Clojure <span style="color: #81a2be;">1.7.0</span>
+OpenJDK <span style="color: #81a2be;">64-Bit</span> Server VM <span style="color: #81a2be;">1.8.0_91-8u91-b14-3ubuntu1</span>~<span style="color: #81a2be;">16.04.1-b14</span>
+        Exit: Control+D or <span style="color: #c5c8c6;">(</span>exit<span style="color: #c5c8c6;">)</span> or <span style="color: #c5c8c6;">(</span>quit<span style="color: #c5c8c6;">)</span>
+    Commands: <span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">user</span>/help<span style="color: #c5c8c6;">)</span>
+        Docs: <span style="color: #c5c8c6;">(</span>doc function-name-here<span style="color: #c5c8c6;">)</span>
+              <span style="color: #c5c8c6;">(</span>find-doc <span style="color: #8abeb7;">"part-of-name-here"</span><span style="color: #c5c8c6;">)</span>
+Find by Name: <span style="color: #c5c8c6;">(</span>find-name <span style="color: #8abeb7;">"part-of-name-here"</span><span style="color: #c5c8c6;">)</span>
+      Source: <span style="color: #c5c8c6;">(</span>source function-name-here<span style="color: #c5c8c6;">)</span>
+     Javadoc: <span style="color: #c5c8c6;">(</span>javadoc java-object-or-class-here<span style="color: #c5c8c6;">)</span>
+    Examples from clojuredocs.org: <span style="color: #c5c8c6;">[</span>clojuredocs or cdoc<span style="color: #c5c8c6;">]</span>
+              <span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">user</span>/clojuredocs name-here<span style="color: #c5c8c6;">)</span>
+              <span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">user</span>/clojuredocs <span style="color: #8abeb7;">"ns-here"</span> <span style="color: #8abeb7;">"name-here"</span><span style="color: #c5c8c6;">)</span>
+boot.user=&gt; <span style="color: #c5c8c6;">(</span>require 'cider.piggieback<span style="color: #c5c8c6;">)</span>
+<span style="color: #81a2be;">nil</span>
+boot.user=&gt; <span style="color: #c5c8c6;">(</span>require '<span style="color: #8abeb7;">[</span>cljs.repl.node<span style="color: #8abeb7;">]</span><span style="color: #c5c8c6;">)</span>
+<span style="color: #81a2be;">nil</span>
+boot.user=&gt; <span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">cider.piggieback</span>/cljs-repl <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">cljs.repl.node</span>/repl-env<span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+ClojureScript Node.js REPL server listening on <span style="color: #81a2be;">58146</span>
+To quit, type: <span style="color: #81a2be;">:</span><span style="color: #81a2be;">cljs</span><span style="color: #c5c8c6; background-color: #1d1f21;">/</span><span style="color: #81a2be;">quit</span>
+<span style="color: #81a2be;">nil</span>
+cljs.user=&gt;
+
+cljs.user=&gt; <span style="color: #c5c8c6;">(</span>+ <span style="color: #81a2be;">1</span> <span style="color: #81a2be;">1</span><span style="color: #c5c8c6;">)</span>
+<span style="color: #81a2be;">2</span>
+cljs.user=&gt; <span style="color: #81a2be;">:</span><span style="color: #81a2be;">cljs</span><span style="color: #c5c8c6; background-color: #1d1f21;">/</span><span style="color: #81a2be;">quit</span>
+<span style="color: #81a2be;">nil</span>
+boot.user=&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5590b92" class="outline-3">
+<h2 id="org5590b92"> Austin</h2>
+<div class="outline-text-3" id="text-3-3">
+<p>
+<a href="https://github.com/cemerick/austin">Austin</a> (apparently named after a <a href="https://en.wikipedia.org/wiki/The_Six_Million_Dollar_Man">sci-fi character from the 70's</a>) is an
+alternative to the built-in browser REPL, trying to improve upon it in
+several ways. Since the project came out some other alternatives have come
+onto the scene, notably <a href="clojurescript-repls.html#org45f44e9">Weasel</a> and <a href="clojurescript-repls.html#org8300646">Figwheel</a>, and unless you have specific
+reaons to choose Austin for your REPL needs you're probably better off with
+something else. Nevertheless Austin introduced some important ideas, which
+are worth looking into.
+</p>
+
+<p>
+Browser connected REPLs were introduced as a way to interact with the
+application running in the browser. It can however also be useful to have a
+independent REPL that still has access to all your project's namespaces, and
+that runs in an environment with a DOM, but without booting the app.
+</p>
+
+<p>
+This kind of "project REPL" is good for quickly trying stuff out, playing
+around with libraries, or running tests.
+</p>
+
+<p>
+The killer feature of Austin is making it easy to start such a Project REPL.
+</p>
+
+<p>
+Calling <code>(cemerick.austin.repls/exec)</code> will spin up a PhantomJS (or
+compatible) "headless" browser in the background, and connect to that.
+PhantomJS uses WebKit, the browser engine used by Safari and (before the
+fork) Chrome, so it has a full DOM available, but it's headless, so there is
+no browser window.
+</p>
+
+<p>
+Austin can run multiple REPLs in parallel, and will provide specific entry
+point URLs for each. This means you don't have to manually add client code to
+connect back to the server.
+</p>
+
+<p>
+There's a <a href="http://www.youtube.com/watch?v=a1Bs0pXIVXc">screencast by Chas Emerick, the Author of Austin and Piggieback</a>
+that shows off more of its features. Austin still uses the same long-polling
+and CrossPageChannel based approach that <code>cljs.repl.browser</code> uses.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45f44e9" class="outline-3">
+<h2 id="org45f44e9"> Weasel</h2>
+<div class="outline-text-3" id="text-3-4">
+<p>
+<a href="https://github.com/tomjakubowski/weasel">Weasel</a> was the first to replace the long-polling approach with WebSockets.
+While this prevents it from being used in pre-websocket browsers, it does
+open up several JavaScript environments which do have websockets, but don't
+have a DOM, prohibiting the use of <code>CrossPageChannel</code>'s iframe hack.
+</p>
+
+<p>
+Using Weasel is very similar to using other ClojureScript REPL, it's just
+another <code>repl-env</code> that's made available to you. The Weasel README heavily
+hints at using it with Piggieback, but if you don't need nREPL you can use it
+with the standard cljs-repl just the same.
+</p>
+
+<p>
+Just like with the built-in browser connected REPL, there's a server and
+a client part.
+</p>
+
+<p>
+<b>Server (Clojure)</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span><span style="color: #81a2be;">cljs.repl</span>/repl <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">weasel.repl.websocket</span>/repl-env <span style="color: #81a2be;">:ip</span> <span style="color: #8abeb7;">"0.0.0.0"</span> <span style="color: #81a2be;">:port</span> <span style="color: #81a2be;">9001</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+<b>Client (ClojureScript)</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">ns</span> <span style="color: #81a2be;">main</span>
+  <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">:require</span> <span style="color: #f0c674;">[</span>weasel.repl <span style="color: #81a2be;">:as</span> repl<span style="color: #f0c674;">]</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+
+<span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">when-not</span> <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">repl</span>/alive?<span style="color: #8abeb7;">)</span>
+  <span style="color: #8abeb7;">(</span><span style="color: #81a2be;">repl</span>/connect <span style="color: #8abeb7;">"ws://localhost:9001"</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8300646" class="outline-3">
+<h2 id="org8300646"> Figwheel</h2>
+<div class="outline-text-3" id="text-3-5">
+<p>
+<a href="https://github.com/bhauman/lein-figwheel">Figwheel</a> is a Leiningen plugin that automatically pushes code changes to the
+browser, so you get instant feedback. Figwheel also ships with its own
+browser connected REPL, making it a great one stop shop for ClojureScript
+development.
+</p>
+
+<p>
+Considering the amount of work it takes care of you might think it's
+complicated to set up, but the opposite is true. Figwheel is incredibly easy
+to use, and has really made it easier for people to get an interactive
+ClojureScript environment up and running.
+</p>
+
+<p>
+The easiest way to use Figwheel is through its leiningen plugin, just add the
+latest version to your Leiningen's plugin vector
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #c5c8c6;">(</span><span style="color: #b5bd68;">defproject</span> ,,,
+  <span style="color: #81a2be;">:plugins</span> <span style="color: #8abeb7;">[</span><span style="color: #f0c674;">[</span>lein-figwheel <span style="color: #8abeb7;">"0.5.4-7"</span><span style="color: #f0c674;">]</span><span style="color: #8abeb7;">]</span><span style="color: #c5c8c6;">)</span>
+</pre>
+</div>
+
+<p>
+And start it with <code>lein figwheel</code>. This will do an initial compilation of
+your ClojureScript code, start a browser connected REPL, and it will even
+open the browser for you so you don't have to figure out what URL to connect
+to.
+</p>
+
+<p>
+Before you do that you'll need to configure a ClojureScript build though, and
+add <code>:figwheel true</code> to the build configuration. Check out the <a href="https://github.com/bhauman/lein-figwheel">Figwheel
+README</a> for an example, or if you're starting with a new project use a
+pre-existing template, e.g. <code>lein new figwheel my-project</code> or <code>lein new
+   chestnut my-project</code>.
+</p>
+
+<p>
+Using Figwheel with nREPL is a bit more involved, if you need nREPL support,
+e.g. for using Figwheel with CIDER, I can recommend the <a href="https://github.com/plexus/chestnut">Chestnut</a> template.
+For the full low-down check out the <a href="https://github.com/bhauman/lein-figwheel/wiki/Using-the-Figwheel-REPL-within-NRepl">Figwheel wiki page on using it with nREPL</a>.
+</p>
+
+<p>
+Figwheel is Piggieback-aware, meaning if you start Figwheel from an nREPL
+based REPL (using the <code>figwheel-sidecar</code> library), and the piggieback
+middleware is loaded, then Figwheel will automatically do the right thing.
+</p>
+
+<p>
+Figwheel uses WebSockets just like <a href="clojurescript-repls.html#org45f44e9">Weasel</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge14a333" class="outline-3">
+<h2 id="orge14a333"> cljs-nashorn</h2>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Java comes bundled not with one, but with two JavaScript environments. We
+already covered the first one, <a href="clojurescript-repls.html#org59d091d">Rhino</a>. The other one is called Nashorn (German
+for "Rhino") and is said to be a faster, more modern implementation.
+</p>
+
+<p>
+While ClojureScript comes with Rhino support out of the box, for Nashorn you
+need a third-party implementation.
+</p>
+
+<p>
+The <a href="https://github.com/bodil/cljs-nashorn">cljs-nashorn README</a> has all the info you need. You can either use the
+Leiningen plugin, or manually set up the Nashorn environment and plug it into
+<code>cljs.repl/repl</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org380d172" class="outline-3">
+<h2 id="org380d172"> Further Reading</h2>
+<div class="outline-text-3" id="text-3-7">
+<p>
+The ClojureScript wiki has several interesting pages about its REPLs
+</p>
+
+<ul class="org-ul">
+<li><p>
+<a href="https://github.com/clojure/clojurescript/wiki/Quick-Start">Quick Start</a>
+</p>
+
+<p>
+A must read for every serius ClojureScript developer. Teaches you how to
+use the compiler and built-in REPLs from the ground up.
+</p></li>
+
+<li><p>
+<a href="https://github.com/clojure/clojurescript/wiki/The-REPL-and-Evaluation-Environments">The REPL and Evaluation Environments</a>
+</p>
+
+<p>
+Explains the <code>IJavaScriptEnv</code> Protocol, and has a full example of using
+<code>cljs.repl.browser</code>, as well as explaining several of its implementation
+details.
+</p></li>
+
+<li><p>
+<a href="https://github.com/clojure/clojurescript/wiki/Custom-REPLs">Custom REPLS</a>
+</p>
+
+<p>
+Explains several things to be aware of when developing ClojureScript REPLs.
+</p></li>
+</ul>
+</div>
+</div>
+</div></div><hr /><div class="guide-nav"><span class="prev">&lt; Previous: <a href="clojure-repls.html">Clojure REPLs</a></span><a href="../clojure-repls.html" class="toclink">Table of Contents</a><span class="next">Next: <a href="bootstrapped-clojurescript-repls.html">Bootstrapped ClojureScript REPLs</a> &gt;</span></div></div></div>
+      <!-- <div id="sticky-cta"></div> -->
+      <section id="footer"><div style="color: white; text-align: center;" id="banner-wrap"><div class="ui container"><div style="padding: 0; display: flex; flex-direction: row; justify-content: space-between;" class="ui stackable grid"><div style="display: flex; flex-direction: column; justify-content: center;" class="eleven wide column"><h1>Become a Clojure Pro</h1><h2>11 hours 6 minutes and 40 seconds of Premium Video Content</h2><div style="display: flex; flex-direction: row; justify-content: center;"><p style="text-align: left; font-size: 1.5rem;"><span style="color: lime; font-size: 1.8rem;">✓ </span>In-depth tutorials<br /><span style="color: lime; font-size: 1.8rem;">✓ </span>Backend, frontend, language and tooling<br /><span style="color: lime; font-size: 1.8rem;">✓ </span>Complete transcripts and source code</p></div><div style="padding-top: 1.5em; font-size: 1.8rem; text-decoration: underline;"><p>Start your free trial today!</p></div></div><div class="five wide column"><div style="max-width: 500px; margin: 0 auto; margin-top: 2em;"><form method="POST" action="../../register.html" class="ui form top attached segment"><div class="field"><label for="username">Username<span class="red"> *</span></label><div class="ui right icon input"><i class="user icon"></i><input id="username" name="username" placeholder="Username" type="text" value="" required="required" /></div></div><div class="field"><label for="email">Email<span class="red"> *</span></label><div class="ui right icon input"><i class="mail icon"></i><input id="email" name="email" placeholder="you@example.com" type="text" value="" required="required" /></div></div><div class="field hidden"><label for="url">leave blank</label><div class="ui right input"><input id="url" name="url" placeholder="" type="text" value="" /></div></div><div class="field"><label for="password">Password<span class="red"> *</span></label><div class="ui right icon input"><i class="lock icon"></i><input id="password" name="password" placeholder="Password" type="password" value="" required="required" /></div></div><div class="field"><div class="ui checkbox"><input type="checkbox" name="view_password" id="view_password" /><label for="view_password">Show Password</label></div></div><input type="submit" value="Sign up now!" class="ui button green" /><input type="hidden" name="__anti-forgery-token" value="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></form></div><img style="position: relative; left: -230px; top: -40px;" src="../../img/arrow.png" /></div></div></div></div>
+        <div class="ui container">
+          <footer class="ui inverted vertical footer segment">
+            <div>
+              <div class="ui center aligned container">
+                <div class="ui stackable inverted grid">
+                  <div class="three wide column">
+                    <h4 class="ui inverted header">Lambda Island</h4>
+                    <div class="ui inverted link list">
+                      <a class="item" href="../../episodes.html">Episodes</a>
+                      <a class="item" href="../../p/about.html">About / FAQ</a>
+                      <a class="item" href="../../p/imprint.html">Imprint</a>
+                      <a class="item" href="../../p/privacy-policy.html">Privacy Policy</a>
+                      <a class="item" href="../../p/cookies.html">Cookie Policy</a>
+                      <a class="item" href="../../pricing.html">Pricing</a>
+                    </div>
+                  </div>
+                  <div class="three wide column">
+                    <h4 class="ui inverted header">Updates</h4>
+                    <div class="ui inverted link list">
+                      <a class="item" href="../../feeds/episodes.atom">Episodes RSS Feed</a>
+                      <a class="item" href="../../feeds/blog.atom">Blog RSS Feed</a>
+                      <a class="item" href="https://twitter.com/lambdaisland"><i class="twitter icon"></i> Twitter </a>
+                      <a class="item" href="../../news.html">News</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui inverted section divider"></div>
+                <div class="ui horizontal inverted small divided link list">
+                  <a class="item" href="https://twitter.com/lambdaisland"><i class="twitter icon"></i> Twitter </a>
+                  <a class="item" href="https://instagram.com/lambdaisland"><i class="instagram icon"></i> Instagram </a>
+                  <a class="item" href="https://github.com/lambdaisland"><i class="github icon"></i> Github </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+    <script type="text/javascript" src="../../js/jquery-2.2.3.min.js%3F33CABFA15C1060AAA3D207C653AFB1EE"></script>
+    <script type="text/javascript" src="../../js/jquery.address-1.6.min.js%3F629839D8264B65CB232294A1EE8A7586"></script>
+    <script type="text/javascript" src="../../js/featherlight.min.js%3F7D90055DADAC5DAF9FE61BB27884E1D5"></script>
+    <script type="text/javascript" src="../../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+    <script type="text/javascript" src="../../js/compiled/legacy.js%3FD1D8DB81780E92790A2BACCBFAA7CAF3"></script>
+    <script type="text/javascript" src="../../js/semantic.min.js%3F138102DC0F5B49A870E7DAA94CB28AE3"></script>
+    <script type="text/javascript" src="../../highlightjs/highlight.pack.js%3F1EE0E39080A563842A672173E63B08B1"></script>
+    <script type="text/javascript">
+     // Semantic-UI hooks
+     $(document).ready(function () {
+         $('.ui.dropdown').dropdown();
+         $('.tabular.menu .item').tab({"context": '.li-tabs',
+                                       "history": true});
+       $('#view_password').change(function() {
+         if($(this).is(":checked")) {
+           $('#password').attr('type', 'text');
+         } else {
+           $('#password').attr('type', 'password');
+         }
+       });
+     });
+
+     hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+
+</html>

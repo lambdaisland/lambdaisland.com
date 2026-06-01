@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojure-data-science-kixi-stats" />
+<meta name="twitter:title" content="Data Science with Kixi.stats, part 1" />
+<meta name="twitter:description" content="With the knowledge of transducers under your belt, it's time to start analyzing some data. This episode provides a first introduction to the Kixi.stats statistical toolkit, by..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/719294495-220dd1dedeb26b7aacc4f2ff317daf63aa0e2b5c5a053e4915a49dc0cedc6f84-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Data Science with Kixi.stats, part 1" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojure-data-science-kixi-stats" />
+<meta name="video:duration" content="953" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/719294495-220dd1dedeb26b7aacc4f2ff317daf63aa0e2b5c5a053e4915a49dc0cedc6f84-d_1280x720?r=pad" />
+<meta name="og:description" content="With the knowledge of transducers under your belt, it's time to start analyzing some data. This episode provides a first introduction to the Kixi.stats statistical toolkit, by..." />
+<meta name="video:release_date" content="2018-08-13T17:51:13.311Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Data Science with Kixi.stats, part 1</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/284764399?h=10daa5713a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="43. Data Science with kixi.stats"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>With the knowledge of transducers under your belt, it’s time to start analyzing
+some data. This episode provides a first introduction to the Kixi.stats
+statistical toolkit, by analyzing a data set and its distribution, with the goal
+of creating a predictive model through linear regression.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In today’s episode we take our first steps into data science using the
+kixi.stats library, which implements over two dozen statistical functions, as
+well as many statistical distributions to sample from.</p>
+<p>The author of kixi.stats is Henry Garner, who also wrote the Redux library I
+covered in the previous episode. Henry wrote the “Clojure for Data Science”
+book, and he has been a tremendous help in preparing this episode, spending more
+time to answer my naive statistics questions than I could reasonably have asked
+for.</p>
+<p>This episode will out of necessity only scratch the merest surface of the vast
+field that is Data Science, but hopefully it’s enough to give you an appetite
+for more. If you do I recommend checking ou Henry’s book, “Clojure for Data
+Science”, which explains a lot of the ideas and principles in more depth. You
+can find a link in the show notes. In this episode and the next I’ll work
+through an example of Linear Regression, which is covered in much more depth in
+chapter 3 of the book.</p>
+<p>The kixi.stats API is clustered around three namespaces:</p>
+<p><code>kixi.stats.core</code> contains a few dozen standard statistical functions, things
+like the mean, median, variance, and standard deviation.</p>
+<p><code>kixi.stats.math</code> defines some mathematical operations like the square root,
+logarithm, and exponent. These are used by kixi internally but can be handy in
+your own code as well, especially since they smooth over certain differences
+between Clojure and ClojureScript.</p>
+<p><code>kixi.stats.distribution</code> defines well known statistical distributions, like a
+Normal, Bernoulli, or Poission distribution, allowing you to play with the
+parameters that define the distribution, and sample from the result.</p>
+<p>How easy you’ll find this episode will largely depend on your knowledge of
+statistics. That said, as always I’ll do what I can to make things
+generally understandable.</p>
+<p>I’ve prepared a GitHub repo with everything you need to follow along with
+today’s episode, as always check out the show notes to find the link.</p>
+<p>This project contains the data we’ll be working with, and has the right
+dependencies set up. It also contains a few utility namespaces you’ll be using
+later on.</p>
+<pre><code>$ git clone https://github.com/lambdaisland/ep43-data-science-kixi-stats.git
+</code></pre>
+<p>This project uses <code>deps.edn</code>, so you do need to make sure the <a shape="rect" href="https://clojure.org/guides/getting_started">Clojure
+CLI tools</a> are installed on your
+system.</p>
+<p>Among the dependencies you find <code>kixi.stats</code>, which is the star of today’s
+episode, as well as <code>xforms</code> and <code>redux</code> which I covered last time, and the
+<code>thi.ng/geom</code> library which you’ll use to visualize the data.</p>
+<pre><code>$ cat deps.edn
+{:deps  {org.clojure/clojure     {:mvn/version "1.10.0-alpha6"}
+         kixi/stats              {:mvn/version "0.4.3"}
+         net.cgrand/xforms       {:mvn/version "0.18.2"}
+         redux                   {:mvn/version "0.1.4"}
+         org.clojure/data.csv    {:mvn/version "0.1.4"}
+         thi.ng/geom             {:mvn/version "1.0.0-RC3"}}
+ :paths ["src" "resources"]}
+</code></pre>
+<p>Under <code>resources</code> you’ll find the “abalone” data set, which contains
+measurements of physical features of 4000-odd abalones, a type of shelled sea
+creature.</p>
+<p>The <code>abalone</code> namespace contains some code to read in and parse the data.
+<code>graphs</code> has functions for drawing common graphs like histograms and
+box-and-whiskers plots. The core namespace is where you can add your code.</p>
+<pre><code>$ tree
+.
+├── deps.edn
+├── README.md
+├── resources
+│   ├── abalone.data
+│   ├── abalone.names
+│   └── README.md
+└── src
+    └── ep43_data_science
+        ├── abalone.clj
+        ├── core.clj
+        └── graphs.clj
+</code></pre>
+<p>This data set contains things like the length, weight, diameter, and the number
+of “rings” in the shell of the abalone. These are kind of like year rings on a
+tree, they are a good indicator of the creature’s age, but counting them is
+hard, it involves slicing the shell in half, applying a dye to stain the rings,
+and then counting them under a microscope. What we’d like to find out is whether
+some of these other attributes are a good predictor for the amoung of rings, and
+hence for the age.</p>
+<pre><code class="language-clojure">(ns ep43-data-science.core
+  (:require [ep43-data-science.abalone :as abalone]
+            [ep43-data-science.graphs :as g]
+            [kixi.stats.core :as kixi]
+            [kixi.stats.distribution :as kixi.dist]
+            [kixi.stats.math :as m]
+            [net.cgrand.xforms :as x]
+            [redux.core :as redux]))
+
+(rand-nth abalone/data)
+;; =&gt; {:rings 9,
+;;     :sex "I",
+;;     :shell-weight 14.7,
+;;     :diameter 54.0,
+;;     :whole-weight 54.2,
+;;     :viscera-weight 10.5,
+;;     :length 71.0,
+;;     :shucked-weight 28.5,
+;;     :height 21.0}
+</code></pre>
+<p>By now you should have the github repo cloned, and the core namespace open in
+your editor. This is a hands-on episode, so if you haven’t done so now is a good
+time. Launch a connected REPL so you can evaluate forms.</p>
+<p>Let’s try to get a better sense of the data.</p>
+<p>We have data about 4177 abalones, 4177 data points, each represented as a map.
+Lenght measurements, like the length, height, and diameter are in milimeter, and
+have a milimeter precision, whereas weights are in grams, and have a precision
+of 1/10th of a gram, the ring count is always a whole number, and finally the
+sex, which can be M, F, or I, standing for male, female, and infant.</p>
+<pre><code class="language-clojure">(count abalone/data)
+;; =&gt; 4177
+</code></pre>
+<p>What you want to do first is get a general sense of the magnitude and shape of
+your data. What are the minimum and maximum values for each variable? Do certain
+values occur more often than others?</p>
+<p>Let’s run this through <code>kixi.stats</code> to figure out some of the data’s
+characteristics. <code>kixi.stats</code> implements “reducing functions”, meaning you use
+them as the second argument to <code>transduce</code>. Let’s calculate the mean value for
+the rings.</p>
+<p>Use a <code>map</code> transducer to pull out the <code>:rings</code> values, and use <code>kixi/mean</code> to
+reduce this “stream” of integers to a single value.</p>
+<p>If this sample of 4000 abalones is representative for the population as a whole,
+then you can say that an average abalone has about ten rings.</p>
+<pre><code class="language-clojure">(transduce (map :rings) kixi/mean abalone/data)
+;; =&gt; 9.933684462532918
+</code></pre>
+<p>If you watched episode 42, “Inside Transducers”, then you know there’s no magic
+here . <code>kixi/mean</code> is simply a reducing function, still it’s worth asking why
+the API looks like this. Why not provide a <code>mean</code> function which simply takes a
+collection?</p>
+<p>The reason is that <code>kixi.stats</code> is built for “awkward sized data”, data that’s
+small enough to process on a single machine, but too large to conveniently fit
+in memory. The streaming nature of transducers makes this easy, and you get the
+composability for free.</p>
+<p>Let’s have a quick look under the hood to see how this works. <code>mean</code> in this
+case is an alias for the <code>arithmetic-mean</code>, which is the actual reducing
+function.</p>
+<p>Remember that a reducing function has three arities: one to produce an initial
+value, one to process each “step”, and finally a “completing” arity that yields
+the final result. This reducing function uses a two-element vector to keep track
+of the total sum, and the count. As a final step it divides one by the other to
+yield the mean.</p>
+<pre><code class="language-clojure">(def arithmetic-mean
+  "Calculates the arithmetic mean of numeric inputs."
+  (fn
+    ([] [0.0 0.0])
+    ([[^double s ^double c :as acc] e]
+     (if (nil? e)
+       acc
+       (let [e (double e)]
+         [(+ s e) (inc c)])))
+    ([[s c]]
+     (when-not (zero? c)
+       (/ s c)))))
+</code></pre>
+<p>You can try that out by calling <code>kixi/mean</code> directly without any arguments, what
+you get is the initial accumulator.</p>
+<p>You can thread this vector through calls to the two-argument step function to
+see the accumulator build up the total and the count.</p>
+<p>Finally this gets passed to the one-argument completing step to yield the final
+result.</p>
+<pre><code class="language-clojure">(kixi/mean)
+;; =&gt; [0.0 0.0]
+
+(-&gt; (kixi/mean)
+    (kixi/mean 5)
+    (kixi/mean 7)
+    (kixi/mean 12))
+;; =&gt; [24.0 3.0]
+
+(kixi/mean [24 3])
+;; =&gt; 8
+</code></pre>
+<p>If you replace the <code>completing</code> step with the <code>identity</code> function then you can
+see that it computed the total for all 4177 abalones. This pattern of tracking
+multiple parameters and only computing the final result all the way at the end
+is used throughout <code>kixi.stats</code>. In fact some functions share the same
+underlying reducing function, only with a different completing step.</p>
+<pre><code class="language-clojure">(transduce (map :rings) (completing kixi/mean identity) abalone/data)
+;; =&gt; [41493.0 4177.0]
+</code></pre>
+<p>The arithmetic mean or “average” is broadly known and understood, but it can
+easily be distorted by outliers. Instead you can look at the median,
+which doesn’t have this problem.</p>
+<p>The median is the value that splits the population in half, meaning that 50% of
+all abalones will have 9 rings or fewer, whereas 50% have 10 or more.</p>
+<p>There’s something strange about this result though, the <code>:rings</code> values are all
+integers, so the median should be an integer too, but instead we got this
+decimal number. On top of that you might notice that when you run this code you
+get a different result. Even when I re-run this here I’ll get slightly different
+results each time.</p>
+<p>To understand why that is first think about how you would normally compute the
+median. You would take all elements in your collection, sort them, and then take
+the middle one. This means keeping all data in memory, which is exactly what
+we’re trying to avoid.</p>
+<p>Instead kixi.stats uses a special data structure under the hood called t-digest,
+which provides approximate answers about the shape of your data without having
+to keep everything in memory, so you trade off some accuracy for memory use.</p>
+<pre><code class="language-clojure">(transduce (map :rings) kixi/median abalone/data)
+;; =&gt; 9.125
+</code></pre>
+<p>For a better overview you can look at what statisticians call the “five number
+summary”: these are the minimum, first quartile, median, third quartile, and
+maximum.</p>
+<p><code>:min</code> and <code>:max</code> are the smallest and largest values in the data, the median is
+the value that lies smack in the middle. Right in the middle of the minimum and
+the median is the first quartile, it splits the lowest half of the data again in
+two, so that one quarter of all values are smaller than <code>:q1</code>, and three
+quarters are greater than <code>:q1</code>. Similarly <code>:q3</code> is the midway point between
+median and maximum. You could say it’s the median of the top half of the data.</p>
+<p>Kixi.stats also provides a sixth number: the IQR or “interquartile range”. This
+is simply the difference between Q1 and Q3. It follows by definition that half
+of all data falls in this range. We’re starting to learn some things about our
+data now. While abalones can have as few as 1 rings, or as many as 29, at least
+half of them have somewhere between 8 and 11, a fairly narrow range.</p>
+<pre><code class="language-clojure">(transduce (map :rings) kixi/summary abalone/data)
+;; =&gt; {:min 1.0, :q1 8.0, :median 9.282608695652174, :q3 11.0, :max 29.0, :iqr 3.0}
+</code></pre>
+<p>What you could do when you first get a data set like this is to look at the
+summary for each of the variables. Concatenate all the maps so you just get a
+big sequence of key-value pairs, then use xform’s <code>by-key</code> to get the summary
+for each variable. You want to split the data based on the map keys, and then
+get the value from the key-value pairs, and reduce these values to get the
+summary.</p>
+<p>Notice how <code>x/reduce</code> turns the reducing function <code>kixi/summary</code> into a
+transducer, which gives you a lot of possibilities.</p>
+<p>So now you have this big pile of numbers. You could take a moment to go through
+these to see if anything looks strange, but you could also visualize this
+information and see if anything jumps out.</p>
+<pre><code class="language-clojure">(into {}
+      (comp cat (x/by-key key val (x/reduce kixi/summary)))
+      abalone/data)
+;; =&gt;
+;; {:rings          {:min 1.0, :q1 8.0, :median 9.266666666666667, :q3 11.0, :max 29.0, :iqr 3.0},
+;;  :sex            {:min nil, :q1 nil, :median nil, :q3 nil, :max nil, :iqr nil},
+;;  :shell-weight   {:min 0.3,:q1 26.01370731707317,:median 46.70705294705295,:q3 65.77664576802508,:max 201.0,:iqr 39.76293845095191},
+;;  :diameter       {:min 11.0, :q1 70.0, :median 85.0, :q3 96.0, :max 130.0, :iqr 26.0},
+;;  :whole-weight   {:min 0.4,:q1 88.39417977855477,:median 159.9038757763975,:q3 230.66032011466794,:max 565.1,:iqr 142.26614033611315},
+;;  :viscera-weight {:min 0.1,:q1 18.644969969969964,:median 34.12173913043479,:q3 50.57916666666666,:max 152.0,:iqr 31.934196696696695},
+;;  :length         {:min 15.0, :q1 90.0, :median 109.0, :q3 123.0, :max 163.0, :iqr 33.0},
+;;  :shucked-weight {:min 0.2,:q1 37.21798245614035,:median 67.18149867374008,:q3 100.43694513371933,:max 297.6,:iqr 63.218962677578986},
+;;  :height         {:min 0.0, :q1 23.0, :median 28.0, :q3 33.0, :max 226.0, :iqr 10.0}}
+</code></pre>
+<p>These numbers, useful as they are, don’t really provide a sense of shape or
+scale. Just like a picture is worth a thousand words, a graph is worth a
+thousand numbers.</p>
+<p>In the git repository you’ll find a <code>graphs</code> namespace with various plotting
+functions, based on the <code>thi.ng/geom</code> library. All graphs you’ll see in this
+episode are created with these functions. There’s quite a bit there already, in the <code>example-graphs</code> namespace you can see it in action.</p>
+<p>I decided to use <code>geom</code> for this episode because it’s a really nice and powerful
+API, and because contrary to most alternatives it’s a pure Clojure library. It
+doesn’t wrap some Java thing, which also means it’s equally usable from Clojure
+and ClojureScript.</p>
+<p>But I found that for quick data exploration the <code>thi.ng/geom</code> API is too
+low-level, I needed something that I could just throw some data at and see a
+result, and so I started writing my own graphing functions on top of
+<code>thi.ng/geom</code>. This turned out to be quite a rabbit hole, and that’s one of the
+reasons this episode took a bit longer than usual.</p>
+<p>The result you can see in this <code>graphs</code> namespace. This might evolve into a
+proper library at some point, for now it’s simply included here so you can
+follow along with the episode.</p>
+<p>You use it in three steps: you start with a map containing the data and various
+attributes and options, you run this through a graph function like <code>histogram</code>,
+<code>box-plot</code>, <code>scatter-plot</code>, or <code>barcode-plot</code>, and then render and possibly open
+the result.</p>
+<p><code>g/open</code> will use whatever program your operating system thinks is most
+appropriate for displaying SVGs.</p>
+<pre><code class="language-clojure">(g/open (g/histogram {:data abalone/data :x :rings}))
+</code></pre>
+<p>To use a specific program like your browser use <code>open-with</code>. Open and
+<code>open-with</code> both render to a temporary file. You can use <code>render-to-file</code> to
+save out the result. If you have an image viewer that automatically refreshes
+when the file updates, then this can be a great way to work from the REPL and
+get quick feedback. You could even use Emacs for that, although I’ve had Emacs
+crash a few times when viewing SVGs, so your mileage may vary.</p>
+<pre><code class="language-clojure">(g/open-with
+ (g/histogram
+  {:data abalone/data :x :rings})
+ "firefox")
+</code></pre>
+<pre><code class="language-clojure">(g/render-to-file
+ (g/histogram
+  {:data abalone/data :x :rings})
+ "graph.svg")
+</code></pre>
+<p>So what are we looking at? A histogram splits the domain, the x-axis, in equally
+sized parts called “bins”, and counts how many data points fall within each bin.
+So on the x-axis you have the amount of rings, whereas the y-axis are counts:
+how many abalones have about this many rings?</p>
+<p>The amount of rings is discrete, it can be 1 or 5 or 7, but not 2.95 or 6.3, so
+it would make sense to have one “bin” for each number of rings in the dataset.</p>
+<p>The minimum and maximum amount of rings are 1 and 29, so that means 29 distinct
+values, so 29 would make a good bin number. Mind you, not 28! If you’re familiar
+with the fence post analogy, then here we’re counting the fence posts, not the
+fences in between them.</p>
+<pre><code class="language-clojure">(transduce (map :rings) (redux/juxt kixi/min kixi/max) abalone/data)
+;;=&gt; [1.0 29.0]
+</code></pre>
+<p>So let’s draw this histogram again but with 29 bins, now you can see clearly how
+prominent 9 and 10 ring abalones are, whereas for lower or higher number, the
+counts very quickly taper off.</p>
+<p>Now a first question to ask is what kind of a data distribution this is. You do
+this partly by looking at the shape of this graph, and partly by understanding
+the underlying process that generated this data. You recognize a kind of bell
+shape in this graph, which could indicate a normal distribution, but things
+aren’t spread out symetrically around the median, instead there’s a much longer
+tail on the high end.</p>
+<pre><code class="language-clojure">(g/open (g/histogram {:data abalone/data
+                      :x :rings
+                      :bin-count 29}))
+</code></pre>
+<p>That long tail on the high end should be a hint though that maybe this is a
+log-normal distribution. This means that when you plot the logarithm of the
+amount of rings, the result should be roughly normal.</p>
+<p>Log-normal distributions are quite common in nature, they occur when multiple
+factors compound and multiply over time.</p>
+<p>There’s an <code>log</code> function in the <code>kixi.math</code> namespace to calculate the
+“natural” logarithm. Use that to transform the value of <code>:rings</code> before building
+up the histogram.</p>
+<p>Now that long tail is gone, but there seems to be holes in this curve. Remember
+that the ring count is discrete, it’s not continuous, only a limited number of
+distinct values occur over and over. It’s possible for some bins to fall “in
+between” two of these values, so they end up empty.</p>
+<pre><code class="language-clojure">(g/open (g/histogram {:data abalone/data
+                      :x (comp m/log :rings)
+                      :bin-count 29}))
+</code></pre>
+<p>A trick you can use is add in a little bit of randomness, a bit of noise. Move
+each point a tiny bit to the left or the right, so that instead of being
+concentrated around a small number of discrete values, it looks more like a
+continuous variable. This is called jitter.</p>
+<p>Now it starts to look more like that Gaussian bell-shaped curve you’d expect
+from a normal distribution. This is an important insight, it means that we might
+have more success predicting the logarithm of the rings, then the amount of
+rings directly.</p>
+<pre><code class="language-clojure">(g/open (g/histogram {:data abalone/data
+                      :x (comp m/log (g/jitter 0.5) :rings)
+                      :bin-count 29}))
+</code></pre>
+<p>So far we’ve focused on the <code>:rings</code>, which is what statisticians call the
+“dependent” or “outcome” variable, this is the thing we’re trying to predict. In
+the next episode we’ll have a closer look at the “independent” input variables.</p>
+<p>How are their values distributed? Do we need to apply some cleanup or data
+transformation? Which of them is most suitable for performing the linear
+regression we are after, and how good is the final model really able to predict
+the amount of rings?</p>
+<p>Thanks for watching!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep43-data-science-kixi-stats">browse source code</a></p>
+<h2 id="links">Links</h2>
+<p>Books</p>
+<ul>
+<li><a shape="rect" href="https://www.packtpub.com/big-data-and-business-intelligence/clojure-data-science">Clojure for Data Science by Henry Garner</a></li></ul>
+<p>API Docs:</p>
+<ul>
+<li><a shape="rect" href="https://cljdoc.xyz/d/kixi/stats/0.4.3/doc/readme">kixi.stats</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/redux/redux/0.1.4/doc/readme">redux</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/net.cgrand/xforms/0.18.1">xforms</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/thi.ng/geom/1.0.0-RC3">thi.ng/geom</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/thi.ng/geom/1.0.0-RC3/api/thi.ng.geom.viz.core">thi.ng/geom-viz</a></li></ul>
+<p>The data set used in this episode:</p>
+<ul>
+<li><a shape="rect" href="https://archive.ics.uci.edu/ml/datasets/abalone">Abalone Data Set</a> (<a shape="rect" href="https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data">csv file</a>)</li></ul>
+<p>You don’t need a lot of statistical background to follow along, but you should have a sense of what a probablility distribution is, and what a normal distribution looks like. Later on in the episode you’ll encounter the log-normal distribution.</p>
+<ul>
+<li><a shape="rect" href="http://www.statisticshowto.com/probability-distribution/">Probability Distribution</a></li>
+<li><a shape="rect" href="http://www.statisticshowto.com/probability-and-statistics/normal-distributions/">Normal Distribution</a></li>
+<li><a shape="rect" href="http://www.statisticshowto.com/lognormal-distribution/">Lognormal Distribution</a></li></ul>
+<p>More interesting reading I came across while researching this episode:</p>
+<ul>
+<li><a shape="rect" href="https://www.darkhorseanalytics.com/blog/visualizing-distributions-3">Visualizing Distributions</a></li>
+<li><a shape="rect" href="https://data.library.virginia.edu/is-r-squared-useless/">Is R-squared useless</a></li>
+<li><a shape="rect" href="http://www.stat.cmu.edu/~cshalizi/mreg/15/">Cosma Shalizi: Modern Regression - Lecture notes</a></li>
+<li><a shape="rect" href="https://ml-cheatsheet.readthedocs.io/en/latest/">Machine Learning Cheatsheet</a></li>
+<li>In particular <a shape="rect" href="https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html">ML Cheatsheet: Linear Regression</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

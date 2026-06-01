@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/list-comprehension-clojure-for" />
+<meta name="twitter:title" content="List Comprehension with clojure.core/for" />
+<meta name="twitter:description" content="A small macro with a lot of power! We start with a quick recap of Clojure's looping constructs, and then go over the various features and use cases of `for`, backed by examples..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/798657104-a4ea5191af79d6db3c5d9f39263f65fc4733c950bd0594ec7976b648ea76020a-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="List Comprehension with clojure.core/for" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/list-comprehension-clojure-for" />
+<meta name="video:duration" content="1032" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/798657104-a4ea5191af79d6db3c5d9f39263f65fc4733c950bd0594ec7976b648ea76020a-d_1280x720?r=pad" />
+<meta name="og:description" content="A small macro with a lot of power! We start with a quick recap of Clojure's looping constructs, and then go over the various features and use cases of `for`, backed by examples..." />
+<meta name="video:release_date" content="2019-07-15T08:28:40.161Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">List Comprehension with clojure.core/for</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/348123308?h=6381aa68d7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="48. List Comprehension with clojure.core/for"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>A small macro with a lot of power! We start with a quick recap of Clojure’s looping constructs, and then go over the various features and use cases of <code>for</code>, backed by examples taken directly from popular open source projects.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>The <code>clojure.core</code> namespace is like a great treasure trove. Even experienced
+Clojure programmers will still find unexplored gems in there, and even familiar
+functions and constructs may have more to offer than first surmised.</p>
+<p>Take the humble <code>for</code> macro, you don’t <em>have</em> to be familiar with <code>for</code>. I’m
+sure many developers are perfectly content shipping impressive products without
+reaching for it once. Others may use it many times but superficially, never
+realizing the full depth of its hidden powers. So this episode is for pros and
+beginners alike. Pay attention, you might learn more than you bargained for.</p>
+<p>But first let’s see where <code>for</code> fits into the bigger picture of Clojure mapping
+constructs.</p>
+<table><thead><tr><th colspan="1" rowspan="1"> </th><th colspan="1" rowspan="1">lazy-seq</th><th colspan="1" rowspan="1">nil (side effects)</th></tr></thead><tbody><tr><td colspan="1" rowspan="1">function</td><td colspan="1" rowspan="1">map</td><td colspan="1" rowspan="1">run!</td></tr><tr><td colspan="1" rowspan="1">macro</td><td colspan="1" rowspan="1">for</td><td colspan="1" rowspan="1">doseq</td></tr></tbody></table>
+<p>To process a collection sequentially, one element at a time, Clojure offers four
+options: <code>map</code>, <code>run!</code>, <code>for</code>, and <code>doseq</code>. That doesn’t mean you <em>need</em> all
+four. You can pick one from each column, and happily pretend the others don’t
+exist.</p>
+<p>So you could learn <code>map</code> and <code>run!</code>, and forget that <code>for</code> and <code>doseq</code> ever
+existed, or vice versa. My impression is that in general people prefer to stick
+to <code>map</code> and <code>doseq</code>, and ignore <code>for</code> and <code>run!</code>. Don’t ask me why. Maybe the
+syntax provided by the <code>doseq</code> macro is more reminiscent of imperative looping
+constructs in other languages.</p>
+<p>But I’m getting ahead of myself, let’s quickly run through all four to see what
+they do.</p>
+<p>Map takes a function and a sequence, and returns a lazy sequence, applying the
+given function over each element of the input sequence. So if you increment the
+numbers from 0 to 4, you get 1 to 5. Easy enough.</p>
+<pre><code class="language-clojure">(map inc (range 5))
+;; =&gt; (1 2 3 4 5)
+</code></pre>
+<p>If you replace <code>map</code> with <code>run!</code> then the result becomes <code>nil</code>. That doesn’t
+seem very useful.</p>
+<pre><code class="language-clojure">(run! inc (range 5))
+;; =&gt; nil
+</code></pre>
+<p>However when you replace <code>inc</code> with a side-effectful function like <code>println</code>
+then you do see something happening. <code>run!</code> will still call the function with
+each successive element, but then it throws away the result.</p>
+<pre><code class="language-clojure">(run! println (range 5))
+;; 0
+;; 1
+;; 2
+;; 3
+;; 4
+;; =&gt; nil
+</code></pre>
+<p>Could you use <code>map</code> and throw away the result yourself? Not really. <code>map</code> is
+lazy, meaning it only kicks into gear when the result is used (or as they say in
+Clojure-land, when the lazy sequence is realized).</p>
+<pre><code class="language-clojure">(do
+  (map println (range 5))
+  nil)
+;; &lt;nothing gets printed&gt;
+;; =&gt; nil
+</code></pre>
+<p><code>for</code> is like <code>map</code>, returning a lazy sequence. It also has several extra tricks
+up its sleeve, which we’ll get to in a bit.</p>
+<p>The big difference is that <code>for</code> is a macro which introduces some new syntax.
+Now instead of passing a function you give it a vector containing a variable
+name and a collection, followed by a bit of code which then uses that variable.</p>
+<pre><code class="language-clojure">(for [x (range 5)]
+  (inc x))
+;; =&gt; (1 2 3 4 5)
+</code></pre>
+<p>Now what <code>for</code> is to <code>map</code>, <code>doseq</code> is to <code>run!</code>.</p>
+<p>In other words, <code>doseq</code> is a syntactic construct which does the same thing as
+<code>run!</code> (although again with some extra functionality built-in, as you’ll see).</p>
+<p>This looks a lot like the <code>for</code> version, but like <code>run!</code> this one is eager
+rather than lazy, and returns <code>nil</code> rather than a sequence.</p>
+<pre><code class="language-clojure">(doseq [x (range 5)]
+  (println x))
+;; 0
+;; 1
+;; 2
+;; 3
+;; 4
+;; =&gt; nil
+</code></pre>
+<p>For completeness I should mention <code>mapv</code>, a variant of <code>map</code> which returns a
+vector, rather than a sequence. There’s no such thing as a “lazy vector”, so
+<code>mapv</code> always returns a fully realized collection. In other words: while <code>map</code>
+is lazy, <code>mapv</code> is eager.</p>
+<p>This means that you <em>could</em> use <code>mapv</code> for side effects, similar to <code>run!</code> or
+<code>doseq</code>, but it’s certainly not recommended, as it would be quite surprising to
+someone reading your code, including your later self.</p>
+<pre><code class="language-clojure">mapv ;; function | eager | returns vector
+
+(mapv inc (range 5))
+</code></pre>
+<p>Now that you know where <code>for</code> fits into the language let’s zoom in and see what
+tricks it has in store. For this I’ve combed through dozens of open source
+libraries. Each time I’ll first show a basic example to illustrate a certain
+feature or use case, and then follow it up with</p>
+<p>The first thing we’ll look at is destructuring. Hopefully you’ve come across
+destructuring before, as this is not an episode about destructuring, but I’ll
+give you a few examples so you know what I’m talking about. The official Clojure
+guide on destructuring is a good reference if you want a more in-depth
+refresher. You can find the link in your show notes.</p>
+<p>Say I have this function which splits a URL into its scheme, domain name, and
+path.</p>
+<pre><code class="language-clojure">(defn url-parts [url]
+  (next (re-matches #"(\w+)://([^/]+)(.*)" url)))
+
+(url-parts "https://lambdaisland.com/episodes")
+;; =&gt; ("https" "lambdaisland.com" "/episodes")
+</code></pre>
+<p>You could use that result like this, assigning the result to local variable
+<code>parts</code>, and pulling out each part with <code>nth</code>.</p>
+<pre><code class="language-clojure">(let [parts (url-parts "https://lambdaisland.com/episodes")]
+  {:scheme  (nth parts 0)
+   :domain (nth parts 1)
+   :path   (nth parts 2)})
+</code></pre>
+<p>But instead you can do something like this using a vector of variable names, so
+the individual parts get pulled out and assigned to variables in one go. This is
+known as destructuring. The vector with the symbols <code>scheme</code>, <code>domain</code>, and
+<code>path</code> is known as a binding form, it specifies how certain local variables will
+be bound.</p>
+<pre><code class="language-clojure">(let [[scheme domain path] (url-parts "https://lambdaisland.com/episodes")]
+  {:scheme  scheme
+   :domain domain
+   :path   path})
+</code></pre>
+<p>Or, say I wrap this into a function, so this is now a function which returns a
+map, and after calling the function I want to pull out specific values from that
+map.</p>
+<p>In this case I destructure using a map as the binding form, specifying the keys
+I want to pull out.</p>
+<pre><code class="language-clojure">(defn url-map [url]
+  (let [[scheme domain path] (url-parts url)]
+    {:scheme  scheme
+     :domain domain
+     :path   path}))
+
+(let [{:keys [scheme domain path]} (url-map "https://lambdaisland.com/episodes")]
+  (str scheme "://" domain "/robots.txt"))
+</code></pre>
+<p>So far for this brief recap of destructuring, I know for many of you this is
+your bread and butter. The point is that you can use destructuring pretty much
+anywhere where you assign a local variable, including in for blocks.</p>
+<pre><code class="language-clojure">(def urls ["http://gaiwan.co/"
+           "http://lambdaisland.com/"
+           "http://clojureverse.org/"])
+
+(for [{:keys [scheme domain]} (map url-map urls)]
+  (str scheme "://" domain "/favicon.ico"))
+</code></pre>
+<p>Here’s an example from Codox by James Reeves, a documentation tool that’s
+also used to build cljdoc.</p>
+<p>This functions takes a sequences of maps, each with information about a
+namespace. It first groups all namespaces by name, in case the same namespace is
+declared in more than one file, for instance one <code>clj</code> and one <code>cljs</code>, and then
+combines each group into a single map again.</p>
+<p>The result of <code>group-by</code> is a map. Under the hood this map gets turned into a
+sequence of “map entries”. These are two element tuples consisting of a key and
+a value, which you can generally treat as two element vectors, meaning you can
+destructure them with a vector.</p>
+<pre><code class="language-clojure">;; codox/src/codox/main.clj:31
+(defn- merge-namespaces [namespaces]
+  (for [[name namespaces] (group-by :name namespaces)]
+    (assoc (first namespaces) :publics (mapcat :publics namespaces))))
+</code></pre>
+<p>Here’s another example from Chestnut, where I’m using <code>for</code> together with <code>into</code>
+to update a map, converting the keys of the map from strings to keywords.</p>
+<pre><code class="language-clojure">;; chestnut/src/leiningen/new/chestnut.clj:193
+(defn load-props [file-name]
+  (with-open [^java.io.Reader reader (clojure.java.io/reader file-name)]
+    (let [props (java.util.Properties.)]
+      (.load props reader)
+      (into {} (for [[k v] props] [(keyword k) v])))))
+</code></pre>
+<p>It’s probably easier to follow along if I pull this into its own function and
+add a few newlines. Notice how using <code>for</code> with a map creates a sequence of
+pairs, which are then turned back into a map with <code>into</code>.</p>
+<pre><code class="language-clojure">(defn keywordize-map-keys [m]
+  (into {}
+        (for [[k v] m]
+          [(keyword k) v])))
+</code></pre>
+<p>You could also do this differently using point-free style. <code>into</code> optionally
+takes a transducer as its second argument, which you can create by only passing
+one argument to map.</p>
+<p>The function we’re mapping over is created using <code>juxt</code>, to pull out each map
+entry’s key and value seperately. Finally I compose <code>key</code> together with the
+<code>keyword</code> function, to convert the string keys to keywords.</p>
+<p>So now the <code>map</code> transducer will produce two element vectors, the first element
+being the map entry’s key, converted to a keyword, the second being the value,
+unchanged. <code>into</code> finally takes care of turning these pairs back into a map.</p>
+<p>I’m aware this style will look unfamiliar to many people, but it’s a perfectly
+idiomatic way to achieve the same effect, and as your Clojure journey progresses
+I recommend getting used to both reading and writing this style of code.</p>
+<pre><code class="language-clojure">(defn keywordize-map-keys2 [m]
+  (into {}
+        (map (juxt (comp keyword key) val))
+        m))
+</code></pre>
+<p>Any binding form that you can use in function arguments or on the left-hand side
+of a <code>let</code> assignment you can also use inside <code>for</code>, for example you can add
+type hints. For instance this example from the Crux database tells Clojure that
+we’re dealing with instance of <code>java.io.File</code>, which helps the Clojure compiler
+to emit better Java bytecode, eliminating runtime type reflection.</p>
+<pre><code class="language-clojure">;; crux/src/crux/io.clj:202
+(for [^File file files]
+  (let [in (DataInputStream. (io/input-stream file))
+        cleaner-action (fn []
+                         (.close in)
+                         (.delete file))
+        seq ((fn step []
+               (lazy-seq
+                (try
+                  (when-let [x (nippy/thaw-from-in! in)]
+                    (cons x (step)))
+                  (catch Exception e
+                    (cleaner-action)
+                    (if (or (instance? IOException e)
+                            (instance? IOException (.getCause e)))
+                      nil
+                      (throw e)))))))]
+    [seq cleaner-action]))
+</code></pre>
+<p>In the examples we’ve seen so far the binding vector passed to <code>for</code> always
+contained two elements, the first one a variable or destructuring form, and the
+second one a collection. But you can also pass in multiple collections, each
+with their own binding form.</p>
+<p>Now <code>for</code> will go over every possible combination, so if you take two
+collections with two elements each, then the result is a sequence with four
+results. This is in mathematical set theory is known as a “Cartesian Product”.</p>
+<pre><code class="language-clojure">(for [x (range 2)
+      y [:A :B]]
+  [x y])
+;; =&gt; ([0 :A] [0 :B] [1 :A] [1 :B])
+</code></pre>
+<p>You could add even more collections if you wanted to.</p>
+<pre><code class="language-clojure">(for [x (range 2)
+      y [:A :B]
+      z [:+ :-]]
+  [x y z])
+;; =&gt; ([0 :A :+]
+;;     [0 :A :-]
+;;     [0 :B :+]
+;;     [0 :B :-]
+;;     [1 :A :+]
+;;     [1 :A :-]
+;;     [1 :B :+]
+;;     [1 :B :-])
+</code></pre>
+<p>Looping over multiple collections can be useful for processing all cells of a
+2-dimensional matrix. Say you have a representation of a chess board, and you
+want to turn that into a list of positions of the pieces, then pass a <code>range</code>
+for each dimension and you’re set.</p>
+<p>This example turns this square board into a list of piece positions.</p>
+<pre><code class="language-clojure">(def board
+  [[:R :N :B :K :Q :B :N :R]
+   [:P :P :P :P :P :P :P :P]
+   [:_ :_ :_ :_ :_ :_ :_ :_]
+   [:_ :_ :_ :_ :_ :_ :_ :_]
+   [:_ :_ :_ :_ :_ :_ :_ :_]
+   [:_ :_ :_ :_ :_ :_ :_ :_]
+   [:p :p :p :p :p :p :p :p]
+   [:r :n :b :k :q :b :n :r]])
+
+(for [x (range 8)
+      y (range 8)]
+  [(str (get "ABCDEFGH" y) (inc x))
+   (get-in board [x y])])
+</code></pre>
+<p>Or here’s another fun, card-game inspired example. Based on suites and ranks I
+first contstruct a deck of 52 cards, and then shuffle it and hand a player a
+hand of seven cards.</p>
+<p>Note that here I’m using <code>for</code> as the first argument of a “thread-last” macro,
+this is not uncommon, if you want to apply sequence operations afterwards. But
+if you’re processing the result of <code>for</code> with <code>filter</code> or <code>map</code> then chances are
+there’s a better way, which we’ll get to.</p>
+<pre><code class="language-clojure">(-&gt;&gt; (for [suite ["♠" "♥" "♦" "♣"]
+           rank  (concat (range 2 11)
+                         ["A" "J" "Q" "K"])]
+       (str rank suite))
+     shuffle
+     (take 7))
+;; =&gt; ("3♠" "A♥" "Q♣" "J♠" "6♦" "7♣" "2♦")
+</code></pre>
+<p>From my own experience and looking at the examples I found I’d say that for most
+people these strictly combinatorial problems are perhaps not that common, but
+what is fairly common is processing nested collections, returning a flat result.</p>
+<p>For each collection you can refer back to binding forms established by previous
+collection. Here’s an example of what you can do with that:</p>
+<p>First I go over all namespaces known to Clojure, and for each namespace I look
+at every public var. For each var I take its metadata keys, and return them one
+by one. The result is a long sequence of keywords, which I then stick into a map
+to remove the duplicates.</p>
+<p>You can’t really call this a cartesian product anymore, instead each succesive
+binding is used to further drill down.</p>
+<pre><code class="language-clojure">(into #{}
+      (for [ns  (all-ns)
+            var (vals (ns-publics ns))
+            k   (keys (meta var))]
+        k))
+;;=&gt;
+#{:redef :no-doc :private :protocol :added :ns :name :special-form :file
+  :potemkin/body :static :inline-arities :skip-wiki
+  :nrepl.middleware/descriptor :column :author :const :dynamic :line :macro
+  :deprecated :declared :url :style/indent :tag :arglists :see-also :doc :forms
+  :inline}
+</code></pre>
+<p>Let’s go back to the chess board example. It’s only been a minute and I’ve
+already forgotten what this actually returns. Let’s add a <code>let</code> so this is a bit
+more readable.</p>
+<pre><code class="language-clojure">(for [x (range 8)
+      y (range 8)]
+  (let [pos   (str (get "ABCDEFGH" y) x)
+        piece (get-in board [x y])]
+    [pos piece]))
+</code></pre>
+<p>So far so good, but <code>for</code> already has <code>let</code>’s capabilities built in, I just need
+to move this into the <code>for</code> vector, and use a keyword for <code>:let</code>.</p>
+<pre><code class="language-clojure">(for [x (range 8)
+      y (range 8)
+      :let [pos   (str (get "ABCDEFGH" y) x)
+            piece (get-in board [x y])]]
+  [pos piece])
+</code></pre>
+<p>So this is interesting, so far on the left hand side we always had a variable or
+other binding form, but you can also use a few keywords there, namely <code>:let</code>,
+<code>:while</code>, and <code>:when</code>. With these in hand <code>for</code> turns into quite a powerful list
+comprehension construct.</p>
+<p>Say you are only interested in the position of the kings and queens, you could
+use <code>:when</code> to limit the results. This expression is checked on every iteration
+of the loop, and only if it evaluates to true is the body executed and the
+result added to the resulting sequence.</p>
+<pre><code class="language-clojure">(for [x    (range 8)
+      y    (range 8)
+      :let [pos   (str (get "ABCDEFGH" y) x)
+            piece (get-in board [x y])]
+      :when (#{:K :Q :k :q} piece)]
+  [pos piece])
+</code></pre>
+<p>So that’s <code>:let</code> and <code>:when</code>, the third keyword that <code>for</code> understands is
+<code>:while</code>. Just like with <code>:when</code> the predicate is checked on every iteration. As
+soon as it returns false, <code>for</code> stops and returns. This can be especially useful
+when dealing with infinite lazy sequences.</p>
+<p>Here I’ve rewritten this code to use an infinite range. It uses modulo to turn
+that into a row and column, and it continues as long as it finds pieces. In
+other words: it stops when it falls off the board.</p>
+<p>Then <code>:when</code> filters out the kings and queens, and finally I calculate the
+position in another <code>:let</code> block. You could do this in the first <code>:let</code> block,
+but then the position string would be created for every piece. By putting it at
+the end it’s only done for the kings and queens.</p>
+<pre><code class="language-clojure">(for [idx    (range)
+      :let   [x     (mod idx 8)
+              y     (quot idx 8)
+              piece (get-in board [x y])]
+      :while piece
+      :when  (#{:K :Q :k :q} piece)
+      :let   [pos (str (get "ABCDEFGH" y) x)]]
+  [pos piece])
+</code></pre>
+<p>It’s pretty neat that you can stack these different modifiers like this, for a
+language that is otherwise very regular and lean in syntax this is a rare
+exception, where you are given a sort of DSL to express linearly what otherwise
+would have been deeply nested forms. It’s also a tribute to the power of LISP,
+where a simple macro can deliver new and beautifully concise syntax.</p>
+<p>You can even add more collections to traverse after using some of the keywords.
+Take the following example: this finds all metadata keys used in Clojure’s
+built-in namespaces, which have a string as their associated value.</p>
+<p>It loops over all namespaces, gets the namespace name and checks if it starts
+with the string “clojure”. Then it loops over all the vars in each namespace,
+for each var gets the metadata, which is a map, so it destructures each
+map-entry to its key and value, and finally checks if the value is a string.</p>
+<p>Prett cool, right?</p>
+<pre><code class="language-clojure">(into #{}
+      (for [ns    (all-ns)
+            :let  [n (str (ns-name ns))]
+            :when (str/starts-with? n "clojure")
+            var   (vals (ns-publics ns))
+            [k v] (meta var)
+            :when (string? v)]
+        k))
+</code></pre>
+<p>Most of the time it doesn’t get as convoluted as this, but it’s good to know
+just how freely you can stack and combine these different options.</p>
+<p>Let’s look at another real-world example. Here’s a function from cljdoc, with a
+<code>for</code> expression which uses destructuring and a <code>:let</code>. Here you see a common
+use case for the <code>for</code> macro: Hiccup syntax.</p>
+<p>When writing HTML templates this version using <code>for</code> looks much nicer than
+trying to do the equivalent with <code>map</code>.</p>
+<p>Both the Hiccup library that you would use on the server side, as well as
+ClojureScript libraries like Reagent or Sablono all know how to deal with
+sequences inside hiccup, so you also don’t need to awkwardly flatten things into
+vectors with <code>into</code>.</p>
+<pre><code class="language-clojure">;; cljdoc/render/api.clj:104
+(defn namespace-list [{:keys [current]} namespaces]
+  (let [base-params (select-keys (first namespaces) [:group-id :artifact-id :version])
+        namespaces  (ns-tree/index-by :namespace namespaces)]
+    [:div.mb4
+     (layout/sidebar-title "Namespaces")
+     [:ul.list.pl2
+      (for [[ns level _ leaf?] (ns-tree/namespace-hierarchy (keys namespaces))
+            :let [style {:margin-left (str (* (dec level) 10) "px")}]]
+        [:li
+         [:a.link.hover-dark-blue.blue.dib.pa1
+          {:href (routes/url-for :artifact/namespace :path-params (assoc base-params :namespace ns))
+           :class (when (= ns current) "b")
+           :style style}
+          (-&gt;&gt; (ns-tree/split-ns ns)
+               (drop (dec level)))]])]]))
+</code></pre>
+<p>There is something to watch out for though, an issue you can quite easily run
+into specically when using Reagent and Re-frame, caused by <code>for</code>’s laziness.</p>
+<p>Here’s a basic example to illustrate the problem. This component takes a list of
+user ids, and renders a table of their names and email addresses, which it both
+gets through a re-frame subscription.</p>
+<p>These subscriptions are what Reagent calls “reactions”. Reagent will track when
+they are dereferenced, so that when a user’s email address changes, the right
+components are updated.</p>
+<p>The problem here is that by the time <code>user-table</code> finishes, the dereferencing
+hasn’t happened yet, because <code>for</code> is lazy. By the time the sequence returned by
+<code>for</code> is realized we are no longer inside <code>user-table</code>, so <code>reagent</code> won’t know
+this component relies on these name and email subscriptions.</p>
+<pre><code class="language-clojure">(defn user-table [ids]
+  [:table
+   [:thead
+    [:tr [:th "Name"] [:th "Email"]]]
+   [:tbody
+    (for [id ids]
+      [:tr
+       [:td @(re-frame/subscribe [:user/name id])]
+       [:td @(re-frame/subscribe [:user/email id])]])]])
+</code></pre>
+<p>There are several ways around this, you could use <code>doall</code>, effectively forcing
+the sequence to be realized before returning, or you can use <code>into</code>, generating
+Hiccup that doesn’t contain the lazy sequence.</p>
+<pre><code class="language-clojure">[:tbody
+ (doall
+  (for [id ids] 
+    [:tr
+     [:td @(re-frame/subscribe [:user/name id])]
+     [:td @(re-frame/subscribe [:user/email id])]]))]
+</code></pre>
+<pre><code class="language-clojure">(into [:tbody]
+      (for [id ids]
+        [:tr
+         [:td @(re-frame/subscribe [:user/name id])]
+         [:td @(re-frame/subscribe [:user/email id])]]))
+</code></pre>
+<p>Finally what I’ll sometimes do is use backticks and “~@” or “unquote-splice”. I
+find syntax quotes can be quite nice for working with Hiccup, assuming everyone
+on your team is familiar with them.</p>
+<pre><code class="language-clojure">`[:tbody
+  ~@(for [id ids]
+      [:tr
+       [:td @(re-frame/subscribe [:user/name id])]
+       [:td @(re-frame/subscribe [:user/email id])]])]
+</code></pre>
+<p>Once again I thought this would be a very short episode, but it turns out that
+no matter which part of Clojure you zoom into, there’s always a lot to talk
+about. I hope this episode did deliver something useful to pros and beginners
+alike. Let us know! We’re always happy to hear from our learners!</p>
+<p>Finally remember that all of the syntax we talked about is also available with
+<code>doseq</code>, including the <code>:let</code>, <code>:when</code>, and <code>:while</code> keywords. Talking about
+getting two for the price of one!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/48-list-comprehension-clojure-for/blob/master/src/lambdaisland/48_list_comprehension_clojure_for.clj">browse source code</a></p>
+<ul>
+<li><a shape="rect" href="https://clojure.org/guides/destructuring">Clojure Guide on Destructuring</a></li>
+<li><a shape="rect" href="https://clojuredocs.org/clojure.core/for"><code>for</code> on ClojureDocs.org</a></li></ul>
+<h3 id="cheat-sheet">Cheat sheet</h3>
+<pre><code class="language-clojure">(for [&lt;binding-form&gt; &lt;coll-expr&gt; ...
+      :let [&lt;binding&gt; &lt;expression&gt;
+            ...]
+      :when &lt;predicate&gt;
+      :while &lt;predicate&gt;]
+  &lt;body&gt;)
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

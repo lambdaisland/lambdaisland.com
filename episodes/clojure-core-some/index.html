@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://lambdaisland.com/img/favicons/apple-touch-icon.png?v=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://lambdaisland.com/img/favicons/favicon-32x32.png?v=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="https://lambdaisland.com/img/favicons/android-chrome-192x192.png?v=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://lambdaisland.com/img/favicons/favicon-16x16.png?v=2" />
+<link rel="manifest" href="https://lambdaisland.com/img/favicons/site.webmanifest?v=2" />
+<link rel="mask-icon" href="https://lambdaisland.com/img/favicons/safari-pinned-tab.svg?v=2" color="#5bbad5" />
+<link rel="shortcut icon" href="https://lambdaisland.com/img/favicons/favicon.ico?v=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojure-core-some" />
+<meta name="twitter:title" content="clojure.core/some" />
+<meta name="twitter:description" content="Clojure's `some` function is surprisingly versatile. Find out what it does, and what you can do with it." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/570879650-447f2151cd6d97f283cbe005f55947dd888e14c34535f4a6cf73a39234dce1b5-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="clojure.core/some" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojure-core-some" />
+<meta name="video:duration" content="454" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/570879650-447f2151cd6d97f283cbe005f55947dd888e14c34535f4a6cf73a39234dce1b5-d_1280x720?r=pad" />
+<meta name="og:description" content="Clojure's `some` function is surprisingly versatile. Find out what it does, and what you can do with it." />
+<meta name="video:release_date" content="2016-05-12T15:11:34.459Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="https://lambdaisland.com/css/project_discovery.css?07E4626E8886EF50FD28CA67FE569812" as="style" />
+<link rel="stylesheet" href="https://lambdaisland.com/css/project_discovery.css?07E4626E8886EF50FD28CA67FE569812" />
+<link rel="stylesheet" href="https://lambdaisland.com/css/compiled/ornament.css?44CB9048E2A68B0597752D6AB1AAF1EE" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="https://lambdaisland.com/" class="project-discovery_parts__Logo"><img src="https://lambdaisland.com/img/new-logo-day.svg?1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="https://lambdaisland.com/episodes">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="https://lambdaisland.com/collections">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../../guides/clojure-repls.mobi.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../../coupon/CLOJUTRE2016.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="https://lambdaisland.com/episodes" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">clojure.core/some</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/166732541?h=c2588080f1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="clojure.core/some"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Clojure’s <code>some</code> function is surprisingly versatile. Find out what it does, and what you can do with it.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>When I first came to Clojure I remember being utterly confused by the <code>some</code>
+function. The name just didn’t make sense, and I found it’s behavior
+non-obvious.</p>
+<p>I think the reason is that it’s one of those general utility functions that can
+be used in sometimes surprising way.</p>
+<p>Let’s start with the basics</p>
+<pre><code class="language-clojure">(pos? 3)
+;;=&gt; true
+
+(pos? -2)
+;;=&gt; false
+
+(some pos? [-5 42 43])
+;;=&gt; true
+
+(some pos? [-5 -6 -7])
+;;=&gt; nil
+</code></pre>
+<p>The <code>pos?</code> function checks if a number is positive, so greater than zero.</p>
+<p>The <code>some</code> function takes as its arguments a function and a collection. In this
+case we pass it the <code>pos?</code> function, and a vector of numbers. If <em>some</em> of the
+numbers in the vector are positive, in other words, one or more of them, than
+<code>some</code> will return true.</p>
+<p>Conversely, if none of the numbers are greater than zero, then <code>some</code> returns a
+falsy value, nil.</p>
+<pre><code class="language-clojure">(or
+ (pos? -5)
+ (pos? 42)
+ (pos? 43))
+;;=&gt; true
+
+(or
+ (pos? -5)
+ (pos? -6)
+ (pos? -7))
+;;=&gt; false
+</code></pre>
+<p>So that explains the name, the function must be true for <em>some</em> of the items.
+It’s like applying the function to each item, and then combining the results
+with a logical or. Notice how we get the exact same results for the same
+numbers. It seems the version with <code>or</code> is equivalent to the version with <code>some</code>.</p>
+<p><code>pos?</code> is a function that always returns true or false, but what if we use a
+function that returns some other value, like a string, or a map, or nil?</p>
+<pre><code class="language-clojure">(or
+  nil
+  false
+  "greetings!")
+;;=&gt; "greeting!"
+
+(some (fn [x] x) [nil
+                  false
+                  "greetings!"])
+;;=&gt; "greetings!"
+</code></pre>
+<p><code>or</code> will treat <code>nil</code> and <code>false</code> as logically false, also called falsy, and any
+other value as logically true, or truthy. The return value of <code>or</code> is the first
+truthy value it encounters. The <code>some</code> function is similar, it passes each value
+in the collection through the supplied function, and the first truthy value it
+gets back, it returns.</p>
+<pre><code class="language-clojure">(def shelf
+  [{:cake "Pineapple Cake"}
+   {:tea "Jinxuan Wulong Tea"}
+   {:tofu "Stinky Tofu"}])
+
+(:tea {:cake "Jinxuan Wulong Tea"})
+;;=&gt; nil
+
+(:tea {:tea "Jinxuan Wulong Tea"})
+;;=&gt; "Jinxuan Wulong Tea"
+
+(some :tea shelf)
+;;=&gt; "Jinxuan Wulong Tea"
+</code></pre>
+<p>Suppose I have a friend visiting from afar. Isn’t that a joy? My friend is dying
+for a cup of tea. Luckily I have my shelves neatly arranged, so I look for the
+box labeled “tea”, and get its contents.</p>
+<p>Remember that Clojure keywords can be invoked just like functions. Pass them a
+map and they will look up the value in the map that corresponds with the
+keyword, or <code>nil</code> if the keyword is not present in the map.</p>
+<p><code>some</code> will first check the cake box, but won’t find any tea there. The second
+box does contain tea, which <code>some</code> returns, so now I can brew my friend a lovely
+cuppa.</p>
+<p>Now let’s look at three specific use cases for using <code>some</code> :</p>
+<ul>
+<li>checking if a collection contains a certain value</li>
+<li>as an alternative for <code>apply or</code></li>
+<li>as a way of “stacking” request handlers</li></ul>
+<h2 id="checking-if-a-collection-contains-a-certain-value">Checking if a collection contains a certain value</h2>
+<p>The first use case is to check if a collection contains a certain value.</p>
+<pre><code class="language-clojure">(#{:a :b} :a)
+;;=&gt; :a
+(#{:a :b} :c)
+;;=&gt; nil
+</code></pre>
+<p>While learning Clojure you may have noticed that there is no generic function
+for checking if a collection contains a certain value. Sets do support this
+operation, you simply use the set as a function, and it will return the item if
+it is in the set, or nil otherwise.</p>
+<pre><code class="language-clojure">(does-vector-include? :a [:a :b]) ;;=&gt; :(
+([:a :b] :a) ;;=&gt; :(
+</code></pre>
+<p>Other collection types don’t support this operation, because it can’t be done
+efficiently, it would require a linear search through all items of the
+collection.</p>
+<pre><code class="language-clojure">(some #{:a} [:b :c :d])
+(some #{:a} [:b :a :d])
+</code></pre>
+<p>Sometimes that is exactly what you want though, in this case the Clojure way is
+to combine <code>some</code> with a set literal as a function.</p>
+<p><code>some</code> will go over the vector, calling the set with each value in turn. Most of
+the time this will return <code>nil</code>, but when checking the <code>:a</code> keyword, the set
+will return the keyword itself, which is truthy, so the search stops and <code>some</code>
+returns <code>:a</code>.</p>
+<p>This gives us a concise and idiomatic way to check if an element is present.</p>
+<h2 id="alternative-for-apply-or">alternative for “apply or”</h2>
+<p>The second interesting use case for some is as an alternative for <code>apply or</code></p>
+<pre><code class="language-clojure">(def v [nil false 5 nil 7])
+</code></pre>
+<p>Suppose you have a sequence of values, like this vector, and you want to find
+the first value that is truthy. There are several ways you could go about this.</p>
+<pre><code class="language-clojure">(filter identity v)
+;;=&gt; (5 7)
+
+(first (filter identity v))
+;;=&gt; 5
+
+(identity 5) ;;=&gt; 5
+(identity "string") ;;=&gt; "string"
+</code></pre>
+<p>You could filter out the falsy values, and then take the first value of the result.</p>
+<p>Notice the use of the <code>identity</code> function here. It’s a function that always
+returns its argument. Not terribly useful by itself, but often useful when
+combined with “higher order functions”, functions which take another function as
+one of their arguments.</p>
+<p>In this case we’re not interested in transforming the values in the vector, so
+they should show up in the output exactly as in the input.</p>
+<p>Conceptually you may have noticed that this is again the same as doing a logical
+or, but we have the arguments in a vector, so we need to somehow “expand” them
+to individual arguments.</p>
+<pre><code class="language-clojure">(apply or v)
+</code></pre>
+<p>The Clojure way to “expand” or “splat” a variable number of arguments would be
+to use apply. Unfortunately for us, that doesn’t work. <code>or</code> is not a regular
+function, it’s a macro, and so we can’t pass it to apply.</p>
+<pre><code class="language-clojure">(some identity v)
+</code></pre>
+<p>Whenever you find yourself wanting to type “apply or”, type “some identity”
+instead. Since some works almost exactly like <code>or</code>, this does what “apply or”
+would do.</p>
+<h2 id="ring-route-stacking">Ring route stacking</h2>
+<p>Finally let’s see how <code>some</code> can be use to “stack” request handlers in a web application.</p>
+<pre><code class="language-clojure">(defn home-page-handler [req]
+  {:status 200
+   :body "Hello, home!"})
+
+(home-page-handler {:method :get, :uri "/"})
+</code></pre>
+<p>For this example imagine you have a web app that can respond to various HTTP
+requests. Web applications in Clojure typically follow the Ring specification.
+This simply means they are functions which receive a Clojure map representing
+the request, and return a map representing the response.</p>
+<p>Right now we don’t do anything with the request yet, we always return the same
+response, a “200 OK” status containing the text “Hello, home”.</p>
+<pre><code>(defn home-page-handler [{:keys [uri method] :as req}]
+  (if (and (= method :get) (= uri "/"))
+    {:status 200
+     :body "Hello, home!"}))
+
+(home-page-handler {:method :get, :uri "/"})
+;;=&gt; {:status 200, :body "Hello, home!"}
+
+(home-page-handler {:method :get, :uri "/foo"})
+;;=&gt; nil
+</code></pre>
+<p>But really this response is only suitable for the home page, if people visit the
+about page, they need to see different content. Let’s fix this by checking the
+URI and request method. Clojure’s destructuring syntax makes it easy to pull
+these out of the request.</p>
+<pre><code class="language-clojure">(defn about-page-handler [{:keys [method uri] :as req}]
+  (if (and (= :get method) (= "/about" uri))
+    {:status 200
+     :body "All about us!"}))
+
+(about-page-handler {:method :get, :uri "/"})
+;;=&gt; nil
+
+(about-page-handler {:method :get, :uri "/about"})
+;;=&gt; {:status 200, :body "All about us!"}
+</code></pre>
+<p>The about page handler is identical, except that it responds to a different URI
+path, and returns different content.</p>
+<p>These handlers are now a bit more selective. When calling the home page handler
+with the correct URI for the home page it returns a response. Any other URI will
+cause it to return nil.</p>
+<pre><code class="language-clojure">(defn application-routes [request]
+  (or
+   (home-page-handler request)
+   (about-page-handler request)))
+
+(application-routes {:method :get, :uri "/"})
+;;=&gt; {:status 200, :body "Hello, home!"}
+(application-routes {:method :get, :uri "/about"})
+;;=&gt; {:status 200, :body "All about us!"}
+</code></pre>
+<p>Because of this selectiveness we can now easily combine them with a logical or.
+If a handler ignores the request then the next one will be called, until one
+responds.</p>
+<p>This pattern should look somewhat familiar by now, although it is slightly
+different from before.</p>
+<p>Instead of calling the same function several times, each time with a different
+argument, we now call a different function each time, always with the same
+argument.</p>
+<pre><code class="language-clojure">(defn application-routes [request]
+  (some #(% request)
+        [home-page-handler
+         about-page-handler]))
+</code></pre>
+<p>Luckily functions are just data, so we can iterate over them as well, and use a
+small inline function to apply them to the request.</p>
+<p>Now our handlers are listed in order, and it’s trivial to add new ones to the
+list.</p>
+<pre><code class="language-clojure">(defn application-routes [request]
+  ((compojure.core/routes
+     home-page-handler
+     about-page-handler) request))
+
+(defroutes application-routes
+  home-page-handler
+  about-page-handler)
+</code></pre>
+<p>The good thing is we don’t have to implement this ourselves, because the
+compojure library comes with a function that does exactly this. Let’s refactor
+this in steps. First we use the <code>routes</code> function, which takes our handlers, and
+returns a combined handler, which we then call with the request.</p>
+<p>This is still a bit wordy. Compojure comes with a macro called <code>defroutes</code>. It
+provides that extra bit of syntactic sugar to make this code nice and concise.</p>
+<pre><code class="language-clojure">(application-routes {:uri "/" :method :get})
+;;=&gt; {:status 200, :headers {"Content-Type" "text/plain"}, :body "Hello, home!"}
+(application-routes {:uri "/about" :method :get})
+;;=&gt; {:status 200, :headers {"Content-Type" "text/plain"}, :body "We are awesome, "}
+</code></pre>
+<p>And now our requests are dispatched to the right handler, just as they should.</p>
+<p>I hope you enjoyed this deep dive into a surprising little function. Till next time!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Clojuredocs.org has <a shape="rect" href="https://clojuredocs.org/clojure.core/some">several more examples about <code>some</code></a>, which is not to be confused with that other function, <a shape="rect" href="http://clojuredocs.org/clojure.core/some%3F"><code>some?</code></a>.</p>
+<p>This is what Compojure’s <code>routing</code> function looks like:</p>
+<pre><code class="language-clojure">(defn routing
+  "Apply a list of routes to a Ring request map."
+  [request &amp; handlers]
+  (some #(% request) handlers))
+</code></pre>
+<p>This is then used by <code>routes</code>, and in turn by <code>defroutes</code>.</p>
+<pre><code class="language-clojure">(defn routes
+  "Create a Ring handler by combining several handlers into one."
+  [&amp; handlers]
+  #(apply routing % handlers))
+ 
+(defmacro defroutes
+  "Define a Ring handler function from a sequence of routes. The name may
+  optionally be followed by a doc-string and metadata map."
+  [name &amp; routes]
+  (let [[name routes] (macro/name-with-attributes name routes)]
+   `(def ~name (routes ~@routes))))
+</code></pre>
+<p>You can peruse the full source of <code>compojure.core</code>   <a shape="rect" href="https://crossclj.info/ns/compojure/1.5.0/compojure.core.html#_routes">on CrossClj</a></p></div></aside></div></div>
+<script type="text/javascript" src="https://lambdaisland.com/js/compiled/cljs_base.js?3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="https://lambdaisland.com/js/compiled/public.js?80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="https://lambdaisland.com/highlightjs-10.3.2/highlight.pack.js?AD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/compojure" />
+<meta name="twitter:title" content="Compojure" />
+<meta name="twitter:description" content="Compojure is one of the more popular routing libraries for Ring. It's easy to pick up, and gives you a great foundation to further explore Clojure web development." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/607076042-0a92133eb75a93797d0f0e0124057654dbcad38a6a3048d1e50ae5dc78c93156-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Compojure" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/compojure" />
+<meta name="video:duration" content="911" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/607076042-0a92133eb75a93797d0f0e0124057654dbcad38a6a3048d1e50ae5dc78c93156-d_1280x720?r=pad" />
+<meta name="og:description" content="Compojure is one of the more popular routing libraries for Ring. It's easy to pick up, and gives you a great foundation to further explore Clojure web development." />
+<meta name="video:release_date" content="2016-12-09T14:16:10.544Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Compojure</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/194972711?h=27f7f9bae7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="21. Compojure"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Compojure is one of the more popular routing libraries for Ring. It’s easy to pick up, and gives you a great foundation to further explore Clojure web development.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Compojure is a routing library for Ring. It is particularly known for its
+minimalism, making it suitable for smaller apps and APIs. It’s also a great
+starting point for further exploring Clojure web development.</p>
+<p>At the heart of any Clojure web stack you’ll find Ring. The Ring specification
+defines key abstractions for representing HTTP requests and responses using
+maps, providing a uniform interface to program to.</p>
+<p>A Ring adapter is all you need to get started. It forms the bridge between a
+HTTP server and your own Ring handler, which is a function that handles
+requests.</p>
+<p>Implementing Ring handlers from scratch is a great learning exercise, but in a
+real world app you don’t want to reinvent the wheel. Every app will need some
+kind of dispatching based on the requests URI path and HTTP method, like GET,
+PUT, or POST. This is the job of a routing library, such as Compojure.</p>
+<p>I’m starting a new blank project to build upon in this and coming episodes.</p>
+<pre><code>lein new compobook
+</code></pre>
+<p>Most leiningen templates don’t yet initialize Git, so it’s got to do that
+manually before making any changes. This way it’s easy to see later on which
+parts are provided by the template, and which were added by you.</p>
+<pre><code>git init
+git add -A
+git commit -m '🌳'
+</code></pre>
+<p>In <code>project.clj</code> add some dependencies we’ll be needing: <code>compojure</code>,
+<code>ring-jetty-adapter</code>, and <code>ring-devel</code>.</p>
+<p>You’ll need to know the right version number, which you can find on Clojars, or
+often also in the project’s README. I’m using the latest stable release of each.</p>
+<p>If you’re using “clj-refactor”, then the “add project dependency” function
+allows you to simply pick the right version from a list. This has the added
+benefit that the library gets hot-loaded into your running REPL process, so you
+don’t have to restart it.</p>
+<pre><code class="language-clojure">(defproject ringbook "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [ring/ring-jetty-adapter "1.5.0"]
+                 [ring/ring-devel "1.5.0"]
+                 [compojure "1.5.1"]])
+</code></pre>
+<p>Now switch to <code>core.clj</code>, and get rid of this <code>foo</code>.
+In the <code>ring.adapter.jetty</code> namespace there’s a <code>run-jetty</code> function. This will
+launch a Jetty HTTP server, and hook it up to your Ring handler function.</p>
+<pre><code class="language-clojure">(ns compobook.core
+  (:require [ring.adapter.jetty :refer [run-jetty]]))
+</code></pre>
+<p>A handler is a function which takes a request map and returns a response. A
+response is a map containing a response code, headers, and a body. A 200 OK
+response is the default, so this is basically the “Hello, World!” of Ring
+handlers.</p>
+<pre><code class="language-clojure">(defn handler [request]
+  {:body "Lo and Behold, World!"})
+</code></pre>
+<p>Now you can start the Jetty server. Use <code>defonce</code> so this only happens once,
+even when reloading the namespace. Starting it a second time will cause an
+error, since only one server can listen on a given port.</p>
+<p>The first argument is the handler function, but use the function’s var instead
+of the function itself. Thanks to this extra level of indirection, when the
+function is redefined, changes are automatically picked up. We’ll tell Jetty to
+listen on port 3000, and also to not join the main thread. That last bit is
+important to not block the REPL.</p>
+<pre><code class="language-clojure">(defonce server (run-jetty #'handler {:port 3000 :join? false}))
+</code></pre>
+<p>So far so good, now load this namespace from the REPL and try visiting
+<code>localhost:3000</code>. Cool, that’s a good start.</p>
+<p>This isn’t the most useful app yet. Or at least it’s a very limited app. No
+matter what kind of request you throw at it, it will always return the same
+thing. Let’s narrow it down a bit.</p>
+<p>With pure Ring you could do something like this. Pull out the request method and
+uri by destructuring them in a let block, and based on these branch to different
+code paths. As a fallback case, return nil. Re-evaluate the function so the
+changes are picked up.</p>
+<p>Now this handler will only respond to a GET request to the root path. Any other
+request will cause it to return nil, which the Jetty adapter turns into a 404
+Not Found response.</p>
+<pre><code class="language-clojure">(defn handler [request]
+  (let [{:keys [request-method uri]} request]
+    (case [request-method uri]
+      [:get "/"]
+      {:body "Lo and Behold, World!"}
+
+      nil)))
+</code></pre>
+<p>Now let’s see how this looks when we’re using Compojure. Compojure provides a
+number of handy macros to match on request method and URI patterns. We’ll first
+look at <code>GET</code>.</p>
+<p>The result of <code>GET</code> is itself a handler, so you can assign it to <code>handler</code>
+directly with <code>def</code>, rather than <code>defn</code>. <code>GET</code> is defined in <code>compojure.core</code>,
+don’t forget to require it.</p>
+<p>This function will now either handle the request if the request method and URI
+match, or return nil. The last part in the <code>GET</code> form is the code that generates
+the response. I could return a response map with a body, but Compojure is smart
+enough to know that if I return just a string it should use that as the body.</p>
+<p>A handler that takes care of specific requests and ignores the rest is also
+known as a route, so this <code>GET</code> creates a single route.</p>
+<pre><code class="language-clojure">(ns ringbook.core
+  (:require [ring.adapter.jetty :refer [run-jetty]]
+            [compojure.core :refer [GET]]))
+
+(def handler
+  (GET "/" req
+    "Lo and Behold, World!"))
+</code></pre>
+<p>The first argument to <code>GET</code> is a URI pattern. The second argument is just a name
+that we pick, it will create a local variable by that name in the route body,
+which comes next. Whenever the route body executes, the variable <code>req</code> will be
+bound to the Ring request map.</p>
+<p>Let’s take an example that actually uses this <code>req</code> variable to look something
+up in the request map. Inside the request map is another map with the headers.
+Using <code>get-in</code> you can reach into these nested maps to get the value of the
+<code>"referer"</code> header, which contains the location the user came from.</p>
+<pre><code class="language-clojure">(def handler
+  (GET "/" req
+    (str "You came from " (get-in req [:headers "referer"]))))
+</code></pre>
+<p>This <code>req</code> here is what is known as a “binding form”, it’s similar to what you
+would find in a function’s argument list, or on the left hand side of a <code>let</code>
+block. This means that, just as in a <code>let</code> block, you can use destructuring.</p>
+<p>So let me change this route to look up the header using destructuring. The
+request is a map, so to destructure it you also use a map form. Inside that are
+the headers which are a map as well. HTTP headers are not case sensitive, so
+Ring always downcases them for easy access.</p>
+<p>The Referer header is intentially misspelled by the way, and has been since the
+early nineties. One of those great historical accidents programmers
+euphemistically like to call “legacy”.</p>
+<pre><code class="language-clojure">(def handler
+  (GET "/" {{referer "referer"} :headers}
+    (str "You came from " referer)))
+</code></pre>
+<p>If you expand the GET macro you’ll see something like this (I cleaned it up a
+bit for readability). Here’s the handler function which will be called when the route matches. You see the destructuring form is in fact now on the
+left-hand side of a let-block. Makes sense. It’s not a regular let though, but
+Compojure’s <code>let-request</code>, which has some superpowers of its own. We’ll cover
+those in a bit.</p>
+<pre><code class="language-clojure">(make-route :get {:re #"/"}
+  (fn [ring-request]
+    (let-request [{{referer "referer"} :headers} ring-request]
+      (str "You came from " referer))))
+
+</code></pre>
+<p>Up to now whenever I wanted some changes to show up I re-evaluated the form from
+my editor, but we can make things a little easier with the <code>wrap-reload</code>
+middleware.</p>
+<p>Require it from the <code>ring.middleware.reload</code> namespace. Then rename <code>handler</code> to
+<code>app-routes</code>, and define <code>handler</code> as being the routes plus any added
+middleware.</p>
+<p>You need to manually re-evaluate this code once more, or restart your REPL, but
+after that changed namespaces will be reloaded at the start of each request.
+This saves you a few keystrokes, but more importantly it saves you a lot of
+banging your head against the table when your program state starts drifting from
+what’s defined in the code.</p>
+<pre><code class="language-clojure">(ns ringbook.core
+  (:require [ring.middleware.reload :refer [wrap-reload]] ,,,))
+
+(def app-routes
+  (GET "/" req
+    ,,,))
+
+(def handler
+  (wrap-reload #'app-routes))
+
+(defonce server (run-jetty #'handler ,,,))
+</code></pre>
+<p>We’re building another contact book app, but this time instead of just an API
+it’ll serve up HTML, generated with hiccup.</p>
+<p>Here are some initial contacts so we have some data to work with. Database
+persistence will have to wait for another time, so instead I’m using an atom
+again to store the application state.</p>
+<p>Also add two helper functions. <code>query-contacts</code> queries the “database” for the
+list of contacts. You can imagine with some other storage backend that you would
+only need to change these query functions without touching the rest of the app.</p>
+<p>After that create a “view”, a function which renders data to HTML. In this case
+it takes a list of contacts and shows them as a bullet list. I like to use for
+loops when turning a collection into Hiccup, I find it reads well. Destructure
+<code>name</code> and <code>id</code> out of each contact so we can link to the individual contact.</p>
+<pre><code class="language-clojure">(def initial-contacts [{:id #uuid "a9481ce1-8711-4f4f-af5c-6fb703f5b632",
+                        :name "Master Sammy",
+                        :email "mastersammy@lambdaisland.com",
+                        :twitter "@callmemasta"}
+                       {:id #uuid "749db389-7702-4a6b-a761-ee5141451def",
+                        :name "Brock Samson",
+                        :email "brocksamson@yahoo.com",
+                        :twitter "@bigboysamson"}
+                       {:id #uuid "e79f8935-3eb7-4774-aa6e-39d862905fc9",
+                        :name "Lana Kane",
+                        :email "lanakane@lambdaisland.com",
+                        :twitter "@gatorkane"}])
+
+(def db (atom {:contacts initial-contacts}))
+
+(defn query-contacts []
+  (:contacts @db))
+
+(defn contact-list-view [contacts]
+  [:ul
+   (for [{:keys [id name]} contacts]
+     [:li
+      [:a {:href (str "/contacts/" id)} name]])])
+
+</code></pre>
+<p>Next we need a new route that looks up the contacts and renders them. Compojure
+comes with a <code>routes</code> function to combine multiple routes into one.</p>
+<p>Add <code>routes</code> to the namespace, and while you’re at it also add Hiccup’s <code>html</code>
+function, and two functions from <code>ring.util.response</code> which are helpful for
+creating Ring response maps.</p>
+<p>Response returns a “200 OK”, while <code>redirect</code> creates a “302 Found” response,
+which causes the browser to redirect. We’ll use these in our handlers.</p>
+<pre><code class="language-clojure">(ns ringbook.core
+  (:require [compojure.core :refer [routes GET]]
+            [hiccup.core :refer [html]]
+            [ring.util.response :refer [response redirect]]
+            ,,,))
+
+(response "hello!")        ;;=&gt; {:status 200, :headers {}, :body "hello!"}
+(redirect "/contacts")     ;;=&gt; {:status 302, :headers {"Location" "/contacts"}, :body ""}
+</code></pre>
+<p>Pass any number of routes to the <code>routes</code> function, and the result is a handler
+function which tries each routes in turn until it gets a non-nil response.</p>
+<p>Remember that a single route (the result of calling <code>GET</code>) is just a function.
+Given a Ring request map it either returns a result, or nil. With <code>routes</code> you
+combine several of those into a single handler.</p>
+<pre><code class="language-clojure">(def app-routes
+  (routes
+   (GET "/" req ,,,)
+   (GET "/contacts" req
+     (response (html (contact-list-view (query-contacts)))))))
+</code></pre>
+<p>Now if you look at the result in the browser, you can see the HTML, but it’s
+rendered as text. That’s because we’re not setting a “Content-Type” header, so
+the browser assumes it’s plain text.</p>
+<p>We could set this header. Let’s first turn this into a threading form, because
+it’s getting unwieldy. Now <code>assoc-in</code> a Content-Type header and you’re done.
+Alternatively you can just drop the <code>response</code> function. When Compojure gets a
+string back as a response, it’ll assume it’s HTML, and it’ll set the right
+headers for us. Keep that in mind for times when you’re <em>not</em> serving HTML, and
+set the Content-Type accordingly.</p>
+<p><code>routes</code> is a small but handy helper function. In fact implementing it yourself
+only takes a few lines of code. Can you see what this does?</p>
+<p>(This example is explained in more depth in
+<a shape="rect" href="clojure-core-some/index.html">episode 1. clojure.core/some</a>.)</p>
+<pre><code class="language-clojure">(defn routes [&amp; rs]
+  (fn [req]
+    (some #(% req) rs)))
+</code></pre>
+<p>Let’s make a few more changes to these routes. It’s very common to define a set
+of routes like this and assign it to a var, so Compojure provides an easy macro
+to do just that, unsurpisingly called <code>defroutes</code></p>
+<p>When a user goes to the root of the app, then let it redirect to “/contacts”,
+since listing the contacts is all the app does at the moment.</p>
+<p>Now in neither of these two routes we’re actually using the request, so let’s
+rename this variable to <code>_</code>, so it’s clear that it’s ignored.</p>
+<p>This last part we cleaned up earlier with a threading macro. This is one
+refactoring that I use all the time. If your editor or IDE supports it I
+recommend getting familiar with it.</p>
+<p>This way the transformation steps are also more clear, first we query the
+“database” for the contacts, then render that to hiccup with
+<code>contact-list-view</code>, then turn that Hiccup into a HTML string.</p>
+<pre><code class="language-clojure">(defroutes app-routes
+  (GET "/" _
+    (redirect "/contacts"))
+  (GET "/contacts" _
+    (-&gt; (query-contacts)
+        contact-list-view
+        html)))
+</code></pre>
+<p>Compojure has macros for the typical “create”, “read”, “update”, and “delete”
+operations, also known as “CRUD”, which in HTTP-speak would be <code>POST</code>, <code>GET</code>,
+<code>PUT</code>, and <code>DELETE</code>. There’s also an <code>ANY</code> macro which matches any HTTP method,
+and a few lesser used ones, namely <code>HEAD</code>, <code>OPTIONS</code>, and <code>PATCH</code>.</p>
+<pre><code>POST
+GET
+PUT
+DELETE
+
+ANY
+
+HEAD
+OPTIONS
+PATCH
+</code></pre>
+<p>When you click on a contact name in the list then you get a 404 Not Found, let’s
+add one more route that fixes that.</p>
+<p>This time there’s a dynamic segment in the URI, so we need to use a pattern to
+pull that out. Here’s what that looks like. By using <code>:id</code> in the URI pattern,
+Compojure knows this section of the path can be anything, and it will pull out
+the result and put it in the request map under <code>:params</code>.</p>
+<pre><code class="language-clojure">(GET "/contacts/:id" _ ,,,)
+</code></pre>
+<p>As we saw before we can pull that param out of the response with destructuring
+right here where we choose what to bind the response map to.</p>
+<pre><code class="language-clojure">(GET "/contacts/:id" {{:keys [id]} :params}
+  ,,,)
+</code></pre>
+<p>But there’s an even easier way. Compojure’s destructuring adds some things on
+top of Clojure’s regular destructuring. Ring requests maps are always maps, but
+if you destructure them as a vector, then Compojure will find request parameters
+with the given names, and assign those. This is handled internally by
+<code>let-request</code>, which we saw earlier, and it leads to a rather elegant syntax.</p>
+<pre><code class="language-clojure">(GET "/contacts/:id" [id]
+  ,,,)
+</code></pre>
+<p>Now we need a query and a view method for this route, just like we did before.</p>
+<pre><code class="language-clojure">(defn find-contact [id]
+  (-&gt;&gt; @db
+       :contacts
+       (filter #(= id (:id %)))
+       first))
+
+(defn contact-view [{:keys [name email twitter] :as contact}]
+  [:div
+   [:ul.contact
+    [:li "Name: " name]
+    [:li "Email: " email]
+    [:li "Twitter: " twitter]]
+   [:a {:href "/contacts"} "← Back"]])
+
+(defroutes app-routes
+  ,,,
+  (GET "/contacts/:id" [id]
+    (-&gt; (find-contact id)
+        contact-view
+        html)))
+</code></pre>
+<p>With that in place you should now be able to try this in your browser. The 404
+error is gone, and the new view seems to be rendering, but it’s not showing any
+data.</p>
+<p>The problem is subtle. Identifiers in our database are UUID’s, but request
+parameters are always just strings, so we need to convert them first.</p>
+<p>Converting incoming parameters to the correct type is such a common operation
+that Compojure has a special shorthand syntax for it.</p>
+<p>In the binding form after the parameter name add this “:«” followed by a
+function that does the conversion. We’re using this static method on java’s
+<code>UUID</code> class, so you need to add an “import” clause for that to the namespace
+declaration.</p>
+<p>Reload the page, and you’re done!</p>
+<pre><code class="language-clojure">(ns ,,,
+  (:import java.util.UUID))
+
+(GET "/contacts/:id" [id :&lt;&lt; UUID/fromString]
+    (-&gt; (find-contact id)
+        contact-view
+        html))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/compobook">browse source code</a></p>
+<p>This episode is a sequel to the series on Ring
+(<a shape="rect" href="ring-1/index.html">part 1</a>,
+<a shape="rect" href="ring-2/index.html">part-2</a>, and
+<a shape="rect" href="ring-3/index.html">part 3</a>). You should be familiar
+with Ring request and response maps, handlers, adapters, and middleware.</p>
+<h2 id="covered-in-this-episode">Covered in this episode</h2>
+<p>Compojure:</p>
+<ul>
+<li><a shape="rect" href="http://weavejester.github.io/compojure/compojure.core.html#var-GET">GET</a></li>
+<li><code>let-request</code></li>
+<li><a shape="rect" href="http://weavejester.github.io/compojure/compojure.core.html#var-routes">routes</a></li>
+<li><a shape="rect" href="http://weavejester.github.io/compojure/compojure.core.html#var-defroutes">defroutes</a></li>
+<li><a shape="rect" href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax#parameter-coercion">:«</a></li></ul>
+<p>ring.util.response:</p>
+<ul>
+<li><a shape="rect" href="https://ring-clojure.github.io/ring/ring.util.response.html#var-response">response</a></li>
+<li><a shape="rect" href="https://ring-clojure.github.io/ring/ring.util.response.html#var-redirect">redirect</a></li></ul>
+<p>ring.middleware.reload</p>
+<ul>
+<li><a shape="rect" href="https://ring-clojure.github.io/ring/ring.middleware.reload.html#var-wrap-reload">wrap-reload</a></li></ul>
+<p>hiccup</p>
+<ul>
+<li><a shape="rect" href="http://weavejester.github.io/hiccup/hiccup.core.html#var-html">html</a></li></ul>
+<h2 id="links">Links</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/weavejester/compojure">Compojure</a></li>
+<li><a shape="rect" href="https://ring-clojure.github.io/ring/ring.middleware.reload.html">ring.middleware.reload</a></li>
+<li><a shape="rect" href="https://github.com/weavejester/hiccup">Hiccup</a></li></ul>
+<h2 id="docs">Docs</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/weavejester/compojure/wiki/Destructuring-Syntax">Compojure Wiki: Destructuring Syntax</a></li></ul>
+<h2 id="music">Music</h2>
+<p><a shape="rect" href="https://archive.org/details/EDIS-SRP-0092-03">Ragtime echoes</a> (1918 - public domain)<br clear="none" />
+Performed by: Samuel Siegel - mandolin ; Marie Caveny - ukulele<br clear="none" />
+Composed by: Samuel Siegel<br clear="none" /></p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

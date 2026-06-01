@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojure-spec" />
+<meta name="twitter:title" content="Intro to clojure.spec" />
+<meta name="twitter:description" content="The spec library which will be included in Clojure 1.9 gives you a powerful mechanism for validating data. Find out how to use it in this episode." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/574705725-5a7be1b43dff4f7a92355a3e028e7aafd21c55915487394687973a9e6babadc4-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Intro to clojure.spec" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojure-spec" />
+<meta name="video:duration" content="666" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/574705725-5a7be1b43dff4f7a92355a3e028e7aafd21c55915487394687973a9e6babadc4-d_1280x720?r=pad" />
+<meta name="og:description" content="The spec library which will be included in Clojure 1.9 gives you a powerful mechanism for validating data. Find out how to use it in this episode." />
+<meta name="video:release_date" content="2016-06-08T13:40:05.833Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Intro to clojure.spec</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/169850301?h=31de9feef1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="clojure-spec"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>The spec library which will be included in Clojure 1.9 gives you a powerful mechanism for validating data. Find out how to use it in this episode.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Two weeks ago Rich Hickey announced a major new library for Clojure, called
+clojure.spec.</p>
+<p>A lot of people are excited about spec, and rightfully so. Let’s see what spec
+can do for you. I’ll just start with an empty project and <code>project.clj</code> file.</p>
+<pre><code class="language-shell">~ $ mkdir robochef
+~ $ cd robochef
+~/robochef $ touch project.clj
+~/robochef $
+</code></pre>
+<p>Clojure.spec will be bundled with the upcoming 1.9 release of Clojure. We can
+already try it out today by using the alpha version.</p>
+<pre><code class="language-clojure">(defproject robochef "0.1.0-SNAPSHOT"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha4"]])
+</code></pre>
+<p>Require spec in your namespace, and get a REPL going. So far so good.</p>
+<pre><code class="language-clojure">(ns robochef.core
+  (:require [clojure.spec :as s]))
+</code></pre>
+<p>In the age of the Internet of Things, we are building a robot chef that can cook
+delicious meals straight from the cloud. At the heart of our system is a
+innocious-looking function, <code>cook</code>.</p>
+<pre><code class="language-clojure">(defn cook! [recipe]
+  ,,,)
+</code></pre>
+<p>We pass our Robochef a recipe, consisting of ingredients and steps. Here’s an
+example.</p>
+<p>This looks simple enough, it’s a nice and clean interface, something even a stay
+at home dad can manage. Still, as we’re building this a nagging feeling of
+unease creeps up on us. What if you pass the chef an invalid recipe? Will it
+politely mention that something’s amiss, or will it start hurling eggs at the
+cloud-connected fridge?</p>
+<pre><code class="language-clojure">(def recipe
+  {::ingredients [1 :kg "aubergine"
+                  20 :ml "soy sauce"]
+   ::steps ["fry the aubergines"
+            "add soy sauce"]})
+
+(cook! recipe)
+</code></pre>
+<p>Clearly we need a way to validate recipes, so they can’t make it into our system
+and wreak havoc. This is where clojure.spec comes in.</p>
+<p>The <code>s/valid?</code> function takes two arguments. The first argument is the “spec”,
+here we pass it the simplest kind of spec, a function which returns true or
+false, also known as a predicate function. The second argument is the value we
+want to validate.</p>
+<p><code>valid?</code> will also return true or false, so if we wrap that in <code>assert</code> our
+function will fail early when given invalid input, which is what we want.</p>
+<pre><code class="language-clojure">(defn cook! [recipe]
+  (assert (s/valid? map? recipe))
+  ,,,)
+</code></pre>
+<p>Besides <code>valid?</code>, spec also provides the function <code>conform</code>. If the value is
+valid then it is simply returned, although perhaps in a slightly different form.</p>
+<p>If the value is invalid, then the special symbol <code>:clojure.spec/invalid</code> is returned.</p>
+<p>Don’t worry too much about <code>conform</code> yet, we’ll get back to it later.</p>
+<pre><code class="language-clojure">(s/conform map? {::ingredients []})
+;;=&gt; {:spec-test.core/ingredients []}
+
+(s/conform map? "foo")
+;;=&gt; :clojure.spec/invalid
+</code></pre>
+<p>Our recipe validation doesn’t amount to much yet. Let’s improve it a bit.
+Predicate specs are only the beginning, the smallest building blocks,
+clojure.spec provides a whole bunch of functions and macros to create more
+complicated specs.</p>
+<p>Recipes have to be maps, with keywords for keys, and vectors for values. We can
+express this with a <code>map-of</code> spec.</p>
+<p>This still allows all kinds of gibberish to be passed in, but at least it’s
+already stopping some nonsense from coming through.</p>
+<pre><code class="language-clojure">(defn cook! [recipe]
+  (assert (s/valid? (s/map-of keyword? vector?) recipe))
+  ,,,)
+
+(cook! {::ingredients "chunky garlic"})
+;; =&gt; 1. Unhandled java.lang.AssertionError
+;;       Assert failed: (s/valid? :spec-test.core/recipe recipe)
+</code></pre>
+<p>Clojure maintains a global registry of specs, so you can refer to them simply by
+name, which must be a namespace qualified keyword. There’s a good chance we’ll
+have to validate recipes in other places as well, so let’s register our budding
+spec with <code>s/def</code>.</p>
+<pre><code class="language-clojure">(s/def ::recipe (s/map-of keyword? vector?))
+
+(defn cook! [recipe]
+  (assert (s/valid? ::recipe recipe))
+  ,,,)
+</code></pre>
+<p>The steps of a recipe are a vector of strings, that’s also easy to spec with
+<code>coll-of</code>. This says that steps is a collection of strings, more specifically a
+vector. Now we can add an extra assertion to check the recipe’s steps.</p>
+<pre><code class="language-clojure">(s/def ::recipe (s/map-of keyword? vector?))
+(s/def ::steps (s/coll-of string? []))
+
+(defn cook! [recipe]
+  (assert (s/valid? ::recipe recipe))
+  (assert (s/valid? ::steps (::steps recipe)))
+  ,,,)
+</code></pre>
+<p>Using <code>coll-of</code> is fine for our steps, but the ingredients don’t form a
+homogenous collection, we will need a more powerful tool to validate those.</p>
+<p>Ingredients form a sequence of triplets, an amount, which is a number, a unit of
+measurement, expressed as a keyword, and the name of the ingredient, which is a
+string.</p>
+<p>In computer science, we have a generic mechanism to validate and match
+sequences, known as regular expressions. Regexes are most commonly used to match
+sequences of characters, or strings, but spec allows you to write regexes for
+arbitrary sequences of values. That’s pretty cool, right!</p>
+<pre><code class="language-clojure">(s/def ::ingredients (s/* ::ingredient))
+(s/def ::ingredient (s/cat :amount number?
+                           :unit keyword?
+                           :name string?))
+</code></pre>
+<p>Let’s dive into that a little more. Clojure.spec provides five operators for
+constructing regular expressions over sequences.</p>
+<p>The asterisk, plus sign, and question mark are known as “quantifiers”, these
+also exist in regular expressions for strings, and they have the exact same
+function. The asterisk matches zero or more items, the plus sign matches one or
+more items, and the question mark matches at most one item.</p>
+<p>So in this case any number of keywords in a sequence will match, including none
+at all, but if there’s something else in there it won’t be valid.</p>
+<pre><code class="language-clojure">;; #"k*"
+(s/valid? (s/* keyword?) [])         ;;=&gt; true
+(s/valid? (s/* keyword?) [:a])       ;;=&gt; true
+(s/valid? (s/* keyword?) [:a :b :c]) ;;=&gt; true
+(s/valid? (s/* keyword?) [:a 5 :c])  ;;=&gt; false
+</code></pre>
+<p>Plus is almost identical, except that now the empty vector is no longer valid,
+you need at least one item to be present.</p>
+<pre><code class="language-clojure">;; #"k+"
+(s/valid? (s/+ keyword?) [])         ;;=&gt; false
+(s/valid? (s/+ keyword?) [:a])       ;;=&gt; true
+(s/valid? (s/+ keyword?) [:a :b :c]) ;;=&gt; true
+(s/valid? (s/+ keyword?) [:a 5 :c])  ;;=&gt; false
+</code></pre>
+<p>The question mark is for marking something as optional. It either matches
+nothing at all, or a single item, but never more than that.</p>
+<pre><code class="language-clojure">;; #"k?"
+(s/valid? (s/? keyword?) [])         ;;=&gt; true
+(s/valid? (s/? keyword?) [:a])       ;;=&gt; true
+(s/valid? (s/? keyword?) [:a :b :c]) ;;=&gt; false
+</code></pre>
+<p>The <code>cat</code> operator lets you say: “first this, then that, then something else”.
+It lets you combine any number of predicates and specs in a specific order.</p>
+<p>Here we’re matching any sequence of two elements, consisting of a number
+followed by a keyword.</p>
+<p>We have to name these parts that we’re matching, here I’m just calling them <code>:num</code>
+and <code>:key</code>.</p>
+<pre><code class="language-clojure">;; #"nk"
+(s/valid? (s/cat :num number?
+                 :key keyword?) [5 :a]) ;;=&gt; true
+
+(s/valid? (s/cat :num number?
+                 :key keyword?) [:a 5]) ;;=&gt; false
+
+(s/valid? (s/cat :num number?
+                 :key keyword?) [5 :a :b]) ;;=&gt; false
+</code></pre>
+<p>Now it’s time to have another look at <code>conform</code>, remember that it either return
+a “conformed” value, or the symbol <code>:clojure.spec/invalid</code></p>
+<pre><code class="language-clojure">(s/conform (s/* number?) [1 2 3])
+;;=&gt; [1 2 3]
+(s/conform (s/* number?) [1 2 "a"])
+;;=&gt; :clojure.spec/invalid
+</code></pre>
+<p>For most specs we’ve seen so far, the conformed output will be equal to the
+input, but <code>cat</code> is different. Instead of conforming to the input sequence, it
+conforms to a result map, built up using the keys we specified.</p>
+<pre><code class="language-clojure">(s/conform (s/cat :num number?
+                  :key keyword?) [5 :a])
+;;=&gt; {:num 5, :key :a}
+</code></pre>
+<p>Now we should be able to understand the spec for ingredients. A single
+ingredient consists of a quantity, unit, and name. The ingredient list is a
+succession of any number of ingredients.</p>
+<p>Now by using <code>conform</code>, not only do we know if the ingredient list is valid, but
+we get it back in a format that’s much more suitable for further processing.</p>
+<pre><code class="language-clojure">(s/def ::ingredient (s/cat :quantity number?
+                           :unit keyword?
+                           :name string?))
+
+(s/def ::ingredients (s/* ::ingredient))
+
+(s/conform ::ingredients [4 :g "Monkey-picked Anxi Wulong Tea"
+                          200 :ml "Boiling water"])
+;; =&gt; [{:quantity 4,   :unit :g,  :name "Monkey-picked Anxi Wulong Tea"}
+;;     {:quantity 200, :unit :ml, :name "Boiling water"}]
+</code></pre>
+<p>There’s one more regex operator we haven’t covered yet, which is alt. It’s the
+equivalent of the vertical bar (or “pipe”) character in normal regex syntax, it
+lets you express a choice. Just as with <code>cat</code>, we are forced to pick names for
+the possible alternatives, but again this comes in handy when using <code>conform</code>.</p>
+<p>In this case the conformed value isn’t a map, but it’s a vector, containing the
+key and the matched value. This style of tagging values is known as “variants”,
+and there was a whole talk about it at Clojure/conj two years back. I’ll add a
+link to the show notes.</p>
+<pre><code class="language-clojure">;; #"(n|k)"
+(s/conform (s/alt :num number?
+                  :key keyword?) [5])
+;;=&gt; [:num 5]
+
+(s/conform (s/alt :num number?
+                  :key keyword?) [:a])
+;;=&gt; [:key :a]
+
+(s/conform (s/alt :num number?
+                  :key keyword?) ["b"])
+;;=&gt; :clojure.spec/invalid
+</code></pre>
+<p>One thing that takes a little bit of getting used to is that you can combine and
+nest any of these regex operators, and they will still just match a single
+sequence.</p>
+<p>So even though in this example we’re nesting the <code>+</code> operator inside cat, it
+won’t match nested vectors in the input.</p>
+<p>This distinction doesn’t come up when using regular expressions over strings,
+because you can’t have a string inside a string, the way that you can have a
+vector inside a vector. A string is always a flat sequence of characters.</p>
+<pre><code class="language-clojure">;; #"n+k+"
+(s/valid? (s/cat :nums (s/+ number?)
+                 :keys (s/+ keyword?)) [5 6 7 :a :b :c]) ;;=&gt; true
+
+(s/valid? (s/cat :nums (s/+ number?)
+                 :keys (s/+ keyword?)) [[5 6 7] [:a :b :c]]) ;;=&gt; false
+
+(s/conform (s/cat :nums (s/+ number?)
+                  :keys (s/+ keyword?)) [5 6 7 :a :b :c])
+;;=&gt; {:nums [5 6 7], :keys [:a :b :c]}
+</code></pre>
+<p>To match a nested collection inside a regex spec, you have two options. You can
+use a non-regex spec that describes the nested collection. In this example the
+inner vectors are each validated with <code>coll-of</code>, and we use <code>cat</code> to say that
+the one with numbers comes first, followed by the one with keywords.</p>
+<pre><code class="language-clojure">(s/conform (s/cat :nums (s/coll-of number? [])
+                  :keys (s/coll-of keyword? [])) [[5 6 7] [:a :b :c]])
+;;=&gt; {:nums [5 6 7], :keys [:a :b :c]}
+</code></pre>
+<p>If both the inner and outer collections are validated with regex specs, then you
+need some way to specify where the nesting starts. You can do this by wrapping a
+regex spec in a call to <code>s/spec</code>. This way the regex matching will start anew on
+the current item.</p>
+<pre><code class="language-clojure">(s/conform (s/cat :nums (s/* number?)
+                  :keys (s/* keyword?)) [5 6 7 :a :b :c])
+;;=&gt; {:nums [5 6 7], :keys [:a :b :c]}
+
+(s/conform (s/cat :nums (s/spec (s/* number?))
+                  :keys (s/spec (s/* keyword?))) [[5 6 7] [:a :b :c]])
+;;=&gt; {:nums [5 6 7], :keys [:a :b :c]}
+
+</code></pre>
+<p>Back to our recipes. We have specs set up for ingredients and steps, now we can
+tie them together to validate recipes in one steps, and thanks to the power of
+<code>conform</code> we can process the result much more easily.</p>
+<p>The only missing “ingredient” (if you will) is the <code>s/keys</code> function. Before we
+used <code>map-of</code> the validate recipes, but map-of doesn’t tell you anything about
+what values can be used for specific keys.</p>
+<p>We pass <code>keys</code> two keyword arguments: a list of keys which is required to be
+present, and a list of optional keys. We’re making steps optional, if it’s
+ommitted the robochef will simply mix all the ingredients together.</p>
+<p>These lists of required and optional keys again use namespace-qualified
+keywords. They serve a double purpose: spec will look for these keywords as keys
+in the map, and it will look for a registered spec with that name same name to
+validate the corresponding value.</p>
+<pre><code class="language-clojure">(s/def ::recipe (s/keys :req [::ingredients]
+                        :opt [::steps]))
+
+(s/def ::ingredient (s/cat :quantity number?
+                           :unit keyword?
+                           :name string?))
+
+(s/def ::ingredients (s/* ::ingredient))
+
+(s/def ::steps (s/coll-of string? []))
+
+(def recipe
+  {::ingredients [1 :kg "aubergine"
+                  20 "ml" "soy sauce"]
+   ::steps ["fry the aubergines"
+            "add soy sauce"]})
+
+(s/conform ::recipe recipe)
+</code></pre>
+<p>Now we can validate our recipe in a single step again. If a user passes in an
+invalid recipe though, then the bland AssertionError they’re getting isn’t very
+helpful.</p>
+<p>The nice thing is we can ask spec to explain itself. The <code>explain</code> function will
+generate an error message, and print it to stdout. If you want to get the
+message as a string, you can use <code>explain-str</code>, whereas with <code>explain-data</code> you
+get a data structure containing the same information.</p>
+<p>These error messages are a bit hard to read, I really hope they get better
+before the final release, but at least all the information is there.</p>
+<pre><code class="language-clojure">(s/explain-str ::recipe {::steps [5]})
+;;=&gt; "val: {:robochef.core/steps [5]} fails predicate: [(contains? % :robochef.core/ingredients)]\nIn: [:robochef.core/steps] val: [5] fails spec: :robochef.core/steps at: [:robochef.core/steps] predicate: (coll-checker string?)\n"
+
+(s/explain-data ::recipe {::steps [5]})
+;;=&gt; {:clojure.spec/problems {[] {:pred [(contains? % :robochef.core/ingredients)], :val {:robochef.core/steps [5]}, :via [], :in []}, [:robochef.core/steps] {:pred (coll-checker string?), :val [5], :via [:robochef.core/steps], :in [:robochef.core/steps]}}}
+</code></pre>
+<p>Now let’s use this to throw a more descriptive exception.</p>
+<pre><code class="language-clojure">(defn cook! [recipe]
+  (if-not (s/valid? ::recipe recipe)
+    (throw (ex-info (s/explain-str ::recipe recipe)
+                    (s/explain-data ::recipe recipe))))
+  ,,,)
+</code></pre>
+<p>I hope with this episode I managed to give you a taste of clojure.spec. There’s
+a lot more to talk about, more ways to create specs, custom conformers,
+instrumenting functions and macros, and doing generative testing. If you want
+more comprehensive coverage I suggest you start with the official guide on
+clojure.org. There have also been a number of good blog posts on the subject
+already, I’ll leave a couple of links in the show notes.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="around-the-web">Around the web</h2>
+<p>From the horse’s mouth, the official sources on clojure.spec:</p>
+<ul>
+<li><a shape="rect" href="http://blog.cognitect.com/blog/2016/5/23/introducing-clojurespec">Rich Hickey announcing Spec on the Cognitect Blog</a></li>
+<li><a shape="rect" href="http://clojure.org/guides/spec">The official Clojure Guide that walks you through Spec</a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/branch-master/clojure.spec-api.html">Full API docs</a></li></ul>
+<p>Blogs and further reading:</p>
+<ul>
+<li><a shape="rect" href="http://gigasquidsoftware.com/blog/2016/05/29/one-fish-spec-fish/">Carin Meier’s wonderful introduction to Spec inspired by Dr. Seuss</a></li>
+<li><a shape="rect" href="http://blog.klipse.tech/clojure/2016/05/30/spec.html">An interactive tutorial in the browser. Resource heavy!</a></li>
+<li><a shape="rect" href="http://swannodette.github.io/2016/06/03/tools-for-thought">David Nolen’s thoughts on Spec and its wider implications</a></li></ul>
+<h2 id="variants">Variants</h2>
+<p>The conformed value of <code>s/alt</code> or <code>s/or</code> is known as a “variant”</p>
+<pre><code class="language-clojure">(s/conform (s/alt :n number? :k keyword?) [:a])
+;;=&gt; [:k :a]
+
+(s/conform (s/or :n number? :k keyword?) 5)
+;;=&gt; [:n 5]
+</code></pre>
+<p>These work really well in combination with <code>core.match</code>.</p>
+<ul>
+<li><a shape="rect" href="https://www.youtube.com/watch?v=ZQkIWWTygio">Variants are not Unions by Jeanine Adkisson (Clojure/conj talk)</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

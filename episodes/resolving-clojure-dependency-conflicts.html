@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/resolving-clojure-dependency-conflicts" />
+<meta name="twitter:title" content="Resolving Dependency Conflicts" />
+<meta name="twitter:description" content="In this beginner friendly episode you'll learn how to resolve a common type of Clojure error. It walks you through the process step by step, from analyzing the error,..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/624281765-e09e96dc5ff1c2a0cce85ffb81d3c0caa1a6c5ae6f62932fdbec98c3c6adf1d0-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Resolving Dependency Conflicts" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/resolving-clojure-dependency-conflicts" />
+<meta name="video:duration" content="644" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/624281765-e09e96dc5ff1c2a0cce85ffb81d3c0caa1a6c5ae6f62932fdbec98c3c6adf1d0-d_1280x720?r=pad" />
+<meta name="og:description" content="In this beginner friendly episode you'll learn how to resolve a common type of Clojure error. It walks you through the process step by step, from analyzing the error,..." />
+<meta name="video:release_date" content="2017-03-17T17:09:03.000Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Resolving Dependency Conflicts</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/208859495?h=2ee5ac0782&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="27. Resolving Dependency Conflicts"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>In this beginner friendly episode you’ll learn how to resolve a common type of Clojure error. It walks you through the process step by step, from analyzing the error, investigating the cause, coming up with a solution, up to finally reporting the issue on Github. In the process you’ll learn how to interpret stack traces, how to inspect the dependency tree with Leiningen, and how to influence Leiningen’s choice of version in case of a conflict.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>While working on some example code for an upcoming Lambda Island episode I ran
+into an issue, a problem with dependencies. It’s the kind of thing that easily
+happens, and I was quickly able to solve it and move on with what I was doing.</p>
+<p>But then I thought: people run into this kind of things all the time, and unless
+you have some experience it’s not obvious at all what the problem is, or how you
+go about solving it. It can be a real energy drain.</p>
+<p>So I decided to take a step, and documented exactly what I did to figure this
+out and solve it.</p>
+<p>The project is called “Booklog”, and you can find the code on github. Grab the
+branch “dependency-error” to recreate the problem.</p>
+<p>In this case the last thing I had done was adding Buddy to the project, a
+library that handles authentication and authorization. Buddy is split into
+several projects, here I’m using <code>buddy-auth</code> and <code>buddy-hashers</code>.</p>
+<pre><code class="language-clojure">(defproject booklog "0.1.0-SNAPSHOT"
+  :description "Keep track of the books you read, a sample project to demonstrate Buddy."
+  :url "https://github.com/lambdaisland/booklog"
+
+  :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
+                 [org.clojure/clojurescript "1.9.495" :scope "provided"]
+                 [com.cognitect/transit-clj "0.8.297"]
+                 [ring "1.5.1"]
+                 [ring/ring-defaults "0.2.3"]
+                 [bk/ring-gzip "0.2.1"]
+                 [lambdaisland/ring.middleware.logger "0.5.1"]
+                 [compojure "1.5.2"]
+                 [environ "1.1.0"]
+                 [com.stuartsierra/component "0.3.2"]
+                 [org.danielsz/system "0.4.0"]
+                 [org.clojure/tools.namespace "0.2.11"]
+                 [reagent "0.6.1"]
+                 [lambdaisland/garden-watcher "0.3.1"]
+                 [hiccup "2.0.0-alpha1"]
+                 [spicerack "0.1.2"]
+                 [buddy/buddy-auth "1.4.1"]
+                 [buddy/buddy-hashers "1.2.0"]]
+  ,,,)
+</code></pre>
+<p>So far so good, I’ve started a new REPL, to make sure the newly added
+dependencies are downloaded and available on the classpath.</p>
+<p>Now I try to require the <code>buddy.auth.backends</code> namespace, and boom, there’s the
+error.</p>
+<pre><code class="language-clojure">user=&gt; (require '[buddy.auth.backends :as backends])
+
+CompilerException java.lang.NoClassDefFoundError: com/fasterxml/jackson/core/FormatFeature, compiling:(cheshire/factory.clj:53:5)
+</code></pre>
+<p>In this case you only get a one line error message, in other circumstances you
+are more likely to see long stacktraces. There’s a lot of information in this
+one line, probably enough to point you in the right direction, but if you do
+want to see the full stacktrace then you can check the <code>*e</code> variable, which
+contains the last error that was raised.</p>
+<pre><code class="language-clojure">user=&gt; *e
+#error {
+ :cause "com.fasterxml.jackson.core.FormatFeature"
+ :via
+ [{:type clojure.lang.Compiler$CompilerException
+   :message "java.lang.NoClassDefFoundError: com/fasterxml/jackson/core/FormatFeature, compiling:(cheshire/factory.clj:53:5)"
+   :at [clojure.lang.Compiler analyzeSeq "Compiler.java" 6926]}
+  {:type java.lang.NoClassDefFoundError
+   :message "com/fasterxml/jackson/core/FormatFeature"
+   :at [java.lang.ClassLoader defineClass1 "ClassLoader.java" -2]}
+  {:type java.lang.ClassNotFoundException
+   :message "com.fasterxml.jackson.core.FormatFeature"
+   :at [java.net.URLClassLoader findClass "URLClassLoader.java" 381]}]
+ :trace
+ [[java.net.URLClassLoader findClass "URLClassLoader.java" 381]
+  [java.lang.ClassLoader loadClass "ClassLoader.java" 424]
+  [sun.misc.Launcher$AppClassLoader loadClass "Launcher.java" 331]
+  [java.lang.ClassLoader loadClass "ClassLoader.java" 357]
+  [java.lang.ClassLoader defineClass1 "ClassLoader.java" -2]
+  [java.lang.ClassLoader defineClass "ClassLoader.java" 763]
+  ,,, ]}
+</code></pre>
+<p>In my case I was actually working from Emacs and CIDER. So I’m in this
+namespace, adding <code>buddy.auth.backends</code> to the list of required namespaces. And
+when reloading the file (in CIDER that’s <code>C-c C-k</code>), I’m greated with this
+<code>*cider-error*</code> buffer.</p>
+<pre><code class="language-clojure">  Show: Clojure Java REPL Tooling Duplicates All  (97 frames hidden)
+
+3. Unhandled clojure.lang.Compiler$CompilerException
+   Error compiling cheshire/factory.clj at (53:5)
+
+2. Caused by java.lang.NoClassDefFoundError
+
+1. Caused by java.lang.ClassNotFoundException
+   com.fasterxml.jackson.core.FormatFeature
+
+       URLClassLoader.java:  381  java.net.URLClassLoader/findClass
+          ClassLoader.java:  424  java.lang.ClassLoader/loadClass
+                  core.clj:    1  cheshire.core/eval63014
+</code></pre>
+<p>When something like this happens first take a step back and think about what you
+were doing. What changed? If you can go back to a previous version of your code
+that still works, then you can compare the two, this should give you some pretty
+good hints.</p>
+<p>In my case I was trying to require Buddy. If the require isn’t there everything
+still works, but once I add it things blow up.</p>
+<p>This isn’t always so obvious. Say you revisit a project after letting it rest
+for 6 months. You start by bumping the dependencies in your <code>project.clj</code> to
+their latest version, and then try to start a REPL. Boom!</p>
+<p>In this case it’s not as obvious that requiring Buddy is causing problems, but
+on the other hand you do have a great data point: it has to be something with
+the dependencies.</p>
+<pre><code> % lein repl
+Exception in thread "main" java.lang.ExceptionInInitializerError
+        at clojure.main.&lt;clinit&gt;(main.java:20)
+Caused by: java.lang.NoClassDefFoundError: com/fasterxml/jackson/core/FormatFeature, compiling:(cheshire/factory.clj:53:5)
+        at clojure.lang.Compiler.analyzeSeq(Compiler.java:6926)
+        at clojure.lang.Compiler.analyze(Compiler.java:6701)
+        at clojure.lang.Compiler.analyzeSeq(Compiler.java:6907)
+        at clojure.lang.Compiler.analyze(Compiler.java:6701)
+... (hundreds of lines of stack traces) ...
+</code></pre>
+<p>Half of bugfixing is just carefully reading error messages, so let’s have a
+better look at these stack traces. The two things to look for are: what went
+wrong, and where in the code did it happen.</p>
+<p>Errors in Java, and hence also in Clojure, are called exceptions. They have
+types, like <code>clojure.lang.Compiler$CompilerException</code> or
+<code>java.lang.NoClassDefFoundError</code>.</p>
+<p>Sometimes one exception triggers another one, which might trigger another one,
+and so on. You can see this in the stacktrace where it says “Caused by …”. In
+this case a <code>clojure.lang.Compiler$CompilerException</code> was caused by a
+<code>java.lang.NoClassDefFoundError</code>, which in turn was casued by a
+<code>java.lang.ClassNotFoundException</code>. In other words: the Clojure compiler had a
+problem, because it failed to find a definition for a given class, because
+trying to load the class failed.</p>
+<p>So the root cause is that it didn’t find a class that was expected to be there,
+namely <code>com.fasterxml.jackson.core.FormatFeature</code>. That’s a pretty good
+indication that something is wrong with the dependencies.</p>
+<p>The next question is: where did it happen. Now in a sense it happened in many
+places, every line in that stack trace is a call in the code that failed to
+complete. Notice that most of them are functions internal to Clojure. It’s not
+that likely that the bug is actually in Clojure, so you want to scan the
+stacktrace to find instances of library or application code.</p>
+<pre><code>3. Unhandled clojure.lang.Compiler$CompilerException
+   Error compiling cheshire/factory.clj at (53:5)
+
+2. Caused by java.lang.NoClassDefFoundError
+   com/fasterxml/jackson/core/FormatFeature
+
+1. Caused by java.lang.ClassNotFoundException
+   com.fasterxml.jackson.core.FormatFeature
+
+       URLClassLoader.java:  381  java.net.URLClassLoader/findClass
+          ClassLoader.java:  424  java.lang.ClassLoader/loadClass
+                  core.clj:    1  cheshire.core/eval63014
+                   jws.clj:   20  buddy.sign.jws/eval62241
+                   jwt.clj:   15  buddy.sign.jwt/eval62233
+                 token.clj:   15  buddy.auth.backends.token/eval62227
+              backends.clj:   15  buddy.auth.backends/eval61761
+                      REPL:    1  booklog.routes/eval61755
+</code></pre>
+<p>The interesting bits are usually the last place in library code that was called,
+and the last place in our own code that was called. Stacks grow upwards, the
+last thing added is at the top, and it’s no different with stack traces, so the first thing to look for is the top-most line that points at library code.</p>
+<p>The first third party library in the stacktrace is Cheshire, a library for
+encoding JSON. It seems it was trying to invoke <code>require</code>.</p>
+<pre><code class="language-clojure">                  core.clj: 5911  clojure.core/require
+               RestFn.java:  457  clojure.lang.RestFn/invoke
+                  core.clj:    1  cheshire.core/eval63014/loading--auto--
+</code></pre>
+<p>Further down you find buddy, which was also doing a <code>require</code>, so it seems buddy
+was trying to load cheshire.</p>
+<pre><code class="language-clojure">                  core.clj: 5911  clojure.core/require
+               RestFn.java:  551  clojure.lang.RestFn/invoke
+                   jws.clj:   20  buddy.sign.jws/eval62241/loading--auto--
+</code></pre>
+<p>So all of this here is just Clojure requiring a single namespace. No wonder
+these stacktraces are so bloated. Hopefully tooling will get better at filtering
+these out, in the meanwhile we have to make the best of it.</p>
+<pre><code class="language-clojure">                  core.clj:    1  cheshire.core/eval59202
+                  core.clj:    1  cheshire.core/eval59202
+             Compiler.java: 6978  clojure.lang.Compiler/eval
+             Compiler.java: 6967  clojure.lang.Compiler/eval
+             Compiler.java: 7430  clojure.lang.Compiler/load
+                   RT.java:  374  clojure.lang.RT/loadResourceScript
+                   RT.java:  365  clojure.lang.RT/loadResourceScript
+                   RT.java:  455  clojure.lang.RT/load
+                   RT.java:  421  clojure.lang.RT/load
+                  core.clj: 6008  clojure.core/load/fn
+                  core.clj: 6007  clojure.core/load
+                  core.clj: 5991  clojure.core/load
+               RestFn.java:  408  clojure.lang.RestFn/invoke
+                  core.clj: 5812  clojure.core/load-one
+                  core.clj: 5807  clojure.core/load-one
+                  core.clj: 5852  clojure.core/load-lib/fn
+                  core.clj: 5851  clojure.core/load-lib
+                  core.clj: 5832  clojure.core/load-lib
+               RestFn.java:  142  clojure.lang.RestFn/applyTo
+                  core.clj:  659  clojure.core/apply
+                  core.clj: 5889  clojure.core/load-libs
+                  core.clj: 5873  clojure.core/load-libs
+               RestFn.java:  137  clojure.lang.RestFn/applyTo
+                  core.clj:  659  clojure.core/apply
+                  core.clj: 5911  clojure.core/require
+                  core.clj: 5911  clojure.core/require
+               RestFn.java:  551  clojure.lang.RestFn/invoke
+</code></pre>
+<p>If you cut out all the noise, like I did here, then you can see that the problem
+ultimately originated in the first line of the <code>booklog.application</code> namespace,
+which is where the namespace declaration is that loads Buddy, which loads some
+internal namespaces, one of which depends on Cheshire. And apparently Cheshire
+needed this FormatFeature class but couldn’t find it.</p>
+<pre><code class="language-clojure">                  core.clj:    1  cheshire.core/eval59202
+                   jws.clj:   20  buddy.sign.jws/eval58429
+                   jwt.clj:   15  buddy.sign.jwt/eval58421
+                 token.clj:   15  buddy.auth.backends.token/eval58415
+              backends.clj:   15  buddy.auth.backends/eval57949
+           application.clj:    1  booklog.application/eval57943
+</code></pre>
+<p>It’s possible that Cheshire doesn’t probably declare its dependencies, and that
+that’s why the class isn’t there, but it’s unlikely. More likely is that the
+dependencies are in a bad state because of how library dependencies interact.</p>
+<p>The best place to start looking for dependency problems is <code>lein deps :tree</code>.
+This shows you a detailed overview of all dependencies that are being loaded.
+Each library might pull in other libraries, which is visualized by this tree
+structure.</p>
+<p>Note that a single library could be a dependency of many other libraries, but
+Leiningen will only show it once in the tree.</p>
+<pre><code> [bk/ring-gzip "0.2.1"]
+ [buddy/buddy-auth "1.4.1"]
+   [buddy/buddy-sign "1.4.0"]
+     [cheshire "5.7.0"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-cbor "2.8.6"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.8.6"]
+       [tigris "0.1.1"]
+   [funcool/cuerdas "2.0.2"]
+ [com.cognitect/transit-clj "0.8.297"]
+   [com.cognitect/transit-java "0.8.319"]
+     [com.fasterxml.jackson.core/jackson-core "2.3.2"]
+     [commons-codec "1.10"]
+     [org.msgpack/msgpack "0.6.12"]
+       [com.googlecode.json-simple/json-simple "1.1.1" :exclusions [[junit]]]
+       [org.javassist/javassist "3.18.1-GA"]
+</code></pre>
+<p>If you scroll back to the top you find a list of warnings about “possibly
+confusing dependencies”. Multiple libraries might have the same dependency, but
+they don’t necessarily depend on the same version. This means Leiningen needs to
+make a choice: does it pick the version required by library A, or the one asked
+for by library B?</p>
+<p>There’s no perfect solution, Leiningen needs to guess. That’s why it’s warning
+you that maybe its choices aren’t ideal.</p>
+<pre><code>Possibly confusing dependencies found:
+[org.clojure/tools.namespace "0.2.11"]
+ overrides
+[org.danielsz/system "0.4.0"] -&gt; [org.clojure/tools.namespace "0.3.0-alpha3"]
+
+Consider using these exclusions:
+[org.danielsz/system "0.4.0" :exclusions [org.clojure/tools.namespace]]
+
+[spicerack "0.1.2"] -&gt; [com.google.guava/guava "19.0"]
+ overrides
+[org.clojure/clojurescript "1.9.495"] -&gt; [com.google.javascript/closure-compiler-unshaded "v20170218"] -&gt; [com.google.guava/guava "20.0"]
+
+Consider using these exclusions:
+[org.clojure/clojurescript "1.9.495" :exclusions [com.google.guava/guava]]
+
+[com.cognitect/transit-clj "0.8.297"] -&gt; [com.cognitect/transit-java "0.8.319"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.3.2"]
+ overrides
+[buddy/buddy-auth "1.4.1"] -&gt; [buddy/buddy-sign "1.4.0"] -&gt; [cheshire "5.7.0"] -&gt; [com.fasterxml.jackson.dataformat/jackson-dataformat-cbor "2.8.6"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+ and
+[buddy/buddy-auth "1.4.1"] -&gt; [buddy/buddy-sign "1.4.0"] -&gt; [cheshire "5.7.0"] -&gt; [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.8.6"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+ and
+[buddy/buddy-auth "1.4.1"] -&gt; [buddy/buddy-sign "1.4.0"] -&gt; [cheshire "5.7.0"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+
+Consider using these exclusions:
+[buddy/buddy-auth "1.4.1" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+[buddy/buddy-auth "1.4.1" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+[buddy/buddy-auth "1.4.1" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+</code></pre>
+<p>The relevant section for us is this part. Both Transit and Buddy indirectly
+depend on <code>com.fasterxml.jackson.core</code>. Transit wants version 2.3.2, whereas
+Buddy (through Cheshire) asks for 2.8.6.</p>
+<pre><code>[com.cognitect/transit-clj "0.8.297"] -&gt; [com.cognitect/transit-java "0.8.319"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.3.2"]
+ overrides
+[buddy/buddy-auth "1.4.1"] -&gt; [buddy/buddy-sign "1.4.0"] -&gt; [cheshire "5.7.0"] -&gt; [com.fasterxml.jackson.dataformat/jackson-dataformat-cbor "2.8.6"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+ and
+[buddy/buddy-auth "1.4.1"] -&gt; [buddy/buddy-sign "1.4.0"] -&gt; [cheshire "5.7.0"] -&gt; [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.8.6"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+ and
+[buddy/buddy-auth "1.4.1"] -&gt; [buddy/buddy-sign "1.4.0"] -&gt; [cheshire "5.7.0"] -&gt; [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+
+Consider using these exclusions:
+[buddy/buddy-auth "1.4.1" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+</code></pre>
+<p>Now you can see how this plays out in the actual tree of dependencies.
+Underneath Transit you see <code>jackson-core</code>, being pulled in at version 2.3.2.
+Underneath Buddy jackson-core isn’t listed, even though it’s a dependency of
+Cheshire. So Transit is getting priority here, and overriding the version
+requested by Cheshire.</p>
+<pre><code class="language-clojure"> [bk/ring-gzip "0.2.1"]
+ [buddy/buddy-auth "1.4.1"]
+   [buddy/buddy-sign "1.4.0"]
+     [cheshire "5.7.0"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-cbor "2.8.6"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.8.6"]
+       [tigris "0.1.1"]
+   [funcool/cuerdas "2.0.2"]
+ [com.cognitect/transit-clj "0.8.297"]
+   [com.cognitect/transit-java "0.8.319"]
+     [com.fasterxml.jackson.core/jackson-core "2.3.2"]
+     [commons-codec "1.10"]
+     [org.msgpack/msgpack "0.6.12"]
+       [com.googlecode.json-simple/json-simple "1.1.1" :exclusions [[junit]]]
+       [org.javassist/javassist "3.18.1-GA"]
+</code></pre>
+<p>There are two ways to solve this. The easiest is to explicitly add the right
+version as an application dependency. Direct dependencies like these get
+preference, so this overrides both the Cheshire and the Transit dependency.</p>
+<pre><code class="language-clojure">  :dependencies [,,,
+                 [com.cognitect/transit-clj "0.8.297"]
+                 [buddy/buddy-auth "1.4.1"]
+                 [buddy/buddy-hashers "1.2.0"]
+                 ,,,
+                 [com.fasterxml.jackson.core/jackson-core "2.8.6"]]
+</code></pre>
+<p>You can verify this with <code>lein deps :tree</code>. The warnings for <code>jackson.core</code> are
+now gone, although there are still others that you could look into. Now instead
+of being shown as a dependency of Tranist, <code>jackson.core</code> is listed as a top
+level dependency, with the version we asked for, “2.8.6”.</p>
+<pre><code class="language-clojure"> [buddy/buddy-auth "1.4.1"]
+   [buddy/buddy-sign "1.4.0"]
+     [cheshire "5.7.0"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-cbor "2.8.6"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.8.6"]
+ ,,,
+ [com.cognitect/transit-clj "0.8.297"]
+   ,,,
+ [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+</code></pre>
+<p>You can think of this as the brute force approach, just hard code a version to
+make the problem go away, but it has its drawbacks.</p>
+<p>Before the version of <code>jackson-core</code> was declared twice, once by Cheshire and
+once by Transit. now it’s declared three times. If you end up updating Transit
+or Buddy, or you add other libraries to your project, the chance of conflicts
+will only get bigger.</p>
+<p>The better approach is to give Leiningen a gentle push in the right direction.
+Leiningen already showed you how to do that as part of the warnings. You can add
+an <code>:exclusions</code> vector to a dependency declaration. This tells Leiningen it
+should not bother with this transitive dependency. It’s as if Buddy or Cheshire
+never depended on this library at all.</p>
+<p>This way the dependency through Transit will be favored, and it will use version
+2.3.2, instead 2.8.6.</p>
+<pre><code class="language-clojure">[buddy/buddy-auth "1.4.1" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+</code></pre>
+<p>That’s not what you want though, version 2.3.2 is exactly the one that caused
+issues.</p>
+<p>In this case Leiningen’s suggestion isn’t great, but with what you know now, you
+can also decide to do it the other way around, tell Leiningen not to bother with
+the Transit dependency, but to favor the one from Buddy/Cheshire instead.</p>
+<p>Now 2.8.6 gets used. It’s the newer version of the two, but it still has the
+same major version number. This makes it highly likely that it’s backwards
+compatible with version 2.3.2. Many library authors promise to only introduce
+breaking changes in major releases, this is part of the versioning conventions
+known as “semantic versioning”.</p>
+<pre><code>[com.cognitect/transit-clj "0.8.297" :exclusions [com.fasterxml.jackson.core/jackson-core]]
+</code></pre>
+<p>You can verify once more with <code>lein deps :tree</code> that all looks good now, and
+indeed if you run the project this time the error is gone.</p>
+<pre><code class="language-clojure"> [buddy/buddy-auth "1.4.1"]
+   [buddy/buddy-sign "1.4.0"]
+     [cheshire "5.7.0"]
+       [com.fasterxml.jackson.core/jackson-core "2.8.6"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-cbor "2.8.6"]
+       [com.fasterxml.jackson.dataformat/jackson-dataformat-smile "2.8.6"]
+       [tigris "0.1.1"]
+</code></pre>
+<p>You could leave it at that and move on. After all, your problem is solved, and
+you have work to do. It’s likely that someone else will run into this problem as
+well though, given that Transit and Cheshire are both popular libraries. It
+might even be you a few months from now.</p>
+<p>The root cause here is that Transit hasn’t kept its dependencies up-to-date, so
+you can open an issue or pull request to have that fixed.</p>
+<p>When engaging in open source like this there are three things to keep in mind:
+be friendly, be helpful, and be patient. More often then not the person on the
+other end is volunteering their free time because they enjoy doing open source.
+Don’t ruin that feeling!</p>
+<p>Be helpful by providing as much relevant information as possible. In this case I
+can mention the old and new version, and the fact that it clashes with Cheshire,
+which shows that this is a real-world issue.</p>
+<p>You could go one step further and run the project’s tests against the new
+version to see if anything breaks, after which you submit a pull request. This
+is assuming the project accepts pull requests, which is not the case for
+Cognitect projects like Transit.</p>
+<p>Finally, be patient. In this case Alex Miller was very quick to update the
+version and do a new release, but sometimes this takes time. Resist the urge to
+“ping the maintainer”, or “bump the thread”. It’s unlikely they didn’t see it.
+The fact that the issue is documented is already helpful for others running into
+it.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/booklog/tree/dependency-error">browse source code</a></p>
+<p>To reproduce the error, grab the <code>dependency-error</code> branch from Github:</p>
+<pre><code class="language-shell">~ $ git clone https://github.com/lambdaisland/booklog.git -b dependency-error
+Cloning into 'booklog'...
+remote: Counting objects: 87, done.
+remote: Compressing objects: 100% (45/45), done.
+remote: Total 87 (delta 21), reused 87 (delta 21), pack-reused 0
+Unpacking objects: 100% (87/87), done.
+Checking connectivity... done.
+~ $ cd booklog
+~/booklog $ lein repl
+Exception in thread "main" java.lang.ExceptionInInitializerError
+        at clojure.main.&lt;clinit&gt;(main.java:20)
+Caused by: java.lang.NoClassDefFoundError: com/fasterxml/jackson/core/FormatFeature, compiling:(cheshire/factory.clj:53:5)
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

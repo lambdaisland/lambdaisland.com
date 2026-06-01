@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/generative-testing-clojure-test-check" />
+<meta name="twitter:title" content="Generative Testing with test.check" />
+<meta name="twitter:description" content="Generative testing, also called Property Based testing, is a powerful technique able to expose some of the most obscure bugs. You'll learn how to create and compose generators,..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/656501250-77e5a4d0bdf2c95964b254d19195d76446fa56f2c8ea16177779e2d1e2daa4f4-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Generative Testing with test.check" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/generative-testing-clojure-test-check" />
+<meta name="video:duration" content="780" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/656501250-77e5a4d0bdf2c95964b254d19195d76446fa56f2c8ea16177779e2d1e2daa4f4-d_1280x720?r=pad" />
+<meta name="og:description" content="Generative testing, also called Property Based testing, is a powerful technique able to expose some of the most obscure bugs. You'll learn how to create and compose generators,..." />
+<meta name="video:release_date" content="2017-09-21T11:44:41.380Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Generative Testing with test.check</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/234828542?h=e293e5f023&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="35. Generative Testing with test.check"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Generative testing, also called Property Based testing, is a powerful technique able to expose some of the most obscure bugs. You’ll learn how to create and compose generators, and how to define properties that together can verify many aspects of your code.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><code>clojure.test.check</code> is a library for testing your code with lots of random data. You first specify certain properties of your program, and <code>test.check</code> will generate data and verify that the properties hold. Let’s see how that looks in practice.</p>
+<p>First take a regular unit test. This one tests the <code>normalize</code> function from <code>lambdaisland.uri</code> by feeding it a string, and checking the result.</p>
+<pre><code class="language-clojure">(ns lambdaisland.uri.normalize-test
+  (:require [lambdaisland.uri :as uri]
+            [lambdaisland.uri.normalize :as n]
+            [clojure.test :refer [deftest testing is are]]))
+
+(deftest normalize-test
+  (is (= (str (n/normalize (uri/uri "http://foo.bar?q=💃")))
+         "http://foo.bar?q=%F0%9F%92%83")))
+</code></pre>
+<p>That’s a useful test, but that test alone isn’t enough to inspire confidence, so you go on and add more and more of these test cases, each time coming up with some data that tests a specific aspect of the implementation. This works alright, but coming up with good test cases is limited by your patience and imagination.</p>
+<p>It’s not just that you won’t come up with enough test cases, it’s also that you will tend to test “reasonable” data, missing many edge cases.</p>
+<pre><code class="language-clojure">(deftest normalize-test
+  (are [in out] (= (str (n/normalize (uri/uri in))) out)
+    "http://foo.bar?q=💃" "http://foo.bar?q=%F0%9F%92%83"
+    "http://foo.bar/./foo/../bar/baz" "http://foo.bar/bar/baz"
+    "HTTP://foo.bar" "http://foo.bar"
+    "http://foo.BAR" "http://foo.bar"
+    "" ""
+    "#" "#"
+    ":::Av?%f" ":::Av?%25f"))
+</code></pre>
+<p>Wouldn’t it be great if you could generate test cases on the fly, testing them by the hundreds or thousands?</p>
+<p>It’s a nice thought, but how would it work? Generating inputs is easy enough, but you can’t so easily generate the output to test again.</p>
+<p>You can rephrase the problem though by looking for <strong>invariants</strong>, also called <strong>properties</strong>. These are things that must be true for any input.</p>
+<p>Say you are writing a <code>sort</code> algorithm. In a sorted list, the first element can not be bigger than the last element, no matter which list you try this with.</p>
+<pre><code class="language-clojure">(let [list [-1 -8 -5 5 9 0 4]
+      sorted (sort list)]
+  (&lt;= (first sorted) (last sorted)))
+;;=&gt; true
+</code></pre>
+<p>You can check this property for a very large number of random lists by using <strong>generators</strong>. Using <code>test.check</code> always starts with setting up some generators. These live in the <code>clojure.test.check.generators</code> namespace, which is usually aliased to <code>gen</code>.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check.generators :as gen])
+</code></pre>
+<p>The <code>gen/int</code> generator generates numbers. You can try it out with
+<code>gen/generate</code>, or generate a bunch of them with <code>gen/sample</code>.</p>
+<p>You don’t usually use <code>generate</code> or <code>sample</code> a lot in your code, but they’re great for testing out generators from the REPL, so keep them handy. There’s also <code>sample-seq</code>, which returns a lazy, infinite sequence.</p>
+<pre><code class="language-clojure">(gen/generate gen/int)
+;;=&gt; -12
+
+(gen/sample gen/int)
+;;=&gt; (0 1 0 0 -3 -2 5 1 -2 -5)
+
+(take 10 (gen/sample-seq gen/int))
+;;=&gt; (0 0 -2 -3 0 -1 4 -3 -5 -7)
+</code></pre>
+<p>Some generators combine with others to form more complex generators. The
+<code>vector</code> generator is a good example. This is how you generate a vector of
+integers.</p>
+<pre><code class="language-clojure">(gen/sample (gen/vector gen/int))
+;;=&gt; ([] [] [2] [3 3 0] [-1 -3 -4 -3] [1 2 4 -4 2] [4] [5 7] [-5] [])
+</code></pre>
+<p>Let’s assign that generator to a var so you can use it to define a property.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check.generators :as gen])
+
+(def vector-of-int (gen/vector gen/int))
+</code></pre>
+<p>Properties are defined using the <code>for-all</code> macro from the <code>clojure.test.check.properties</code> namespace.</p>
+<p>You first pass it a binding form, a vector which declares which variables need
+to be assigned, and how values should be generated. In this case the <code>list</code>
+variable will receive values coming from the <code>vector-of-int</code> generator.</p>
+<p>Then you use that <code>list</code> variable to write the actual property, which should evaluate to truthy.</p>
+<p>Finally assign it to a var, we’ll test this property next.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check.properties :as prop])
+
+(def first-cant-be-more-than-last
+  (prop/for-all [list vector-of-int]
+    (let [sorted (sort list)]
+      (&lt;= (first sorted) (last sorted)))))
+</code></pre>
+<p>Finally you’re ready to test wether this property holds, using <code>quick-check</code> from the top level <code>clojure.test.check</code> namespace. Let’s try a hundred different inputs, and see if the property holds.</p>
+<p>Owww… that failed straight away. The result of <code>quick-check</code> is a map, and when it fails like this then the <code>:fail</code> key contains the input values that caused trouble.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check :as tc])
+
+(tc/quick-check 100 first-cant-be-more-than-last)
+;;=&gt;
+{:seed 1504183219109,
+ :failing-size 0,
+ :num-tests 1,
+ :fail [[]]
+ :result #error {:cause nil
+                 :via [{:type java.lang.NullPointerException}]
+                 :trace
+                 [[clojure.lang.Numbers ops "Numbers.java" 1013]
+                  [clojure.lang.Numbers lte "Numbers.java" 225]
+                  ,,,]}}
+</code></pre>
+<p>Apparently the empty vector causes this property to throw an exception.</p>
+<pre><code class="language-clojure">(let [sorted []]
+  (&lt;= (first sorted) (last sorted)))
+;; =&gt; Unhandled java.lang.NullPointerException
+</code></pre>
+<p>Let’s fix that for now by just adding an <code>empty?</code> check.</p>
+<pre><code class="language-clojure">(def first-cant-be-more-than-last
+  (prop/for-all [list vector-of-int]
+    (let [sorted (sort list)]
+      (or (empty? list) (&lt;= (first sorted) (last sorted))))))
+</code></pre>
+<p>And now it works, <code>quick-check</code> generated a hundred lists, and verified that for each of them, after sorting, the first element is no greater than the last.</p>
+<p>You can check a few more if you have the time, but this already starts to give
+you some confidence that <code>sort</code> at least partially does its job.</p>
+<pre><code class="language-clojure">(tc/quick-check 100 first-cant-be-more-than-last)
+;;=&gt; {:result true, :num-tests 100, :seed 1504183661234}
+
+(tc/quick-check 1000 first-cant-be-more-than-last)
+;;=&gt; {:result true, :num-tests 1000, :seed 1504183709306}
+
+(tc/quick-check 10000 first-cant-be-more-than-last)
+;;=&gt; {:result true, :num-tests 10000, :seed 1504183711023}
+</code></pre>
+<p>Learning to use <code>test.check</code> effectively means learning how to create generators that fit your data, and how to come up with good properties to test. Let’s quickly recap the API, because it’s scattered a bit across namespaces.</p>
+<p>The top-level <code>clojure.test.check</code> only defines a single public function, <code>quick-check</code>. The function is called <code>quick-check</code> because that’s the name of the Haskell library that <code>test.check</code> is inspired by.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check :refer [quick-check]])
+
+(quick-check &lt;num-tests&gt; &lt;property&gt; &lt;kw-args&gt;)
+</code></pre>
+<p>Alternatively you can also check your properties with <code>defspec</code> defined in <code>clojure.test.check.clojure-test</code>. This macro defines a test which verifies the property, and is compatible with the built-in <code>clojure.test</code> testing library.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check.clojure-test :refer [defspec]])
+
+(defspec first-cant-be-more-than-last-test
+  (prop/for-all [list vector-of-int]
+    (let [sorted (sort list)]
+      (or (empty? list) (&lt;= (first sorted) (last sorted))))))
+
+(clojure.test/run-tests)
+;;=&gt; {:test 1, :pass 1, :fail 0, :error 0, :type :summary}
+</code></pre>
+<p>The properties themselves are defined with <code>for-all</code> in the
+<code>clojure.test.check.properties</code> namespace, which takes a binding form, and then a body expression.</p>
+<p><code>for-all</code> is a macro. There’s also a plain function version, <code>for-all*</code>, which is useful if you want to simply wrap a pre-existing predicate.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check              :refer [quick-check]]
+         '[clojure.test.check.clojure-test :refer [defspec]]
+         '[clojure.test.check.properties   :refer [for-all  ;; macro
+                                                   for-all* ;; function
+                                                   ]])
+</code></pre>
+<p><code>test.check</code> works both on Clojure and on ClojureScript, but since <code>defspec</code> and <code>for-all</code> are macros, you need to use <code>:refer-macros</code> when using them from ClojureScript.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check :refer [quick-check]]
+         '[clojure.test.check.clojure-test :refer-macros [defspec]]
+         '[clojure.test.check.properties :refer-macros [for-all]])
+</code></pre>
+<p>Everything else, some 70-odd generators and related functions, are all cramped together in
+<a shape="rect" href="http://lambdaisland.com/episodes/clojure.github.io/test.check/clojure.test.check.generators.html">clojure.test.check.generators</a>.</p>
+<p>Functions in that namespace roughly fall into five categories: <strong>scalar generators</strong>, <strong>collection generators</strong>, <strong>generator combinators</strong>, <strong>generator modifiers</strong>, and functions that <strong>consume generators</strong>.</p>
+<pre><code class="language-clojure">(require '[clojure.test.check              :refer [quick-check]]
+         '[clojure.test.check.clojure-test :refer [defspec]]
+         '[clojure.test.check.properties   :refer [for-all for-all*]]
+
+         ;; ~70 generators and generator combinators
+         '[clojure.test.check.generators :as gen])
+
+</code></pre>
+<p>The most basic generators generate just a single value, I call these <strong>scalar
+generators</strong>. All of Java’s number types, as well as Clojure’s ratio all have
+corresponding generators.</p>
+<pre><code class="language-clojure">(gen/generate gen/byte)              ;;=&gt; -30
+(gen/generate gen/char)              ;;=&gt; \h
+(gen/generate gen/int)               ;;=&gt; 16
+(gen/generate gen/double)            ;;=&gt; 0.038860321044921875
+(gen/generate gen/ratio)             ;;=&gt; -7/16
+</code></pre>
+<p>There are also specialized number generators for positive and negative integers, which both have a strict version which doesn’t return 0.</p>
+<p>Finally there’s <code>choose</code>, you give it a lower and an upper bound, and it picks an integer within the given range.</p>
+<pre><code class="language-clojure">(gen/generate gen/pos-int)                     ;;=&gt; 11
+(gen/generate gen/neg-int)                     ;;=&gt; -26
+(gen/generate gen/s-pos-int)                   ;;=&gt; 11
+(gen/generate gen/s-neg-int)                   ;;=&gt; -21
+(gen/generate (gen/choose 50 500))             ;;=&gt; 116
+</code></pre>
+<p>Strings, keywords, and symbols also have their own generators, with variants for namespaces keywords and symbols. Notice that these last two have a slash in them.</p>
+<pre><code class="language-clojure">(gen/generate gen/string)                      ;;=&gt; "\b¬Ð¦"
+(gen/generate gen/keyword)                     ;;=&gt; :On*+Jg7dfxz-PRY!g?3fUD:A
+(gen/generate gen/symbol)                      ;;=&gt; O837r!Z_hgG!
+(gen/generate gen/keyword-ns)                  ;;=&gt; :O7ThR-g++*D5--70J912_*1y/r9-7qec
+(gen/generate gen/symbol-ns)                   ;;=&gt; b1_?Gj81yfuA*c9F-b-*9/?Z0??-?*e6XEg!eT?._W!d
+</code></pre>
+<p>To generate collections like vectors or maps you use <strong>collection generators</strong>, passing in other generators to handle the elements inside the collection.</p>
+<pre><code class="language-clojure">(gen/sample (gen/vector gen/boolean))          ;;=&gt; ([] [false] [false true] [true])
+(gen/sample (gen/map gen/keyword gen/pos-int)) ;;=&gt; ({} {} {:T9:lXZ:2++ 2} {:!v 2, :m 2, :-UW:*E1!:3*l 0})
+(gen/sample (gen/hash-map :name gen/string
+                          :age gen/int))       ;;=&gt; ({:name "", :age 0} {:name "", :age 0} {:name "y", :age 2})
+</code></pre>
+<p>These are again just generators, so you combine them however which way you
+choose. A vector of maps with vectors as values? Not a problem.</p>
+<pre><code class="language-clojure">(gen/generate
+ (gen/vector
+  (gen/map gen/pos-int
+           (gen/vector gen/pos-int))))
+;;=&gt; [{} {1 [3 17 17 20 24 0], 0 [22 17 4]} {22 [15], 2 [21 20 30 19 8 27 12 20 23 12 20 6 19 0 13 13 7 15], 6 [14 25 16 4 18 26 13 9 6 30 26 30 16 20 27 11 12 2 8 13 28 29 15 9]}]
+</code></pre>
+<p><strong>Generator combinators</strong> and <strong>generator modifiers</strong> let you build new
+generators based on existing ones. For instance, <code>fmap</code> and <code>such-that</code> are
+similar to <code>map</code> and <code>filter</code>. <code>fmap</code> lets you apply a regular function over the results of a generator, and <code>such-that</code> lets you reject certain generated values.</p>
+<p>So this first example will generate only cubic numbers, and the second one generates strings that don’t contain the letter “a”.</p>
+<pre><code class="language-clojure">;; generate cubic numbers
+(gen/sample (gen/fmap #(* % % %) gen/pos-int))                   ;;=&gt; (0 1 8 1 1 64 0 216 64 512)
+
+;; generate strings that don't contain the letter "a"
+(gen/sample (gen/such-that #(not (re-find #"a" %)) gen/string))  ;;=&gt; ("" "" "" "î�" "«n9”" "{" "±ËÇ\t" "" "hp'" "^")
+</code></pre>
+<p>If you look at the docs for <code>generate</code> you’ll notice there’s an optional <code>size</code> parameter, which defaults to 30. What this does depends on the specific generator, for instance, number generators may use this as a maximum size for the generated number, or a vector generator could use this as an upper bound for the size of the vector.</p>
+<p>When generating data for tests, test.check will start with a small <code>size</code> parameter, and gradually increase it, testing with larger and larger values. Most of the time you don’t have to worry about the size, but it’s good to know why it’s there.</p>
+<pre><code>clojure.test.check.generators/generate
+ [generator]
+ [generator size]
+  Returns a single sample value from the generator, using a default
+  size of 30.
+</code></pre>
+<p>There’s also a <code>resize</code> modifier, for giving generators a specific fixed size.</p>
+<pre><code class="language-clojure">(gen/sample
+ (gen/fmap #(* % % %) (gen/resize 1000 gen/pos-int)))
+;;=&gt; (12812904 37595375 86938307 401947272 2000376 1030301 1259712 656234909 862801408 1225043)
+</code></pre>
+<p>When running <code>quick-check</code> it will try progressively larger generated values, until it finds a value for which the property does not hold. This value may be huge though, a string with thousands of characters, or a vector nested hundreds of levels deep, which isn’t very helpful for pinpointing the problem.</p>
+<p>Therefore <code>quick-check</code> tries to progressively “shrink” the value again, until it’s found a minimal case that violates the property. What shrinking means is generator-dependent. It could for instance mean removing characters from a string, or elements from a vector.</p>
+<p>In the <code>quick-check</code> output you find the value that originally caused the property to fail under the <code>:fail</code> key. The <code>:shrunk</code> key contains the result after shrinking, with some indicators of how many steps it took to find a value that could no longer be made any smaller.</p>
+<p>This shrinking is really what makes <code>test.check</code> awesome.</p>
+<pre><code class="language-clojure">(tc/quick-check 10000
+                (prop/for-all [s gen/string]
+                  (= s (str (uri s)))))
+;;=&gt;
+{:result false,
+ :seed 1505742494487,
+ :failing-size 54,
+ :num-tests 55,
+ :fail ["²Ôpòü³Áá)ØÑH¸Á«q�\"R´»#†5OÂR\f™ë—Žúø\nL"],
+ :shrunk {:total-nodes-visited 65, :depth 39, :result false, :smallest ["#\n"]}}
+</code></pre>
+<p>If you look again at the map that <code>quick-check</code> outputs, there’s something else there as well, a number called <code>:seed</code>. It’s a random number that determines which exact values are generated. You can pass this <code>:seed</code> value back to <code>quick-check</code> as a keyword argument, and it will re-check the property using the exact same values as before.</p>
+<p>So suppose <code>quick-check</code> finds an obscure bug, you fix it, and then you run <code>quick-check</code> again and it passes. Did it pass because the bug is fixed, or because it happened to pick values that didn’t trigger the bug? By using the <code>:seed</code> value that initially triggered the bug, you can make sure you actually fixed it.</p>
+<p>This is especially helpful if your implementation turns out to have multiple bugs. Each run of <code>quick-check</code> may trigger a different bug. By using <code>:seed</code> you can focus on one bug at the time.</p>
+<p>Another use case is reproducing failures that happened on the build server. Just copy the seed from the build output and take it from there.</p>
+<pre><code class="language-clojure">(tc/quick-check 100 first-cant-be-more-than-last)
+;;=&gt;
+{:seed 1504183219109,
+ :failing-size 0,
+ :num-tests 1,
+ :fail [[]]
+ :result #error {:cause nil
+                 :via [{:type java.lang.NullPointerException}]
+                 :trace
+                 [[clojure.lang.Numbers ops "Numbers.java" 1013]
+                  [clojure.lang.Numbers lte "Numbers.java" 225]
+                  ,,,]}}
+
+;; fix the bug, then re-run the exact same tests
+(tc/quick-check 10000 first-cant-be-more-than-last :seed 1504183219109)
+;;=&gt; {:result true, :num-tests 100, :seed 1504183219109}
+</code></pre>
+<p>Writing generative tests takes some getting used to. With practice you’ll learn to write generators that fit your domain, but it can still be a challenge to come up with properties to test.</p>
+<p>You’ll find that most properties fit one of six categories, so if you need some inspiration you can mentally go over this list, and see if any of these categories apply to the code you’re writing.</p>
+<p>The first category is round tripping. This applies to operations that are each other’s opposite, like encode/decode, or parse/unparse. For example, <code>lambdaisland.uri</code> contains functions that perform percent encoding and decoding of URI segments. This test assures that after encoding and then decoding a string the result is unchanged.</p>
+<pre><code class="language-clojure">(defspec percent-encode-round-trip-test
+  (for-all [s gen/string]
+    (= s
+       (-&gt; s
+           n/percent-encode
+           n/percent-decode))))
+</code></pre>
+<p>Another category of property based tests are tests that check an implementation against a reference implementation. This may not sound too useful at first, why would you implement something if another implementation is already available? And yet this is more common than you might think, especially for low level algorithms.</p>
+<p>The simplest example is checking an optimized implementation against a naive, brute force version. The latter will be too slow for production use, but it’s easy to write, and less likely to contain bugs.</p>
+<p>Also don’t forget other JVM languages. When writing the <code>normalize</code> function in <code>lambdaisland.uri</code> I used JRuby to compare it to the <code>normalize</code> functionality from Ruby’s <code>Addressable::URI</code> library. You could do the same thing to compare algorithms across Java, Scala, Groovy, or any other JVM language. This will often find bugs in both implementations, or gray areas where they “agree to disagree”, and which are worth documenting.</p>
+<p>Here you also see an example of how to build up a string from a custom set of characters. I first create a generator that generates individual characters, then generate sequences of characters with <code>gen/vector</code>, and turn them into strings with <code>fmap</code> and <code>clojure.string/join</code>.</p>
+<pre><code class="language-clojure">(def char-valid-uri (gen/one-of [gen/char-alphanumeric
+                                 (gen/elements [\- \. \_ \~
+                                                \: \/ \? \# \[ \] \@
+                                                \! \$ \&amp; \' \( \) \* \+ \, \; \=])]))
+
+(def string-valid-uri (gen/fmap clojure.string/join
+                                (gen/vector char-valid-uri)))
+
+(tc/quick-check 1000
+                (prop/for-all [s string-valid-uri]
+                  (= (ruby.addressable/normalize s) (into {} (normalize (uri s))))))
+</code></pre>
+<p>The third category is called “Same Destination, Different Route”. A naive example of this is making a string uppercase, and then reversing it. Wether you reverse it first and then turn it uppercase or the other way around, the result should be the same.</p>
+<pre><code class="language-clojure">(defspec reverse-uppercase-test
+  (for-all [s gen/string]
+    (= (-&gt; s
+           clojure.string/upper-case
+           clojure.string/reverse)
+       (-&gt; s
+           clojure.string/reverse
+           clojure.string/upper-case))))
+</code></pre>
+<p>If you have functions that are idempotent, meaning you can apply them multiple times without changing the result, then this is also a great thing to test for.</p>
+<p>Normalizing an already normalized URI should not change it. You can call <code>normalize</code> on it as many times as you like, the result should stay the same.</p>
+<p>Also noticed that this is a cross-plaform Clojure/ClojureScript test. It uses some reader conditionals to select the right syntax for the current platform.</p>
+<pre><code class="language-clojure">(defspec normalize-idempotence-test
+  (for-all [s gen/string]
+    (= (-&gt; s
+           uri/parse
+           n/normalize)
+       (-&gt; s
+           uri/parse
+           n/normalize
+           n/normalize))))
+</code></pre>
+<p>The fifth category are invariants. These are probably the first thing you think of when talking about “properties”.</p>
+<p>This can mean checking a result for internal consistency. A percent encoded string should only contain the percent character and hexadecimals. It can also mean verifying some relationship between the input and output. For instance, a sorted collection should have the same size as its unsorted counterpart.</p>
+<pre><code class="language-clojure">(defspec percent-encode-consistency-test
+  (for-all [s gen/string]
+    (re-find #"^(%[0-9A-F]{2})*$" (n/percent-encode s))))
+</code></pre>
+<p>The final category are things that are hard to do, but easy to verify. Take a sudoku solver. Implementing it is hard, but verifying that the final result is correct is trivial.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="broad-overview-of-the-api">Broad overview of the API</h2>
+<pre><code class="language-clojure">(require '[clojure.test.check              :refer [quick-check]]
+         '[clojure.test.check.clojure-test :refer [defspec]]
+         '[clojure.test.check.properties   :refer [for-all for-all*]]
+
+         ;; ~70 generators and generator combinators
+         '[clojure.test.check.generators :as gen])
+</code></pre>
+<h2 id="example-property-based-test">Example property-based test</h2>
+<pre><code class="language-clojure">(ns lambdaisland.sorted-test
+  (:require [clojure.test.check.generators :as gen]
+            [clojure.test.check.properties :as prop]
+            [clojure.test.check.clojure-test :refer [defspec]]))
+
+(def vector-of-int (gen/vector gen/int))
+
+(defspec first-cant-be-more-than-last-test
+  (prop/for-all [list vector-of-int]
+    (let [sorted (sort list)]
+      (or (empty? list) (&lt;= (first sorted) (last sorted))))))
+</code></pre>
+<h2 id="generators">Generators</h2>
+<p>There really is a lot cramped together in the <code>generators</code> namespace, which makes the <a shape="rect" href="http://clojure.github.io/test.check/index.html">API docs</a> a bit difficult to navigate. To get a better sense of what’s there I’ve categorized the various functions. If you’re ready to dig deeper I encourage you to read up on the functions under “Combinators” and “Modifiers”.</p>
+<h3 id="scalars">Scalars</h3>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#any">any</a>, 
+<a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#any-printable">any-printable</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#simple-type">simple-type</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#simple-type-printable">simple-type-printable</a>,</p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#boolean">boolean</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#char">char</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#char-alpha">char-alpha</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#char-alpha-numeric">char-alpha-numeric</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#char-alphanumeric">char-alphanumeric</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#char-ascii">char-ascii</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#string">string</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#string-alpha-numeric">string-alpha-numeric</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#string-alphanumeric">string-alphanumeric</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#string-ascii">string-ascii</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#uuid">uuid</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#symbol">symbol</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#symbol-ns">symbol-ns</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#keyword">keyword</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#keyword-ns">keyword-ns</a></p>
+<h4 id="numbers">Numbers</h4>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#byte">byte</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#double">double</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#double*">double*</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#ratio">ratio</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#int">int</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#nat">nat</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#pos-int">pos-int (same as nat)</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#s-neg-int">s-neg-int</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#s-pos-int">s-pos-int</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#neg-int">neg-int</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#choose">choose</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#large-integer">large-integer</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#large-integer*">large-integer*</a></p>
+<h3 id="collections">Collections</h3>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#elements">elements</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#set">set</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#sorted-set">sorted-set</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#bytes">bytes</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#tuple">tuple</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#shuffle">shuffle</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#map">map</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#hash-map">hash-map</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#vector">vector</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#vector-distinct">vector-distinct</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#vector-distinct-by">vector-distinct-by</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#list">list</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#list-distinct">list-distinct</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#list-distinct-by">list-distinct-by</a></p>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#container-type">container-type</a></p>
+<h3 id="combinators">Combinators</h3>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#one-of">one-of</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#such-that">such-that</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#recursive-gen">recursive-gen</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#fmap">fmap</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#frequency">frequency</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#let">let</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#bind">bind</a></p>
+<h3 id="modifiers">Modifiers</h3>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#resize">resize</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#sized">sized</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#scale">scale</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#not-empty">not-empty</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#no-shrink">no-shrink</a></p>
+<h3 id="consume">Consume</h3>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#sample">sample</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#sample-seq">sample-seq</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#generate">generate</a></p>
+<h3 id="advanced">Advanced</h3>
+<p><a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#shrink-2">shrink-2</a>, <a shape="rect" href="http://clojure.github.io/test.check/clojure.test.check.generators.html#return">return</a></p>
+<h2 id="types-of-properties">Types of properties</h2>
+<p>Most properties fall in these categories. When looking to test a function, go over this list to get ideas for properties to check.</p>
+<h3 id="round-trip">Round Trip</h3>
+<p>Do an operation and its inverse.</p>
+<h3 id="alternative-implementation">Alternative Implementation</h3>
+<p>Verify against a reference implementation.</p>
+<h3 id="same-destination-different-route">Same Destination, Different Route</h3>
+<p>Re-order operations without changing the result.</p>
+<h3 id="idempotence">Idempotence</h3>
+<p>When doing something twice is the same as doing it once.</p>
+<h3 id="invariants-size-contents-consistency">Invariants (size, contents, consistency)</h3>
+<p>Some things are always true.
+Some things never change.</p>
+<h3 id="hard-to-do-easy-to-verify">“Hard to do, easy to verify”</h3>
+<p>I don’t know what you did there, but I can see that it’s right.</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><a shape="rect" href="https://github.com/clojure/test.check">clojure/test.check</a></li>
+<li><a shape="rect" href="https://github.com/gfredericks/test.chuck">grfredericks/test.chuck</a> library by the maintainer of test.check with extra utilities</li>
+<li><a shape="rect" href="http://www.cse.chalmers.se/~rjmh/QuickCheck/manual.html">The QuickCheck manual</a></li>
+<li><a shape="rect" href="https://fsharpforfunandprofit.com/posts/property-based-testing-2/">Choosing properties for property-based testing</a> Uses F# but still a useful resource.</li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

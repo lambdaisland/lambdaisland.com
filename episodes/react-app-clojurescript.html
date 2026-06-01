@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/react-app-clojurescript" />
+<meta name="twitter:title" content="Building a React app with ClojureScript" />
+<meta name="twitter:description" content="React.js is the new hotness in the land of user interfaces. It's descriptive approach pairs wonderfully with ClojureScript's functional underpinnings. This episode will show how..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/573751418-2ea5deeae3985a84a07251a1f9569d5a4adee17f74774422fa98e040d49c4ec8-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Building a React app with ClojureScript" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/react-app-clojurescript" />
+<meta name="video:duration" content="1151" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/573751418-2ea5deeae3985a84a07251a1f9569d5a4adee17f74774422fa98e040d49c4ec8-d_1280x720?r=pad" />
+<meta name="og:description" content="React.js is the new hotness in the land of user interfaces. It's descriptive approach pairs wonderfully with ClojureScript's functional underpinnings. This episode will show how..." />
+<meta name="video:release_date" content="2016-06-02T16:24:52.988Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Building a React app with ClojureScript</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/169106458?h=0c7cc9a001&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="Building a React app with ClojureScript"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>React.js is the new hotness in the land of user interfaces. It’s descriptive approach pairs wonderfully with ClojureScript’s functional underpinnings.</p>
+<p>This episode will show how to build an app with React, all from comfortable ClojureScript. It provides a solid foundation for diving into React wrappers like Reagent or Om later on, and it’s a welcome exercise in using ClojureScript’s interop features.</p>
+<p>We’ll cover: elements, components, the virtual DOM, using an atom to keep application state, and attaching event handlers with component properties.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h1 id="using-react-from-clojurescript">Using React from ClojureScript</h1>
+<p>To introduce you to React, we’ll build a calculator app, this is what the result
+will look like.</p>
+<p>Facebook released React onto the world three years ago, and it’s taken the world
+by storm. It lets you build user interfaces based on components and
+uni-directional data-flow.</p>
+<p>Several ClojureScript libraries use React under the hood, notably Om and
+Reagent, each adding quite a bit of functionality of their own.</p>
+<p>The React API is very small. By introducing React on its own, it will be easier
+to understand the unique value proposition of the various ClojureScript
+wrappers.</p>
+<p>I’m basing this project on the Chestnut template. Pass in <code>--vanilla</code> to start
+without a wrapper library.</p>
+<pre><code>$ lein new chestnut calculator --template-version 0.14.0 -- --vanilla
+Generating fresh Chestnut project.
+README.md contains instructions to get you started.
+</code></pre>
+<p>Now add the dependency on React and React DOM, these are helpfully packaged by
+the CLJSJS project, so we can pull them in directly with Leiningen.</p>
+<p>Also add <code>org.clojure/core.rrb-vector</code> and <code>javax.xml.bind/jaxb-api</code>, these are necessary for Figwheel to work on newer versions of Java.</p>
+<pre><code class="language-clojure">(defproject calculator "0.1.0-SNAPSHOT"
+
+  :dependencies [,,,
+                 ;; add these
+                 [cljsjs/react "15.1.0-0"]
+                 [cljsjs/react-dom "15.1.0-0"]
+                 [org.clojure/core.rrb-vector "0.0.14"]
+                 [javax.xml.bind/jaxb-api "2.2.4"]
+                 ]
+
+  ,,,
+  )
+</code></pre>
+<p>The Chestnut template is based on Figwheel. Figwheel takes care of instantly
+updating the browser whenever you make any changes, creating a great developer
+experience.</p>
+<p>You can use the Figwheel plugin from the command line, it will start the
+automatic reloading, and also provide you with a REPL connected to the browser.</p>
+<p>Open <code>core.cljs</code> and change the text of “Hello, Chestnut”. If your browser
+updated as soon as you saved the file, you’re good to go.</p>
+<pre><code class="language-shell">lein figwheel
+</code></pre>
+<pre><code class="language-clojure">(set! (.-innerHTML (js/document.getElementById "app"))
+      "&lt;h1&gt;Hello Lambda Island!&lt;/h1&gt;")
+</code></pre>
+<p>As usual I’m using Emacs and CIDER, so I’m starting a Figwheel REPL inside
+Emacs. Other editors like Cursive or Lightcode can do the same. The README that
+Chestnut generates has instructions to help you get set up. Or if that doesn’t
+work out for you just run Figwheel from a terminal.</p>
+<pre><code>M-x cider-jack-in-clojurescript
+</code></pre>
+<p>We need to require the two React libraries in the namespace declaration. We will
+access them through JavaScript globals, but we still need to require them so
+they get loaded.</p>
+<pre><code class="language-clojure">(ns calculator.core
+  (:require cljsjs.react
+            cljsjs.react.dom))
+</code></pre>
+<p>To build a UI, you specify it as a tree of ReactElements, which are created by
+calling <code>js/React.createElement</code>. This function takes the type of element, in
+this case a <code>"div"</code>, followed by the element’s properties, and finally followed
+by any child elements. Here’s a <code>div</code> element containing a parapgraph and an
+image. Make sure the properties are JS objects, not ClojureScript maps.</p>
+<pre><code class="language-clojure">;; (js/React.createElement type properties
+;;   children...)
+
+(js/React.createElement "div" #js {}
+  (js/React.createElement "p" #js {} "Hello from React")
+  (js/React.createElement "img" #js {:src "/parrot.gif"}))
+</code></pre>
+<p>We can evaluate this to see what it looks like. There’s a chance the result will look like this:</p>
+<pre><code>#object[TypeError TypeError: can't convert symbol to string]
+</code></pre>
+<p>That’s not very helpful, is it? React elements contain a JavaScript Symbol, and
+ClojureScript doesn’t know how to display that. This problem will go away in
+future versions of ClojureScript. It’s taking a while because people are still
+debating how best to solve it across browsers (I’m looking at you Safari). We’ll
+give ClojureScript a helping hand, this patch isn’t perfect, but at least it
+gives us something to work with and works in modern browsers, just add it to the
+top of your code.</p>
+<pre><code class="language-clojure">(extend-type js/Symbol
+  IPrintWithWriter
+  (-pr-writer [obj writer _]
+    (write-all writer (str "#object[" (.toString obj) "]")))
+</code></pre>
+<p>And now we get a proper result! If you watched the episode on ClojureScript
+interop, you should recognize this as a plain JavaScript object. This is an
+important thing to remember: the result of <code>createElement</code> is a plain
+lightweight value object.</p>
+<pre><code class="language-clojure">#js {:$$typeof Symbol(react.element)
+     :type "div"
+     :key nil
+     :ref nil
+     :props
+     #js {:children
+          #js [#js {:$$typeof Symbol(react.element)
+                    :type "p"
+                    :key nil
+                    :ref nil
+                    :props #js {:children "Hello from React"}
+                    :_owner nil
+                    :_store #js {}}
+               #js {:$$typeof Symbol(react.element)
+                    :type "img"
+                    :key nil
+                    :ref nil
+                    :props #js {:src "/parrot.gif"}
+                    :_owner nil
+                    :_store #js {}}]}
+     :_owner nil
+     :_store #js {}}
+</code></pre>
+<p>Let’s remove some of the noise for a moment so we see what we’re looking at.
+First get rid of the <code>#js</code> reader tags. Also, several of these properties are
+merely implementation details. React needs them for internal use, but you won’t
+have to care about them yourself, so let’s get rid of those as well.</p>
+<p>What’s left is pure, unadorned data. React elements are just values, React even
+treats them as immutable. Clojurians should be feeling right at home by
+now.</p>
+<p>So React elements are plain JavaScript objects, with a type and properties,
+abbreviated to props. They are pure and simple data, and form a description of
+how your UI should look like. This description is called the Virtual DOM. We’ll
+see in a bit how to tell React to take this Blueprint, and build up the actual
+DOM.</p>
+<pre><code class="language-clojure">{:type "div"
+ :props  {:children [{:type "p"
+                      :props {:children "Hello from React"}}
+                     {:type "img"
+                      :props {:src "parrot.gif"}}]}}
+</code></pre>
+<p>The first argument to <code>createElement</code>, the type, can be one of two things. It is
+either the name of an HTML element as a string, or it is a component class.</p>
+<p>So far we’ve only seen regular HTML elements, let’s see how you would use a
+component.</p>
+<p>Say you have a progress bar component, you might use it like this.</p>
+<p>You don’t know yet how to create the component itself, but we’ll get there.
+Notice that you use them just as you would use regular HTML elements. They
+receive properties, and possibly child elements. It’s up to the component how it
+renders those.</p>
+<pre><code class="language-clojure">(js/React.createElement ProgressBar #js {:progress 0.8})
+</code></pre>
+<p>Here’s another example, we could have a generic component that renders
+selectable tabs, such as the ones you find below a Lambda Island episode. This
+component receives two child elements, but will only render one of them at a
+time, depending on which tab is selected.</p>
+<pre><code class="language-clojure">(js/React.createElement Tabs #js {:selectedIndex 0 :headers ["Transcript" "Show notes"]}
+  (js/React.createElement Transcript #js {:text (:transcript episode)})
+  (js/React.createElement ShowNotes #js {:text (:show-notes episode)}))
+</code></pre>
+<p>We’ll have a lot more to say about components, but before we do that let’s
+actually see React in action. We’ll take our virtual DOM, and pass it to
+<code>ReactDOM.render</code>, together with the DOM node that React should use as a
+container.</p>
+<p>You can do a little dance just like the parrot is doing, because you just wrote
+a React app!</p>
+<pre><code class="language-clojure">(ns calculator.core
+  (:require cljsjs.react
+            cljsjs.react.dom))
+
+(def vdom (js/React.createElement "div" #js {}
+            (js/React.createElement "p" #js {} "Hello from React")
+            (js/React.createElement "img" #js {:src "/parrot.gif"})))
+
+(js/ReactDOM.render vdom (js/document.getElementById "app"))
+</code></pre>
+<p>Before we go on let’s start making our lives a bit easier by wrapping that call
+to <code>createElement</code>. While we’re at it we can convert the properties to a
+JavaScript object, so we don’t have to do that for every element.</p>
+<pre><code class="language-clojure">(defn element [type props &amp; children]
+  (js/React.createElement type (clj-&gt;js props) children))
+
+(def vdom (element "div" {}
+            (element "p" {} "Hello from React")
+            (element "img" {:src "/parrot.gif"})))
+</code></pre>
+<p>It’s time to start building our calculator. We’ll first create a component to
+render the calculator’s display.</p>
+<p>To create a React component, what you’re actually creating is a “component
+class”. Fill in the component class as an element’s type in the virtual DOM, and
+React will handle instantiating it and managing its lifecycle.</p>
+<p>You create a Component class with a call to <code>js/React.createClass</code>. It takes a
+single JS object, known as the “specification”. This specification must at a
+minimum contain a <code>render</code> method, which returns a React element. We’ll also
+provide a <code>displayName</code>, which is useful for debugging.</p>
+<pre><code class="language-clojure">(def Display
+  (js/React.createClass
+   #js {:displayName "Display"
+        :render (fn []
+                  (element "div" {:style {:border "1px solid black"
+                                          :fontFamily "Monospace"
+                                          :fontSize "2.5rem"
+                                          :lineHeight "3rem"
+                                          :textAlign "right"
+                                          :width "20rem"
+                                          :height "3rem"}}
+                           "0"))}))
+
+(js/ReactDOM.render (element Display {})
+                    (js/document.getElementById "app"))
+</code></pre>
+<p>This might also be a good time to mention the React browser extension, available
+for both Firefox and Chrome. Let’s have a look. It shows us the tree that react
+has rendered, including components and elements.</p>
+<p>Right now our Display always shows the same number, let’s change that. The value
+on display will change over time, which sounds like the kind of thing you could
+use an atom for. When rendering the Display, we pass it a prop to tell it
+what value it should currently display.</p>
+<pre><code class="language-clojure">(def app-state (atom {:display 0}))
+
+(js/ReactDOM.render (element Display {:value (:display @app-state)})
+                    (js/document.getElementById "app"))
+
+</code></pre>
+<p>So now the Display component is going to get that value as a prop. How do we
+access it? In JavaScript you would use <code>this.props.value</code>. Interop to the
+rescue! We saw in the last episode how to “bind” JavaScript’s <code>this</code> with
+<code>this-as</code>. Here’s our first attempt, but… something’s not working.</p>
+<pre><code class="language-clojure">(def Display
+  (js/React.createClass
+   #js {:displayName "Display"
+        :render (fn []
+                  (element "div" {:style {:border "1px solid black"
+                                          :fontFamily "Monospace"
+                                          :fontSize "2.5rem"
+                                          :lineHeight "3rem"
+                                          :textAlign "right"
+                                          :width "20rem"
+                                          :height "3rem"}}
+                           (this-as t
+                             (.. t -props -value))))}))
+</code></pre>
+<p>There’s a gotcha when using <code>this-as</code>, let’s have a look with Klipse how
+ClojureScript compiles it to JavaScript. Here we have two hypothetical functions
+<code>x</code> and <code>y</code>. In theory they do the same thing, but <code>x</code> binds this before calling
+<code>z</code>, while <code>y</code> binds it closer to where it’s being used.</p>
+<p>If you look at the compild code for <code>y</code>, you can see that ClojureScript
+introduced an extra anonymous function, but functions in JavaScript introduce a
+new scope, and so <code>this</code> no longer refers to the same thing.</p>
+<pre><code class="language-clojure">(defn x [] (this-as t (z (.. t -props))))
+
+(defn y [] (z (this-as t (.. t -props))))
+</code></pre>
+<pre><code class="language-javascript">cljs.user.x = (function cljs$user$x() {
+    var t = this;
+    return cljs.user.z.call(null, t.props);
+});
+
+cljs.user.y = (function cljs$user$y() {
+    return cljs.user.z.call(null, (function() {
+        var t = this;
+        return t.props;
+    })());
+});
+</code></pre>
+<p>Conclusion, when using <code>this-as</code>, always use it directly at the top level inside the function where you want to bind <code>this</code>. And… now it works.</p>
+<pre><code class="language-clojure">(def Display
+  (js/React.createClass
+   #js {:displayName "Display"
+        :render (fn []
+                  (this-as t
+                    (element "div" {:style {:border "1px solid black"
+                                            :fontFamily "Monospace"
+                                            :fontSize "2.5rem"
+                                            :lineHeight "3rem"
+                                            :textAlign "right"
+                                            :width "20rem"
+                                            :height "3rem"}}
+                             (.. t -props -value))))}))
+</code></pre>
+<p>Now let’s try a couple values and watch it update. We see the display update on
+every change, because each time I save the file, Figwheel reloads and evaluates
+the file, including the call to <code>ReactDOM.render</code>. This tells React to re-render
+the Display wit the new properties.</p>
+<pre><code class="language-clojurescript">(def app-state (atom {:display 1}))
+;; ...
+(def app-state (atom {:display 5}))
+;; ...
+(def app-state (atom {:display 999}))
+;; ...
+(def app-state (atom {:display 0}))
+</code></pre>
+<p>If I change the app-state from the REPL, then that change isn’t reflected in the browser.</p>
+<pre><code class="language-clojure-repl">cljs.user&gt; (in-ns 'calculator.core)
+nil
+calculator.core&gt; (swap! app-state update :display inc)
+{:display 1}
+calculator.core&gt; (swap! app-state update :display inc)
+{:display 2}
+calculator.core&gt; (swap! app-state update :display inc)
+{:display 3}
+</code></pre>
+<p>That’s easy to fix though. It is possible to “watch” an atom, and have it call a
+function whenever it changes. First wrap <code>ReactDOM.render</code> in a function that
+takes the current application state as its argument. You need to call that
+function once at the top level so the UI will render when the app loads.</p>
+<p>Finally use <code>add-watch</code> to call <code>render</code> for every state change. <code>add-watch</code> takes
+three arguments: the atom to be watched, a key to identify the watch, and the
+callback function.</p>
+<p>The callback will receive the identifier key, the atom, the old state, and the
+new state. We only care about the new state, so you can ignore the rest.</p>
+<p>It may seem horribly inefficient to call <code>render</code> time and again, but React is
+designed to make this efficient. It will only make the minimum amount of changes
+required to make the browser DOM reflect the generated virtual DOM.</p>
+<pre><code class="language-clojure">(defn render [state]
+  (js/ReactDOM.render (element Display {:value (:display state)})
+                      (js/document.getElementById "app")))
+
+(render @app-state)
+
+(add-watch app-state :redraw (fn [_ _ _ state] (render state)))
+</code></pre>
+<p>Each time Figwheel loads the page, the app-state is getting redefined, so it’s
+always getting reset to its initial value. This can get annoying after a while,
+we can fix that by using <code>defonce</code> instead of <code>def</code>. If you do want to reset the
+app state at some point just refresh the browser.</p>
+<pre><code class="language-clojure">(defonce app-state (atom {:display 0}))
+</code></pre>
+<p>Before we move on, let’s create a helper function for components the way we did
+with elements. As a first step we’ll just do a very basic wrapper around
+<code>React.createClass</code></p>
+<pre><code class="language-clojure">(defn component [name &amp; {:keys [render]}]
+  (js/React.createClass
+   #js {:displayName name
+        :render render}))
+
+(def Display
+  (component "Display"
+    :render (fn []
+              (this-as t
+                (element "div" {:style {:border "1px solid black"
+                                        :fontFamily "Monospace"
+                                        :fontSize "2.5rem"
+                                        :lineHeight "3rem"
+                                        :textAlign "right"
+                                        :width "20rem"
+                                        :height "3rem"}}
+                         (.. t -props -value))))))
+</code></pre>
+<p>It will be very common for components to acces their properties, how about we
+already look them up in the wrapper, and also convert them to a ClojureScript
+map so we don’t have to deal with that pesky interop in our components?</p>
+<p>Now the render function directly receives the component’s props as a
+ClojureScript map. Looks much better, right? While we’re at it let’s move those
+styles into CSS, and use a <code>className</code> instead. I’ll just copy this CSS over, you
+can find it in the transcript so you can do the same.</p>
+<pre><code class="language-clojure">(defn component [name &amp; {:keys [render]}]
+  (js/React.createClass
+   #js {:displayName name
+        :render (fn []
+                  (this-as t
+                    (render (js-&gt;clj (.-props t) :keywordize-keys true))))}))
+
+
+(def Display
+  (component "Display"
+    :render (fn [props]
+              (element "div" {:className "display"} (props :value)))))
+</code></pre>
+<pre><code class="language-css">.display {
+    border: 1px solid black;
+    font-family: Monospace;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: right;
+    width: 20rem;
+    height: 3rem;
+}
+
+.history {
+    font-size: 1.5rem;
+    width: 20rem;
+    text-align: right;
+    height: 2rem;
+}
+
+.button {
+    width: 5rem;
+    height: 5rem;
+}
+</code></pre>
+<p>Now we’re ready to build up the rest of the calculator. I find it works well to
+first implement all the components and elements with placeholder values, so I
+have a structure to work with. Once everything is in place I start attaching
+functionality.</p>
+<p>History and Display are straightforward, a single “div” with some styling.</p>
+<pre><code class="language-clojure">(def History
+  (component "History"
+    :render (fn [props]
+              (element "div" {:className "history"} "5 + 20 +"))))
+
+(def Display
+  (component "Display"
+    :render (fn [props]
+              (element "div" {:className "display"} (props :value)))))
+</code></pre>
+<p>To implement the Keypad we’ll first create a component for an individual button.</p>
+<pre><code class="language-clojure">(def Button
+  (component "Button"
+    :render (fn [props]
+              (element "button" {:className "button"} "-"))))
+</code></pre>
+<p>Now we can create the keypad, which consists of four rows of four buttons each.
+We need to wrap the rows in an extra <code>div</code>, because <code>render</code> can only return a
+single element.</p>
+<pre><code class="language-clojure">(def Keypad
+  (component "Keypad"
+    :render (fn [props]
+              (element "div" {}
+                (element "div" {}
+                  (element Button {})
+                  (element Button {})
+                  (element Button {})
+                  (element Button {}))
+                (element "div" {}
+                  (element Button {})
+                  (element Button {})
+                  (element Button {})
+                  (element Button {}))
+                (element "div" {}
+                  (element Button {})
+                  (element Button {})
+                  (element Button {})
+                  (element Button {}))
+                (element "div" {}
+                  (element Button {})
+                  (element Button {})
+                  (element Button {})
+                  (element Button {}))))))
+</code></pre>
+<p>And finally it all comes together in the <code>Calculator</code> component. Render it
+instead of just the display, and let’s see how that looks. The buttons and
+“history” component aren’t hooked up yet, but the display should still show the
+correct value.</p>
+<pre><code class="language-clojure">(def Calculator
+  (component "Calculator"
+    :render (fn [props]
+              (element "div" {}
+                (element History {})
+                (element Display {:value (props :display)})
+                (element Keypad {})))))
+
+(defn render [state]
+  (js/ReactDOM.render (element Calculator state)
+                      (js/document.getElementById "app")))
+
+</code></pre>
+<p>Let’s first fix those buttons. We’ll give each button a label property, and
+render its value onto the button.</p>
+<pre><code class="language-clojure">(def Button
+  (component "Button"
+    :render (fn [props]
+              (element "button" {:className "button"} (props :label)))))
+
+(def Keypad
+  (component "Keypad"
+    :render (fn [props]
+              (element "div" {}
+                (element "div" {}
+                  (element Button {:label "7"})
+                  (element Button {:label "8"})
+                  (element Button {:label "9"})
+                  (element Button {:label "/"}))
+                (element "div" {}
+                  (element Button {:label "6"})
+                  (element Button {:label "5"})
+                  (element Button {:label "4"})
+                  (element Button {:label "*"}))
+                (element "div" {}
+                  (element Button {:label "3"})
+                  (element Button {:label "2"})
+                  (element Button {:label "1"})
+                  (element Button {:label "-"}))
+                (element "div" {}
+                  (element Button {:label "0"})
+                  (element Button {:label "."})
+                  (element Button {:label "="})
+                  (element Button {:label "+"}))))))
+</code></pre>
+<p>Now we need to make those buttons do something. We’ll start with the digits 0
+to 9. When pressed, the digit should be appended to the current number on
+display. Here’s the event handler. It uses <code>swap!</code> to update the app-state atom.</p>
+<p>You can try it out on the REPL.</p>
+<pre><code class="language-clojure">(defn digit-pressed [digit]
+  (swap! app-state update :display #(long (str % digit))))
+</code></pre>
+<p>Change the Button component to accept a “onPress” event handler. When a button
+is clicked, the event handler is called with the label of the button. We now
+attach <code>digit-pressed</code> to the buttons 0 to 9.</p>
+<pre><code class="language-clojure">(def Button
+  (component "Button"
+    :render (fn [props]
+              (let [label (props :label)
+                    handler (props :onPress)]
+                (element "button" {:className "button"
+                                   :onClick #(handler label)} label)))))
+
+(def Keypad
+  (component "Keypad"
+    :render (fn [props]
+              (element "div" {}
+                (element "div" {}
+                  (element Button {:label "7" :onPress digit-pressed})
+                  (element Button {:label "8" :onPress digit-pressed})
+                  (element Button {:label "9" :onPress digit-pressed})
+                  (element Button {:label "/"}))
+                (element "div" {}
+                  (element Button {:label "6" :onPress digit-pressed})
+                  (element Button {:label "5" :onPress digit-pressed})
+                  (element Button {:label "4" :onPress digit-pressed})
+                  (element Button {:label "*"}))
+                (element "div" {}
+                  (element Button {:label "3" :onPress digit-pressed})
+                  (element Button {:label "2" :onPress digit-pressed})
+                  (element Button {:label "1" :onPress digit-pressed})
+                  (element Button {:label "-"}))
+                (element "div" {}
+                  (element Button {:label "0" :onPress digit-pressed})
+                  (element Button {:label "."})
+                  (element Button {:label "="})
+                  (element Button {:label "+"}))))))
+</code></pre>
+<p>Sweet, we can already enters numbers on our calculator. Let’s have another look
+at the React browser extension. We can see all our components there, with their
+properties and children. Very handy for debugging!</p>
+<p>Now let’s get this calculator actually calculate. For that we need to keep track
+of any outstanding calculations. In the app-state, add a <code>:history</code> key, which
+starts out as an empty vector. Change the <code>defonce</code> to <code>def</code> for a moment so the
+change gets picked up.</p>
+<pre><code class="language-clojure">(def app-state (atom {:display 0 :history []}))
+</code></pre>
+<p>Whenever an operator like “+” or “-“ is pressed, we push the current display
+value onto this history vector together with the operator, and set the
+display-value to 0 again.</p>
+<pre><code class="language-clojure">(defn operator-pressed [op]
+  (swap! app-state (fn [state]
+                     (-&gt; state
+                         (update :history #(conj % (:display state) op))
+                         (assoc :display 0)))))
+
+(def Keypad
+  (component "Keypad"
+    :render (fn [props]
+              (element "div" {}
+                (element "div" {}
+                  (element Button {:label "7" :onPress digit-pressed})
+                  (element Button {:label "8" :onPress digit-pressed})
+                  (element Button {:label "9" :onPress digit-pressed})
+                  (element Button {:label "/" :onPress operator-pressed}))
+                (element "div" {}
+                  (element Button {:label "6" :onPress digit-pressed})
+                  (element Button {:label "5" :onPress digit-pressed})
+                  (element Button {:label "4" :onPress digit-pressed})
+                  (element Button {:label "*" :onPress operator-pressed}))
+                (element "div" {}
+                  (element Button {:label "3" :onPress digit-pressed})
+                  (element Button {:label "2" :onPress digit-pressed})
+                  (element Button {:label "1" :onPress digit-pressed})
+                  (element Button {:label "-" :onPress operator-pressed}))
+                (element "div" {}
+                  (element Button {:label "0" :onPress digit-pressed})
+                  (element Button {:label "."})
+                  (element Button {:label "="})
+                  (element Button {:label "+" :onPress operator-pressed}))))))
+</code></pre>
+<p>Let’s hook that up to the History component, so we see what we’re doing. Make sure to require <code>clojure.string :as str</code> as well.</p>
+<pre><code class="language-clojure">(ns ,,, (:require [clojure.string :as str]))
+
+(def History
+  (component "History"
+    :render (fn [props]
+              (element "div" {:className "history"} (str/join " " (props :history))))))
+
+(def Calculator
+  (component "Calculator"
+    :render (fn [props]
+              (element "div" {}
+                (element History {:history (props :history)})
+                (element Display {:value (props :display)})
+                (element Keypad {})))))
+</code></pre>
+<p>Cool, we’re almost there. All that’s left for us to do is hook up the equals
+sign. I’ll start with this <code>compute</code> function, which simply performs a list of
+calculations.</p>
+<p>It’s a recursive function. I won’t explain it in detail, but you can try it out
+on the REPL to see what it does. It willfully ignores precedence rules like some
+punk rock joyrider.</p>
+<pre><code class="language-clojure">(defn compute [result &amp; [op num &amp; xs]]
+  (case op
+    "+" (recur (+ result num) xs)
+    "-" (recur (- result num) xs)
+    "/" (recur (/ result num) xs)
+    "*" (recur (* result num) xs)
+    result))
+</code></pre>
+<pre><code class="language-clojure">calculator.core&gt; (compute 10 "+" 20 "-" 5)
+25
+</code></pre>
+<p>And finally the event handler. It adds the final value on the display to the
+history, computes and displays the result, and resets the history.</p>
+<pre><code class="language-clojure">(defn equals-pressed [_]
+  (swap! app-state (fn [state]
+                     (let [history (conj (:history state) (:display state))
+                           result (apply compute history)]
+                       (-&gt; state
+                           (assoc :display result)
+                           (assoc :history []))))))
+</code></pre>
+<p>And that concludes this episode on React. React is built on only a small amount
+of concepts. The entry point is <code>ReactDOM.render</code>. There are elements and
+components, which together form the virtual DOM. Components have properties
+which they receive from their parent component. That’s it.</p>
+<p>There are only two things we didn’t discuss. The first is component-local state.
+Most ClojureScript libraries ignore or avoid it, and so should you.
+Nevertheless, I’ll leave a note in the Show Notes so at least you know what it
+is.</p>
+<p>The other thing we didn’t discuss in detail are component life cycle methods,
+besides the mandatory <code>render</code> method. We’ll have a lot more to say about these
+in future episodes.</p>
+<p>I decided not to split this episode up, so it has been longer than usual. Did
+you like that, or would you have preferred two or three installments, so you get
+to come up for breath in between episodes? Let me know! You can reach me on
+Twitter, or via email at arne@lambdaisland.com.</p>
+<p>Thanks for watching, and till next time, on Lambda Island!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="code-for-this-episode">Code for this episode</h2>
+<p><a shape="rect" href="https://github.com/lambdaisland/react-calculator">github:lambdaisland/react-calculator</a></p>
+<div class="bg-washed-red b--black ba pa2">
+<h2 id="caution">Caution</h2>
+<p>The Chestnut application template has changed since this episode was written. To follow along you are best to stick to version 0.14.0, which you can do like this.</p>
+<pre><code class="language-shell">$ lein new chestnut calculator --template-version 0.14.0 -- --vanilla
+</code></pre>
+<p>This unfortunately pulls in a version of rrb-vector which is not compatible with newer versions of Java. To fix that, add this to the <code>:dependencies</code> in <code>project.clj</code>:</p>
+<pre><code class="language-clojure">[org.clojure/core.rrb-vector "0.0.14"]
+[javax.xml.bind/jaxb-api "2.2.4"]
+</code></pre>
+<p>result:</p>
+<pre><code class="language-clojure">(defproject calculator "0.1.0-SNAPSHOT"
+  :dependencies [,,,
+                 [org.clojure/core.rrb-vector "0.0.14"]
+                 [javax.xml.bind/jaxb-api "2.2.4"]
+                 ,,,
+                 ]
+  ,,,)
+</code></pre></div>
+<h2 id="reactjs">React.js</h2>
+<p>I cover React.js before going into Reagent or Om, because I found it
+tremendously helpful to understand React first. I remember reading the
+Om documentation multiple times over. It wouldn’t click until I had
+gone off and understood React on its own.</p>
+<p>The “reference” section of the React docs in particular will continue to come in handy:</p>
+<ul>
+<li><a shape="rect" href="https://facebook.github.io/react/docs/top-level-api.html">React Top-level API</a></li>
+<li><a shape="rect" href="https://facebook.github.io/react/docs/component-api.html">React Component API</a></li>
+<li><a shape="rect" href="https://facebook.github.io/react/docs/component-specs.html">Component Specs and Lifecycle Methods</a></li></ul>
+<h2 id="component-local-state">Component local state</h2>
+<p>All the components in this example relied only on their “props”, they
+are in a sense pure functions: for the same props they will render the
+same virtual DOM.</p>
+<p>React also allows components to keep their own state. You do this
+inside component lifecycle methods by using <code>this.getState()</code> and
+<code>this.setState(state)</code>. Calling <code>setState</code> will cause React to
+re-render the component.</p>
+<p>A typical example would be a text-field that keeps the currently
+entered value only in the component.</p>
+<p>React itself has little opinion about where you put your state, it is
+only a view layer after all. The various Clojure libraries that are
+powered by React do have suggestions on how to handle your application
+state.</p>
+<h2 id="jssymbol">js/Symbol</h2>
+<p>The <code>Symbol</code> type is part of EcmaScript 6, and is at least partially
+supported in all current browsers. It plays a role somewhat similar to
+enums in other languages. Every React component has a <code>$$typeof</code>
+property containing the same identical Symbol, so React can quickly
+check if something is an element.</p>
+<p>In environments without <code>Symbol</code>, React uses a magic number instead as
+the value of <code>$$typeof</code>.</p>
+<ul>
+<li><a shape="rect" href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">MDN documentation of Symbol</a></li>
+<li><a shape="rect" href="http://dev.clojure.org/jira/browse/CLJS-1628">ClojureScript bug tracker: CLJS-1628 make js/Symbol printable</a></li></ul>
+<p>The ClojureScript mechanism that powers <code>prn</code> and <code>print</code> is
+extensible through protocols, that’s why we can use this snippet to
+add our serialization for Symbols.</p>
+<pre><code class="language-clojure">(extend-type js/Symbol
+  IPrintWithWriter
+  (-pr-writer [obj writer _]
+    (write-all writer (str "#object[" (.toString obj) "]"))))
+</code></pre></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

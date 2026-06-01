@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/introduction-clojure-testing" />
+<meta name="twitter:title" content="Introduction to Clojure Testing" />
+<meta name="twitter:description" content="Testing libraries and frameworks are indispensable, but there's no magic to how they work. Through implementing your own mini testing framework, you'll learn how `clojure.test`..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/641126935-6be16af22dc60eb3db49ada8a838e1d5de678d55cb9555f14035e7ed823cca3f-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Introduction to Clojure Testing" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/introduction-clojure-testing" />
+<meta name="video:duration" content="1102" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/641126935-6be16af22dc60eb3db49ada8a838e1d5de678d55cb9555f14035e7ed823cca3f-d_1280x720?r=pad" />
+<meta name="og:description" content="Testing libraries and frameworks are indispensable, but there's no magic to how they work. Through implementing your own mini testing framework, you'll learn how `clojure.test`..." />
+<meta name="video:release_date" content="2017-06-21T18:52:54.095Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Introduction to Clojure Testing</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/222542370?h=a178a4ccf9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="32. Introduction to Clojure Testing"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Testing libraries and frameworks are indispensable, but there’s no magic to how
+they work. Through implementing your own mini testing framework, you’ll learn
+how <code>clojure.test</code> does things under the hood.</p>
+<p>While the main plot demonstrates how to write a function test-first, you’ll also
+meet several supporting characters, like preconditions, dynamic bindings, and
+even a macro. Finally the mask comes off. It was <code>clojure.test</code> all this time!</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>A great exercise to do in any language is creating your own unit testing
+framework. While these frameworks can get pretty advanced, you actually need
+very little to be able to define and run tests.</p>
+<p>In fact all you need to get started is one simple function, “assert equal”,
+which verifies that two values are the same.</p>
+<p>If they are then nothing happens, if they’re not, then it throws an
+<code>AssertionError</code>, which is a built-in Error type, and we’ll give it a nice
+message: “I expected to get this thing, but instead I got that thing”.</p>
+<pre><code class="language-clojure">(defn assert= [x y]
+  (when (not= x y)
+    (throw (AssertionError. (str "Expected " (pr-str y)
+                                 " but got " (pr-str x))))))
+
+(assert= 5 5)
+;;=&gt; nil
+
+(assert= 5 6)
+;;=&gt; Unhandled java.lang.AssertionError
+;;=&gt; Expected (= 5 6) but got (not= 5 6)
+</code></pre>
+<p>And that’s all you need, now you can start writing tests. A test in this case
+means a piece of code that verifies the behavior of some other piece of code.</p>
+<p>Let’s try it out by writing a function that converts Hiccup syntax to the format
+used by <code>clojure.xml</code>. Besides the actual implementation, I’ll also write a
+second function, which will act as the test.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  )
+
+(defn test-hiccup-&gt;cljxml []
+  )
+</code></pre>
+<p>In Hiccup syntax an HTML element is represented as a vector, whereas in
+clojure.xml it’s a map with <code>:tag</code>, <code>:attrs</code>, and <code>:content</code> keys.</p>
+<pre><code class="language-clojure">;; hiccup
+[:p {:class "info"} "🖐"]
+
+;; clojure.xml
+{:tag :p :attrs {:class "info"} :content '("🖐")}
+</code></pre>
+<p>I’ll test-drive this implementation, that means I first add a failing test case,
+and then add just enough code to make it pass. Then I add a second test case,
+make it pass, a third, and so on. This cycle continues until I can no longer
+come up with failing test cases, in which case either my imagination falls
+short, or the implementation is complete.</p>
+<p>A simple first case could be: converting an empty paragraph. After calling
+<code>hiccup-&gt;cljxml</code> I should get a map back with a <code>:p</code> tag, and empty attributes
+and content.</p>
+<pre><code class="language-clojure">(defn test-hiccup-&gt;cljxml []
+  (assert= (hiccup-&gt;cljxml [:p]) {:tag :p, :attrs {}, :content ()}))
+</code></pre>
+<p>How much code do I need to make this pass? Not a lot. In fact I can just copy
+over this map and call it a day. There, all good.</p>
+<p>This may look like cheating, but it’s actually a fine way to start. If that’s
+not good enough yet then show it by adding another test case.</p>
+<p>So for instance when I convert a div, then I expect a <code>:tag</code> of <code>:div</code>, but
+instead I’m getting <code>:p</code>, now I can improve the code, and verify that the tests
+pass.</p>
+<p>This demonstrates an important rule: always watch a new test fail before you
+make it pass. It is deceptively easy to write tests that test the wrong thing,
+or that don’t test anything at all. By watching it fail first and then pass, you
+know that you’re really testing what you think you are.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  {:tag (first h), :attrs {}, :content ()})
+
+(defn test-hiccup-&gt;cljxml []
+  (assert= (hiccup-&gt;cljxml [:p]) {:tag :p, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:div]) {:tag :div, :attrs {}, :content ()}))
+
+(test-hiccup-&gt;cljxml)
+</code></pre>
+<p>Ok, let’s try another one. I’m adding another paragraph but this time with some
+text inside, and making sure that the text shows up as content.</p>
+<p>Now run the test to watch it fail. Now you can update the function. The content
+is this case is everything but the first element of the vector, so you could use
+either <code>rest</code> or <code>next</code>, but if the content is empty then I want it to return an
+empty list instead of <code>nil</code>, so I’ll use <code>rest</code>.</p>
+<p>Does that work? Apparently not, seems I forget an exclamation mark there. Ok,
+and now the tests all pass again.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  {:tag (first h), :attrs {}, :content (rest h)})
+
+(defn test-hiccup-&gt;cljxml []
+  (assert= (hiccup-&gt;cljxml [:p]) {:tag :p, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:div]) {:tag :div, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:p "hello!"]) {:tag :p, :attrs {}, :content '("hello!")}))
+
+(test-hiccup-&gt;cljxml)
+</code></pre>
+<p>Now it starts getting interesting, because the second element can also be a map
+of attributes, and right now it’s being treated as a child element and added to
+content.</p>
+<p>I’ll use a let block to keep this readable, check if the second element is a
+map, and then either use it as the attributes map, or use an empty map.</p>
+<p>Similarly for the content you want to either drop the first element, or the
+first two.</p>
+<p>Alright, looks good.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  (let [attrs (if (map? (second h))
+                (second h)
+                {})
+        content (if (map? (second h))
+                  (rest (rest h))
+                  (rest h))]
+    {:tag (first h), :attrs attrs, :content content}))
+
+(defn test-hiccup-&gt;cljxml []
+  (assert= (hiccup-&gt;cljxml [:p]) {:tag :p, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:div]) {:tag :div, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:p "hello!"]) {:tag :p, :attrs {}, :content '("hello!")})
+  (assert= (hiccup-&gt;cljxml [:p {:class "info"} "hello!"])
+           {:tag :p, :attrs {:class "info"}, :content '("hello!")}))
+
+(test-hiccup-&gt;cljxml)
+</code></pre>
+<p>These tests have already been useful for developing this feature, but the really
+cool thing about them is that now you can make changes with confidence. This
+code could already be cleaned up a bit, so let’s do that first. You can always
+use the tests to make sure you didn’t break anything.</p>
+<p>This <code>map?</code> check is being done twice, how about you pull that into the let
+block and call it <code>attrs?</code>. That already makes this first <code>if</code> short enough that
+I would just put it on a single line.</p>
+<p>Now in this second <code>if</code> there’s this <code>(rest (rest h))</code>, that’s a bit ugly, might
+be better to just use <code>drop</code>. Now suppose you rewrite this other call to  
+<code>(rest )</code> as <code>(drop 1)</code>, then you can move the <code>drop</code> outside the <code>if</code>. I think
+that looks a lot better.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  (let [attrs?  (map? (second h))
+        attrs   (if attrs? (second h) {})
+        content (drop (if attrs? 2 1) h)]
+    {:tag (first h), :attrs attrs, :content content}))
+</code></pre>
+<p>Now let’s try some nesting, I’ll take this paragraph again, but this time add a
+<code>:strong</code> tag inside. Now the clojure.xml version should contain as content a
+list with a single map, which represents the <code>:strong</code> tag.</p>
+<p>Let’s see what the test says, it seems it’s just putting the hiccup vector
+inside <code>:content</code>, without converting it. That’s not so hard to fix, let’s here
+map over <code>hiccup-&gt;cljxml</code> so any child elements get converted as well.</p>
+<p>Now it’s throwing a different error, it seems there’s a string somewhere that’s
+being treated as a sequence, and so Clojure is looping over the individual
+characters, which are then in turn treated as a sequence again, and that’s when
+things blow up.</p>
+<p>What’s happening is we’re mapping over the child elements assuming they’re
+vectors, but they could also be strings. To fix that let’s make <code>hiccup-&gt;cljxml</code>
+a bit more defensive, it will only convert vectors, anything else just passes
+through.</p>
+<p>Now it should work, but seems we’re still doing something wrong. Ah yes, my
+mistake, in the test I had a quote inside a quoted list. There, that’s better.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  (if (vector? h)
+    (let [attrs?  (map? (second h))
+          attrs   (if attrs? (second h) {})
+          content (drop (if attrs? 2 1) h)]
+      {:tag (first h), :attrs attrs, :content (map hiccup-&gt;cljxml content)})
+    h))
+
+(defn test-hiccup-&gt;cljxml []
+  (assert= (hiccup-&gt;cljxml [:p]) {:tag :p, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:div]) {:tag :div, :attrs {}, :content ()})
+  (assert= (hiccup-&gt;cljxml [:p "hello!"]) {:tag :p, :attrs {}, :content '("hello!")})
+  (assert= (hiccup-&gt;cljxml [:p {:class "info"} "hello!"])
+           {:tag :p, :attrs {:class "info"}, :content '("hello!")})
+  (assert= (hiccup-&gt;cljxml [:p [:strong "hello"]])
+           {:tag :p,
+            :attrs {},
+            :content '({:tag :strong,
+                        :attrs {},
+                        :content ("hello")})}))
+
+(test-hiccup-&gt;cljxml)
+</code></pre>
+<p>So are we done? Not really. So far we’ve only tested the happy path, but it’s
+also important to test for things that can go wrong, and to make sure you are
+getting the errors you would expect to get.</p>
+<p>Unfortunately we don’t yet have an assertion for testing if a function throws an
+error. There’s also not that much that can go wrong here, assuming you pass in
+valid input, meaning a vector or a string. But what if you don’t? In some cases
+it will throw a cryptic exception, in others you’ll get a result back but it
+will be nonsense. Neither is very helpful.</p>
+<p>It might be better to reject invalid input outright. By failing early you
+prevent invalid results from propagating through the system. It also gives you
+an opportunity to give useful feedback to the programmer.</p>
+<p>A good way to do this is with a precondition. These are checks that are
+performed by Clojure whenever your function is called.</p>
+<p>To do this, add a map with a <code>:pre</code> key right after the argument vector. The
+value is a vector with checks. In this case <code>h</code> needs to be a vector or a
+string.</p>
+<p>Now if you pass in something else, it fails instantly, and you can see from the error what went wrong.</p>
+<pre><code class="language-clojure">(defn hiccup-&gt;cljxml [h]
+  {:pre [(or (vector? h) (string? h))]}
+  ,,,)
+</code></pre>
+<p>So far we’ve gotten plenty of milage out of that three line testing framework.
+If you write more tests then you can group them in a <code>test-suite</code> function, and
+call that from an automated build or CI server.</p>
+<pre><code class="language-clojure">(defn test-suite []
+  (test-hiccup-&gt;cljxml)
+  (test-other-thing)
+  (test-yet-another-thing)
+  ,,,)
+</code></pre>
+<p>Now let’s look at some of the shortcomings. A first one is that each test needs
+to be added manually to the <code>test-suite</code> function, or it won’t run on our build
+machine. Invetably someone will forget adding their tests, and no-one will know
+when things break. It would be better if tests were detected automatically
+across namespaces.</p>
+<p>A second problem with this approach is that the test suite always “fails fast”.
+It stops running at the first failure, so you don’t know if it’s one test
+failing or a dozen, all you can do is fix one at a time and re-run the tests. It
+would be better if you could get a nice overview of how which tests passed and
+which failed.</p>
+<p>Which brings us to the third shortcoming: reporting. A good test suite speaks to
+you. It shows in a single glance if all is fine, or if the world is on fire. It
+also tells you clearly what the problem is, and where it happened.</p>
+<p>Let’s try to implement some of these features. To automatically find all tests
+you’ll need a bit of metaprogramming.</p>
+<p>With <code>ns-interns</code> you can get all the vars of a namespace, in particular it
+gives you a map, with symbols as keys, and the var itself as the value.</p>
+<pre><code class="language-clojure">(ns-interns *ns*)
+;;=&gt;
+;; {assert= #'hiccup2cljxml.core/assert=
+;;  test-hiccup-&gt;cljxml #'hiccup2cljxml.core/test-hiccup-&gt;cljxml
+;;  hiccup-&gt;cljxml #'hiccup2cljxml.core/hiccup-&gt;cljxml}
+</code></pre>
+<p>To find all the vars in the system you can first get all the namespaces with
+<code>all-ns</code>, then call <code>ns-interns</code> for each, and concatenate the results.</p>
+<pre><code class="language-clojure">(-&gt;&gt; (all-ns)
+     (mapcat ns-interns)
+     )
+</code></pre>
+<p>Now let’s filter that down so you only keep the functions that have a name
+starting with “test-“. Each entry in the sequence is a pair, with the first one
+being the var name as a symbol. Turn that into a string so you can match it with
+a regular expression.</p>
+<p>The test function is there, but so are half a dozen other functions. I guess
+you’ll need a finer brush for this.</p>
+<pre><code class="language-clojure">(-&gt;&gt; (all-ns)
+     (mapcat ns-interns)
+     (filter #(-&gt;&gt; % first str (re-find #"^test-"))))
+
+;;=&gt; ([test-all-vars #'clojure.test/test-all-vars] [test-var #'clojure.test/test-var] [test-vars #'clojure.test/test-vars] [test-ns #'clojure.test/test-ns] [test-var #'cider.nrepl.middleware.test/test-var] [test-nss #'cider.nrepl.middleware.test/test-nss] [test-vars #'cider.nrepl.middleware.test/test-vars] [test-result #'cider.nrepl.middleware.test/test-result] [test-ns #'cider.nrepl.middleware.test/test-ns] [test-hiccup-&gt;cljxml #'hiccup2cljxml.core/test-hiccup-&gt;cljxml])
+</code></pre>
+<p>Or you can take a different approach, and use some metadata to make it clear
+which vars are tests, and which aren’t. Clojure actually has a standard way of
+doing this, using a <code>:test</code> key in the metadata. This should point at a function
+which raises an error when the test fails.</p>
+<p>The function <code>test-hiccup-&gt;cljxml</code> is already such a function, to make it clear
+that it’s a test, give it <code>:test</code> metadata, with as value the
+<code>#'test-hiccup-&gt;cljxml</code> var. This is similar to what <code>clojure.test</code> does with
+<code>deftest</code></p>
+<pre><code class="language-clojure">(defn
+  ^{:test #'test-hiccup-&gt;cljxml}
+  test-hiccup-&gt;cljxml
+  []
+  ,,,)
+</code></pre>
+<p>With that you can now write a test runner. Start again with all the vars in all
+the namespaces, but this time keep only the ones with <code>:test</code> metadata. <code>keep</code>
+is like doing <code>map</code>, and then filtering out any <code>nil</code> values, so you get the
+<code>:test</code> metadata back for all the vars that have it, ignoring the others.</p>
+<p>Now you can loop over the tests to run them one by one. Let’s wrap that in a
+function called <code>run-all-tests</code>. If you run that it just returns nil, because
+all the tests pass. Let’s break this test for a second to see if that actually
+works. Nice!</p>
+<pre><code class="language-clojure">(defn run-all-tests []
+  (doseq [test (-&gt;&gt; (all-ns)
+                    (mapcat ns-interns)
+                    (keep #(-&gt; % second meta :test)))]
+    (test)))
+
+(run-all-tests)
+</code></pre>
+<p>Writing tests has become a bit more tedious though, with all that extra metadata
+stuff, but with a little macro that’s easy to fix.</p>
+<p>This is the first <code>defmacro</code> in a Lambda Island episode. Most of the time I try
+to avoid them and just use functions, which is why I never covered them before,
+but this is a perfect use case. If you’ve never written a macro yourself then
+don’t worry too much about the syntax.</p>
+<p>In particular dealing with metadata in macros looks a bit different than what
+you’re used to, and because <code>var</code> is a special form it takes some extra care to
+correctly do a <code>var</code> lookup, but in the end you can see that essentially all
+this macro does is expand into a <code>defn</code> form, so <code>defcheck</code> defines a function.</p>
+<p>Let’s use it to write a test, just something simple that obviously fails to try
+it out. Now running the <code>test-a-thing</code> function runs the test, as you would
+expect.</p>
+<pre><code class="language-clojure">(defmacro defcheck [name &amp; body]
+  `(defn ~(with-meta name {:test `(var ~name)}) []
+     ~@body))
+
+(defcheck test-a-thing
+  (assert= 5 6))
+
+(test-a-thing)
+</code></pre>
+<p>If you are dealing with macros then <code>macroexpand-1</code> is your friend, it shows you
+exactly what the generated code looks like. You only see the code forms
+themselves though, and not their metadata, but if you look at the var you can
+see that the test metadata is there.</p>
+<p>Now <code>run-all-tests</code> finds the test, which is what we were after.</p>
+<pre><code class="language-clojure">(macroexpand-1
+ '(defcheck test-a-thing
+    (assert= 5 6)))
+;;=&gt; (clojure.core/defn test-a-thing [] (assert= 5 6))
+
+(meta #'test-a-thing)
+;;=&gt; {:test #'user/test-a-thing, :arglists ([]), :line 11, :column 2, :file "*markdown-clojure*", :name test-a-thing, :ns #namespace[user]}
+
+(run-all-tests)
+;;=&gt; Unhandled java.lang.AssertionError
+;;   Expected (= 5 6) but got (not= 5 6)
+</code></pre>
+<p>Now let’s stop our tests from bailing out as soon as an assertion fails, and
+while we’re at it let’s try to give better reporting as well.</p>
+<p>First add a special var called <code>test-results</code>. It has these “earmuffs”, and it’s
+marked as <code>dynamic</code>. Dynamic vars are a bit different from regular vars, you use
+them in combination with <code>binding</code>.</p>
+<p>Wrap the code that runs all tests in this <code>binding</code> macro. This is where
+<code>*test-results*</code> gets its value. Any code that runs inside <code>binding</code> will see
+this new value, but any code outside of it doesn’t. This way it acts a bit like
+a global: calls to <code>assert=</code> can access it to add stuff to the <code>*test-results*</code>,
+but at the same time its scope is limited. Code that runs earlier, later, or on
+a different thread doesn’t get to tamper with the results.</p>
+<pre><code class="language-clojure">(declare ^:dynamic *test-results*)
+
+(defn run-all-tests []
+  (binding [*test-results* (atom {:pass 0, :fail 0, :assertions 0, :messages []})]
+    ,,,))
+</code></pre>
+<p>Now instead of having <code>assert=</code> raise an exception, it updates the
+<code>*test-results*</code>. It keeps a count of how many assertions were run, how many of
+them passed, and how many failed. In case of failure it also adds a failure
+message.</p>
+<pre><code class="language-clojure">(defn assert= [x y]
+  (swap! *test-results* update :assertions inc)
+  (if (= x y)
+    (swap! *test-results* update :pass inc)
+    (do
+      (swap! *test-results* update :fail inc)
+      (swap! *test-results* update :messages conj
+             (str "Expected " (pr-str y) " but got " (pr-str x))))))
+</code></pre>
+<p>For this to work you’ll also have to give the map some initial values for these keys.</p>
+<pre><code class="language-clojure">(defn run-all-tests []
+  (binding [*test-results* (atom {:assertions 0 :tests 0 :pass 0 :fail 0 :messages []})]
+    (doseq [test (-&gt;&gt; (all-ns)
+                      (mapcat ns-interns)
+                      (keep #(-&gt; % second meta :test)))]
+      (test))))
+</code></pre>
+<p>Let’s pull this repetitive bit out into its own function, there that looks a bit
+cleaner. Finally let’s also keep track of the total number of tests.</p>
+<pre><code class="language-clojure">(defn update-report! [&amp; args]
+  (apply swap! *test-results* update args))
+
+(defn assert= [x y]
+  (update-report! :assertions inc)
+  ,,,)
+
+(defn run-all-tests []
+  (binding [*test-results* {,,,}]
+    (doseq [test (,,,)]
+      (update-report! :tests inc)
+      (test))))
+</code></pre>
+<p>Finally you’ll need a function that prints out the actual test results. So after
+all the tests have run, derefernce the <code>*test-results*</code> atom, and pass it to a
+new <code>print-report</code> function.</p>
+<p>Here in the argument list you can destructure the result map, I’ll just copy
+these keys over from here. First print out any messages, since you’re just
+looping over them for side effects you could use <code>doseq</code> or <code>run!</code>. Finally
+print out a little summary: we ran this many tests with this many assertions,
+and of these so many failed.</p>
+<pre><code class="language-clojure">(defn- print-report! [{:keys [assertions tests pass fail messages]}]
+  (run! #(println % "\n\n") messages)
+  (println "Ran" tests "tests containing" assertions "assertions.")
+  (println fail "failures."))
+
+(defn run-all-tests []
+  (binding [*test-results* (atom {:assertions 0 :tests 0 :pass 0 :fail 0 :messages []})]
+    (doseq [test (-&gt;&gt; (all-ns)
+                      (mapcat ns-interns)
+                      (keep #(-&gt; % second meta :test)))]
+      (update-report! :tests inc)
+      (test))
+    (print-report! @*test-results*)))
+</code></pre>
+<p>There, for a testing framework that was cobbled up in ten minutes that’s not
+half bad. Now when you run the tests the results are printed to standard output,
+so keep an eye on the REPL.</p>
+<p>Let’s also see what happens if a test fails. Cool, that works.</p>
+<p>There’s still plenty that could be improved here, and at this point maybe it’s
+time to say it’s been fun and switch over to an existing framework that is a bit
+more complete and actively maintained, such as <code>clojure.test</code>, which comes
+bundled with Clojure itself.</p>
+<p>What I showed you isn’t all that different from what <code>clojure.test</code> does, and I
+figured that building something up step by step would be more interesting than
+me just browsing through the <code>clojure.test</code> code and pointing at things. Instead
+I would recommend you have a look yourself at the <code>clojure.test</code> source code.
+It’s only a few hundred lines of code and includes lots of documentation.</p>
+<p>Using <code>clojure.test</code> is straightforward as well. Most of the time you’ll only
+need these four macros: <code>deftest</code>, <code>testing</code>, <code>is</code>, and <code>are</code></p>
+<p><code>deftest</code> is a drop-in replacement for our own <code>defcheck</code>. That was easy.</p>
+<p>Instead of having special purpose assertion macros like <code>assert=</code>, now you can
+use the <code>is</code> macro, giving it some kind of check that returns true or false. So
+here that’s simply an equality check. <code>is</code> is smart enough to generate a
+descriptive failure message if the two values aren’t equal.</p>
+<p>With <code>testing</code> you can group multiple assertions together. This way you provide
+some extra documentation to the person reading your tests, and these
+descriptions also show up in any failure messages, so you get a bit of extra
+context about what went wrong.</p>
+<pre><code class="language-clojure">(deftest test-hiccup-&gt;cljxml
+  (testing "single tags"
+    (is (= (hiccup-&gt;cljxml [:p]) {:tag :p, :attrs {}, :content ()}))
+    (is (= (hiccup-&gt;cljxml [:div]) {:tag :div, :attrs {}, :content ()}))
+    (is (= (hiccup-&gt;cljxml [:p "hello!"]) {:tag :p, :attrs {}, :content '("bonjour!")})))
+
+  (testing "nested tags"
+    (is (= (hiccup-&gt;cljxml [:p {:class "info"} "hello!"])
+           {:tag :p, :attrs {:class "info"}, :content '("hello!")}))
+    (is (= (hiccup-&gt;cljxml [:p [:strong "hello"]])
+           {:tag :p,
+            :attrs {},
+            :content '({:tag :strong,
+                        :attrs {},
+                        :content ("hello")})}))))
+</code></pre>
+<p>If you have a bunch of similar <code>is</code> forms in a row, you can make that a bit more
+concise with <code>are</code>.</p>
+<p>The first two arguments to <code>are</code> together form a “template” you first give it a
+list of variable names, in this case <code>hiccup</code> and <code>cljxml</code>, followed by an
+expression that uses those variables. In this case it checks if converting the
+hiccup to <code>clojure.xml</code> yields the right result.</p>
+<p>After that you can put one or more pairs, one for each case you want to test.
+Here, I’ll align them so it’s a bit more clear. Each pair of values will be
+filled into the template, and the result checked with <code>is</code>. This version is
+identical to the previous one, but you get rid of all the clutter, making it
+easier to add more test cases.</p>
+<pre><code class="language-clojure">(deftest test-hiccup-&gt;cljxml
+  (testing "single tags"
+    (are [hiccup cljxml] (= (hiccup-&gt;cljxml hiccup) cljxml)
+      [:p]          {:tag :p, :attrs {}, :content ()}
+      [:div]        {:tag :div, :attrs {}, :content ()}
+      [:p "hello!"] {:tag :p, :attrs {}, :content '("bonjour!")}))
+  ,,,)
+</code></pre>
+<p>To run the tests, you use <code>clojure.test</code>’s version of <code>run-all-tests</code>. Have a look at the REPL again to see the test report.</p>
+<pre><code class="language-clojure">(clojure.test/run-all-tests)
+</code></pre>
+<pre><code>FAIL in (test-hiccup-&gt;cljxml) (hiccup.clj:16)
+single tags
+expected: (= (hiccup-&gt;cljxml [:p "hello!"]) {:tag :p, :attrs {}, :content (quote ("bonjour!"))})
+  actual: (not (= {:tag :p, :attrs {}, :content ("hello!")} {:tag :p, :attrs {}, :content ("bonjour!")}))
+
+Ran 1 tests containing 5 assertions.
+1 failures, 0 errors.
+</code></pre>
+<p>Leiningen has built-in support for <code>clojure.test</code>. Just make sure your tests are
+inside the <code>test</code> directory, and then run the tests with <code>lein test</code>.</p>
+<p>Boot also supports <code>clojure.test</code> through a third party add-on.</p>
+<p>If you’re using Emacs with CIDER then it makes more sense to use CIDER’s test
+runner. The CIDER manual has a section explaining all it can do.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep32testing">browse source code</a></p>
+<h2 id="links">Links</h2>
+<ul>
+<li>The source for <a shape="rect" href="https://github.com/clojure/clojure/blob/master/src/clj/clojure/test.clj"><code>clojure.test</code></a> (recommended reading!)</li>
+<li><a shape="rect" href="https://clojure.github.io/clojure/clojure.test-api.html">Docs for <code>clojure.test</code></a></li>
+<li>The <a shape="rect" href="http://cider.readthedocs.io/en/latest/running_tests/">CIDER docs about testing</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

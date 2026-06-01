@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/buddy-authentication" />
+<meta name="twitter:title" content="Authentication with Buddy" />
+<meta name="twitter:description" content="Buddy is a popular security library for implementing authentication and authorization. In this episode you'll learn what the difference is, and how to implement password based..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/627326454-b0b744dbe3b71c604c3b529fca84ed6c1087fd855198c2f48d27284334683e2a-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Authentication with Buddy" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/buddy-authentication" />
+<meta name="video:duration" content="830" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/627326454-b0b744dbe3b71c604c3b529fca84ed6c1087fd855198c2f48d27284334683e2a-d_1280x720?r=pad" />
+<meta name="og:description" content="Buddy is a popular security library for implementing authentication and authorization. In this episode you'll learn what the difference is, and how to implement password based..." />
+<meta name="video:release_date" content="2017-04-03T15:34:38.344Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Authentication with Buddy</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/211321054?h=140e82203b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="28. Authentication with Buddy"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Buddy is a popular security library for implementing authentication and
+authorization. In this episode you’ll learn what the difference is, and how to
+implement password based authentication for a simple Ring app.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Buddy is a collection of security libraries for Clojure. It contains
+cryptographic functions, utilities to implement authentication and
+authorization, and facilities for encryption and message signing.</p>
+<p>In this episode I’ll show you how to use Buddy to implement authentication in a
+typical Ring application. Buddy is split into four packages. <code>buddy-auth</code>
+provides authentication and authorization. You also need <code>buddy-hashers</code> so you
+don’t have to store passwords in plain text.</p>
+<p><code>buddy-sign</code> provides cryptographic message signing, I won’t cover that one.
+<code>buddy-core</code> contains utilities used by the other three. It’s pulled in
+automatically by the others, so you don’t have to include it.</p>
+<pre><code class="language-clojure">(defproject booklog "0.1.0-SNAPSHOT"
+  :description "Keep track of the books you read,
+                a sample project to demonstrate Buddy."
+
+  :url "https://github.com/lambdaisland/booklog"
+
+  :dependencies [,,,
+                 [buddy/buddy-auth "1.4.1"]
+                 [buddy/buddy-hashers "1.2.0"]
+                 ;;[buddy/buddy-sign "1.4.0"]
+                 ;;[buddy/buddy-core "1.2.0"]
+                 ])
+</code></pre>
+<p>This episode uses the Booklog example app, you can find it on Github. The
+starting point for this episode is the <code>ep28-start</code> branch.</p>
+<p>To launch the app, open a REPL and use the <code>(run)</code> function. This starts the
+system with all the necessary components.</p>
+<p>You can reload all namespaces and restart all components to get a clean slate
+again with <code>(reset)</code>.</p>
+<pre><code class="language-clojure">user&gt; (run)
+user&gt; (reset)
+</code></pre>
+<p>This app is based on the Chestnut application template, and uses Ring and
+Compojure for routing, Hiccup for templating, and Spicerack for peristance. The
+different parts are tied together using Component.</p>
+<p>First let’s start by defining some terms. Authentication means verifying that
+“you are who you say you are”. It comes from the greek αὐϑεντικός, meaning
+“genuine”, which has the same root as the word “author”.</p>
+<p>In practice you authenticate incoming requests by verifying some form of
+identification. This could be login information, a session cookie, or a secret
+token.</p>
+<blockquote>
+<p>Authentication  /ɑːˌθen.t̬əˈkeɪ.ʃən/</p>
+<p>From Latin auctorizare, from Greek αὐϑεντικός (authentikos): “genuine”</p>
+<ol>
+<li>to prove that something is real, true, or what people say it is</li></ol></blockquote>
+<p>Authorization means giving permission. It is related to the word authority. It
+answers the question “is this operation allowed?”. This could be based on
+authentication: if Li is an admin but Jenny isn’t, then some requests will be ok
+when Li sends them, but they’ll be rejected when coming from Jenny.</p>
+<p>But authorization can also use other criteria. When building microservices it’s
+common to only accept requests from a specific range of IP addresses. Media
+companies often restrict their content to certain regions, so-called
+geoblocking.</p>
+<blockquote>
+<p>Authorization /ˌɑː.θɚ.əˈzeɪ.ʃən/</p>
+<p>From Latin auctorizo, to approve</p>
+<ol>
+<li>giving someone permission to do something</li></ol></blockquote>
+<p>This episode will only cover the authentication part of Buddy, I’ll cover
+authorization some other time.</p>
+<p>Authentication can be done in many ways, so buddy provides a pluggable system
+through protocols. The <code>IAuthentication</code> protocol has two methods: <code>-parse</code> and
+<code>-authenticate</code>. <code>-parse</code> is responsible for pulling the identifying information
+from the current request, for instance from an authentication header or token
+parameter. This data is passed on to <code>-authenticate</code>, so it can be verified.</p>
+<p>If authentication succeeds then authenticate should return something that
+identitifies the current user, like a username. If it fails then it returns
+<code>nil</code>.</p>
+<pre><code class="language-clojure">(ns buddy.auth.protocols
+  "Main authentication and authorization abstractions
+  defined as protocols.")
+
+(defprotocol IAuthentication
+  "Protocol that defines unified workflow steps for
+  all authentication backends."
+  (-parse [_ request]
+    "Parse token from the request. If it returns `nil`
+    the `authenticate` phase will be skipped and the
+    handler will be called directly.")
+  (-authenticate [_ request data]
+    "Given a request and parsed data (from previous step),
+    try to authenticate this data.
+
+    If this method returns not nil value, the request
+    will be considered authenticated and the value will
+    be attached to request under `:identity` attribute."))
+</code></pre>
+<p>There’s also an <code>IAuthorization</code> protocol with a single <code>-handle-unauthorized</code>
+method, which gets called when a a route signals that the user is unauthorized
+to do whatever it is they’re trying to do, either because the user isn’t
+authenticated yet, or because they are authenticated but don’t have the required
+permissions.</p>
+<pre><code class="language-clojure">(defprotocol IAuthorization
+  "Protocol that defines unified workflow steps for
+  authorization exceptions."
+  (-handle-unauthorized [_ request metadata]
+    "This function is executed when a `NotAuthorizedException`
+    exception is intercepted by authorization wrapper.
+
+    It should return a valid ring response."))
+</code></pre>
+<p>A record that implements these two protocols is called an “auth backend”. You
+can implement one yourself, but Buddy already contains backends for common use
+cases. You can find them in the <code>buddy.auth.backends</code> namespace.</p>
+<p>The session backend is the most useful one for typical web applications, so this
+is the one covered in this episode. You can pass it certain options, or use the
+defaults.</p>
+<pre><code class="language-clojure">(require '[buddy.auth.backends :as backends])
+
+;; Session based auth
+
+(backends/session)               ; uses defaults: {:authfn identity}
+
+(backends/session {:authfn
+                   (fn [data]
+                     data)
+
+                   :unauthorized-handler
+                   (fn [request metadata]
+                     ,,,)})
+</code></pre>
+<p>If you’re building APIs then the HTTP Basic Authentication, JSON Web Tokens, or
+generic Token backends might be more suitable.</p>
+<p>Note that JSON Web Tokens are not suitable as a session mechanism, and you are
+better off just sticking with cookies, even if you’re building a JavaScript
+one-page-app. I’ll provide a link to an article that describes the issues.</p>
+<p>All backends take a map with options, although for some you can omit it to use
+the default values.</p>
+<pre><code class="language-clojure">(require '[buddy.auth.backends :as backends])
+
+;; HTTP Basic Auth
+(backends/basic)
+(backends/basic {:realm "My app"
+                 :authfn (fn [req {:keys [username password]}]
+                           (if (= [username password] ["arne" "abc123"])
+                             arne))
+                 :unauthorized-handler (fn [req metadata] ,,,)})
+
+;; Session based auth
+(backends/session {:authfn (fn [data]
+                             data)
+                   :unauthorized-handler (fn [req metadata])})
+
+;; Signed JWT
+(backends/jws {:secret "some-long-string"
+               :authfn (fn [unparsed-token]
+                         unparsed-token)
+               :unauthorized-handler (fn [req metadata])
+               :options {}
+               :token-name "Token"
+               :on-error (fn [req exception]
+                           (println "JWT signature check failed"))})
+
+;; Encrypted JWT
+(backends/jwe {,,,})
+
+;; Generic Token Backend
+(backends/token {:authfn (fn [req token])
+                 :unauthorized-handler (fn [req metadata])
+                 :token-name "Token"})
+</code></pre>
+<p>You use these backends through the <code>wrap-authentication</code> ring middleware, found
+in <code>buddy.auth.middleware</code>. Also require the backends namespace. Now add the
+middleware to the middleware stack, passing it the session backend. You can give
+it multiple backends as well, in which case each one in turn will get a chance
+to authenticate a given request.</p>
+<p>Make sure you place the middleware before <code>wrap-defaults</code>. Among other things
+<code>wrap-defaults</code> makes sure session data persists from request to request. Since
+the session backend needs access to the session it needs to sit above, or
+“inside” <code>wrap-defaults</code>.</p>
+<p>The middleware will take care of calling the backend’s <code>-parse</code> and
+<code>-authenticate</code> methods. If authentication succeeds, then the backend returns a
+value that uniquely identifies the current user back to the middleware,
+something like a username or unique id, which the middleware places in the Ring
+request map under <code>:identity</code>. That way you can easily check it in your code.</p>
+<pre><code class="language-clojure">(ns booklog.application
+  (:gen-class)
+  (:require ,,,
+            [buddy.auth.backends :as buddy-backends]
+            [buddy.auth.middleware :refer [wrap-authentication]]
+            ,,,))
+
+(defn app-system []
+  (component/system-map
+   ,,,
+   :middleware (new-middleware {:middleware [wrap-render-views
+                                             [wrap-authentication (buddy-backends/session)]
+                                             [wrap-defaults site-defaults]
+                                             wrap-with-logger
+                                             wrap-gzip
+                                             prone/wrap-exceptions]})
+   ,,,))
+</code></pre>
+<p>To work with the session backend you need to provide your own login mechanism.
+When a user succesfully logs in you put the user’s identity in the session map.
+This session map will be carried on from request to request thanks to the
+session middleware.</p>
+<p>Upon each request Buddy will call the session backend. This backend looks for an
+<code>:identity</code> key in the session, and if found passes it on to be used as the
+<code>:identity</code> in the Ring request map.</p>
+<pre><code class="language-clojure">(require '[buddy.auth.middleware :refer [wrap-authentication]]
+         '[buddy.auth.backends :as backends])
+
+(defn ring-handler [req]
+  {:status 200
+   :body {:got-request req}})
+
+(let [backend (backends/session)
+      handler (-&gt; ring-handler
+                  (wrap-authentication backend))
+      request {:session {:identity "arne"}}]
+  (handler request))
+
+;;=&gt; {:status 200
+;;    :body {:got-request {:session {:identity "arne"}
+;;                         :identity "arne"}}}
+</code></pre>
+<p>You can pass an extra “authfn” to the session backend so you can look up the
+user’s details. I’ve added a map here as a sort of ad hoc users database. The
+<code>authfn</code> function takes the username and uses that to look up the user’s
+details. Now these become available in the request map, so you can access them
+easily, and they’re always up to date.</p>
+<pre><code class="language-clojure">(require '[buddy.auth.backends :as buddy-backends])
+(require '[buddy.auth.middleware :refer [wrap-authentication]])
+
+(def users {"arne" {:name "Arne Brasseur"
+                    :username "arne"}})
+
+(let [backend (buddy-backends/session {:authfn (fn [u] (get users u))})
+      handler (-&gt; (fn [req] {:status 200
+                             :body {:request req}})
+                  (wrap-authentication backend))
+      request {:session {:identity "arne"}}]
+  (handler request))
+
+;;=&gt;
+{:status 200
+ :body {:request {:session {:identity "arne"}
+                  :identity {:name "Arne Brasseur"
+                             :username "arne"}}}}
+
+</code></pre>
+<p>Each request the session backend will look up the user’s identity in the
+session, but first it needs to get in there. That part is still up to you. When
+the user logs in and their credentials check out, then you can add the identity
+to the session. The session backend will do the rest.</p>
+<p>So let’s implement the login form. Add two routes: a <code>GET</code> route to serve up the
+form, and a <code>POST</code> route to handle the form submission.</p>
+<pre><code class="language-clojure">(defn auth-routes [endpoint]
+  (routes
+   (GET "/login" []
+     ,,,)
+
+   (POST "/login" []
+     ,,,)))
+</code></pre>
+<p>I’ve already prepared the views, these are just functions that return Hiccup.
+<code>render</code> is a helper function that renders the view and returns a Ring response.
+Let’s also give it a title, this will show up as title on the browser tab.</p>
+<pre><code class="language-clojure">(defn auth-routes [endpoint]
+  (routes
+   (GET "/login" []
+     (render :view login-view
+             :data {:layout/title "Login"}))
+
+
+   (POST "/login" []
+     ,,,)))
+</code></pre>
+<p>This is what that looks like, but when you submit it you get a 404, because the
+<code>POST</code> route returns nil. Let’s fix that next.</p>
+<p>Destruture the request map to get the incoming <code>username</code> and <code>password</code>
+parameters.</p>
+<p>As a first iteration use a hardcoded username and password. It never hurts to do
+something like this just to see if everything works so far.</p>
+<pre><code class="language-clojure">(defn auth-routes [endpoint]
+  (routes
+
+   (GET "/login" _ ,,,)
+
+   (POST "/login" [username password]
+     (if (and (= username "admin") (= password "trustno1"))
+       ,,,
+       ,,,))))
+</code></pre>
+<p>Next you need to update the session map to actually log the user in, you can add
+this <code>:as req</code> to the Compojure destructuring form to get the request map, and
+from there you can get to the session.</p>
+<p>Now log the user in by adding an <code>:identity</code> to the session map. You will have
+to add this updated session map to the ring response so it will be updated for
+future requests.</p>
+<p>Next you <code>redirect</code> the user to the home page, add the new session, and also add
+a friendly message welcoming the user. This relies on the <code>wrap-flash</code>
+middleware, which is part of <code>ring.middleware.defaults</code>. It lets you pass some
+values on to the next request, so the message will show up after the redirect.</p>
+<pre><code class="language-clojure">(defn auth-routes [endpoint]
+  (routes
+
+   (GET "/login" _
+     (render :view login-view
+             :data {:layout/title "Login"}))
+
+   (POST "/login" [username password :as req]
+     (if (and (= username "admin") (= password "trustno1"))
+       (let [next-session (assoc (:session req) :identity username)]
+         (-&gt; (redirect "/")
+             (assoc :session next-session)
+             (flash-message "Login successful, welcome back!")))))
+   ))
+</code></pre>
+<p>If the credentials don’t match then you should show the login form again with an
+error message so the user knows what’s going on. Pass the username back to the
+view so it gets prefilled.</p>
+<pre><code class="language-clojure">(defn auth-routes [endpoint]
+  (routes
+
+   (GET "/login" _
+     (render :view login-view
+             :data {:layout/title "Login"}))
+
+   (POST "/login" [username password :as req]
+     (if (and (= username "admin") (= password "trustno1"))
+       (let [next-session (assoc (:session req) :identity username)]
+         (-&gt; (redirect "/")
+             (assoc :session next-session)
+             (flash-message "Login successful, welcome back!")))
+       (render :view login-view
+               :data {:layout/title "Login"
+                      :layout/message "Login failed, please check your password."
+                      :user/username username})))))
+</code></pre>
+<p>So far so good, you’re using the <code>wrap-authentication</code> middleware with the
+<code>session</code> backend, and you have some login routes that work together with the
+backend so people can log in and stay logged in.</p>
+<p>The username and password are still hard coded, but we’ll address that next, by
+adding a way for people to register.</p>
+<p>Let’s first consider how to store these user details. You need a way to check
+the password, but you can’t just store the password in the database. Instead you
+should store something different that still allows you to verify the password.</p>
+<p>This is where a hashing function comes in handy. It turns the password into an
+unrecognizable sequence of bytes called a hash. When the user logs in you
+compare the stored hash with a hash computed from the submitted password. If the
+password is the same then the hashes will also match.</p>
+<p>You should’t use just any hashing functions though. It needs to be a modern one
+with no known flaws, it needs the right runtime characteristics to protect you
+from timing attacks, and it should use a method of salting so that, in case a
+breach happens, the attackers can’t use rainbow tables on the data.</p>
+<p>I won’t explain what all of that means exactly. If you have some time it’s a
+good idea to read up on these things, but luckily Buddy provides good defaults,
+so you are less likely to get this wrong.</p>
+<p>The required functionality is provided in the <code>buddy-hashers</code> package, in the
+<code>buddy.hashers</code> namespace, as a pair of two functions: <code>derive</code>, and <code>check</code>.</p>
+<p><code>hashers/derive</code> takes a password and returns the password hash, in particular
+it returns a string containing the encryption algorithm, the salt, the number of
+iterations performed by the algorithm, and the password hash itself. This value
+is now safe to store in the database. Even if an attacker gets hold of it it
+will be nearly impossible to find out the original password, provided it is long
+enough to prohibit a brute force attack.</p>
+<pre><code class="language-clojure">(hashers/derive "trustno1")
+;;=&gt; "bcrypt+sha512$02f85c2ded57bb4d46b6547a268f2693$12$9a52bb16806562b9b0450659331c7da80731e1441f218451"
+
+(-&gt; (hashers/derive "trustno1")
+    (str/split  #"\$"))
+;;=&gt;
+["bcrypt+sha512"                                    ; encryption
+ "5f8dc902b11de2aa17e67ecb0f76713f"                 ; salt
+ "12"                                               ; iterations
+ "622891a3aed90cea118b3ed791b96e27818389bddf9e5a9b" ; hashed password
+ ]
+</code></pre>
+<p>So you can’t get the original password back from this hash, that’s the whole
+point, but given the hash and a password the user entered, you can check if it
+matches the original. This is done with <code>hashers/check</code>.</p>
+<pre><code class="language-clojure">(hashers/check "trustno1" (hashers/derive "trustno1"))
+;;=&gt; true
+</code></pre>
+<p>So now that you know how to safely store passwords, let’s add two new routes,
+one renders a form that allows people to register, and the other handles the
+form submission.</p>
+<p>As a database I’m using Spicerack, a Clojure wrapper around
+<a shape="rect" href="http://www.mapdb.org/">MapDB</a>. Instead of tables Spicerack provides mutable
+hashmaps which are stored to disk. You can stick arbitrary Clojure values in
+them including nested vectors, maps, or sets, making it a great choice for quick
+prototyping.</p>
+<p>The <code>auth-routes</code> function receives an endpoint component, which in turn
+contains the Spicerack component. From there you can get to the actual database.
+Open the “users” hashmap in an outer let block, so you can access <code>users</code> inside
+the routes. This <code>users</code> hashmap will just be a mapping from username to
+password hash.</p>
+<pre><code class="language-clojure">(defn auth-routes [{:keys [spicerack] :as endpoint}]
+  (let [users (sr/open-hashmap (:db spicerack) "users")]
+    (routes
+     ,,,
+
+     (GET "/register" _
+       ,,,)
+
+     (POST "/register" [username password]
+       ,,,))))
+</code></pre>
+<p>The <code>GET</code> route is pretty similar to the one used to log in, so just copy the
+<code>render</code> call and update the view function and page title.</p>
+<pre><code class="language-clojure">(defn auth-routes [{:keys [spicerack] :as endpoint}]
+  (let [users (sr/open-hashmap (:db spicerack) "users")]
+    (routes
+     ,,,
+
+     (GET "/register" _
+       (render :view register-view
+               :data {:layout/title "Register"}))
+
+     (POST "/register" [username password]
+       ,,,))))
+</code></pre>
+<p>To handle the form submission, first get the username and password again from
+the incoming parameters, and then look up the username in the users table.</p>
+<p>If the username is already taken then render the form again with an error
+message, and with the username prefilled.</p>
+<pre><code class="language-clojure">(defn auth-routes [{:keys [spicerack] :as endpoint}]
+  (let [users (sr/open-hashmap (:db spicerack) "users")]
+    (routes
+     ,,,
+
+     (POST "/register" [username password]
+       (if (get users username)
+         (render :view register-view
+                 :data {:layout/title "Register"
+                        :layout/message "Username is already taken"
+                        :user/username username})
+         (do
+           (sr/put! users username (hashers/derive password))
+           (-&gt; (redirect "/login")
+               (flash-message "Thanks for registering, please log in"))))))))
+</code></pre>
+<p>If it’s not there then it’s time to register the user. Put a new entry in the
+Spicerack users hashmap, with as key the username, and as value the hash derived
+from the password. Finally point the user to the login page and ask them to log
+in. You could also log the user in directly, maybe that’s a good exercise to try
+yourself.</p>
+<pre><code class="language-clojure">(defn auth-routes [{:keys [spicerack] :as endpoint}]
+  (let [users (sr/open-hashmap (:db spicerack) "users")]
+    (routes
+     ,,,
+
+     (POST "/register" [username password]
+       (if (get users username)
+         (render :view register-view
+                 :data {:layout/title "Register"
+                        :layout/message "Username is already taken"
+                        :user/username username})
+         (do
+           (sr/put! users username (hashers/derive password))
+           (-&gt; (redirect "/login")
+               (flash-message "Thanks for registering, please log in"))))))))
+</code></pre>
+<p>The login route is still using a hard coded password, but now that’s easy to
+change. Look up the submitted username in the users map, so you get the hashed
+password back, which you can check against the submitted password with
+<code>hashers/check</code>.</p>
+<pre><code class="language-clojure">(if (hashers/check password (get users username))
+  ,,,
+  ,,,)
+</code></pre>
+<p>There’s one more thing you should change here, when logging a user in you should
+make sure they get a new session key. This will protect you against session
+fixation attacks. You do this by adding this bit of metadata to the updated
+session map.</p>
+<p>This will cause the session identifier that is sent to the browser to change.</p>
+<pre><code class="language-clojure">(let [next-session (-&gt; (assoc (:session req) :identity username)
+                       (with-meta {:recreate true}))] ,,, )
+</code></pre>
+<p>And that’s it, now a user can register and log in. All that’s missing is a way
+to log out again.</p>
+<p>So add one more route which redirects back to the homepage. By setting
+<code>:session</code> to <code>nil</code> in the response map the session middleware will effectively
+delete all session data, so that after logging out we have a clean slate again.</p>
+<pre><code class="language-clojure">(GET "/logout" _
+  (-&gt; (redirect "/")
+      (assoc :session nil)
+      (flash-message "You have been logged out")))
+</code></pre>
+<p>You should have a good understanding of how authorization with Buddy works. I
+didn’t cover the other auth backends in detail, but you can find example code
+for each of them in the Buddy documentation. Also make sure to check out the
+show notes for more info and some suggested reading material.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/booklog/tree/ep28-start">browse source code</a></p>
+<p>To follow along:</p>
+<pre><code>git clone -b ep28-start https://github.com/lambdaisland/booklog.git
+</code></pre>
+<p>To see the final result:</p>
+<pre><code>git clone -b ep28-end https://github.com/lambdaisland/booklog.git
+</code></pre>
+<h2 id="attacks">Attacks</h2>
+<p>I mention several types of attacks in the episode</p>
+<ul>
+<li><a shape="rect" href="https://www.owasp.org/index.php/Session_fixation">Session Fixation</a></li>
+<li><a shape="rect" href="https://en.wikipedia.org/wiki/Timing_attack">Timing Attack</a></li>
+<li><a shape="rect" href="https://en.wikipedia.org/wiki/Rainbow_table">Rainbow Tables</a></li></ul>
+<h2 id="json-web-tokens">JSON Web Tokens</h2>
+<p>JSON Web Tokens have some great use cases, but they’re not suitable as a session mechanism. This article explains the issues in-depth</p>
+<ul>
+<li><a shape="rect" href="http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/">Stop Using JWT for Sessions</a></li></ul>
+<h2 id="image-credits">Image Credits</h2>
+<ul>
+<li><a shape="rect" href="https://www.flickr.com/photos/bewmies/16842734651/in/photolist-rEkqdK-7hTQ7p-dms2uM-MWSwj-FXJTL-3BG2ey-6bsX9C-avRUVn-6boNpR-6bsWUQ-6boP72-7BEZBo-Nxxo5-84SXyR-5fRUJ5-5F8YBy-b9SUT-eEuoP-B3Ndpb-hhzTo-B6434A-Mt7cy-bJ87k8-aFebHa-dtQfPJ">Passport by Ryan Maple</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/datomic-quickstart-part-2" />
+<meta name="twitter:title" content="Datomic Quickstart, part 2" />
+<meta name="twitter:description" content="Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately...." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/661343172-9d9a5f010ee4dfc3bc42de12254c6518009ec5586e4ab4eeae40943bb4a20838-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Datomic Quickstart, part 2" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/datomic-quickstart-part-2" />
+<meta name="video:duration" content="672" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/661343172-9d9a5f010ee4dfc3bc42de12254c6518009ec5586e4ab4eeae40943bb4a20838-d_1280x720?r=pad" />
+<meta name="og:description" content="Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately...." />
+<meta name="video:release_date" content="2017-10-17T15:33:12.806Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Datomic Quickstart, part 2</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/238597857?h=966af608c6&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="37. Datomic Quickstart, part 2"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately.</p>
+<p>This second part dives deeper into transacting entities and querying them.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In the previous episode you created this transaction which adds two entities to Datomic, each with a single <code>:user/name</code> attribute. I showed you that once you dereference the result you get a map back with four keys, the first two of which represent the database before and after the transaction.</p>
+<p>The transaction result also contains <code>:tx-data</code>, a list of datoms that were created as part of this tranaction. It can provide some great insights into what Datomic is doing.</p>
+<p>Notice that these are exactly the 5-tuples we were talking about earlier.</p>
+<p>You inserted two new entities, each with one attribute, so you’d expect to see two new datoms, but Datomic actually created three datoms, for three separate entities.</p>
+<p>The first entity is the transaction. Each time you call <code>d/transact</code>, Datomic will create a new transaction entity, and all datoms created in that same transaction will point to it with their <code>transaction</code> field. The transaction stores the timestamp of when this data was inserted. It’s also possible to add other meta-information to this transaction entity, for instance to store a reference to the user who performed this operation.</p>
+<pre><code class="language-clojure">(:tx-data @tx-result)
+;;=&gt;
+[#datom[13194139534316 50 #inst "2017-10-12T10:16:31" 13194139534316 true]
+ #datom[17592186045421 63 "jillosaurus"               13194139534316 true]
+ #datom[17592186045422 63 "jonnyboy"                  13194139534316 true]]
+;;            🡑        🡑               🡑                    🡑         🡑
+;;          entity   attribute        value             transaction  added?
+</code></pre>
+<p>Another thing you’ll notice is that the attributes are just numbers, but before we always referred to them as keywords. For Datomic entities are just numbers, and since attributes are entities it refers to those by number as well. But you can give an entity a name by assiging it a <code>:db/ident</code> attribute.</p>
+<p>The <code>ident</code> function will tell you the name of an entity.</p>
+<pre><code class="language-clojure">(d/ident (d/db conn) 50)            ;;=&gt; :db/txInstant
+(d/ident (d/db conn) 63)            ;;=&gt; :user/name
+</code></pre>
+<p>Idents or entity ids can be used interchangably. The <code>entity</code> function returns a map representation of an entity, notice how it works with keywords or numeric ids just the same.</p>
+<pre><code class="language-clojure">(d/entity (d/db conn) :user/name)
+;;=&gt; #:db{:id 63}
+
+(d/entity (d/db conn) 63)
+;;=&gt; #:db{:id 63}
+</code></pre>
+<p>The result of <code>entity</code> is a lazy map, that’s why in a REPL you just see a map with a <code>:db/id</code>, the other attributes only show up when you ask for them.</p>
+<p>To fully realize an entity map, use <code>touch</code>, which will load all the attributes. <code>touch</code> is also able to recursively realize entities that this entity references, if they are marked in the schema as components of this entity. I won’t cover components in this episode, but there’s a post on the datomic blog that covers them in depth. I’ll link to it in the show notes.</p>
+<pre><code class="language-clojure">(:db/valueType (d/entity (d/db conn) :user/name))
+;;=&gt; :db.type/string
+
+(d/touch (d/entity (d/db conn) :user/name))
+;;=&gt; #:db{:id 63, :ident :user/name, :valueType :db.type/string, :cardinality :db.cardinality/one}
+
+(d/touch (d/entity (d/db conn) 17592186045421))
+;;=&gt; {:db/id 17592186045421, :user/name "jillosaurus"}
+</code></pre>
+<p><code>entity</code> is a great API for certain use cases, but the real powerhouse of Datomic querying is the <code>q</code> function. Before we get there let’s add some more stuff to the database.</p>
+<p>First create two more attributes. The <code>:user/friends</code> attribute is of type <code>:ref</code>, meaning it forms a reference to another entity. It has <code>cardinality/many</code>, meaning a user can have multiple friends. This way you can start to model a social graph.</p>
+<p>The second attribute, <code>:user/admin?</code>, is a boolean flag to indicate that a user has administrative privileges.</p>
+<pre><code class="language-clojure">(d/transact conn [{:db/ident       :user/friends
+                   :db/valueType   :db.type/ref
+                   :db/cardinality :db.cardinality/many}
+
+                  {:db/ident       :user/admin?
+                   :db/valueType   :db.type/boolean
+                   :db/cardinality :db.cardinality/one}])
+</code></pre>
+<p>Next let’s use these attributes to create two more user entities. Now that users have friends, you’ll need a way to refer to other entities when creating a transaction.</p>
+<p>You already learned two ways to refer to entities: directly with their numeric id, or if the entity has a <code>:db/ident</code> attribute, then you can refer to it with a keyword.</p>
+<p>This example shows two more ways to refer to other entities, by string, and by “lookup ref”.</p>
+<p>“user1” is friends with “user2”, but until user2 has been transacted, it doesn’t have an entity id, and so we have a chicken and egg situation where we need the id of an entity inside the transaction that creates the entity.</p>
+<p>The solution is to use strings as temporary ids. By using the same string multiple times in the same transaction, you are now able to reference entities. The transactor will swap out the strings for actual entity ids as it assigns them.</p>
+<p>“user2” is friends with “jillosaurus”, this is a user that’s already in the database. You could look up its entity id first and use that in the transaction, but since we told Datomic that usernames are unique, you can also use its username to look it up. This is done with a two element vector as shown here, and is known as a “lookup ref”.</p>
+<pre><code class="language-clojure">(d/transact conn [{:db/id "user1"
+                   :user/name "hugabug"
+                   :user/friends #{"user2"}}
+
+                  {:db/id "user2"
+                   :user/name "plexus"
+                   :user/admin? true
+                   :user/friends #{[:user/name "jillosaurus"]}}])
+</code></pre>
+<p><code>q</code> is a pretty powerful function, and I encourage you to read the documentation on querying in Datomic, and to practice and play around with it. I’m just going to show you the tip of the iceberg: unification of logic variables, and passing in arguments.</p>
+<p>Let’s start with a simple example, this query lists the entity id and username of each user, meaning each entity that has a <code>:user/name</code> assigned to it. The first argument to <code>q</code> is the query, it’s just a Clojure vector, but make sure to quote it since it contains the symbols <code>?e</code> and <code>?name</code> which should be passed to <code>q</code> directly, instead of being resolved as vars.</p>
+<p>If you’ve done logic programming before, for instance with Prolog or <code>core.logic</code>, then things will look familiar. After all, Datomic’s queries are based on Datalog, which is a variant of Prolog that’s designed for querying data.</p>
+<p>If you haven’t then no worries, things should become clear soon enough.</p>
+<p>The <code>:where</code> keyword is used to define one or more “clauses”. These are basically patterns that can match datoms. This clause will match any datom that has <code>:user/name</code> as attribute.</p>
+<p><code>?e</code> and <code>?name</code> are logic variables, you can use these in the <code>:find</code> part to specify what should be in the result set.</p>
+<p>So this query can be read as “find all values <code>?e</code> and <code>?name</code>, such that there is a datom in the database with entity id <code>?e</code>, attribute <code>:user/name</code>, and value <code>?name</code>.</p>
+<pre><code class="language-clojure">(d/q '[:find ?e ?name
+       :where [?e :user/name ?name]]
+     (d/db conn))
+;;=&gt;
+#{[17592186045418 "jillosaurus"]
+  [17592186045419 "jonnyboy"]
+  [17592186045424 "hugabug"]
+  [17592186045423 "plexus"]}
+</code></pre>
+<p>If your query has multiple clauses, then all of them need to match. So to find the names of all the admins, you can use this query. The <code>?e</code> variable now occurs twice in the <code>:where</code> part, so Datomic will try to find values of <code>?e</code> that match all the clauses.</p>
+<p><code>?e</code> now no longer appears in the <code>:find</code> part, it’s just being used to make it clear to Datomic that the two <code>:where</code> clauses are about the same entity. So this is like an AND operator, it finds entities with a <code>:user/name</code>, AND with <code>:user/admin?</code> being true.</p>
+<pre><code class="language-clojure">(d/q '[:find ?name
+       :where
+       [?e :user/name ?name]
+       [?e :user/admin? true]]
+     (d/db conn))
+;;=&gt; #{["plexus"]}
+</code></pre>
+<p>Notice again that these clauses have the same five-tuple structure, except that the transaction and <code>added?</code> flag are missing. You can specify them, but if you don’t care about them then you don’t have to.</p>
+<pre><code class="language-clojure">(d/q '[:find ?name
+       :where
+       [?e :user/name ?name]
+       [?e :user/admin? true]]
+     ;; 🡑        🡑      🡑           🡑         🡑
+     ;; entity   attr   value   transaction  added?
+     (d/db conn))  
+</code></pre>
+<p>Here’s a more advanced example that makes use of the transaction id, see if you can figure out what’s going on. This query asks the question: in the same transaction that made the user “plexus” admin, which other datoms were created.</p>
+<p>Whenever a logic variable occurs in more than one clause, you can think of it in SQL terms as a JOIN on that variable.</p>
+<p>So the first two clauses have <code>?u</code> in common, they find each entity that has username “plexus”, and <code>admin?</code> true.</p>
+<p>The second and third clause have <code>?t</code> in common, so it will take all entities that the first two clauses returned, and then find any datoms that have the same transaction id.</p>
+<p>The final two clauses join on <code>?a</code>, the attribute id. This is done to find the <code>:ident</code>, in other words the name of the attribute, instead of just its number.</p>
+<p>I’m showing you this example to demonstrate how you can use the transaction id in a query, but this is already a bit of a “meta” example, so don’t worry if it doesn’t fully make sense yet.</p>
+<pre><code class="language-clojure">(d/q '[:find ?e ?a-ident ?v
+       :where
+       [?u :user/name   "plexus"]
+       [?u :user/admin? true        ?t]
+       [?e ?a           ?v          ?t]
+       [?a :db/ident    ?a-ident]]
+     ;; 🡑        🡑      🡑           🡑         🡑
+     ;; entity   attr   value   transaction  added?
+     (d/db conn))
+;;=&gt;
+#{[17592186045423 :user/name "plexus"] 
+  [17592186045424 :user/name "hugabug"]
+  [17592186045423 :user/admin? true]
+  [17592186045424 :user/friends 17592186045423]
+  [17592186045423 :user/friends 17592186045418]
+  [13194139534318 :db/txInstant #inst "2017-10-12T11:12:38.655-00:00"]}
+</code></pre>
+<p>Just as the transaction id and <code>added?</code> flag can be omitted most of the time, so you can also omit the “value”. This will find all entities with a certain attribute, no matter what the actual value of that attribute is.</p>
+<p>This can be useful because in Datomic entities don’t have a fixed type, they are simply a bag of attributes and values, and any attribute can be assigned to any entity.</p>
+<p>We tend to think of our data as falling in distinct categories like “users”, “posts”, or “products”, but Datomic allows you to mix and match attributes freely within the same entity, so these type-like semantics are up to you as application developer to decide upon.</p>
+<p>In practice the presence of a certain attribute is used to indicate that an entity is of a certain type. For example, your application could treat any entity with a <code>:user/name</code> attribute as “being a user”, and to query for all users means querying for all entities that have a <code>:user/name</code>, regardless of its value.</p>
+<pre><code class="language-clojure">(d/q '[:find ?e 
+       :where
+       [?e :user/name]]
+     (d/db conn))
+;;=&gt; #{[17592186045418] [17592186045419] [17592186045423] [17592186045424]}
+</code></pre>
+<p>Let’s look at an easier example of a “join”. SQL has a special syntax for these, but with Datalog this just falls out of the pattern matching we’ve been doing all along.</p>
+<p>This query finds the pairs of usernames such that the first user is friends with the second. The first clause finds all pairs of friends, you could stop there, but you would get entity id numbers back, instead of usernames.</p>
+<p>So the second clause goes from the <code>?user</code> entity to its name, and the third does the same for <code>?friend</code>.</p>
+<p>The process where Datomic tries to find values for these variables that match all clauses is called “unification”.</p>
+<pre><code class="language-clojure">(d/q '[:find ?username ?friendname
+       :where
+       [?user   :user/friends ?friend]
+       [?user   :user/name    ?username]
+       [?friend :user/name    ?friendname]]
+     (d/db conn))
+;;=&gt; #{["plexus" "jillosaurus"] ["hugabug" "plexus"]}
+</code></pre>
+<p>Finally let’s look at an example that takes arguments. Let’s turn this query into a function called <code>friends-of</code> that, given a database value and a username, finds all the friends of a given user.</p>
+<p>Queries are just vectors, meaning they are data you can manipulate, so you might be tempted to build up a query vector dynamically that contains the given username. This is tedious however, but worse it prevents datomic from caching this query.</p>
+<p>Instead <code>friends-of</code> will make use of the capabilities that <code>q</code> provides for parameterizing queries.</p>
+<p>This query will look very similar to the previous one, but besides the database, it now also takes the username as an extra input argument.</p>
+<p>If you pass <code>q</code> only one argument, it will assume it is the database, and so you don’t have to name it, but when you have multiple input arguments your query vector needs to have an <code>:in</code> part that names the different inputs.</p>
+<p><code>$</code> is a special name given to the default database that the query engine will work with, so you must put that one first. After that you give names to other incoming arguments. So here <code>?username</code> will now get the value “plexus”.</p>
+<p>The rest of the query is largely unchanged, but because the <code>?username</code> variable has a pre-determined value the results are much more constrained.</p>
+<pre><code class="language-clojure">(defn friends-of [db username]
+  (d/q '[:find ?friendname
+         :in $ ?username
+         :where
+         [?user   :user/friends ?friend]
+         [?user   :user/name    ?username]
+         [?friend :user/name    ?friendname]]
+       db username))
+
+(friends-of (d/db conn) "plexus")
+;;=&gt; #{["jillosaurus"]}
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/datomic-quick-start">browse source code</a></p>
+<ul>
+<li><a shape="rect" href="https://my.datomic.com/downloads/free">Download Datomic Free</a></li>
+<li><a shape="rect" href="http://docs.datomic.com/schema.html">Datomic Docs: Schema</a></li>
+<li><a shape="rect" href="http://docs.datomic.com/query.html">Datomic Docs: Queries</a></li>
+<li><a shape="rect" href="http://blog.datomic.com/2013/06/component-entities.html">Blog post: Datomic Component Entities</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

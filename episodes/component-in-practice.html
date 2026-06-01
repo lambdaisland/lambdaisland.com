@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/component-in-practice" />
+<meta name="twitter:title" content="Component in Practice" />
+<meta name="twitter:description" content="Learn how to incorporate Component in a real world project. This episode is a bit of grab bag. It shows how to set up a `-main` function and how to use it, how to use..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/637685834-0517657f81a12393b2f197535be96c6d1e12f97519a847001a836d5e0012e64c-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Component in Practice" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/component-in-practice" />
+<meta name="video:duration" content="1062" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/637685834-0517657f81a12393b2f197535be96c6d1e12f97519a847001a836d5e0012e64c-d_1280x720?r=pad" />
+<meta name="og:description" content="Learn how to incorporate Component in a real world project. This episode is a bit of grab bag. It shows how to set up a `-main` function and how to use it, how to use..." />
+<meta name="video:release_date" content="2017-06-01T11:16:50.970Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Component in Practice</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/219825612?h=2d67cb11ca&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="31. Component in Practice"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Learn how to incorporate Component in a real world project. This episode is a bit of grab bag. It shows how to set up a <code>-main</code> function and how to use it, how to use reloaded.repl and tools.namespace for a better REPL workflow. You get introduced to the Suspendable protocol that complements Component’s Lifecycle protocol. Finally it shows how to streamline your configuration with Aero.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In episode 26 you learned the basics of Stuart Sierra’s Component. It’s a
+small and simple library, but you could fill a book about its practical
+implications.</p>
+<p>That’s because Component provides a language for speaking about systems. We’ve
+gone over the vocabulary, now it’s time to learn how to speak it for real.</p>
+<p>In this episode I’ll show you how to use component in practice, to speed up
+your development workflow, improve your tests, and manage your application’s
+lifecycle in production.</p>
+<h3 id="setting-up-the-main-system">Setting up the main system</h3>
+<p>Let’s start by looking at a typical way to structure your app with Component.
+The Chestnut application template establishes some conventions which form a
+good starting point.</p>
+<p>Generate a new application with <code>lein new chestnut</code>, followed by the name of
+your app, and flags for the features you want to include.
+The <a shape="rect" href="https://github.com/plexus/chestnut">Chestnut README</a> has a complete list.
+I’m tend to use Ring’s site middleware instead of the default API middleware,
+mainly because it provides session support. I’ll use the http-kit server
+instead of the default Jetty, and I’m adding the Contributor covenant Code of
+Conduct to the project.</p>
+<pre><code>$ lein new chestnut ep31 +site-middleware +http-kit +code-of-conduct
+Retrieving chestnut/lein-template/0.15.0-SNAPSHOT/lein-template-0.15.0-20170517.134032-2.pom from clojars
+Generating fresh Chestnut project.
+README.md contains instructions to get you started.
+</code></pre>
+<p><code>cd</code> into your new app and open <code>application.clj</code> under <code>src/clj/ep31</code>. Let’s
+take that from the top. The first required namespace is Component itself,
+followed by a handful of readymade components provided by System. Together
+<code>endpoint</code>, <code>handler</code>, and <code>middleware</code> form a web stack, powered by the
+<code>http-kit</code> web server. How these different components work together is
+described in detail in Episode 26.</p>
+<pre><code class="language-clojure">(ns ep31.application
+  (:gen-class)
+  (:require [com.stuartsierra.component :as component]
+            [system.components.endpoint :refer [new-endpoint]]
+            [system.components.handler :refer [new-handler]]
+            [system.components.middleware :refer [new-middleware]]
+            [system.components.http-kit :refer [new-web-server]]
+            [ep31.config :refer [config]]
+            [ep31.routes :refer [home-routes]]))
+</code></pre>
+<p>The <code>config</code> namespace provides a constructor function which pulls together
+configuration from various sources, and returns them as a map. In this case
+some values are coming from environment variables, while others are
+hard-coded. How you set up your configuration is up to you, I’ll show some
+alternative approaches later in this episode.</p>
+<p>The good thing is that by having this centralized from the start, it’s easy to
+use some other configuration system later on.</p>
+<pre><code class="language-clojure">(ns ep31.config
+  (:require [environ.core :refer [env]]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.middleware.gzip :refer [wrap-gzip]]
+            [ring.middleware.logger :refer [wrap-with-logger]]))
+
+(defn config []
+  {:http-port  (Integer. (or (env :port) 10555))
+   :middleware [[wrap-defaults site-defaults]
+                wrap-with-logger
+                wrap-gzip]})
+</code></pre>
+<p>The final namespace included from application is <code>routes</code>, which provides a
+constructor function for Compojure routes. It takes an endpoint component as
+argument. This component is really just a vehicle for injecting dependencies
+into the routes, making any component that <code>endpoint</code> depends on accessible.</p>
+<p>As your app grows you could add more of these routes constructor functions,
+each with their own corresponding endpoint component.</p>
+<pre><code class="language-clojure">(ns ep31.routes
+  (:require [clojure.java.io :as io]
+            [compojure.core :refer [ANY GET PUT POST DELETE routes]]
+            [compojure.route :refer [resources]]
+            [ring.util.response :refer [response]]))
+
+(defn home-routes [endpoint]
+  (routes
+   (GET "/" _
+     (-&gt; "public/index.html"
+         io/resource
+         io/input-stream
+         response
+         (assoc :headers {"Content-Type" "text/html; charset=utf-8"})))
+   (resources "/")))
+</code></pre>
+<p>Note that this code uses <code>routes</code> inside a function, instead of a top-level
+<code>defroutes</code> form. The difference is that with <code>defroutes</code>, the routes are
+created immediately and assigned to a var, while a constructor function only
+creates the routes at the time when the function gets called.</p>
+<p>The benefit of using a function is that the routes declarations “close over”
+the function arguments, so they can solely rely on local state, instead of
+having to reach out to globals.</p>
+<p>The downside is that, because the routes now form a closure, any changes to
+the constructor function only get picked up when the routes are constructed
+anew, in other words, when restarting the system.</p>
+<pre><code class="language-clojure">(defroutes home-routes ,,,)
+;; same as
+(def home-routes (routes ,,,))
+</code></pre>
+<p>Back to the <code>application</code> namespace. The <code>app-system</code> function is again a
+constructor, it creates a system map based on the configuration. Nothing
+spectacular here. It sets up the routes and middleware stack, then combines
+them into a handler, which is passed on to the web server.</p>
+<pre><code class="language-clojure">(defn app-system [config]
+  (component/system-map
+   :routes     (new-endpoint home-routes)
+   :middleware (new-middleware {:middleware (:middleware config)})
+   :handler    (-&gt; (new-handler)
+                   (component/using [:routes :middleware]))
+   :http       (-&gt; (new-web-server (:http-port config))
+                   (component/using [:handler]))))
+</code></pre>
+<p>Now when the app starts you need to pull everything together: get the
+configuration, use it to create a system, then start the system. Where do you
+put that code?</p>
+<p>Ok, you already see that main function there, but let’s pretend that isn’t
+there yet.</p>
+<p>A first idea could be to add a top-level statement that sets up and starts the
+system. Because it’s at the top level, not inside a function, it will happen
+as soon as the namespace loads.</p>
+<p>I’ve done things like that, as I’m sure many have, maybe using a <code>defonce</code> so
+at least you can still reload the namespace. But think about it, this means
+that just loading the namespace has the side-effect of starting the system,
+web server and all. That’s a pretty big smell.</p>
+<p>Do you want to start the system whenever you start a REPL, run your tests, or
+even when running a linter such
+as <a shape="rect" href="https://github.com/jonase/eastwood">Eastwood</a> over your code? Probably
+not.</p>
+<pre><code class="language-clojure">(def system
+  (-&gt; (config)
+      app-system
+      component/start))
+</code></pre>
+<p>So instead you use a <code>-main</code> fuction. It builds up the configuration map,
+creates the system, and starts it. Finally it’s helpful to print a message so
+you know it’s all started up and ready to serve.</p>
+<p>If you also have this <code>(:gen-class)</code> in the namespace declaration, then
+Clojure will compile this namespace to a Java class. This <code>-main</code> function
+turns into a static <code>main</code> method, so the JVM knows that this is a potential
+entry point for starting the app.</p>
+<pre><code class="language-clojure">(ns ep31.application
+  (:gen-class)
+  ,,,)
+
+(defn app-system [config]
+  ,,,)
+
+(defn -main [&amp; _]
+  (let [config (config)]
+    (-&gt; config
+        app-system
+        component/start)
+    (println "Started ep31 on" (str "http://localhost:" (:http-port config)))))
+</code></pre>
+<p>Now you can start your application by passing this main namespace name to
+<code>lein run</code> with the <code>-m</code> flag.</p>
+<p>(Pedantically, what you’re actually passing is a class name. This namespace
+compiles to a class of the same name as the namespace.)</p>
+<pre><code class="language-sh">$ lein run -m ep31.application
+Started ep31 on http://localhost:10555
+</code></pre>
+<p>Having a <code>-main</code> function together with <code>(:gen-class)</code> also allows you to run
+the app from an uberjar. Make sure the jar is on Java’s classpath by passing
+it t <code>java</code> with the <code>-cp</code> flag. After that put the name of the namespace (or to be exact, the name of the class that this namespace has been compiled to).</p>
+<pre><code class="language-sh">$ lein uberjar
+Compiling ep31.config
+Compiling ep31.routes
+Compiling ep31.application
+Compiling ep31.common
+Compiling ClojureScript...
+Compiling "resources/public/js/compiled/ep31.js" from ["src/cljs" "src/cljc"]...
+Successfully compiled "resources/public/js/compiled/ep31.js" in 25.474 seconds.
+Created /home/arne/ep31/target/ep31-0.1.0-SNAPSHOT.jar
+Created /home/arne/ep31/target/ep31.jar
+$ java -cp target/ep31.jar ep31.application
+Started ep31 on http://localhost:10555
+</code></pre>
+<p>You can also configure <code>ep31.application</code> to be the default entry point for
+the application by setting a <code>:main</code> key in <code>project.clj</code>. Again Chestnut
+already took care of this.</p>
+<pre><code class="language-clojure">(defproject ep31 "0.1.0-SNAPSHOT"
+  ,,,
+  :main ep31.application)
+</code></pre>
+<p>With this a simple <code>lein run</code> is enough to start the application.</p>
+<p>Setting a <code>:main</code> namespace in <code>project.clj</code> also influences the jars that
+Leiningen creates, turning them into a sort of stand-alone application that
+you can run with <code>java -jar</code>.</p>
+<pre><code class="language-clojure">$ lein run
+$ lein uberjar
+$ java -jar target/ep31.jar
+</code></pre>
+<p>Jars contain a special file with metadata called <code>MANIFEST</code>. If it contains a
+<code>Main-Class</code> entry, then <code>java -jar</code> knows that’s the class it needs to
+execute.</p>
+<pre><code>$ unzip -p target/ep31.jar META-INF/MANIFEST.MF
+Manifest-Version: 1.0
+Built-By: arne
+Created-By: Leiningen 2.6.1
+Build-Jdk: 1.8.0_91
+Main-Class: ep31.application
+</code></pre>
+<h3 id="migrating-to-component">Migrating to Component</h3>
+<p>Notice that the <code>-main</code> function isn’t holding on to the system map. The
+system gets created and started, but then gets thrown away. This is often fine
+for production environments, where if you want to restart the app you
+typically restart the whole process.</p>
+<p>But because there’s no reference to the system, there’s also no way for code
+to access components willy nilly. The only way to get hold of a component is
+by using constructor functions, like <code>home-routes</code>, which close over the
+necessary dependencies, so you need to factor that in when designing your
+application, to make sure components are passed around to where they are
+needed.</p>
+<p>This isn’t unreasonable or hard to do, but if you have an existing project
+that you’re adding component to, then chances are you have a lot of state
+being accessed through global vars. If you first need to refactor all that
+code to use dependency injection, then chances are you’ll put off migrating to
+Component forever.</p>
+<p>Instead you can have a gradual transition by storing the system in a var, and
+accessing components through that var. This should make it relatively easy to
+update your code. You’ll have to change any references to application state so
+they access things through the system, but you can put off refactoring to
+dependency injection for a bit.</p>
+<p>In fact you can stop there, and just always refer to the global system map.
+This is akin to what <a shape="rect" href="https://github.com/tolitius/mount">mount</a> does, an
+alternative to Component.</p>
+<pre><code class="language-clojure">(declare system)
+
+(defn app-system [config]
+  (component/system-map
+   ,,,))
+
+(defn -main [&amp; _]
+  (alter-var-root
+   #'system
+   (fn [_]
+     (-&gt; (config)
+         app-system
+         component/start))))
+</code></pre>
+<h3 id="development-setup-with-reloadedrepl">Development setup with reloaded.repl</h3>
+<p>So that’s that, you have your main system declared, and you have a main entry
+point for booting it up in production. Now let’s look at how to set things up
+for development.</p>
+<p>When working from a REPL it’s sometimes easy to get your application in
+a weird state. You could restart the REPL to get a clean slate again, but
+let’s just say that instant startup time isn’t one of Clojure’s selling
+points. So instead what you want to do is reload and restart your app, without
+having to restart Clojure and the JVM.</p>
+<p>If you have your state in a bunch of global vars then that’s quite hard to do,
+but with Component it’s a breeze. This is one of the reasons why Component was
+created: it makes it easy to clean up and restart to get a clean slate again.</p>
+<p>For some added convenience you can use a library called <code>reloaded.repl</code>. Let’s
+try it out from the REPL. Require <code>reloaded.repl</code>, as well as the application
+and config namespaces. Now set up an <code>init</code> function, so <code>reloaded.repl</code> knows
+how to create the system map.</p>
+<p>Now you’re ready to kick everything off with <code>(rr/go)</code>. This will create the
+system, and then start it. If you open your browser at port 10555 you should
+see the familiar “Hello Chestnut!”.</p>
+<p>Now you can use <code>(rr/stop)</code> and <code>(rr/start)</code> to switch the system on or off.
+Use <code>(rr/go)</code> again if you want to initialize the system again from scratch.
+This will first stop the old system if it’s still running.</p>
+<p>(Note that you can copy/paste these repl forms. The <code>#_</code> makes sure that
+Clojure ignores the prompt.)</p>
+<pre><code class="language-clojure">#_user=&gt; (require '[reloaded.repl :as rr]
+    #_=&gt;          '[ep31.application :as app]
+    #_=&gt;          '[ep31.config :as config])
+#_user=&gt; (rr/set-init! #(app/app-system (config/config)))
+#function[user/eval46336/fn--46337]
+#_user=&gt; (rr/go)
+:started
+#_user=&gt; (rr/stop)
+:stopped
+#_user=&gt; (rr/start)
+:started
+</code></pre>
+<p>So this way you can easily restart the system, but you also need a way to
+reload your code. Otherwise it’s quite easy to end up in a situation where the
+code that Clojure has in memory is quite different from its source code.
+Ideally what you want to do is unload all vars and namespaces, and then load
+them again from scratch. This you can do with <code>tools.namespace</code>.</p>
+<p>In <code>clojure.tools.namespace.repl</code> you can find two functions, <code>refresh</code> and
+<code>refresh-all</code>. The first tries to intelligently reload all namespaces that
+have been changed since the last refresh, while the other one simply reloads
+all namespaces. This isn’t a trivial operation, since both the unloading and
+the loading needs to happen in a specific order based on dependencies, so it’s
+good that <code>tools.namespace</code> is there to handle that for you.</p>
+<p>This is annoying though, instead of doing its work <code>refresh</code> is raising an
+error. I had seen this happen several times before, and for the longest time
+had no clue what was causing it, but I finally figured it out.</p>
+<pre><code class="language-clojure">#_user=&gt; (require '[clojure.tools.namespace.repl :as tn])
+#_user=&gt; (tn/refresh)
+:reloading (ep31.routes ep31.config ep31.application user ep31.common)
+:error-while-loading ep31.application
+#error {
+ :cause "No namespace: ep31.config"
+ :via
+ [{:type clojure.lang.Compiler$CompilerException
+   :message "java.lang.Exception: No namespace: ep31.config, compiling:(ep31/application.clj:1:1)"
+   :at [clojure.lang.Compiler load "Compiler.java" 7391]}
+  {:type java.lang.Exception
+   :message "No namespace: ep31.config"
+   :at [clojure.core$refer invokeStatic "core.clj" 4104]}]}
+</code></pre>
+<p>It’s not exactly obvious either, but it turns out the problem is that <code>lein
+uberjar</code> that we did earlier. It compiles namespaces to Java classes in a
+process called AOT or ahead-of-time compilation. These class files end up
+inside your project directory under <code>target/classes</code>, and they confuse the
+h*ck out of <code>tools.namespace</code>. So: long story short, if you run into this then
+do a <code>lein clean</code> to clean up any leftovers, or just delete <code>target/classes</code>,
+and finally restart your REPL (yes, this time you’ll have to).</p>
+<pre><code class="language-sh">$ lein clean
+# or
+$ rm -rf target/classes
+</code></pre>
+<p>Now let’s try that again. Here’s a fresh REPL. Require
+<code>clojure.tools.namespace.repl</code>, aliased to <code>tn</code>, then call <code>refresh</code>. Cool,
+that seems to be working.</p>
+<p>Now try <code>refresh-all</code>… oops. The first <code>refresh</code> ended up unloading and then
+reloading the <code>user</code> namespace, and now that <code>tn</code> alias is gone. No biggie,
+I’ll show you a better way to call <code>tools.namespace</code> instead.</p>
+<pre><code class="language-clojure">#_user=&gt; (require '[clojure.tools.namespace.repl :as tn])
+#_user=&gt; (tn/refresh)
+:reloading (ep31.routes ep31.config ep31.application user ep31.common)
+:ok
+#_user=&gt; (require '[clojure.tools.namespace.repl :as tn])
+#_user=&gt; (tn/refresh-all)
+:reloading (ep31.routes ep31.config ep31.application user ep31.common)
+:ok
+</code></pre>
+<p>So <code>reloaded.repl</code> lets you easily restart your system, and <code>tools.namespace</code>
+helps with reloading your code. Wouldn’t it be great if you could do both in a
+single step? Why yes, Arne, it sure would be, which is why <code>reloaded.repl</code>
+provides helpful <code>reset</code> and <code>reset-all</code> functions to do just that.</p>
+<pre><code class="language-clojure">#_user=&gt; (require '[reloaded.repl :as rr])
+#_user=&gt; (rr/reset)
+#_user=&gt; (rr/reset-all)
+</code></pre>
+<p>Now that you’re familiar with <code>reloaded.repl</code> and <code>tools.namespace</code>, take a
+peek at <code>dev/user.clj</code>. New REPL sessions open up inside this <code>user</code>
+namespace, so here you can define extra convenience functions for use in the
+REPL. This file won’t be loaded when you run your app in production, so if you
+have dev-time dependencies specified in a <code>:dev</code> profile in your
+<code>project.clj</code>, then it’s safe to load them from here.</p>
+<p>Down here you find all the main <code>reloaded.repl</code> functions aliased into <code>user</code>.
+This way you have them available as soon as you open a REPL, and they’ll still
+be there even after doing a refresh. This is how Chestnut provides an easy to
+use workflow, where you simply start a REPL, type <code>(go)</code>, and you’re off.</p>
+<pre><code class="language-clojure">$ lein repl
+#_user=&gt; (go)
+</code></pre>
+<p>When you want to make sure you have a clean slate again, simply call <code>reset</code>.</p>
+<pre><code class="language-clojure">#_user=&gt; (reset)
+</code></pre>
+<p>A few more things to notice in <code>user.clj</code>, this <code>set-refresh-dirs</code> is telling
+<code>tools.namespace</code> which directories to scan for changes. Then there’s
+<code>reloaded.repl/set-init!</code>, which we used earlier, but here it’s using a
+different constructor than the one we used earlier.</p>
+<pre><code class="language-clojure">(set-refresh-dirs "src" "dev")
+(reloaded.repl/set-init! #(dev-system))
+</code></pre>
+<p>This <code>dev-system</code> function is interesting, because it takes the main system
+defined in <code>ep31.application</code>, but it then adds some extra components to it
+with <code>assoc</code>. You can do that, a system map is is a record, which means it
+behaves a lot like a map, so you can <code>assoc</code>, <code>dissoc</code>, or <code>merge</code> to your
+heart’s content.</p>
+<p>Having a separate <code>dev-system</code> can also be handy for swapping out some
+configuraiton, for instance, if you’re accessing third party services, then
+from your dev environment you can point them at some sandbox implementation
+instead.</p>
+<pre><code class="language-clojure">(defn dev-system []
+  (assoc (ep31.application/app-system (config))
+    :figwheel-system (fw-sys/figwheel-system (fw-config/fetch-config))
+    :css-watcher (fw-sys/css-watcher {:watch-paths ["resources/public/css"]})))
+</code></pre>
+<p>There’s one more thing I haven’t told you yet about <code>reloaded.repl</code>. When you
+<code>(reset)</code> or <code>(reset-all)</code>, it doesn’t just start and stop the components, but
+it “suspends” and “resumes” them. These are operations provided by the
+<code>Suspendable</code> protocol, which complements Components’ <code>Lifecycle</code> protocol.</p>
+<p><code>suspend</code> defaults to calling <code>stop</code>, and <code>resume</code> defaults to calling
+<code>start</code>, so you don’tw necessarily have to implement them, but you can if you
+want to implement a “lightweight restart”, by carrying some of the state over
+to the new component.</p>
+<pre><code class="language-clojure">(defprotocol Suspendable
+  (suspend [component]
+    "Suspend a component and return the suspended component. Expected to be
+    called before a resume.")
+  (resume [component old-component]
+    "Given a new component and a suspended old component, return a component
+    that incorporates the suspended data into the new component, if possible."))
+</code></pre>
+<p>As an example, suppose you have some kind of server component that sets up a
+server socket listening on a certain port. I have a kind of pseudo-code
+implementation here. I didn’t go to the trouble of making it idempotent, but
+for the rest it could be a real component.</p>
+<p>Now I’m making it suspendable. The <code>suspend</code> operation doesn’t do anything in
+this case. In particular it’s not cleaning up the the socket, but keeps it
+around, being optimistic that it can be reused.</p>
+<p>Now when resuming, you get passed both a newly created <code>Server</code> component, as
+well as the previous one which has been resumed. If it turns out they’re both
+using the same port, then you can reuse the existing server socket, by
+carrying it over from the old to the new component.</p>
+<p>If the port is different then you fall back to actually stopping the old
+component, which closes the old socket, and then starting the new one.</p>
+<pre><code class="language-clojure">(defrecord Server [port]
+  component/Lifecycle
+  (start [this]
+    (assoc this :socket (open-server-socket port)))
+  (stop [this]
+    (close-socket (:socket this))
+    (dissoc this :socket))
+
+  suspendable/Suspendable
+  (suspend [this]
+    this)
+  (resume [this old-this]
+    (if (= port (:port old-this))
+      (assoc this :socket (:socket old-this))
+      (do
+        (component/stop old-this)
+        (component/start this)))))
+</code></pre>
+<p>If you want to learn more about the rationale behind Component and <code>reloaded.repl</code>, I recommend you check out this post from 2013 by Stuart Sierra, the
+author of Component,
+titled
+<a shape="rect" href="http://thinkrelevance.com/blog/2013/06/04/clojure-workflow-reloaded">My Clojure Workflow, Reloaded</a>.</p>
+<p>In it he describes some of the reasoning behind Component. The workflow he
+describes was later captured in
+the <a shape="rect" href="https://github.com/weavejester/reloaded.repl">reloaded.repl project</a> by
+James Reeves, who also created Ring, Compojure, and is now working on the Duct
+framework.</p>
+<p>For Emacs users it’s worth noting that <code>tools.namespace</code> support is baked into
+CIDER. With the <code>cider-refresh</code> command, bound to <code>C-c C-x</code>, you can call
+<code>(refresh)</code> to reload modified namespaces, or give it a prefix argument (<code>C-u C-c
+C-x</code>) to do a <code>(refresh-all)</code>.</p>
+<p>To make <code>cider-refresh</code> behave more like <code>reloaded.repl/reset</code>, you can
+configure two special variables, <code>cider-refresh-before-fn</code> and
+<code>cider-refresh-after-fn</code>, so that your system gets suspended before code
+reloading, and resumed afterwards.</p>
+<pre><code class="language-clojure">(setq cider-refresh-before-fn "reloaded.repl/suspend")
+(setq cider-refresh-after-fn  "reloaded.repl/resume")
+</code></pre>
+<p>Once again Chestnut has you covered though. The <code>.dir-locals.el</code> file in the
+root of the project defines these variables for you, so they will be correctly
+set for any file you open inside this project.</p>
+<pre><code class="language-clojure">;; .dir-locals.el
+((nil . ((cider-refresh-before-fn . "reloaded.repl/suspend")
+         (cider-refresh-after-fn  . "reloaded.repl/resume")
+         (cider-cljs-lein-repl    . "(do (user/run) (user/browser-repl))"))))
+</code></pre>
+<h3 id="advanced-configuration">Advanced configuration</h3>
+<p>Let’s revisit that <code>config</code> namespace. It builds up a configuration map, based
+on environment variables and hard coded values. This is not an uncommon thing
+to do, in fact some platforms like Heroku very much encourage the use of
+environment variables for configuration, and it’s at the heart of the so
+called “<a shape="rect" href="https://12factor.net/">twelve-factor app</a>” methodology.</p>
+<p>But environment variables are not without problems. They were never designed
+for storing sensitive information, and so they easily get leaked in error
+logs, or passed on to untrusted sub-processes.</p>
+<pre><code class="language-clojure">(ns ep31.config
+  (:require [environ.core :refer [env]]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.middleware.gzip :refer [wrap-gzip]]
+            [ring.middleware.logger :refer [wrap-with-logger]]))
+
+(defn config []
+  {:http-port  (Integer. (or (env :port) 10555))
+   :middleware [[wrap-defaults site-defaults]
+                wrap-with-logger
+                wrap-gzip]})
+</code></pre>
+<p>Instead you could store configuration in a plain EDN file. This emphasizes
+that configuration is just data.</p>
+<p>Juxt, a Clojure consoltancy from the UK, has taken that idea and turned it
+into a great little library called Aero. Let’s see what it can do.</p>
+<p>First add Aero as a project dependency</p>
+<pre><code class="language-clojure">(defproject ep31 "0.1.0-SNAPSHOT"
+
+  :dependencies [,,,
+                 [aero "1.1.2"]]
+  ,,,)
+</code></pre>
+<p>Create a file called <code>config.edn</code> at the root of the project directory.</p>
+<pre><code class="language-clojure">{:http-port 10555}
+</code></pre>
+<p>Now you can require Aero, and use the <code>read-config</code> function to load your
+config file.</p>
+<pre><code>(require '[aero.core :as aero])
+(aero/read-config "config.edn")
+;; =&gt; {:server/port 10555}
+</code></pre>
+<p>So it reads EDN, you may think: big deal. The cool thing is that it adds a
+bunch of tagged literals that lets you specify some complex rules for your
+configuration.</p>
+<p>When running on Heroku, the <code>:http-port</code> comes from the <code>PORT</code> environment
+variable. That’s easy to do, with <code>#env</code>:</p>
+<pre><code class="language-clojure">{:http-port #env PORT}
+</code></pre>
+<p>But if the environment variable isn’t set, then it should fall back to 10555.
+No problem, just use <code>#or</code></p>
+<pre><code class="language-clojure">{:http-port #or [#env PORT 10555]}
+</code></pre>
+<p>There’s a lot more that Aero can do. It can include other files, which is
+useful for secrets, and it can branch based on the current profile, like dev
+or prod. Have a look at the <a shape="rect" href="https://github.com/juxt/aero">README</a>. It covers
+all the different tags, and explains a few different approaches for how you
+can incorporate Aero into your app.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="links">Links</h2>
+<p>This episodes builds upon <a shape="rect" href="https://lambdaisland.com/episodes/stuartsierra-component-system">episode 26</a>, so make sure to check that one first.</p>
+<ul>
+<li><a shape="rect" href="https://github.com/plexus/chestnut">Chestnut</a></li>
+<li><a shape="rect" href="https://github.com/clojure/tools.namespace">tools.namespace</a></li>
+<li><a shape="rect" href="https://github.com/weavejester/reloaded.repl">reloaded.repl</a></li>
+<li><a shape="rect" href="https://github.com/juxt/aero">Aero</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

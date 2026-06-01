@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/defrecord_defprotocol" />
+<meta name="twitter:title" content="defrecord and defprotocol" />
+<meta name="twitter:description" content="With records, Clojure has introduced a way to create struct-like objects, while avoiding some of the problems encountered in object orientation. Records don't hide their data..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/615013782-8b4225a0147a95a259b40345794a53dadcd113b95a0b996f3aa0c34bbca06346-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="defrecord and defprotocol" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/defrecord_defprotocol" />
+<meta name="video:duration" content="626" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/615013782-8b4225a0147a95a259b40345794a53dadcd113b95a0b996f3aa0c34bbca06346-d_1280x720?r=pad" />
+<meta name="og:description" content="With records, Clojure has introduced a way to create struct-like objects, while avoiding some of the problems encountered in object orientation. Records don't hide their data..." />
+<meta name="video:release_date" content="2017-01-30T08:33:29.541Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">defrecord and defprotocol</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/201266143?h=3ff88f2e0b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="defrecord and defprotocol"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>With records, Clojure has introduced a way to create struct-like objects, while
+avoiding some of the problems encountered in object orientation. Records don’t
+hide their data behind custom interfaces, but instead partake in the
+abstractions that Clojure’s own data types are built on, so that code can treat
+treat a record like a regular Clojure data type.</p>
+<p>Protocols are Clojure’s take on abstract interfaces. They make it possible to
+extend preexisting types to new methods, and extend preexisting methods to new
+types, thus avoiding the expression problem.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Many programming languages have some kind of “struct” type, a way of creating
+values with specific named fields. Clojure calls these records, for example a
+<code>Book</code> record could have an <code>author</code>, <code>title</code>, and <code>year</code> it was published.</p>
+<p><code>defrecord</code> takes the name of the record type, and then a vector forms with the
+field names.</p>
+<pre><code class="language-clojure">(defrecord Book [author title year])
+</code></pre>
+<p><code>defrecord</code> is an extension of <code>deftype</code>, so everything you know about types
+also applies to records. You can construct them the same way, with an interop
+style constructor, or with the arrow constructor function, and you can access
+fields with dot forms. If you’re not familiar yet with <code>deftype</code>, I recommend
+checking out episode 23, which covers everything you need to know.</p>
+<pre><code class="language-clojure">(defrecord Book [author title year])
+
+(Book. "Ursula K. Le Guin" "The Dispossessed" 1974)
+(-&gt;Book "Ursula K. Le Guin" "The Dispossessed" 1974)
+
+(.title (-&gt;Book "a" "b" 1999))
+</code></pre>
+<p>That said, even though records can do everything that types can, you don’t
+normally use them the same way. That’s because records behave like proper
+Clojure data types. With <code>deftype</code> in order to have your custom type partake in
+Clojure’s abstractions you have to manually implement all the necessary
+interfaces. Records already come with implementations for a dozen of those
+interfaces, which means you can treat them like any other Clojure value. In
+particular they behave a lot like maps.</p>
+<p>This starts with the constructor. Besides the arrow constructor that takes
+positional arguments, records also provide a constructor which takes a map, with
+keywords for keys that correspond with the record’s field names.</p>
+<pre><code class="language-clojure">(map-&gt;Book {:title "The Caves of Steel" :author "Isaac Asimov" :year 1954})
+</code></pre>
+<p>Records have value semantics, so two records with the same field values are
+considered equivalent. Functional programmers the world over heave a sigh of
+relief.</p>
+<pre><code class="language-clojure">(= (map-&gt;Book {:author "Pat Cadigan", :title "Fools", :year 1992})
+   (map-&gt;Book {:author "Pat Cadigan", :title "Fools", :year 1992})) ;;=&gt; true
+
+(= (map-&gt;Book {:author "Pat Cadigan", :title "Fools", :year 1992})
+   (map-&gt;Book {:author "Anne McCaffrey", :title "Dragonflight", :year 1968})) ;;=&gt; false
+</code></pre>
+<p>You can also add metadata to records, something vanilla <code>deftype</code> does not
+support. You have to use <code>with-meta</code> here instead of the caret notation because
+that notation only works with literals, and calling a constructor function does
+not constitute a literal.</p>
+<p>This is because metadata applied with the caret shorthand is read and added to
+the object by the Clojure reader before any code is evaluated. In order to use
+it the output of the reader needs to be a fully constructed object, rather than
+a code form that evaluates to the object.</p>
+<pre><code class="language-clojure">(-&gt; (map-&gt;Book {:title "Consider Phlebas" :author "Iain M. Banks" :year 1987})
+    (with-meta {:source "Wikipedia"})
+    meta)
+
+;; doesn't work
+^{:source "Wikipedia"} (map-&gt;Book {:title "Consider Phlebas"
+                                   :author "Iain M. Banks"
+                                   :year 1987})
+
+</code></pre>
+<p>To get around this you can use so called “reader forms” to build your records.
+The hash sign should already be a hint that these are processed by the reader.
+You put the fully qualified name of the record, followed either by a vector
+form, for positional arguments, or a map form. Unsuprisingly <code>deftype</code> only
+supports the first.</p>
+<p>Note that technically you’re referencing the corresponding Java class, so if
+your namespace has dashes you need to replace them with underscores.</p>
+<p>Now that you’re using literals you can directly attach metadata.</p>
+<pre><code class="language-clojure">#ep24defrecord.core.Book["Iain M. Banks" "Consider Phlebas" 1987]
+#ep24defrecord.core.Book{:author "Iain M. Banks" :title "Consider Phlebas" :year 1987}
+
+(def consider-phlebas
+ ^{:source "Wikipedia"}
+  #ep24defrecord.core.Book{:title "Iain M. Banks"
+                           :author "Consider Phlebas"
+                           :year 1987})
+
+(meta consider-phlebas)
+</code></pre>
+<p>Records also behave like maps when it comes to field access. You can use <code>get</code>,
+or look up a field by using a keyword as a function. To update a field, you use
+<code>assoc</code>. The result is a new Book record with an updated field.</p>
+<p>Since these basic map operations are all implemented you can also use other map
+functions, like <code>update</code>, <code>update-in</code>, or <code>reduce-kv</code>.</p>
+<pre><code class="language-clojure">(def book (-&gt;Book "Iain M. Banks" "Consider Phlebas" 1987))
+
+(get book :title)    ;;=&gt; "Consider Phlebas"
+(:title book)        ;;=&gt; "Consider Phlebas"
+
+(assoc book :title "The Player of Games")
+;;=&gt; #ep24defrecord.core.Book{:author "Iain M. Banks", :title "The Player of Games", :year 1987}
+
+(-&gt; book
+    (assoc :title "The Player of Games")
+    (update :year inc))
+;;=&gt; #ep24defrecord.core.Book{:author "Iain M. Banks", :title "The Player of Games", :year 1988}
+</code></pre>
+<p>You can even <code>assoc</code> fields that aren’t defined on the record. If you’ve been
+paying attention then this should be at least a little surprising, after all
+fields are implemented as actual object fields on the host level, meaning Java
+or JavaScript. How can Clojure add fields on the fly to an existing class?</p>
+<p>The answer is that it doesn’t. Instead records internally keep an extra map for
+“extra” keys that don’t have a corresponding “real” field.</p>
+<pre><code class="language-clojure">(assoc book :series "The Culture Series")
+;;=&gt; #ep24defrecord.core.Book{:author "Iain M. Banks", :title "Consider Phlebas", :year 1987, :series "The Culture Series"}
+</code></pre>
+<p>Records are also <code>Seqable</code>, calling <code>seq</code> on a record will yield a seq of map
+entries, again just like maps, Map entries behaves a lot like two element
+vectors, so you can call <code>first</code>, <code>second</code> or <code>last</code> on them, but there’s also
+specific functions for them: <code>key</code> and <code>val</code>.</p>
+<p>If you really want to turn your record into a plain map, you can use <code>into</code>.</p>
+<pre><code class="language-clojure">(seq book)
+;;=&gt; ([:author "Iain M. Banks"] [:title "Consider Phlebas"] [:year 1987])
+
+(map first book)     ;;=&gt; (:author :title :year)
+(map key book)       ;;=&gt; (:author :title :year)
+(map val book)       ;;=&gt; ("Iain M. Banks" "Consider Phlebas" 1987)
+
+(into {} book)       ;;=&gt; {:author "Iain M. Banks", :title "Consider Phlebas", :year 1987}
+</code></pre>
+<p>All in all this looks pretty good. You get a custom type, and you can implement
+interfaces or protocols to support polymorphism, but at the same time it’s
+really just a map, and so the code you pass it to never has to know it’s really
+something else.</p>
+<p>There is one small difference that you should be aware of though. Maps behave
+like functions, you can pass in a keyword and get the corresponding value back.
+Records don’t do this. This exception shows that Clojure tries to treat the book
+as a function, and fails.</p>
+<p>To look up a value in the record you need to either use a keyword as the
+function, or explicitly use <code>get</code>.</p>
+<pre><code class="language-clojure">#_(book :title)
+;;=&gt; Exception...
+
+(get book :title)
+(:title book)
+</code></pre>
+<p>If necessary it’s easy to work around though. Clojure functions or other
+callable objects like maps or sets are really just objects that implement the
+<code>IFn</code> interface, so you can do the same for your record.</p>
+<p>Implement invoke so it calls <code>get</code> with the record itself and the passed in
+keyword as arguments.</p>
+<pre><code class="language-clojure">(defrecord Book [author title year]
+  clojure.lang.IFn
+  (invoke [this kw]
+    (get this kw)))
+
+(def book (-&gt;Book "Iain M. Banks" "Consider Phlebas" 1987))
+
+(book :title) ;;=&gt; "Consider Phlebas"
+</code></pre>
+<p>Let’s take a moment to appreciate this design. Rich Hickey considers certain
+aspects of object orientation problematic, in particular data hiding and
+concrete derivation. So while records may look a lot like value objects from OO
+languages, they have the same transparent and uniform data access that Clojure’s
+own data structures provide.</p>
+<p>And while you can implement interfaces and protocols, you can’t “inherit” from
+concrete types. None of that “A bird is an animal, a duck is a bird” kind of
+stuff. Inheritance is a source of tremendous complexity, and so it was wisely
+left out.</p>
+<p>What you do get is fast type based dispatch, either through Java’s interfaces,
+or through Clojure’s own version of it: protocols.</p>
+<p>Let’s look at that through a classic example: geometrical shapes. Each shape has
+a surface area, but how to calculate that surface area depends on the kind of
+shape.</p>
+<p>So create a <code>Shape</code> protocol, and include a <code>surface-area</code> function.</p>
+<pre><code class="language-clojure">(defprotocol Shape
+  "Protocol for computing properties of geometrical shapes"
+  (surface-area [shape]
+    "The surface are of this shape."))
+</code></pre>
+<p>The first thing to note is that <code>Shape</code> and <code>surface-area</code> are regular vars.
+We’re fully in Clojure land now. And because they are vars, they can contain
+metadata like docstrings, something you couldn’t do with interfaces.</p>
+<pre><code class="language-clojure">Shape ;;=&gt; {...}
+surface-area ;;=&gt; #function[ep24defrecord.core/eval26559/fn--26560/G--26550--26565]
+
+(:doc (meta #'Shape))
+(:doc (meta #'surface-area))
+</code></pre>
+<p>Now define some shape records. A <code>Rectangle</code> has a width and a height. Make
+<code>Rectangle</code> “implement the Shape protocol”, so inside the <code>defrecord</code> write
+<code>Shape</code>, followed by implementations of the methods in the protocol. In this
+case that’s just <code>surface-area</code>. The rectangle record will be passed in, but we
+can also access the width and height fields inside this method definition
+directly.</p>
+<p>Next up is a <code>Circle</code> record. A circle is defined by its radius, and its surface
+area is the square of the radius multiplied by Pi.</p>
+<p>This code can now ask for the surface area of any shape, without having to worry
+about the kind of shape it’s dealing with.</p>
+<pre><code class="language-clojure">(defrecord Rectangle [width height]
+  Shape
+  (surface-area [rectangle]
+    (* width height)))
+
+(defrecord Circle [radius]
+  Shape
+  (surface-area [circle]
+    (* Math/PI (* radius radius))))
+
+(surface-area (-&gt;Circle 1))          ;;=&gt; 3.141592653589793
+(surface-area (-&gt;Rectangle 2 3))     ;;=&gt; 6
+</code></pre>
+<p>It’s also possible to implement a protocol for a type that was already defined
+previously, even if the type is provided by Java or by a third party library.
+Turns out Java already contains a class to represent rectangles. By extending
+the type so that it implements the Shape protocol, you can now use objects of
+type Rectangle in your code transparently. This is a great way to bridge the gap
+between functional Clojure code and object oriented Java code when working with
+third party libraries.</p>
+<pre><code class="language-clojure">(extend-type java.awt.Rectangle
+  Shape
+  (surface-area [rect]
+    (* (.width rect) (.height rect))))
+
+(surface-area (java.awt.Rectangle. 100 50))
+</code></pre>
+<p>In this case I’ve used <code>extend-type</code> to implement a single protocol for this
+type, but you can also use <code>extend-type</code> to add several protocols to a type at
+once.</p>
+<p>Sometimes you want to do the opposite: implement a single protocol for multiple
+types. That’s what <code>extend-protocol</code> is for.</p>
+<p>Say you’re writing a <code>surface-area</code> library, and you want it to work with every
+geometrical shape class in Java’s standard library. With a single
+<code>extend-protocol</code> you can add implementations for every class you can find.
+</p>
+<pre><code class="language-clojure">(extend-protocol Shape
+  java.awt.Rectangle
+  (surface-area [rect]
+    (* (.width rect) (.height rect)))
+
+  java.awt.geom.Ellipse2D$Double
+  (surface-area [e]
+    (* Math/PI (.width e) (.height e))))
+
+(surface-area (java.awt.geom.Ellipse2D$Double. 0 0 100 50))
+</code></pre>
+<p>Note how this makes protocols fully extensible in two directions. You can add
+new types that implement a protocol, say <code>Triangle</code> or <code>Hexagon</code>, and you can
+create new protocols and extend them to pre-existing types, all without touching
+existing code.</p>
+<p>Very few languages allow this, for instance Java forces you to declare all
+interfaces a class implements, you can’t add any later on. This is known as the
+“expression problem”, and it’s elegantly solved with protocols.</p>
+<p>A really useful thing you can do with protocols is swap out parts of your
+application during testing. Say you rely on a web service to retrieve user info.
+You might want to have some tests that just use stubbed out responses, instead
+of hitting the real API.</p>
+<p>With a protocol you can create a facade that sits in front all requests to the
+service. You provide one “real” implementation, and pass this one to any
+function that needs to access the API.</p>
+<p>During testing instead you use an alternative implementation, one that returns
+fake responses.</p>
+<p>So here I have a <code>UserService</code> protocol that I’ll use to wrap access to the real
+API. The first implementation, <code>RESTUserService</code>, does an actual HTTP call when
+calling <code>fetch-user-info</code>. I pass an instance of this record to any function
+that needs retrieve user info.</p>
+<p>The <code>TESTUserService</code> also implements <code>UserService</code>, but instead of doing HTTP
+calls it just returns canned responses.</p>
+<p>Now in my test I can call this application code with the test API wrapper, and
+see what comes out.</p>
+<pre><code class="language-clojure">(ns ep24defrecord.core
+  (:require [clojure.test :refer [deftest is]]))
+
+(defprotocol UserService
+  (fetch-user-info [_ user-id] "Fetch info about the given user"))
+
+;; app
+(defrecord RESTUserService [endpoint]
+  UserService
+  (fetch-user-info [_ user-id]
+    (http-get (str endpoint "/" user-id))))
+
+(defn user-profile-handler [api user-id]
+  ,,,)
+
+(user-profile-handler (-&gt;RESTUserInfo "http://...") 32)
+
+;;test
+(defrecord TESTUserInfo [mock-data]
+  UserService
+  (fetch-user-info [_ user-id]
+    (get mock-data user-id)))
+
+(deftest profile-test
+  (let [mock-api (-&gt;TESTUserInfo {32 {:name "John"}})]
+    (is (= (user-profile-handler mock-api 32) ,,,))))
+</code></pre>
+<p>Records and protocols are a useful Clojure feature. They work the same in
+ClojureScript so I didn’t dwell on the differences. If you’re new to Clojure
+then resist overusing them, often a regular map will do fine. That said,
+combined with protocols they are a great way to make boundaries in your code
+explicit.</p>
+<p>I hope you enjoyed this episode. Till next time, on Lambda Island!</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep24defrecord/blob/master/src/ep24defrecord/core.clj">browse source code</a></p>
+<ul>
+<li><a shape="rect" href="https://clojure.org/reference/protocols">Clojure reference: Protocols</a></li>
+<li><a shape="rect" href="https://en.wikipedia.org/wiki/Expression_problem">Wikipedia: Expression Problem</a></li>
+<li>Photo credits: <a shape="rect" href="https://www.flickr.com/photos/erix/15151598439/">Paperwork by Erich Ferdinand</a><a shape="rect" href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

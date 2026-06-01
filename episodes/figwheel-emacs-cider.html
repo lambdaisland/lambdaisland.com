@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/figwheel-emacs-cider" />
+<meta name="twitter:title" content="Using Figwheel With Emacs, part 2: CIDER" />
+<meta name="twitter:description" content="By using Figwheel with CIDER you get both a Clojure and a ClojureScript REPL at the same time, and you get all the nice features of CIDER. It's a more complex setup than just..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/587533413-6554b8fce494087a6516b2abc8cc531baefc4398eff01490b1a7ae02cd7c7287-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Using Figwheel With Emacs, part 2: CIDER" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/figwheel-emacs-cider" />
+<meta name="video:duration" content="839" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/587533413-6554b8fce494087a6516b2abc8cc531baefc4398eff01490b1a7ae02cd7c7287-d_1280x720?r=pad" />
+<meta name="og:description" content="By using Figwheel with CIDER you get both a Clojure and a ClojureScript REPL at the same time, and you get all the nice features of CIDER. It's a more complex setup than just..." />
+<meta name="video:release_date" content="2016-08-20T16:22:29.029Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Using Figwheel With Emacs, part 2: CIDER</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/179574364?h=d7f5a1c0d3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="15. Using Figwheel With Emacs, part 2: CIDER"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>By using Figwheel with CIDER you get both a Clojure and a ClojureScript REPL at the same time, and you get all the nice features of CIDER. It’s a more complex setup than just straight inf-clojure, so before we get there we need to talk a bit about nREPL and Piggieback, tooling you should be familiar with, no matter which editor you are using.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>So if inf-clojure is so great, why are all the cool kids talking about CIDER?
+Well, to understand that we need to talk about nREPL.</p>
+<p>nREPL isn’t so much a REPL as it is a backend server for Clojure tooling. You
+can use it to power a REPL, or a documentation browser, or a refactoring tool,
+anything that can benefit from hooking into and interacting with a Clojure
+process.</p>
+<p></p>
+<p>You can send a message to an nREPL server, and it will send you one or more
+messages in return. If you send it an “eval” message, it will evaluate some code
+and send back the result. If you send it a “describe” message it will tell you
+all the operations it supports. Send it a “load-file” message and it will
+(re)load a certain file.</p>
+<p>Messages are sent over the wire using a binary format called BEncode, but that’s
+not so important, conceptually you can think of a message as a map with
+key-value pairs.</p>
+<p></p>
+<p>All main Clojure IDEs and editors are powered by nREPL, including CIDER.
+Communicating programmatically with a REPL process over input and output streams
+is tedious, it also means it’s impossible to distinguish between a REPL result
+and other program output. In contrast nREPL provides a richer interaction model.</p>
+<p>Enough theory, how do we use Figwheel with CIDER?</p>
+<p>First of all you’ll need CIDER, which can be installed just like <code>inf-clojure</code>
+from MELPA.</p>
+<pre><code class="language-emacs-lisp">(package-install 'cider)
+</code></pre>
+<p>Now in <code>core.cljs</code>, make sure <code>inf-clojure-minor-mode</code> is disabled, and enable
+<code>cider-mode</code>. To always have <code>cider-mode</code> active, you can add something like
+this to your setup.</p>
+<pre><code class="language-emacs-lisp">(add-hook 'clojure-mode-hook 'cider-mode)
+</code></pre>
+<p>CIDER needs an nREPL server that it can talk to. The easiest way to launch an
+nREPL server is with <code>lein repl</code>, besides the regular REPL you’ll see in the
+terminal this also starts nREPL. The first line of output contains the port
+number to connect to. With <code>M-x cider-connect</code> you can connect to it.</p>
+<p>Notice we get some warnings here, the more advanced capabilities of CIDER won’t
+work this way.</p>
+<p>For CIDER to work to its full potential, we need to add the CIDER-nREPL plugin
+to Leiningen. This plugin adds the CIDER middleware to nREPL, which provides
+extra operations for CIDER to use, things like looking up documentation, or
+jumping to a function definition.</p>
+<pre><code class="language-clojure">(defproject example "0.1.0"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha10"]
+                 [org.clojure/clojurescript "1.9.89"]]
+
+  :plugins [[lein-figwheel "0.5.4-7"]
+            [cider/cider-nrepl "0.13.0-SNAPSHOT"]]
+
+  ,,,)
+</code></pre>
+<p>Start <code>lein repl</code> again and connect to it. Notice that the warnings are gone.
+Now we get the full power of CIDER, so we can ask for the documentation of a
+symbol, or jump to its definition, things that weren’t so easy with inf-clojure.</p>
+<p>Being able to connect to a running nREPL server like this can be convenient,
+maybe you have a process on another host you want to debug, but having to
+manually add the plugin is tedious. It can also lead to things breaking in
+unexpected ways due to a version mismatch between CIDER and the CIDER-nREPL
+plugin.</p>
+<p>Nine times out of ten you’ll use CIDER with an app you’re developing locally. In
+this case it’s better to just let CIDER take care of launching the REPL, this
+way CIDER can inject the plugin dependency when starting <code>lein repl</code>, so you
+don’t have to do that yourself. That way it’s always there and up to date. So
+take the plugin first out of <code>project.clj</code>, and then ask CIDER to launch nREPL
+and connect to it with <code>M-x cider-jack-in</code>. You can see the exact invocation
+CIDER used in the minibuffer. It’s also logged in your <code>*Messages*</code> buffer.</p>
+<p>In my case you can also see <code>refactor-nrepl</code> in there, this plugin is added by
+<code>clj-refactor</code> to provide refactoring operations.</p>
+<pre><code>Starting nREPL server via /home/arne/bin/lein update-in :dependencies conj \[org.clojure/tools.nrepl\ \"0.2.12\"\] -- update-in :plugins conj \[refactor-nrepl\ \"2.3.0-SNAPSHOT\"\] -- update-in :plugins conj \[cider/cider-nrepl\ \"0.13.0\"\] -- repl :headless...
+</code></pre>
+<p>After a moment your REPL should be waiting obediently for input. You can also
+verify that evaluating forms in a Clojure buffer works as expected. One great
+thing is that with <code>inf-clojure</code>, the results would show up in the REPL buffer,
+whereas now they show up right next to the expression as an overlay. If you use
+the <code>C-u</code> prefix to <code>C-x C-e</code> then the result are inserted into the buffer.</p>
+<p>There are two more buffers that CIDER created, even though it doesn’t show them
+by default. When has a name starting with <code>*nrepl-server</code>, the other is called
+<code>*nrepl-messages</code>.</p>
+<p>The <code>nrepl-server</code> buffer contains anything written to the standard out or error
+streams by the Leinigen process. Remember that with nREPL, communication happens
+over a network socket, not over the standard input and output streams.</p>
+<p>If any of the Clojure code you evaluate does generate output, then nREPL will
+intercept it and send it back to CIDER, so it also shows up in the REPL buffer.
+This is why when we evaluate <code>println</code> it shows up in the REPL. If anything else
+causes output, maybe a background thread is writing out debug information, then
+it ends up in this <code>*nrepl-server*</code> buffer.</p>
+<p>If something goes wrong and an exception happens inside nREPL, or if your Java
+process segfaults, then that will only be visible here, so if things start
+misbehaving it’s a good idea to have a look at this buffer.</p>
+<p>The <code>nrepl-messages</code> buffer is super interesting because here you can see how
+CIDER and nREPL are talking to each other. It contains each message back and
+forth between the two. For instance here you can see what happened when I
+evaluated this bit of code.</p>
+<pre><code>(--&gt;
+  ns  "figmacs.scratch"
+  op  "eval"
+  session  "4e5850bd-cc0d-42aa-99e8-f917f5c1312b"
+  code  "(range 7) \n"
+  file  "/home/arne/figmacs/src/figmacs/scratch.clj"
+  line  7
+  column  0
+  id  "15"
+)
+(&lt;--
+  id  "15"
+  ns  "figmacs.scratch"
+  session  "4e5850bd-cc0d-42aa-99e8-f917f5c1312b"
+  value  "(0 1 2 3 4 5 6)"
+)
+</code></pre>
+<p>So far so good, chances are you figured out this much by yourself, but what
+about ClojureScript? ClojureScript has its own mechanism for building REPLs,
+based on JavaScript evaluation environments. To use these ClojureScript REPL
+environments from nREPL we need Piggieback.</p>
+<p>Piggieback is a “middleware” for nREPL. It will intercept “eval”-type messages
+and route them to ClojureScript.</p>
+<p></p>
+<p>Add Piggieback as a dependency in the <code>:dev</code> profile, and also add it to the
+nREPL middleware stack. Now restart CIDER (<code>M-x cider-restart</code>) to make sure
+Piggieback is loaded.</p>
+<pre><code class="language-clojure">(defproject example "0.1.0"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha10"]
+                 [org.clojure/clojurescript "1.9.89"]]
+
+  :profiles {:dev
+             {:dependencies [[com.cemerick/piggieback "0.2.1"]]
+              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
+
+  ,,,)
+</code></pre>
+<p>To change our Clojure REPL into a ClojureScript REPL, we call Piggieback’s
+<code>cljs-repl</code> function. We need to tell it which REPL environment to use.
+ClojureScript has a pluggable system so it’s easy to provide REPL environments
+for various JavaScript runtimes. This could be a browser, or Node.js, but for
+now we’ll use a JavaScript runtime that comes bundled with Java, called Rhino.</p>
+<pre><code class="language-clojure">(require 'cemerick.piggieback)
+(require 'cljs.repl.rhino)
+
+(cemerick.piggieback/cljs-repl (cljs.repl.rhino/repl-env))
+</code></pre>
+<p>Now when CIDER sends an “eval” message to nREPL, Piggieback will intercept it,
+and pass the code to be evaluated to the ClojureScript REPL environment. There
+it gets compiled to JavaScript, and passed to Rhino, which evaluates the code,
+and sends back the result.</p>
+<p>Using Rhino is an easy option for a quick ClojureScript REPL because it requires
+no extra dependencies, and we can use all our CIDER goodness like evaluating
+forms from a CLJS buffer. It’s not quite Figwheel yet though, we’ll get to that
+in a bit.</p>
+<p>There’s another downside to this approach, we can switch between
+Clojure and ClojureScript REPLs, but we only have one of them active at a time.
+When doing both front- and backend work at the same time this becomes tedious.
+We’ll see how to solve that as well.</p>
+<p>To use Figwheel with CIDER, so with nREPL and Piggieback, we need one extra
+ingredient: figwheel-sidecar. Figwheel was originally only available as a
+Leiningen plug-in, but with Sidecar it can be used as a library, so you can
+start Figwheel from a running process.</p>
+<p>To begin with add sidecar to your dev dependencies, right next to Piggieback.</p>
+<pre><code class="language-clojure">(defproject example "0.1.0"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha10"]
+                 [org.clojure/clojurescript "1.9.89"]]
+
+  :profiles {:dev
+             {:dependencies [[figwheel-sidecar "0.5.4-7"]
+                             [com.cemerick/piggieback "0.2.1"]]
+              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
+
+  ,,,)
+</code></pre>
+<p>Restart CIDER, and now we’re ready to start Figwheel! The first command starts
+the ClojureScript compiler, launches the web server, and sets up the automatic
+reloading, the second command starts the browser connected REPL.</p>
+<p>Under the hood this uses Piggieback, so we still need to set up the Piggieback
+nREPL middleware in <code>project.clj</code>. This time the REPL environment passed to
+Piggieback will use Figwheel to do the evaluation.</p>
+<pre><code class="language-clojure">(require '[figwheel-sidecar.repl-api :as fw])
+
+(fw/start-figwheel!)
+(fw/cljs-repl)
+</code></pre>
+<p>Alright, we’re almost there! We have Figwheel running inside nREPL now, which
+means we can use it from CIDER, and get all the rich editing and interactive
+development that CIDER offers. There are quite a few moving pieces, but once you
+get the big picture it becomes a lot easier to figure out how to set things up.</p>
+<p>There’s only one thing we would ask Santa if he would listen: having both a
+Clojure and ClojureScript REPL active at the same time, so forms evaluated from
+a CLJ or CLJS file automatically go to the right place. Santa in this case
+doesn’t live on the North Pole, but in beautiful Bulgaria, and he’s already
+delivered everything we asked for!</p>
+<p>Close the CIDER connection (<code>M-x cider-quit</code>). By the way you can always check
+which CIDER sessions are still open with <code>M-x cider-connection-browser</code>, and
+from that list you can kill them one by one with <code>k</code>.</p>
+<p>Now instead of doing <code>cider-jack-in</code>, do <code>cider-jack-in-clojurescript</code>. This
+will start two nREPL sessions, one of which will be commanded to use
+ClojureScript.</p>
+<p>But… that doesn’t look like a Figwheel REPL! Seems like CIDER used Rhino, the
+JavaScript engine bundled with Java. That’s not terribly useful, although it
+does mean we can use Java classes straight from ClojureScript. Yeah that’s
+actually not terribly useful either.</p>
+<p>We can tell CIDER we’re using Figwheel by customizing the <code>cider-cljs-lein-repl</code>
+variable. By default it’s set to <code>(cemerick.piggieback/cljs-repl
+(cljs.repl.rhino/repl-env))</code>. Instead we need to change it to the snippet that
+starts Figwheel. CIDER makes this easy by providing a list to choose from.</p>
+<p>Open the customize interface with <code>M-x customize-variable cider-cljs-lein-repl</code>.
+Tab your way to the button that reads “Value Menu” and press enter. Now you get
+a list of choices, the second of which is “Figwheel sidecar”. That’s the one we
+want. Press 1, and then save the changes the way you would save a file with <code>C-x
+C-s</code>.</p>
+<p>Now if you look at <code>cider-cljs-lein-repl</code> you’ll see it’s exactly the same thing
+we did earlier to switch to a Figwheel REPL. You can again use Directory Local
+Variables to change this on a per project basis.</p>
+<pre><code class="language-clojure">(do
+  (require 'figwheel-sidecar.repl-api)
+  (figwheel-sidecar.repl-api/start-figwheel!)
+  (figwheel-sidecar.repl-api/cljs-repl))
+</code></pre>
+<p>Personally I have this set to a more elaborate snippet that tries to detect the
+type of project I’m in, and “does the right thing”.</p>
+<pre><code class="language-clojure">(setq cider-cljs-lein-repl
+      "(cond
+  (and (resolve 'user/run) (resolve 'user/browser-repl)) ;; Chestnut projects
+  (eval '(do (user/run)
+             (user/browser-repl)))
+
+  (try
+    (require 'figwheel-sidecar.repl-api)
+    (resolve 'figwheel-sidecar.repl-api/start-figwheel!)
+    (catch Throwable _))
+  (eval '(do (figwheel-sidecar.repl-api/start-figwheel!)
+             (figwheel-sidecar.repl-api/cljs-repl)))
+
+  (try
+    (require 'cemerick.piggieback)
+    (resolve 'cemerick.piggieback/cljs-repl)
+    (catch Throwable _))
+  (eval '(cemerick.piggieback/cljs-repl (cljs.repl.rhino/repl-env)))
+
+  :else
+  (throw (ex-info \"Failed to initialize CLJS repl. Add com.cemerick/piggieback and optionally figwheel-sidecar to your project.\" {})))")
+</code></pre>
+<p>We’ve covered a lot of ground now, inf-clojure, CIDER, nREPL, Piggieback, … oh
+my. I hope you still have everything clear in your mind.</p>
+<p>I could have given you a snippet to copy to your Emacs config and be done with
+it, but I think it’s much more valuable to actually understand what’s going on.
+Our REPL and editor are our two most important tools, the equivalent of a
+carpenter’s workbench or a chemist’s lab. Get to know it intimately, and you’ll
+be able to use it more effectively, and be better equipped to troubleshoot
+potential issues.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="emacs-config">Emacs config</h2>
+<pre><code class="language-clojure">(package-install 'cider)
+
+(add-hook 'clojure-mode-hook 'cider-mode)
+
+;; To auto detect Chestnut or Figwheel projects
+;; You can also just use the customize interface to set this variable
+(setq cider-cljs-lein-repl
+      "(cond
+  (and (resolve 'user/run) (resolve 'user/browser-repl)) ;; Chestnut projects
+  (eval '(do (user/run)
+             (user/browser-repl)))
+
+  (try
+    (require 'figwheel-sidecar.repl-api)
+    (resolve 'figwheel-sidecar.repl-api/start-figwheel!)
+    (catch Throwable _))
+  (eval '(do (figwheel-sidecar.repl-api/start-figwheel!)
+             (figwheel-sidecar.repl-api/cljs-repl)))
+
+  (try
+    (require 'cemerick.piggieback)
+    (resolve 'cemerick.piggieback/cljs-repl)
+    (catch Throwable _))
+  (eval '(cemerick.piggieback/cljs-repl (cljs.repl.rhino/repl-env)))
+
+  :else
+  (throw (ex-info \"Failed to initialize CLJS repl. Add com.cemerick/piggieback and optionally figwheel-sidecar to your project.\" {})))")
+</code></pre>
+<h2 id="projectclj">project.clj</h2>
+<p>To use Figwheel with CIDER, you need to have both Piggieback and Figwheel
+Sidecar as dependencies, and also make sure the Piggieback middleware is loaded
+in nREPL.</p>
+<pre><code>(defproject example "0.1.0"
+  :dependencies [[org.clojure/clojure "1.9.0-alpha10"]
+                 [org.clojure/clojurescript "1.9.89"]]
+
+  :profiles {:dev
+             {:dependencies [[figwheel-sidecar "0.5.4-7"]
+                             [com.cemerick/piggieback "0.2.1"]]
+              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}})
+</code></pre>
+<p>After that switching an nREPL-based REPL to a Figwheel REPL is as easy as</p>
+<pre><code class="language-clojure">(require 'figwheel-sidecar.repl-api)
+
+(figwheel-sidecar.repl-api/start-figwheel!)
+(figwheel-sidecar.repl-api/cljs-repl)
+</code></pre>
+<p>But instead of doing this manually you can customize <code>cider-cljs-lein-repl</code> and rely on <code>cider-jack-in-clojurescript</code>.</p>
+<h2 id="emacs-commands">Emacs commands</h2>
+<ul>
+<li><code>M-x cider-connect</code></li>
+<li><code>M-x cider-quit</code></li>
+<li><code>M-x cider-restart</code></li>
+<li><code>M-x cider-connection-browser</code> (use <code>k</code> to kill the selected connection)</li>
+<li><code>M-x cider-jack-in</code> (<code>C-c M-j</code>)</li>
+<li>
+<p><code>M-x cider-jack-in-clojurescript</code> (<code>C-c M-J</code>)</p></li>
+<li><code>M-x customize-variable cider-cljs-lein-repl</code></li></ul>
+<p>CIDER has <a shape="rect" href="http://cider.readthedocs.io/">elaborate documentation</a>, it’s worth
+skimming through it just so you have a sense of all that’s in there. Did you
+know it can run your unit tests, that there’s a debugger, or that you can browse
+all loaded namespaces?</p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

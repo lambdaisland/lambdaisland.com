@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/ultimate-dev-setup" />
+<meta name="twitter:title" content="The Ultimate Dev Setup" />
+<meta name="twitter:description" content="This one tool will transform how you program. It's time to raise your standards!" />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/692032990-2cd5a8e5e367972e4bbc4cb51ddde29efa941d2eff1c8b07c42bd209e073a7cb-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="The Ultimate Dev Setup" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/ultimate-dev-setup" />
+<meta name="video:duration" content="815" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/692032990-2cd5a8e5e367972e4bbc4cb51ddde29efa941d2eff1c8b07c42bd209e073a7cb-d_1280x720?r=pad" />
+<meta name="og:description" content="This one tool will transform how you program. It's time to raise your standards!" />
+<meta name="video:release_date" content="2018-04-01T04:19:22.066Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">The Ultimate Dev Setup</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/262694052?h=7af11f104e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="40. The Ultimate Dev Setup"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>This one tool will transform how you program. It’s time to raise your standards!</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Programmers love to argue about which language or editor is better and cooler
+than anything that ever was or will be. Wars have been fought and empires have
+fallen in quarrels over whether Vim or Emacs is best. This is silly because
+while these are fine editors in their own right they are also toys that aren’t
+worth the electromagnetic charges they are stored as.</p>
+<p>I will show you how to shed these training wheels and take your place among the
+rightfully smug, by raising your standards to <em>the</em> standard. The standard
+programming language being LISP, in its modern incarnation, Clojure, and the
+standard editor being ed(1), or as it is formally known: “The One True, The
+Right Honorable, The Standard Editor, Edward ‘ed(1)’ Editor”.</p>
+<p>Because technologies sound more better when prefixed with “modern” I will teach
+you “modern ed(1)” which is really just regular ed but invoked with <code>rlwrap</code> and
+the <code>-p</code> option.</p>
+<p><code>ed(1)</code> is the only uncomplected editor. It singularly performs its job, not
+wasting your teletype’s ink on trivialities such as a prompt or error messages.
+It answers to your every whim, command after command, unless it is unable to do
+so, in which case it doesn’t waste words on your incompetence, but simply
+replies with “huh?”.</p>
+<pre><code>$ ed
+help
+?
+quit
+?
+exit
+?
+^C
+?
+^C
+^[[A^[[A
+?
+:wq
+?
+^Z
+[1]  + 29559 suspended  ed
+$ kill -9 29559
+[1]  + 29559 killed     ed
+</code></pre>
+<p>While it may be that you have never heard of The One True, The Right Honorable,
+The Standard Editor, Edward ‘ed(1)’ Editor, it is a near certainty that <code>ed</code> is
+already installed on the computer you are using right now. You could verify this
+by typing <code>ed</code> in a terminal followed by <code>RETURN</code>, but since that may leave you
+attempting in vain to exit <code>ed</code> until the heat death of the universe you can
+verify its presence with <code>which ed</code> instead.</p>
+<pre><code>$ which ed
+/bin/ed
+</code></pre>
+<p>Now I shall teach you <code>ed(1)</code>.</p>
+<p>Start modern <code>ed(1)</code> by invoking <code>rlwrap ed -p'&gt; '</code>. Once you are inside <code>ed</code>
+you enter commands, one per line.</p>
+<p><code>ed</code> starts with an empty buffer. With <code>a</code> you enter insert mode, and any
+consecutive lines you enter get added to this buffer. Enter ‘.’ on an empty line
+to exit insert mode.</p>
+<p>Use <code>w</code> to write to a file.</p>
+<pre><code>$ rlwrap ed -p'&gt; '
+&gt; a
+{:paths ["src" "test"]}
+.
+&gt; w deps.edn
+24
+</code></pre>
+<p>The <code>p</code> command will print the current line. <code>1p</code> prints the first line. <code>,p</code>
+prints all lines. The <code>n</code> command is like <code>p</code>, but also shows line numbers.</p>
+<pre><code>&gt; p
+{:paths ["src" "test"]}
+&gt; 1p
+{:paths ["src" "test"]}
+&gt; ,p
+{:paths ["src" "test"]}
+&gt; ,n
+1    {:paths ["src" "test"]}
+</code></pre>
+<p>You can delete the current line with <code>d</code> or all lines with <code>,d</code>. But by now your
+buffer is empty so <code>ed</code> will go “huh?”. Use <code>h</code>, short for “huh?” to see what’s
+up. With <code>r</code> you read a file, appending it to the buffer. <code>u</code> undoes the last
+edit.</p>
+<pre><code>&gt; d
+&gt; ,d
+?
+&gt; h
+Invalid address
+&gt; r deps.edn
+24
+&gt; r deps.edn
+24
+&gt; ,p
+{:paths ["src" "test"]}
+{:paths ["src" "test"]}
+&gt; u
+&gt; ,p
+{:paths ["src" "test"]}
+</code></pre>
+<p><code>s</code> does a substitution on the current line. It’s followed by a <code>/</code>, a regular
+expression, another <code>/</code>, and the substitution. <code>s</code> only replaces the first
+match, add <code>/g</code> to replace all.</p>
+<pre><code>&gt; s/}/
+{:paths ["src" "test"]
+&gt; s/s/sh/g
+&gt; ,p
+{:pathsh ["shrc" "tesht"]
+</code></pre>
+<p>Empty the buffer, add some lines of text, and admire your work.</p>
+<p>A invocation like <code>,n</code> consists of two parts, an address, and a command.</p>
+<p>When omitted, the address defaults to <code>.</code>, which means the current line. When the command is omitted it defaults to the print command, <code>p</code>.</p>
+<p>An address can be a line number, a range of lines, all lines, the first line to
+match a pattern, and a bunch of other things. You can move the “cursor” up or
+down with <code>-</code> or <code>+</code>, which can be repeated or combined with a number.</p>
+<pre><code>&gt; ,d
+&gt; a
+enter
+some
+lines
+of text
+.
+&gt; ,n
+1       enter
+2       some
+3       lines
+4       of text
+&gt; p
+of text
+&gt; .
+of text
+&gt; 2
+some
+&gt; 2,3p
+some
+lines
+&gt; ,
+enter
+some
+lines
+of text
+&gt; ?lin?
+lines
+&gt; -
+some
+&gt; -
+enter
+&gt; ++
+lines
+&gt; -2
+enter
+</code></pre>
+<p><code>f</code> sets the name of the file you’re editing, so you can save it simply with
+write command <code>w</code>. <code>e</code> “edits” a file, reading it into the buffer, and setting
+it as the current file name, which you can check again with <code>f</code>.</p>
+<pre><code>&gt; f words.txt
+words.txt
+&gt; w
+25
+&gt; e words.txt
+25
+&gt; f
+words.txt
+&gt; ,p
+enter
+some
+lines
+of text
+</code></pre>
+<p>A <code>!</code> lets you run shell commands, <code>%</code> refers to the current file. With <code>w !</code>
+you can pipe the current buffer to a command and. With <code>r !</code> can append the
+output of a command to the buffer.</p>
+<pre><code>&gt; ! echo hello
+hello
+!
+&gt; ! grep n %
+ grep n words.txt
+enter
+lines
+!
+&gt; w ! wc -l
+4
+25
+&gt; r ! date
+29
+&gt; ,p
+enter
+some
+lines
+of text
+Thu Mar 29 11:28:27 CST 2018
+</code></pre>
+<p>I guess that’s all you need to know. Oh yeah <code>q</code> or Control-D quits, unless your
+buffer has unsaved changes, then it will say “huh?”. Do <code>q</code> again and it will
+quit anyway.</p>
+<pre><code>&gt; q
+?
+&gt; q
+</code></pre>
+<p>I recently blogged about mayonnaise, since as a Belgian I am not only legally
+required to always carry chocolate, but also have a moral duty to educate the
+world about mayonnaise.</p>
+<p>The thing to know about mayonnaise is that it is not sweet. There are
+mayonnaise-like sauces that are sweetened, maybe you even enjoy eating these at
+times, but don’t ever confuse them with The One True, The Right Honorable, The
+Standard Sauce, Mayonnaise.</p>
+<p>Besides mayonnaise I also talked about a Clojure editor really needing two
+things, REPL integration, and Paredit. Of course <code>ed(1)</code> has both.</p>
+<p>To start a Clojure REPL from <code>ed(1)</code>, type <code>!clj</code>. Exit it again with <code>Control-D</code>.</p>
+<pre><code>&gt; !clj
+Clojure 1.9.0
+user=&gt; (+ 1 1)
+2
+user=&gt;!
+&gt;
+</code></pre>
+<p>Let’s evaluate some code. To send the buffer to the REPL, use <code>w !clj</code>.</p>
+<pre><code>&gt; a
+(* 2 21)
+.
+&gt; w !clj
+Clojure 1.9.0
+user=&gt; 42
+user=&gt;
+9
+&gt;
+</code></pre>
+<p>An essential operation is to evaluate an expression, and insert the result into
+the buffer. To do this first save your code, then pipe it to <code>clj</code>, reading back
+the result.</p>
+<pre><code>&gt; f my_code.clj
+&gt; w
+9
+&gt; r ! clj &lt; %
+36
+&gt; ,p
+(* 2 21)
+Clojure 1.9.0
+user=&gt; 42
+user=&gt;
+&gt;
+</code></pre>
+<p>Uhm yeah those prompts aren’t too elegant, let’s clean that up. Delete line
+number 2, and then on all lines remove that <code>user=&gt; </code> prompt. That looks better.</p>
+<pre><code>&gt; 2d
+&gt; ,s/user=&gt; /
+
+&gt; ,p
+(* 2 21)
+42
+</code></pre>
+<p>So now I can write a function, there it is, and then send those lines to the
+REPL. So far so good, you can see Clojure defined the var.</p>
+<p>So now I can switch to the REPL to try it out and… oh oh, this REPL isn’t
+keeping any state.</p>
+<pre><code>&gt; a
+(defn qsort [xs]
+  (if (apply &lt; xs) xs (recur (shuffle xs))))
+.
+&gt; w ! clj
+Clojure 1.9.0
+user=&gt; #'user/qsort
+user=&gt;
+29
+&gt; !clj
+Clojure 1.9.0
+user=&gt; (qsort [7 3 5])
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: qsort in this context, compiling:(NO_SOURCE_PATH:1:1)
+user=&gt;
+</code></pre>
+<p>That makes sense in a way, each call to <code>clj</code> starts a new process, so all state
+is lost. But this is easily fixable thanks to Clojure’s socket REPL. Let’s add a
+script to launch it.</p>
+<p>Create “src”, and “bin” directories, one for Clojure code, and one for scripts.
+Save the code you have so far, and then empty ed’s buffer, add a shebang, and
+the <code>clj</code> invocation, pasing it the socket repl options. Now write the file and
+make it executable.</p>
+<pre><code>&gt; ! mkdir src bin
+&gt; 4,5w src/quicksort.clj
+&gt; ,d
+&gt; f bin/socket_repl
+&gt; a
+#!/bin/bash
+clj -J-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
+.
+&gt; w
+88
+&gt; ! chmod +x %
+!
+&gt;
+</code></pre>
+<p>The second script connects to it with netcat so you get an actual REPL. Save it
+to <code>bin/repl</code>, and flip on the executable bit.</p>
+<pre><code>&gt; ,d
+&gt; a
+#!/bin/bash
+nc localhost 5555
+.
+&gt; w bin/repl
+30
+&gt; ! chmod +x bin/repl
+!
+</code></pre>
+<p>Finally create a wrapper to invoke “modern ed”. <code>rlwrap</code> will provide read-line
+capabilities, allowing for line editing and command history. The <code>-p'&gt; '</code> option
+provides a prompt, your modem is probably fast enough to handle those extra
+bytes, and finally add <code>bin</code> to the <code>$PATH</code> so it’s easy to invoke helper
+functions like <code>repl</code>.</p>
+<pre><code>&gt; ,d
+&gt; a
+#!/bin/bash
+PATH=`pwd`/bin:$PATH rlwrap -m ed -p'&gt; ' $*
+.
+&gt; w bin/edit
+&gt; ! chmod +x bin/edit
+</code></pre>
+<p>Alright, time to get cracking. In a separate terminal run <code>bin/socket_repl</code>, and
+run <code>ed</code> using <code>bin/edit</code>.</p>
+<p>Now you can get a Clojure repl with <code>! repl</code>. Eat your heart out CIDER.</p>
+<pre><code>$ bin/edit
+&gt; ! repl
+user=&gt; (+ 1 1)
+2
+user=&gt; !
+&gt;
+</code></pre>
+<p>Let’s get back to our “quicksort”, edit the file and add a namespace
+declaration. Now let’s pipe this to the REPL, and then switch to the REPL and
+try it out. Nice!</p>
+<p>Although, this REPL should be in the <code>quicksort</code> namespace now, but since we get
+a new socket REPL every time it always switches back to <code>user</code>. Let’s fix that.</p>
+<pre><code>&gt; e src/quicksort.clj
+&gt; 0a
+(ns quicksort)
+.
+&gt; w ! repl
+user=&gt; 78
+&gt; ! repl
+user=&gt; (quicksort/qsort (shuffle (range 10)))
+[0 1 2 3 4 5 6 7 8 9]
+</code></pre>
+<p>First change the socket repl to run on port 5554, and then create a new script
+called <code>repl_glue</code>. This one uses a glorious hack of my own devising which I
+call The Netcat FIFO Sandwich. The first netcat runs in a loop, accepting
+connections one after the other. The second netcat connects once to Clojure’s
+socket REPL. Whatever comes out of the first gets forwarded to the second, and
+through a named pipe the result gets piped back.</p>
+<p>So it’s kind of like a demultiplexer, it takes multiple incoming connections,
+and pipes them all to a single outgoing connection.</p>
+<p>Now restart the <code>socket_repl</code> script, cause it’s listening on another port now,
+and then open another terminal, and start <code>bin/repl_glue</code>.</p>
+<pre><code>&gt; e bin/socket_repl
+&gt; s/5555/5554
+&gt; w
+&gt; ,d
+&gt; f bin/repl_glue
+&gt; a
+#!/bin/bash
+[[ -p .repl_fifo ]] || mkfifo .repl_fifo
+nc -k -l localhost 5555 &lt; .repl_fifo | nc localhost 5554 &gt; .repl_fifo
+.
+&gt; w
+124
+&gt; ! chmod +x %
+</code></pre>
+<p>The <code>repl</code> script still works unmodified, but now each time you run it it
+reconnects to the same socket REPL, so state like the current namespace is
+preserved.</p>
+<p>That’s already some solid tooling we have here, but shell scripts will only get
+you so far. To implement paredit stuff like “slurp” we’ll need a bit of help
+from Clojure itself.</p>
+<pre><code>&gt; ,p
+(ns quicksort)
+
+(defn qsort [xs]
+  (if (apply &lt; xs) xs (recur (shuffle xs))))
+&gt; w !repl
+user=&gt; 78
+&gt; !repl
+nil
+quicksort=&gt; quicksort=&gt; #'quicksort/qsort
+quicksort=&gt; (qsort [7 5 3])
+[3 5 7]
+quicksort=&gt; !
+</code></pre>
+<p>Create a <code>user.clj</code> file where you can put REPL helpers. Remember that earlier
+when we did an “eval-and-insert” we got those pesky REPL prompts. Turns out the
+regular REPL isn’t that great for tooling. Clojure’s socket REPL is pretty
+flexible though, so let’s add our own “exec” handler that simply reads a form,
+evaluates it, and exits.</p>
+<p>Now you can add a “slurp” function that reads two forms, adds the second into
+the first, and pretty prints the result.</p>
+<pre><code>&gt; ,d
+&gt; f src/user.clj
+&gt; a
+(ns user
+  (:require [clojure.pprint :as pprint]))
+
+(defn exec []
+  (eval (read)))
+
+(defn slrp []
+  (pprint/with-pprint-dispatch pprint/code-dispatch
+    (pprint/pprint (concat (read) [(read)]))))
+.
+&gt; w
+197
+</code></pre>
+<p>Edit the <code>socket_repl</code> script again, adding a second socket REPL handler on port
+6666 using <code>user/exec</code> as the <code>:accept</code> function.</p>
+<p>The <code>t</code> command does a “transfer”, basically a copy-paste, then it’s just a matter of adding a trailing backslash, changing the port and function name, and removing the initial <code>clj</code> from the last line.</p>
+<p>Save that, and restart the socket repl again.</p>
+<pre><code>&gt; e bin/socket_repl
+88
+&gt; ,n
+1       #!/bin/bash
+2       clj -J-Dclojure.server.repl="{:port 5554 :accept clojure.core.server/repl}"
+&gt; 2t2
+&gt; ,p
+#!/bin/bash
+clj -J-Dclojure.server.repl="{:port 5554 :accept clojure.core.server/repl}"
+clj -J-Dclojure.server.repl="{:port 5554 :accept clojure.core.server/repl}"
+&gt; 2s/$/ \\
+clj -J-Dclojure.server.repl="{:port 5554 :accept clojure.core.server/repl}" \
+&gt; 3s/clj/   /
+&gt; 3s/5554/6666
+    -J-Dclojure.server.repl="{:port 6666 :accept clojure.core.server/repl}"
+&gt; 3s/clojure.core.*repl/user\/exec
+    -J-Dclojure.server.repl="{:port 6666 :accept user/exec}"
+&gt; w
+
+</code></pre>
+<p>Finally you create the <code>bin/slurp</code> script that will act as an ed “macro”. It
+first echos <code>(user/slrp)</code>, which will be evaluated by the <code>exec</code> function. We
+then pipe standard in into the REPL, so <code>slrp</code> can read the forms it will work on.</p>
+<pre><code>&gt; ,d
+&gt; f bin/slurp
+&gt; a
+#!/bin/bash
+{ echo '(user/slrp)' ; cat - ; } | nc localhost 6666
+.
+&gt; w
+</code></pre>
+<p>Let’s try that out! Open <code>src/quicksort.clj</code> again, and let’s add a <code>:require</code>
+stanza to the namespace declaration. Add it on line 1, so that it sits outside
+the <code>ns</code> form. Write the file, and delete those two lines from the buffer, but
+don’t save.</p>
+<p>With <code>sed</code> (or “streaming ed”) you can print those two lines and pipe them to
+slurp, and finally “read” the result into the start of the buffer.</p>
+<p>And there you have it, paredit for <code>ed</code>! Implementing the rest of paredit is
+left as an exercise to the viewer.</p>
+<pre><code>&gt; e src/quicksort.clj
+78
+&gt; 1,3p
+(ns quicksort)
+
+(defn qsort [xs]
+&gt; 1a
+(:require [clojure.string :as str])
+.
+&gt; w
+114
+&gt; 1,2d
+&gt; 0r ! sed -n 1,2p % | slurp
+ sed -n 1,2p src/quicksort.clj | slurp
+53
+&gt; ,p
+(ns quicksort
+  (:require [clojure.string :as str]))
+
+(defn qsort [xs]
+  (if (apply &lt; xs) xs (recur (shuffle xs))))
+&gt; w
+116
+</code></pre>
+<p>That’s it, I hope you enjoyed watching this episode as much as I did making it.
+While this episode is very much intended as a joke, I think there are actually
+some valuable lessons to take home.</p>
+<p>One is that ed is not dead! The ed1conf twitter account has over 800 followers,
+and there’s an extended version of ed that’s also a web browser, called
+edbrowse. It was originally developed for blind users, but its scriptability has
+meant it’s found uses far beyond its initial user base.</p>
+<p>This episode forced me to finally really learn <code>ed</code>, but I was a little stunned
+when not longer after I caught myself actually using it. It’s become just
+another tool in my Unix toolbox.</p>
+<p>And that brings me to the real takeaway for me, the power of small composable
+tools: ed itself, Clojure’s socket REPL, Netcat, rlwrap, sed, and LISP-y
+building blocks like <code>read</code> and <code>eval</code>. They all serve as a reminder of the Unix
+philosophy of doing one thing well, and playing well together, and while forcing
+everything into a straightjacket of files and character streams can be
+frustratingly limiting, having such a uniform protocol does allow for things to
+be recombined in innovative and surprising ways. All it takes is a well stocked
+toolbox and a creative mind, and if only a single one of the incantations I
+showed becomes part of your own lexicon I will be more than happy.</p>
+<p>I also see this as a reminder not to obsess over tools. Much of Unix itself was
+written with nothing but ed, and while tools grant us great powers, we shouldn’t
+forget that they are just that, tools. They don’t define us or our skills, and
+so we shouldn’t fall into the trap of letting our tools define us, or letting
+them give us a sense of superiority. The same is true of the languages we
+program in, and the tribal sense of belonging they provide.</p>
+<p>That’s all I have, thanks for watching, and happy April Fools day.</p>
+<p>Lambda Island Episodes are clear and focused videos demonstrating practical uses
+of Clojure, a modern LISP for the JVM. They are densely packed with information,
+but easy to follow, and will not just make you a better Clojure programmer, but
+a better programmer all around.</p>
+<p>Visit lambdaisland.com for full details, including information on individual
+pricing and attractive team packages.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/li40-ultimate">browse source code</a></p>
+<p>The <a shape="rect" href="https://www.gnu.org/software/ed/manual/ed_manual.html">Manual of GNU ed</a> can be read online, or if you have info docs available you can read it with <code>info ed</code>.</p>
+<p>The <a shape="rect" href="http://edbrowse.org/">edbrowse</a> site contains installation instructions and documentation.</p>
+<p>Follow <a shape="rect" href="https://twitter.com/ed1conf">ed1conf</a> on Twitter to stay up to date with the latest <code>ed(1)</code> developments.</p>
+<p>The medieval paintings shown are “The siege of the castle of Shwanau in Alsace, 1333”, and <a shape="rect" href="https://en.wikipedia.org/wiki/The_Intervention_of_the_Sabine_Women">The Intervention of the Sabine Woman</a></p></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

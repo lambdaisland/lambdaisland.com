@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Lambda Island</title>
+  <link href="https://lambdaisland.com/" />
+  <updated>2021-08-11T07:40:43+00:00</updated>
+  <author>
+    <name>Arne Brasseur</name>
+  </author>
+  <id>https://lambdaisland.com/</id>
+
+  <entry>
+    <title>49. Passwordless Authentication With ring-oauth2</title>
+    <link href="https://lambdaisland.com/episodes/passwordless-authentication-ring-oauth2" />
+    <id>https://lambdaisland.com/episodes/passwordless-authentication-ring-oauth2</id>
+    <updated>2019-09-09T15:48:17+00:00</updated>
+    <summary>More and more sites offer the ability to log in with Facebook, Twitter, or
+Github, which can be quite convenient, as it means fewer passwords to keep track
+of. Adding this kind of capability to a Ring based app is easier than you might
+think, using the `ring-oauth2` library. In this episode we'll demonstrate how to
+implement a "Sign in with Google" button. The process is very similar for other
+providers.
+</summary>
+  </entry><entry>
+    <title>48. List Comprehension with clojure.core/for</title>
+    <link href="https://lambdaisland.com/episodes/list-comprehension-clojure-for" />
+    <id>https://lambdaisland.com/episodes/list-comprehension-clojure-for</id>
+    <updated>2019-07-15T09:17:47+00:00</updated>
+    <summary>A small macro with a lot of power! We start with a quick recap of Clojure's looping constructs, and then go over the various features and use cases of `for`, backed by examples taken directly from popular open source projects.</summary>
+  </entry><entry>
+    <title>47. Interceptors, part 1, concepts</title>
+    <link href="https://lambdaisland.com/episodes/interceptors-concepts" />
+    <id>https://lambdaisland.com/episodes/interceptors-concepts</id>
+    <updated>2020-03-29T09:56:55+00:00</updated>
+    <summary>The Interceptor pattern was originally introduced by Pedestal, but has since
+been adopted by several other projects in the Clojure world. It's an extremely
+useful design tools to be familiar with, and while they may seem a bit strange
+at first, Interceptors are suprisingly straightforward.
+
+This episode introduces the interceptor concept, including the context map,
+queue, and stack. Clojure's persistent queues are explored, and to round off we
+look at how interceptors deal with error handling.
+</summary>
+  </entry><entry>
+    <title>46. À la Carte Polymorphism, part 2</title>
+    <link href="https://lambdaisland.com/episodes/a-la-carte-polymorphism-2" />
+    <id>https://lambdaisland.com/episodes/a-la-carte-polymorphism-2</id>
+    <updated>2018-11-06T20:08:48+00:00</updated>
+    <summary>With the basics of multimethods out of the way it's time to look at some of the
+more advanced uses. This episodes explores in depth Clojure's keyword hierarchy
+features, some little known aspects of the `isa?` and `type` functions, and
+closes off with some examples that demonstrate the flexibility Clojure provides
+when modeling data and behavior.
+</summary>
+  </entry><entry>
+    <title>45. À la Carte Polymorphism, part 1</title>
+    <link href="https://lambdaisland.com/episodes/a-la-carte-polymorphism-1" />
+    <id>https://lambdaisland.com/episodes/a-la-carte-polymorphism-1</id>
+    <updated>2018-10-30T15:12:21+00:00</updated>
+    <summary>Clojure provides polymorphism through protocols and multimethods. Protocols were covered in depth in [episode 24](https://lambdaisland.com/episodes/defrecord_defprotocol). This episode provides a brief recap, then looks at multimethod basics. If you are already familiar with multimethods then you might want to skip to the second part, which covers some of lesser known aspects.
+</summary>
+  </entry><entry>
+    <title>44. Data Science with Kixi.stats, part 2</title>
+    <link href="https://lambdaisland.com/episodes/clojure-data-science-kixi-stats-2" />
+    <id>https://lambdaisland.com/episodes/clojure-data-science-kixi-stats-2</id>
+    <updated>2018-09-23T18:32:06+00:00</updated>
+    <summary>After some exploration and analysis of the data it's time to create a predictive model. In this episode you'll discover several new chart types, learn how to evaluate the correlation between variables, how to create a simple linear model, and how to evaluate the fitness of the model.</summary>
+  </entry><entry>
+    <title>43. Data Science with Kixi.stats, part 1</title>
+    <link href="https://lambdaisland.com/episodes/clojure-data-science-kixi-stats" />
+    <id>https://lambdaisland.com/episodes/clojure-data-science-kixi-stats</id>
+    <updated>2018-09-23T18:32:15+00:00</updated>
+    <summary>With the knowledge of transducers under your belt, it's time to start analyzing
+some data. This episode provides a first introduction to the Kixi.stats
+statistical toolkit, by analyzing a data set and its distribution, with the goal
+of creating a predictive model through linear regression.
+</summary>
+  </entry><entry>
+    <title>42. Inside Transducers</title>
+    <link href="https://lambdaisland.com/episodes/inside-transducers" />
+    <id>https://lambdaisland.com/episodes/inside-transducers</id>
+    <updated>2018-08-12T11:14:20+00:00</updated>
+    <summary>Clojure allows processing data in a way that is composable, reusable, and
+performs well, all through the power of Transducers. Episode 38 provided a
+general overview of what's in the box, the transducers and transducing contexts
+provided by clojure.core. This episode digs deeper into the internals of
+transducers and reducing functions, and looks at some powerful libraries for
+real-world data processing and statistics.
+
+</summary>
+  </entry><entry>
+    <title>41. Using React Components with Reagent</title>
+    <link href="https://lambdaisland.com/episodes/react-components-reagent" />
+    <id>https://lambdaisland.com/episodes/react-components-reagent</id>
+    <updated>2018-07-10T16:27:56+00:00</updated>
+    <summary>React's component based approach means you don't have to reinvent the wheel,
+there are literally thousands of building blocks freely available.
+
+When using React components from Reagent there are a few things to watch out
+for, this episode will show you how to use some popular React components from
+Reagent, and point out useful constructs and patterns.
+
+You'll also get to see some of the new `cljs.main` feature that landed in
+ClojureScript 1.10.
+</summary>
+  </entry><entry>
+    <title>40. The Ultimate Dev Setup</title>
+    <link href="https://lambdaisland.com/episodes/ultimate-dev-setup" />
+    <id>https://lambdaisland.com/episodes/ultimate-dev-setup</id>
+    <updated>2020-09-09T11:22:30+00:00</updated>
+    <summary>This one tool will transform how you program. It's time to raise your standards!</summary>
+  </entry><entry>
+    <title>39. Integrant</title>
+    <link href="https://lambdaisland.com/episodes/integrant" />
+    <id>https://lambdaisland.com/episodes/integrant</id>
+    <updated>2018-07-11T08:11:53+00:00</updated>
+    <summary>Integrant is a "micro-framework for data-driven architecture". It manages the
+lifecycle of your application, and the dependencies between components, similar
+to Component or Mount, but with some very different design decisions.
+
+Integrant forms the foundation for Duct, a Clojure web framework by James
+Reeves, aka Weavejester.
+</summary>
+  </entry><entry>
+    <title>38. Transducers</title>
+    <link href="https://lambdaisland.com/episodes/transducers" />
+    <id>https://lambdaisland.com/episodes/transducers</id>
+    <updated>2018-07-11T08:12:21+00:00</updated>
+    <summary>Transducers are a Clojure feature allowing you to write code that is efficient,
+reusable, and composable. They have been around for several years, landing first
+in Clojure 1.8, but even some experienced Clojure programmers are not yet
+reaping the benefits of their use. In this episode we'll look at the problems
+that Transducers solve, and how you use them in practice.
+
+</summary>
+  </entry><entry>
+    <title>37. Datomic Quickstart, part 2</title>
+    <link href="https://lambdaisland.com/episodes/datomic-quickstart-part-2" />
+    <id>https://lambdaisland.com/episodes/datomic-quickstart-part-2</id>
+    <updated>2018-09-23T18:35:31+00:00</updated>
+    <summary>Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately.
+
+This second part dives deeper into transacting entities and querying them.
+</summary>
+  </entry><entry>
+    <title>36. Datomic Quickstart, part 1</title>
+    <link href="https://lambdaisland.com/episodes/datomic-quickstart-part-1" />
+    <id>https://lambdaisland.com/episodes/datomic-quickstart-part-1</id>
+    <updated>2017-10-17T15:43:11+00:00</updated>
+    <summary>Datomic is a database based on the same principles that underly the design of Clojure itself. Learn what makes it different, and how to start using from Clojure immediately.
+
+This first part gives an overview of the architecture and data model, and walks you through your first transactions.
+</summary>
+  </entry><entry>
+    <title>35. Generative Testing with test.check</title>
+    <link href="https://lambdaisland.com/episodes/generative-testing-clojure-test-check" />
+    <id>https://lambdaisland.com/episodes/generative-testing-clojure-test-check</id>
+    <updated>2020-02-27T15:18:34+00:00</updated>
+    <summary>Generative testing, also called Property Based testing, is a powerful technique able to expose some of the most obscure bugs. You'll learn how to create and compose generators, and how to define properties that together can verify many aspects of your code.
+</summary>
+  </entry><entry>
+    <title>34. Acceptance Testing With SparkleDriver</title>
+    <link href="https://lambdaisland.com/episodes/acceptance-testing-sparkledriver" />
+    <id>https://lambdaisland.com/episodes/acceptance-testing-sparkledriver</id>
+    <updated>2018-09-23T18:36:00+00:00</updated>
+    <summary>Learn how to use a headless web browser to test your application for feature completeness. You'll also see how Component can be used to set up an isolated test environment, how to use fixtures and dynamic var bindings to share setup code between tests, and how to keep tests readable and concise by judicously pulling code into helper functions. 
+</summary>
+  </entry><entry>
+    <title>33. Running ClojureScript Tests</title>
+    <link href="https://lambdaisland.com/episodes/testing-clojurescript" />
+    <id>https://lambdaisland.com/episodes/testing-clojurescript</id>
+    <updated>2017-07-06T18:40:51+00:00</updated>
+    <summary>Learn how to run tests with Figwheel, PhantomJS, Node, doo, and Karma.
+ 
+Running Clojure tests once they are written is pretty straightforward, but for ClojureScript there are a few more things to consider. Your code needs to be compiled first, and then needs to run on the JavaScript engine of your choice. In this episode you'll learn how to set up a ClojureScript project from scratch using Figwheel, how to run tests from the REPL, how to create test runners for PhantomJS and Node, and how to use doo and Karma to run your tests on a wide variety of browsers simultaneously.</summary>
+  </entry><entry>
+    <title>32. Introduction to Clojure Testing</title>
+    <link href="https://lambdaisland.com/episodes/introduction-clojure-testing" />
+    <id>https://lambdaisland.com/episodes/introduction-clojure-testing</id>
+    <updated>2018-09-23T18:35:51+00:00</updated>
+    <summary>Testing libraries and frameworks are indispensable, but there's no magic to how
+they work. Through implementing your own mini testing framework, you'll learn
+how `clojure.test` does things under the hood.
+
+While the main plot demonstrates how to write a function test-first, you'll also
+meet several supporting characters, like preconditions, dynamic bindings, and
+even a macro. Finally the mask comes off. It was `clojure.test` all this time!
+</summary>
+  </entry><entry>
+    <title>31. Component in Practice</title>
+    <link href="https://lambdaisland.com/episodes/component-in-practice" />
+    <id>https://lambdaisland.com/episodes/component-in-practice</id>
+    <updated>2018-07-11T08:13:43+00:00</updated>
+    <summary>Learn how to incorporate Component in a real world project. This episode is a bit of grab bag. It shows how to set up a `-main` function and how to use it, how to use reloaded.repl and tools.namespace for a better REPL workflow. You get introduced to the Suspendable protocol that complements Component's Lifecycle protocol. Finally it shows how to streamline your configuration with Aero.</summary>
+  </entry><entry>
+    <title>30. Building Command Line Applications with Lumo, part 2</title>
+    <link href="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-2" />
+    <id>https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-2</id>
+    <updated>2020-07-22T13:13:02+00:00</updated>
+    <summary>Now that the "birch" command is working, it's time to release it to the world. In this episode you'll learn how to turn your Lumo script into an NPM package. You'll also learn how to use packages from NPM (cli-colors) and Clojure library jars (tools.cli) to make your script even more awesome.</summary>
+  </entry><entry>
+    <title>29. Building Command Line Applications with Lumo, part 1</title>
+    <link href="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-1" />
+    <id>https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-1</id>
+    <updated>2020-07-22T13:13:13+00:00</updated>
+    <summary>JVM based Clojure isn't very suitable for command line scripting. On the command
+line you want quick feedback, which is at odds with the time Clojure needs to
+boot up, and just to run a single source file you need to jump through a few
+hoops.
+
+Instead you can use Lumo, a ClojureScript runtime environment based on Node.js.
+In this episode you'll learn how to write a script in Lumo, and how to make use
+Node's built-in libraries, by building your own version of the Unix "tree"
+command. It'll also be a handy refresher on recursion.</summary>
+  </entry><entry>
+    <title>28. Authentication with Buddy</title>
+    <link href="https://lambdaisland.com/episodes/buddy-authentication" />
+    <id>https://lambdaisland.com/episodes/buddy-authentication</id>
+    <updated>2021-08-11T07:40:43+00:00</updated>
+    <summary>Buddy is a popular security library for implementing authentication and
+authorization. In this episode you'll learn what the difference is, and how to
+implement password based authentication for a simple Ring app.
+</summary>
+  </entry><entry>
+    <title>27. Resolving Dependency Conflicts</title>
+    <link href="https://lambdaisland.com/episodes/resolving-clojure-dependency-conflicts" />
+    <id>https://lambdaisland.com/episodes/resolving-clojure-dependency-conflicts</id>
+    <updated>2017-03-17T17:09:03+00:00</updated>
+    <summary>In this beginner friendly episode you'll learn how to resolve a common type of Clojure error. It walks you through the process step by step, from analyzing the error, investigating the cause, coming up with a solution, up to finally reporting the issue on Github. In the process you'll learn how to interpret stack traces, how to inspect the dependency tree with Leiningen, and how to influence Leiningen's choice of version in case of a conflict.</summary>
+  </entry><entry>
+    <title>26. Component and System</title>
+    <link href="https://lambdaisland.com/episodes/stuartsierra-component-system" />
+    <id>https://lambdaisland.com/episodes/stuartsierra-component-system</id>
+    <updated>2018-07-11T08:13:50+00:00</updated>
+    <summary>Stuart Sierra's Component is a small library that can have a big impact on the
+structure and architecture of your application. In this episode you learn how
+you can use it to create components, and manage dependencies. You will create a
+Jetty and an Endpoint component, and use the PostgreSQL component from the
+System project.</summary>
+  </entry><entry>
+    <title>25. re-frame, part 3: Events and Effects</title>
+    <link href="https://lambdaisland.com/episodes/re-frame_events_effects" />
+    <id>https://lambdaisland.com/episodes/re-frame_events_effects</id>
+    <updated>2020-07-22T13:15:24+00:00</updated>
+    <summary>Side effects in re-frame are handled through events. You'll implement several event handlers of a TodoMVC app so it becomes functional. You'll also implement custom effect and co-effect handlers for storing the application state in localStorage. To debug event handlers you'll learn about the "debug" interceptor, and about re-frisk, a handy tool for inspecting your re-frame database.</summary>
+  </entry><entry>
+    <title>24. defrecord and defprotocol</title>
+    <link href="https://lambdaisland.com/episodes/defrecord_defprotocol" />
+    <id>https://lambdaisland.com/episodes/defrecord_defprotocol</id>
+    <updated>2018-09-23T18:34:51+00:00</updated>
+    <summary>With records, Clojure has introduced a way to create struct-like objects, while
+avoiding some of the problems encountered in object orientation. Records don't
+hide their data behind custom interfaces, but instead partake in the
+abstractions that Clojure's own data types are built on, so that code can treat
+treat a record like a regular Clojure data type.
+
+Protocols are Clojure's take on abstract interfaces. They make it possible to
+extend preexisting types to new methods, and extend preexisting methods to new
+types, thus avoiding the expression problem.
+</summary>
+  </entry><entry>
+    <title>23. deftype and definterface</title>
+    <link href="https://lambdaisland.com/episodes/deftype_definterface" />
+    <id>https://lambdaisland.com/episodes/deftype_definterface</id>
+    <updated>2018-09-23T18:34:43+00:00</updated>
+    <summary>Clojure is built on a well thought out set of abstractions. To implement these,
+it makes use of the ability to define abstractions in the host language, namely
+Java interfaces, and the high-performance polymorphism that they provides.
+
+As a Clojure programmer you don't have to resort to Java to achieve the same
+thing. All the facilities are there to create interfaces, and to create types
+that implement interfaces, getting you as close to the JVM as you need to be.</summary>
+  </entry><entry>
+    <title>22. Seq and Seqable</title>
+    <link href="https://lambdaisland.com/episodes/clojure-seq-seqable" />
+    <id>https://lambdaisland.com/episodes/clojure-seq-seqable</id>
+    <updated>2016-12-23T11:32:23+00:00</updated>
+    <summary>Seqs are a key abstraction in how Clojure processes data, but what exactly is a "seq", and how does it relate to "seqable?". Time for a deep dive in Clojure and ClojureScript source code to discover the finer points. Learn exactly what seqs and seqables are, what they do, and how you can use them to your advantage.</summary>
+  </entry><entry>
+    <title>21. Compojure</title>
+    <link href="https://lambdaisland.com/episodes/compojure" />
+    <id>https://lambdaisland.com/episodes/compojure</id>
+    <updated>2018-07-11T08:13:57+00:00</updated>
+    <summary>Compojure is one of the more popular routing libraries for Ring. It's easy to pick up, and gives you a great foundation to further explore Clojure web development.</summary>
+  </entry><entry>
+    <title>20. re-frame, part 2: Subscriptions</title>
+    <link href="https://lambdaisland.com/episodes/re-frame-subscriptions" />
+    <id>https://lambdaisland.com/episodes/re-frame-subscriptions</id>
+    <updated>2020-07-22T13:15:17+00:00</updated>
+    <summary>A complete look at re-frame subscriptions, including coverage of Reagent's atoms and reactions. You learn how to write subscriptions, how they work, and how to plug them together into a signal graph.</summary>
+  </entry><entry>
+    <title>19. re-frame, part 1</title>
+    <link href="https://lambdaisland.com/episodes/re-frame" />
+    <id>https://lambdaisland.com/episodes/re-frame</id>
+    <updated>2020-07-22T13:14:30+00:00</updated>
+    <summary>Reagent is a popular and easy to use option for using React with ClojureScript.
+re-frame builds on top of Reagent, providing an elegant and opinionated way to
+structure applications and deal with application state. The documentation for
+re-frame can easily overwhelm. With this episode you get a practical hands-on
+introduction, so you can be making your own apps in no time.</summary>
+  </entry><entry>
+    <title>18. Using JavaScript libraries in ClojureScript</title>
+    <link href="https://lambdaisland.com/episodes/javascript-libraries-clojurescript" />
+    <id>https://lambdaisland.com/episodes/javascript-libraries-clojurescript</id>
+    <updated>2016-10-11T13:11:30+00:00</updated>
+    <summary>One of the benefits of ClojureScript is that it lets you leverage the great JavaScript ecosystem. Using arbitrary JS libraries isn't always trivial though, and a lot of head scratching can ensue. In this episode you'll learn the exact steps from here to success, and you'll gain insight into ClojureScript's build process, so you can tackle any challenge that comes your way.</summary>
+  </entry><entry>
+    <title>17. Ring, part 3: Return of the Middleware</title>
+    <link href="https://lambdaisland.com/episodes/ring-3" />
+    <id>https://lambdaisland.com/episodes/ring-3</id>
+    <updated>2020-07-22T13:16:29+00:00</updated>
+    <summary>We add `GET`, `PUT`, `DELETE` operations to the contact book API. In the process we pull out the EDN handling into its own middleware, and come across some handy Regex tips. This third episode picks up the pace a bit, but by now that shouldn't be a problem.</summary>
+  </entry><entry>
+    <title>16. Ring, part 2: the Two Routes</title>
+    <link href="https://lambdaisland.com/episodes/ring-2" />
+    <id>https://lambdaisland.com/episodes/ring-2</id>
+    <updated>2020-07-22T13:16:19+00:00</updated>
+    <summary>In this second installment of our beginner friendly introduction to Ring the API goes from being read-only to being read-write. You also learn about `juxt`, `slurp`, and how to parse an incoming request body.</summary>
+  </entry><entry>
+    <title>15. Using Figwheel With Emacs, part 2: CIDER</title>
+    <link href="https://lambdaisland.com/episodes/figwheel-emacs-cider" />
+    <id>https://lambdaisland.com/episodes/figwheel-emacs-cider</id>
+    <updated>2018-09-23T18:33:27+00:00</updated>
+    <summary>By using Figwheel with CIDER you get both a Clojure and a ClojureScript REPL at the same time, and you get all the nice features of CIDER. It's a more complex setup than just straight inf-clojure, so before we get there we need to talk a bit about nREPL and Piggieback, tooling you should be familiar with, no matter which editor you are using.</summary>
+  </entry><entry>
+    <title>14. Using Figwheel With Emacs, part 1: inf-clojure-mode</title>
+    <link href="https://lambdaisland.com/episodes/figwheel-emacs-inf-clojure" />
+    <id>https://lambdaisland.com/episodes/figwheel-emacs-inf-clojure</id>
+    <updated>2018-09-23T18:33:21+00:00</updated>
+    <summary>Learn how to integrate Figwheel's browser connected REPL into Emacs, for an ever greater degree of interactive development, using inf-clojure-mode.</summary>
+  </entry><entry>
+    <title>13. Ring, part 1</title>
+    <link href="https://lambdaisland.com/episodes/ring-1" />
+    <id>https://lambdaisland.com/episodes/ring-1</id>
+    <updated>2020-07-22T13:16:05+00:00</updated>
+    <summary>In this new series you'll build an API with Ring from the ground up. The pace is slow and no steps are skipped, making it a great lesson for beginners.</summary>
+  </entry><entry>
+    <title>12. Clojure Keyword Arguments</title>
+    <link href="https://lambdaisland.com/episodes/clojure-keyword-arguments" />
+    <id>https://lambdaisland.com/episodes/clojure-keyword-arguments</id>
+    <updated>2018-09-23T18:33:10+00:00</updated>
+    <summary>Clojure's variable argument functions combined with map destructuring results in a concise syntax for keyword arguments. We'll pick this feature apart to see exactly what's inside. You'll learn about "mapply", and learn why keyword arguments aren't always the best solution.</summary>
+  </entry><entry>
+    <title>11. Reagent, part 3: Keys &amp; Lifecycle Methods</title>
+    <link href="https://lambdaisland.com/episodes/reagent-3-keys-lifecycle-methods" />
+    <id>https://lambdaisland.com/episodes/reagent-3-keys-lifecycle-methods</id>
+    <updated>2020-07-22T13:15:40+00:00</updated>
+    <summary>Learn about React performance, the use of `keys` properties, and how to use lifecycle methods with Reagent. </summary>
+  </entry><entry>
+    <title>10. Reagent, part 2: Cursors</title>
+    <link href="https://lambdaisland.com/episodes/reagent-2-cursors" />
+    <id>https://lambdaisland.com/episodes/reagent-2-cursors</id>
+    <updated>2020-07-22T13:15:48+00:00</updated>
+    <summary>We continue building a Kanban board with Reagent, adding functionality to edit cards. In the process you'll learn all about Reagent's cursors and event handlers.</summary>
+  </entry><entry>
+    <title>9. Reagent, part 1</title>
+    <link href="https://lambdaisland.com/episodes/reagent" />
+    <id>https://lambdaisland.com/episodes/reagent</id>
+    <updated>2020-08-07T12:23:37+00:00</updated>
+    <summary>One of the more popular wrapper libraries for using React with ClojureScript is Reagent. We'll build a kanban style board to demonstrate the main features.</summary>
+  </entry><entry>
+    <title>8. The ClojureScript Compiler</title>
+    <link href="https://lambdaisland.com/episodes/clojurescript-compiler" />
+    <id>https://lambdaisland.com/episodes/clojurescript-compiler</id>
+    <updated>2018-07-11T08:14:16+00:00</updated>
+    <summary>To be effective at programming, you have to understand your tools. In this episode we'll peel a few layers away, and use the ClojureScript compiler without any help from Leiningen, Cljsbuild or Figwheel. You'll learn about compiler options, levels of optimization, the role of the Google Closure Library, and how to confgure the compiler for development and production use.</summary>
+  </entry><entry>
+    <title>7. Intro to clojure.spec</title>
+    <link href="https://lambdaisland.com/episodes/clojure-spec" />
+    <id>https://lambdaisland.com/episodes/clojure-spec</id>
+    <updated>2016-08-18T09:42:52+00:00</updated>
+    <summary>The spec library which will be included in Clojure 1.9 gives you a powerful mechanism for validating data. Find out how to use it in this episode.</summary>
+  </entry><entry>
+    <title>6. Building a React app with ClojureScript</title>
+    <link href="https://lambdaisland.com/episodes/react-app-clojurescript" />
+    <id>https://lambdaisland.com/episodes/react-app-clojurescript</id>
+    <updated>2020-08-07T12:28:36+00:00</updated>
+    <summary>React.js is the new hotness in the land of user interfaces. It's descriptive approach pairs wonderfully with ClojureScript's functional underpinnings.
+
+This episode will show how to build an app with React, all from comfortable ClojureScript. It provides a solid foundation for diving into React wrappers like Reagent or Om later on, and it's a welcome exercise in using ClojureScript's interop features.
+
+We'll cover: elements, components, the virtual DOM, using an atom to keep application state, and attaching event handlers with component properties.</summary>
+  </entry><entry>
+    <title>5. Introduction to Luminus, part 3</title>
+    <link href="https://lambdaisland.com/episodes/introduction-luminus-3" />
+    <id>https://lambdaisland.com/episodes/introduction-luminus-3</id>
+    <updated>2018-09-23T18:32:56+00:00</updated>
+    <summary>In this closing episode of the Luminus introduction, you'll learn how to extend the template language with custom filters, and how to generate HTML components in code using Hiccup.</summary>
+  </entry><entry>
+    <title>4. ClojureScript Interop</title>
+    <link href="https://lambdaisland.com/episodes/clojurescript-interop" />
+    <id>https://lambdaisland.com/episodes/clojurescript-interop</id>
+    <updated>2016-05-20T16:26:56+00:00</updated>
+    <summary>In this episode we'll go over all the tools ClojureScript puts at your disposal to interoperate with JavaScript. You'll learn how to call JavaScript libraries, how to work with JavaScript datatypes, how to convert data back and forth, and how to use "this".</summary>
+  </entry><entry>
+    <title>3. Introduction to Luminus, part 2</title>
+    <link href="https://lambdaisland.com/episodes/introduction-luminus-2" />
+    <id>https://lambdaisland.com/episodes/introduction-luminus-2</id>
+    <updated>2018-09-23T18:32:35+00:00</updated>
+    <summary>We continue our journey through Luminus by building a wiki. In this episode you'll learn how to create the form to edit pages, and handle creating new page revisions. We'll also come across Cross Site Request Forgery, and learn how to prevent it.</summary>
+  </entry><entry>
+    <title>2. Introduction to Luminus, part 1</title>
+    <link href="https://lambdaisland.com/episodes/introduction-luminus-1" />
+    <id>https://lambdaisland.com/episodes/introduction-luminus-1</id>
+    <updated>2018-09-23T18:32:43+00:00</updated>
+    <summary>To give you a starting point for building your own app, we'll go through the process of building an application from scratch with Luminus. In this first part in a series of three, you'll learn to set up the database, write migrations to create tables with Migratus, create SQL queries with HugSQL, and tie it all together with Compojure routes and Selmer templates.</summary>
+  </entry><entry>
+    <title>1. clojure.core/some</title>
+    <link href="https://lambdaisland.com/episodes/clojure-core-some" />
+    <id>https://lambdaisland.com/episodes/clojure-core-some</id>
+    <updated>2016-05-15T21:06:48+00:00</updated>
+    <summary>Clojure's `some` function is surprisingly versatile. Find out what it does, and what you can do with it.</summary>
+  </entry>
+
+</feed>

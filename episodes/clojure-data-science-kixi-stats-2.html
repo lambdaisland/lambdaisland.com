@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/clojure-data-science-kixi-stats-2" />
+<meta name="twitter:title" content="Data Science with Kixi.stats, part 2" />
+<meta name="twitter:description" content="After some exploration and analysis of the data it's time to create a predictive model. In this episode you'll discover several new chart types, learn how to evaluate the..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/725133385-d5cb57dd248fe3caf165e49159eb2437655c4ad7a26ea33db3d4be116fd5fd2e-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Data Science with Kixi.stats, part 2" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/clojure-data-science-kixi-stats-2" />
+<meta name="video:duration" content="1011" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/725133385-d5cb57dd248fe3caf165e49159eb2437655c4ad7a26ea33db3d4be116fd5fd2e-d_1280x720?r=pad" />
+<meta name="og:description" content="After some exploration and analysis of the data it's time to create a predictive model. In this episode you'll discover several new chart types, learn how to evaluate the..." />
+<meta name="video:release_date" content="2018-09-12T13:45:22.534Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Data Science with Kixi.stats, part 2</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/289475110?h=10b425a6ac&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="44. Data Science with Kixi.stats, part 2"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>After some exploration and analysis of the data it’s time to create a predictive model. In this episode you’ll discover several new chart types, learn how to evaluate the correlation between variables, how to create a simple linear model, and how to evaluate the fitness of the model.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In part one of this series you got set up with Kixi.stats and thi.ng/geom, and
+had an initial critical look at the data, in particular at the abalone ring
+count, since this is the value to predict based on other variables.</p>
+<p>It turned out the ring count’s distribution approximates a Log-Normal
+distribution, which is an important bit of information.</p>
+<p>That was all just warm up, now it’s time to look at the other variables, see how
+they correlate with the value you’re trying to predict, use them to create a
+predictive model, and see how well the model actually is at predicting.</p>
+<p>Like last time everything you need is in the associated Github repo, just open
+the core namespace, connect a REPL and you’re good to go.</p>
+<p>One of the first analytical tools I showed you was the five-number summary,
+which gives you some coarse grained information about how the data is spread out
+across the domain. Let’s look at those summaries again. With xform’s <code>by-key</code>
+transducer I can get the summary for each key in the data. The result is a pile
+of numbers, and chances are these don’t really speak to you. Perhaps by
+visualizing them you might get some new insights.</p>
+<pre><code class="language-clojure">(into {}
+      (comp cat (x/by-key key val (x/reduce kixi/summary)))
+      abalone/data)
+;; =&gt;
+;; {:rings          {:min 1.0, :q1 8.0, :median 9.266666666666667, :q3 11.0, :max 29.0, :iqr 3.0},
+;;  :sex            {:min nil, :q1 nil, :median nil, :q3 nil, :max nil, :iqr nil},
+;;  :shell-weight   {:min 0.3,:q1 26.01370731707317,:median 46.70705294705295,:q3 65.77664576802508,:max 201.0,:iqr 39.76293845095191},
+;;  :diameter       {:min 11.0, :q1 70.0, :median 85.0, :q3 96.0, :max 130.0, :iqr 26.0},
+;;  :whole-weight   {:min 0.4,:q1 88.39417977855477,:median 159.9038757763975,:q3 230.66032011466794,:max 565.1,:iqr 142.26614033611315},
+;;  :viscera-weight {:min 0.1,:q1 18.644969969969964,:median 34.12173913043479,:q3 50.57916666666666,:max 152.0,:iqr 31.934196696696695},
+;;  :length         {:min 15.0, :q1 90.0, :median 109.0, :q3 123.0, :max 163.0, :iqr 33.0},
+;;  :shucked-weight {:min 0.2,:q1 37.21798245614035,:median 67.18149867374008,:q3 100.43694513371933,:max 297.6,:iqr 63.218962677578986},
+;;  :height         {:min 0.0, :q1 23.0, :median 28.0, :q3 33.0, :max 226.0, :iqr 10.0}}
+</code></pre>
+<p>Last episode I jumped straight into drawing scatterplots, but the graphical
+equivalent of the five-number summary is the so-called box plot or
+box-and-whiskers-plot.</p>
+<p>They’re not quite as intuitive as say a simple bar chart, but once you know how
+to read them they should be clear as day.</p>
+<p>Box plots represent distributions, so to get a feel of what a “normal” box plot
+looks like I’ll create a box plot for a “standard normal distribution”, meaning
+a Normal Distribution with a mean of 0, and a standard deviation of 1.</p>
+<p><code>kixi.stats</code> has all kinds of distributions built-in, which is great for
+exploring statistical properties. I’ll create a normal distribution and then
+sample 10000 numbers from it, so I have a normally distributed data set to play
+with.</p>
+<pre><code class="language-clojure">(def standard-normal (kixi.dist/normal {:mu 0 :sd 1}))
+(def standard-normal-sample (kixi.dist/sample 10000 standard-normal))
+
+(transduce identity kixi/summary standard-normal-sample)
+;; =&gt; {:min -3.8519271282006016,
+;;     :q1 -0.6659900852641175,
+;;     :median -0.01714498352689695,
+;;     :q3 0.6686650777464612,
+;;     :max 3.5555441959666005,
+;;     :iqr 1.3346551630105787}
+</code></pre>
+<p>You already know the histogram, which shows that characteristic bell curve
+associated with the Normal Distribution. The box plot is a different way of
+summarizing this distribution. It’s a bit easier to explain if I draw these on
+top of each other, making sure the x-axes lines up.</p>
+<p>That thick line in the middle of the box is the median, and the left and right
+edges of the box are the first and third quartile. So half of all data falls
+within that range covered by the box.</p>
+<pre><code class="language-clojure">(g/open (g/histogram {:data standard-normal-sample}))
+(g/open (g/box-plot {:data standard-normal-sample}))
+
+(g/open (g/vbox (g/histogram {:data standard-normal-sample
+                              :bin-count 50
+                              :left-margin 70
+                              :x-domain [-5 5]})
+                (g/box-plot {:data standard-normal-sample
+                             :left-margin 70
+                             :x-domain [-5 5]})))
+</code></pre>
+<p>The “whiskers” sticking out left and right of the box extend 1.5 times the
+interquartile range from the first and third quartile. You can calculate that
+yourself using the five number summary. So the left whisker shows the smallest
+value in the data set that is bigger than -2.73, and the right whisker shows the
+biggest value smaller than 2.77.</p>
+<pre><code class="language-clojure">(let [{:keys [q1 iqr q3]}
+      (transduce identity kixi/summary standard-normal-sample)]
+  [(- q1 (* 1.5 iqr)) (+ q3 (* 1.5 iqr))])
+;; =&gt; [-2.7308179100554195 2.778935492233497]
+</code></pre>
+<p>Why 1.5 times the interquartile range? It’s just a rule of thumb, chosen that
+way because in a normal distribution, over 99% of all data falls within this
+range. The rest are considered “outliers”.</p>
+<p>You can verify this yourself. Take the 10000 samples, and remove the ones that
+fall within this range. There are only 68 left, so only about 0.7%.</p>
+<p>These 68 remaining outliers are drawn each separately as a little circle. They’re
+vertically spread out randomly so it’s easy to see if there are several of them.</p>
+<p>If your data contains big outliers then these can have a disproportianate impact
+on all kinds of statistical attributes, so it’s good to be immediately aware of
+them, that’s why they’re drawn separately.</p>
+<p>So to recap: the box represents the central 50% of the data, the “whiskers” are
+the range where most of the rest of the data is expected to be, and the circles
+are the outliers.</p>
+<pre><code class="language-clojure">(let [{:keys [q1 iqr q3]} (transduce identity kixi/summary standard-normal-sample)]
+  (count (remove #(&lt; (- q1 (* 1.5 iqr))
+                     %
+                     (+ q3 (* 1.5 iqr)))
+                 standard-normal-sample)))
+;; =&gt; 59
+</code></pre>
+<p>Now that you know how box plots work, let’s look at the plots for length,
+diameter, and height.</p>
+<p>There’s clearly something funny going on with the <code>:height</code>. Seems there are two
+outliers way beyond all the rest of the data. All of the plots show a bit of
+outliers, but nothing like this. This might mean we have some errors in our
+data. Or maybe they really did encounter two abalones that were ten times the
+size of the others.</p>
+<pre><code class="language-clojure">(let [plot #(g/box-plot {:data abalone/data :x %})]
+  (g/open
+   (g/vbox
+    (plot :length)
+    (plot :diameter)
+    (plot :height))))
+</code></pre>
+<p>Let’s plot the <code>:height</code> vs the <code>:whole-weight</code>. If this abalone is so much
+bigger it should be heavier too. Those two dots on the far right are definitely
+suspicious. One is about two times as heavy as you would expect, and the other
+about 10 times. Probably someone put in one zero too many during data entry.</p>
+<pre><code class="language-clojure">(g/open (g/scatter-plot {:data abalone/data
+                         :x (comp :height)
+                         :y (comp :whole-weight)}))
+</code></pre>
+<p>If you are paying attention you might spot something else in this scatterplot.
+On the other end of the scale there are a few abalones with a height of zero.
+Maybe they really are less than half a milimeter high, so their height got
+rounded down to zero, but it seems unlikely. More probable is that it’s a data
+entry mistake or a case of missing data, we’ll remove these as well.</p>
+<p>Cleaning up your raw data is often a big part of doing data science. I’ll define
+any cleanup we do as separate transducers, this creates an audit trail, and it
+allows re-using the same operations in case we get new data.</p>
+<p>This looks a lot more reasonable. There’s one more point on the left here that
+seems a bit far fetched, but it’s not completely in the range of the impossible.
+Maybe it’s a freak of nature. We’ll leave this one in.</p>
+<pre><code class="language-clojure">(def remove-outliers (filter #(&lt; 0 (:height %) 100)))
+
+(g/open (g/scatter-plot {:data (sequence remove-outliers abalone/data)
+                         :x (comp :height)
+                         :y (comp :whole-weight)}))
+</code></pre>
+<p>Now let’s look at those box plots again. That looks a lot better, and gives you
+a rough idea of what kind of values you can expect to see for these variables.
+You can also see these distributions are a bit lopsided towards the high end.</p>
+<pre><code class="language-clojure">(let [plot #(g/box-plot {:data (sequence remove-outliers abalone/data) :x %})]
+  (g/open
+   (g/vbox
+    (plot :length)
+    (plot :diameter)
+    (plot :height))))
+</code></pre>
+<p>Box plots are great because they can very succinctly summarize a large amount of
+data, but they can also obscure things like clustering. You have no idea how
+things are spread out within each quartile.</p>
+<p>Another graph that makes a data distribution visible is the barcode plot. Here
+every data point becomes a single line. The lines have some opacity so you can
+see if multiple lines are drawn on top of each other. This is a great way to
+communicate data because it’s so easily understood, and it immediately
+highlights both clusters and outliers.</p>
+<p>Here you can very clearly see the effects of rounding. Length, diameter, and
+height only have milimeter precision, which is why these top three charts have
+these dark, evenly spaced out lines.</p>
+<pre><code class="language-clojure">(let [plot #(g/barcode-plot {:data (sequence remove-outliers abalone/data) :x %})]
+  (g/open
+   (g/vbox
+    (plot :length)
+    (plot :diameter)
+    (plot :height)
+    (plot :shell-weight)
+    (plot :viscera-weight)
+    (plot :shucked-weight)
+    (plot :whole-weight))))
+</code></pre>
+<p>I’ll add some jitter again to these three plots, you think of this as undoing
+the effects of the rounding, bringing back some natural variation.</p>
+<pre><code class="language-clojure">(let [plot #(g/barcode-plot {:data (sequence remove-outliers abalone/data) :x %})]
+  (g/open
+   (g/vbox
+    (plot (comp (g/jitter 0.5) :length))
+    (plot (comp (g/jitter 0.5) :diameter))
+    (plot (comp (g/jitter 0.5) :height))
+    (plot :shell-weight)
+    (plot :viscera-weight)
+    (plot :shucked-weight)
+    (plot :whole-weight))))
+
+</code></pre>
+<p>The weight measurements are skewed again, similar to what we saw for the rings.
+Maybe they are log-normal as well? That wouldn’t be surprising, log-normal
+occurs in nature when growth factors compound.</p>
+<p>I’ll plot their log values instead, let’s see. Does that look like a normal
+distribution? Also not really, but it does look more like one then what we had
+before, it might be worth to also consider the logarithms of these weights.</p>
+<pre><code class="language-clojure">(let [plot #(g/barcode-plot {:data (sequence remove-outliers abalone/data) :x %})]
+  (g/open
+   (g/vbox
+    (plot (comp (g/jitter 0.5) :length))
+    (plot (comp (g/jitter 0.5) :diameter))
+    (plot (comp (g/jitter 0.5) :height))
+    (plot (comp g/ln :shell-weight))
+    (plot (comp g/ln :viscera-weight))
+    (plot (comp g/ln :shucked-weight))
+    (plot (comp g/ln :whole-weight)))))
+</code></pre>
+<p>Now that we’ve peeked into our data, getting a sense of the general spread of
+the different variables, it’s time to figure out which one to use to try and
+predict the amount of rings.</p>
+<p>For this I’ll create a “correlation matrix”, this shows for each pair of
+variables how well they are correlated. The closer to 1 the better, this means
+that an increase in one variables correlates with an increase in the other
+variable.</p>
+<p>A value close to -1 would also be good, in that case there’s a negative
+correlation, a downward curve, where an increase in one causes a decrease in the
+other.</p>
+<p>If the result is 0 then there’s no correlation, nothing can be said about the
+second variable based on the first.</p>
+<p>I’ll take all the variables we have, as well as the log of the rings and of the
+weight measurements. If our analysis so far is correct then the log-weights
+should correlate strongly with the log-rings.</p>
+<p>We’re specifically interested in the rings, so we’ll just look at the pairs
+containing rings or log-rings, and then sort them by correlation.</p>
+<p>There’s a strong correlation between log-rings and rings, but that doesn’t tell
+us much. After that it gets interesting though.</p>
+<p><code>:log-shell-weight</code> has a 0.74 correlation with <code>:log-rings</code>. That’s quite good!</p>
+<pre><code class="language-clojure">(let [variables {:rings :rings
+                 :log-rings (comp g/ln :rings)
+                 :length :length
+                 :diameter :diameter
+                 :height :height
+                 :whole-weight :whole-weight
+                 :shucked-weight :shucked-weight
+                 :viscera-weight :viscera-weight
+                 :shell-weight :shell-weight
+                 :log-whole-weight (comp g/ln :whole-weight)
+                 :log-shucked-weight (comp g/ln :shucked-weight)
+                 :log-viscera-weight (comp g/ln :viscera-weight)
+                 :log-shell-weight (comp g/ln :shell-weight)}]
+  (-&gt;&gt; abalone/data
+       (transduce remove-outliers (kixi/correlation-matrix variables))
+       (filter #(contains? #{:rings :log-rings} (second (key %))))
+       (sort-by val)
+       reverse))
+
+;;=&gt;
+([[:log-rings :rings] 0.9657620285963021]
+ [[:rings :log-rings] 0.9657620285963021]
+ [[:log-shell-weight :log-rings] 0.7401395289870353]
+ [[:log-whole-weight :log-rings] 0.696019947259287]
+ [[:height :log-rings] 0.6831670725853732]
+ [[:log-viscera-weight :log-rings] 0.6799492099739567]
+ [[:diameter :log-rings] 0.6682178212148067]
+ [[:shell-weight :log-rings] 0.6670829447054146]
+ [[:height :rings] 0.6101065785871608]
+ ,,, )
+</code></pre>
+<p>Now we are ready to do the actual linear regression. Let’s look again at the
+scatterplot, what we’re trying to do is draw a line through the middle of this
+cloud of dots.</p>
+<p>That line is the model, it tells you for each value of one variable what the
+expected value is of the other variable. Now you can compare the real world
+observations, the dots, with the model, to see how much the model gets wrong.
+This is called the “error”, the distance between a dot and the line, or the
+difference between the predicted value and the real observation.</p>
+<p>Formally what we’re looking for is a model that minimizes the “mean squared
+error”. So for each dot you take the error and square it, then add them all up,
+and divide by the number of dots. That’s the MSE or mean squared error.</p>
+<pre><code class="language-clojure">(g/open
+ (g/scatter-plot {:data (sequence remove-outliers abalone/data)
+                  :x (comp g/ln :shell-weight)
+                  :y (comp g/ln :rings)}))
+</code></pre>
+<p>So let’s actually do the regression. When there’s only one input variable to
+predict one output variable, then doing the regression is straightforward and
+known as a “simple linear regression”, which is built in to kixi.stats.</p>
+<p>This is again a reducing function, so you can plug it into transduce, and still
+have room to plug in a transducer to do any pre-processing.</p>
+<p>The result is a vector with two numbers… hmmm. What does that mean? Maybe you
+remember from high school math that you can describe a straight line with two
+numbers: a coefficient, and an offset. That’s exactly what this is, one number
+describes the “slope” of the line, the other tells you how far up or down you
+need to draw it.</p>
+<pre><code class="language-clojure">(transduce remove-outliers
+           (kixi/simple-linear-regression (comp g/ln :shell-weight)
+                                          (comp g/ln :rings))
+           abalone/data)
+;; =&gt; [1.1890320511416592 0.29143092300917883]
+</code></pre>
+<p>So put those two numbers into the formula for a straight line, and you have a
+function to go from one variable to the other.</p>
+<p>This is a nice occasion to use redux’s <code>post-complete</code> to add an extra
+completion step to kixi’s <code>simple-linear-regression</code> reducing function, which
+takes those numbers and turns them into a function.</p>
+<p>The end result is again a reducing function, one that reduces to a function which is the linear model.</p>
+<pre><code class="language-clojure">(defn linear-model [fx fy]
+  (redux/post-complete (kixi/simple-linear-regression fx fy)
+                       (fn [[b a]]
+                         #(+ b (* a %)))))
+</code></pre>
+<p>With this you can create the first model, one that derives rings from the
+height. This combination only had a correlation coefficient of 0.61, let’s see
+how it performs.</p>
+<pre><code class="language-clojure">(def height-&gt;rings
+  (transduce remove-outliers (linear-model :height :rings) abalone/data))
+</code></pre>
+<p>Now you can go over the data again and compare the predicted amount of rings
+with the actual amount of rings, and compute the Mean Squared Error.</p>
+<p>The MSE in this case is 6.5, but what does that number mean? The unit of the
+output variable is rings, so the error amounts are also in rings, and those are
+squared, so the MSE in this case is expressed in “rings squared”. When working
+with data like this regularly ask yourself what units the numbers you come up
+with carry. Only then can you consider what these numbers mean.</p>
+<p>So we have an error amount in “rings squared”. If you take the root of this you
+get an amount of rings. This “root mean squared error” is a common enough
+statistic that kixi.stats has it built in, so let’s switch from MSE to RMSE.</p>
+<p>What this tells you is that you can expect the model to typically be about 2.6
+rings “wrong”. Given that rings have values between 1 and 29 that’s a big error.</p>
+<pre><code class="language-clojure">(def height-&gt;rings
+  (transduce remove-outliers (linear-model :height :rings) abalone/data))
+
+(transduce remove-outliers
+           (kixi/mse (comp height-&gt;rings :height) :rings)
+           abalone/data)
+;; =&gt; 6.527071537294865
+
+(transduce remove-outliers
+           (kixi/rmse (comp height-&gt;rings :height) :rings)
+           abalone/data)
+;; =&gt; 2.5548134055728737
+</code></pre>
+<p>Let’s try a second model. According to the correlation matrix the best candidate
+is predicting log-rings by log-shell-weight, so let’s do just that. This has a
+correlation coefficient of 0.74.</p>
+<p>In this case the input of the model is log-shell-weight, so take the
+shell-weight, transform it to a logarithm, then feed it to the model. The result
+is now a value in log-rings, so take the exponent to get a value expressed in
+rings. Now you can compare those to the actual ring counts to compute the
+errors.</p>
+<p>The result is 2.47, which is indeed better than the 2.55 of the previous model,
+although admittedly not a huge difference.</p>
+<pre><code class="language-clojure">(def log-shell-weight-&gt;log-rings
+  (transduce remove-outliers
+             (linear-model (comp g/ln :shell-weight)
+                           (comp g/ln :rings))
+             abalone/data))
+
+(transduce remove-outliers
+           (kixi/rmse (comp g/exp log-shell-weight-&gt;log-rings g/ln :shell-weight) :rings)
+           abalone/data)
+;; =&gt; 2.4675436415202974
+</code></pre>
+<p>You have to be careful here when comparing models like this that you’re
+comparing the same type of errors. You might be tempted to do something like
+this, comparing the output of the model directly with the value of log-rings,</p>
+<p>Now the RMSE is in log-rings, so you take the exponent of the final result,
+assuming this gives you an RMSE expressed in rings again, so you can compare it
+to the other model, but that’s not the case.</p>
+<p>In this case the errors that are being squared are in log-rings, which means the
+errors on the high end will be downplayed compared to the errors on the low end,
+which is why you end up with such a vastly lower number.</p>
+<p>So: only compare MSE or RMSE when the errors you’re squaring have the same unit.</p>
+<pre><code class="language-clojure">(g/exp
+ (transduce remove-outliers
+            (kixi/rmse (comp log-shell-weight-&gt;log-rings g/ln :shell-weight)
+                       (comp g/ln :rings))
+            abalone/data))
+;; =&gt; 1.2397025210983978
+</code></pre>
+<p>Finally let’s visualize what we’ve been doing. Take that scatterplot again of
+log-rings vs log-shell-weight, and overlay it with the line representing the
+predictive model.</p>
+<p>That does seem to cut nicely through the middle of that cloud of dots, so at
+least by eyeballing it you can see it’s not obviously wrong. It’s always useful
+to do this, you’d be amazed how many simple mistakes you can catch this way.</p>
+<pre><code class="language-clojure">(let [graph {:data (sequence remove-outliers abalone/data)
+             :x    (comp g/ln :shell-weight)
+             :y    (comp g/ln :rings)
+             :fx   log-shell-weight-&gt;log-rings}]
+  (g/open (g/overlay (g/scatter-plot graph)
+                     (g/function-plot graph))))
+</code></pre>
+<p>One important side note to consider is that in this case we’ve been using the
+exact same data to train the model, and to evaluate its fitness. In practice
+you’ll often see data scientists splitting the data up in training data and test
+data: one is used to create the model, and the other to validate the model.</p>
+<p>The reason they do this is to prevent “overfitting”. Overfitting happens when
+your model starts to represent the peculiarities of the individual data points,
+rather than the general tendencies of the population. This leads to a model that
+is very good at reproducing the data it was trained on, but that performs
+suboptimally on data it hasn’t seen.</p>
+<p>The more advanced your model is the more overfitting becomes a problem. In a
+linear model it’s practically impossible to have overfitting, which is why I
+haven’t bothered to split the data set in two.</p>
+<p>After creating a model it’s worth asking whether the chosen model type was
+suitable for the data at hand. Was linear regression the appropriate thing to do
+here? Maybe the relationship between these variables isn’t linear after all, and
+we should consider a non-linear model.</p>
+<p>One way to answer this question is to plot the “residuals”. They’re basically
+the same as the “errors” we talked about before, the difference between the
+predicted value and the actual value. When talking about test data we call these
+errors, when talking about the data used to train the model, they are residuals.</p>
+<p>In this graph the residuals should be distributed randomly around the zero-line.
+If they form more of a U, or an upside down U, then a linear model was not
+suitable. In this case that seems fine.</p>
+<pre><code class="language-clojure">(let [graph {:data (sequence remove-outliers abalone/data)
+             :x    (comp g/ln :shell-weight)
+             :y    #(- (log-shell-weight-&gt;log-rings (g/ln (:shell-weight %)))
+                       (g/ln ((g/jitter 0.5) (:rings %))))
+             :fx   (constantly 0)}]
+  (g/open (g/overlay (g/scatter-plot graph)
+                     (g/function-plot graph))))
+</code></pre>
+<p>A final premise of a linear regression is that the residuals should be normally
+distributed. For this you look at a histogram of the residuals.</p>
+<p>It’s a bit of a lopsided graph again, we already concluded this isn’t a
+perfectly fitting model, but the general shape is there, so I’ll conclude that
+linear regression was suitable here.!</p>
+<pre><code class="language-clojure">(let [graph {:data (sequence remove-outliers abalone/data)
+             :x    (comp g/ln :shell-weight)
+             :y    #(g/exp (- (log-shell-weight-&gt;log-rings (g/ln (:shell-weight %)))
+                              (g/ln ((g/jitter 0.5) (:rings %)))))}]
+  (g/open (g/histogram graph)))
+</code></pre></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h2 id="notes">NOTES</h2>
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/ep43-data-science-kixi-stats">browse source code</a></p>
+<h2 id="links">Links</h2>
+<p>API Docs:</p>
+<ul>
+<li><a shape="rect" href="https://cljdoc.xyz/d/kixi/stats/0.4.3/doc/readme">kixi.stats</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/redux/redux/0.1.4/doc/readme">redux</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/net.cgrand/xforms/0.18.1">xforms</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/thi.ng/geom/1.0.0-RC3">thi.ng/geom</a></li>
+<li><a shape="rect" href="https://cljdoc.xyz/d/thi.ng/geom/1.0.0-RC3/api/thi.ng.geom.viz.core">thi.ng/geom-viz</a></li></ul>
+<p>The data set used in this episode:</p>
+<ul>
+<li><a shape="rect" href="https://archive.ics.uci.edu/ml/datasets/abalone">Abalone Data Set</a> (<a shape="rect" href="https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data">csv file</a>)</li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

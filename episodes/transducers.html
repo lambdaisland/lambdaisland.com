@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/transducers" />
+<meta name="twitter:title" content="Transducers" />
+<meta name="twitter:description" content="Transducers are a Clojure feature allowing you to write code that is efficient, reusable, and composable. They have been around for several years, landing first in Clojure 1.8,..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/678258031-69f5363c074aefaca41fdd4f6e08d3c9e701060345e0a69e22148c091cffede7-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Transducers" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/transducers" />
+<meta name="video:duration" content="520" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/678258031-69f5363c074aefaca41fdd4f6e08d3c9e701060345e0a69e22148c091cffede7-d_1280x720?r=pad" />
+<meta name="og:description" content="Transducers are a Clojure feature allowing you to write code that is efficient, reusable, and composable. They have been around for several years, landing first in Clojure 1.8,..." />
+<meta name="video:release_date" content="2018-01-19T12:09:20.137Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Transducers</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/251792527?h=ec81620de1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="38. Transducers"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Transducers are a Clojure feature allowing you to write code that is efficient,
+reusable, and composable. They have been around for several years, landing first
+in Clojure 1.8, but even some experienced Clojure programmers are not yet
+reaping the benefits of their use. In this episode we’ll look at the problems
+that Transducers solve, and how you use them in practice.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>Transducers have a reputation of being complicated. I think this is unfair.
+Sure, writing your own transducers isn’t trivial, but I can demonstrate how to
+use them in under a minute.</p>
+<p>Suppose I need all odd numbers from zero to twenty. I can do this with
+straightforward Clojure using <code>filter</code></p>
+<pre><code class="language-clojure">(filter odd? (range 20))
+;;=&gt; (1 3 5 7 9 11 13 15 17 19 ...)
+</code></pre>
+<p>You can think of <code>filter</code> as performing three steps. It unpacks the input
+collection, grabbing each element in turn, it then does its actual job of
+applying the predicate to test if the element should be filtered or not, and
+finally it adds the element to the output collection.</p>
+<pre><code class="language-text">+---------------+   +-----------------+   +---------------+
+| Unpack input  |==&gt;| Check predicate |==&gt;| Create output |
+|  collection   |   |                 |   |  collection   |
++---------------+   +-----------------+   +---------------+
+</code></pre>
+<p>Now I’ll do the exact same thing with a transducer, I first change the call to
+<code>filter</code> to only take a single argument. When you call <code>filter</code> this way it
+returns a “transducer” which filters odd numbers. Pass the transducer and the
+collection argument to <code>sequence</code>, and you get the same result as before. A lazy
+sequence of all odd values in the given range.</p>
+<pre><code class="language-clojure">(sequence (filter odd?) (range 20))
+;;=&gt; (1 3 5 7 9 11 13 15 17 19)
+</code></pre>
+<p>So <code>filter</code> has two versions, there’s the regular two-arity one which returns a
+collection, and one that only takes a predicate, and returns a “transducer”, but
+what is a transducer?</p>
+<p>If you look at it you can see that it’s just a function, it’s a particular kind
+of multi-arity function that follows certain rules, but you don’t need to know
+all those details to be able to use them. All you need to know is that <code>(filter
+odd?)</code> encapsulates the ability to filter out odd values. It’s a neat
+self-contained building block. It doesn’t do anything on its own, instead you
+plug it into some other operation to do the work.</p>
+<pre><code class="language-clojure">(filter odd?)
+;;=&gt; #function[clojure.core/filter/fn--5610]
+</code></pre>
+<p><code>sequence</code> is one such operation, it takes an input collection, runs it through
+the transducer, and returns a lazy sequence of the result.</p>
+<p><code>filter</code> no longer knows or care about the input or output collection, it’s
+strictly focused on its core business: filtering values. The details of
+iterating over the input collection, and building up the output, are delegated
+to <code>sequence</code>.</p>
+<pre><code class="language-artist">+---------------+   +-----------------+   +---------------+
+| Unpack input  |==&gt;| Check predicate |==&gt;| Create output |
+|  collection   |   |                 |   |  collection   |
++---------------+   +-----------------+   +----+----------+
+      ʌ                      ʌ                 ʌ
+      |                      |                 |
+      +------+-------------- | ----------------+
+            /                |
+   (sequence                 |
+     (filter odd?) ----------+
+     20)
+</code></pre>
+<p>Creating transducers generally follows the same pattern: you use collection
+functions from <code>clojure.core</code>, but leave off the final collection argument. All
+the typical collection operators like <code>map</code>, <code>drop</code>, <code>take-while</code>, or
+<code>partition-by</code> can return a transducer.</p>
+<pre><code class="language-clojure">(map inc)                                      ;;=&gt; #function[clojure.core/map/fn--5583]
+(drop 5)                                       ;;=&gt; #function[clojure.core/drop/fn--5642]
+(take-while (partial &gt; 23))                    ;;=&gt; #function[clojure.core/take-while/fn--5634]
+(partition-by #(Math/floor (/ % 7)))           ;;=&gt; #function[clojure.core/partition-by/fn--8154]
+</code></pre>
+<p>There are also a few special functions which return a transducer without taking
+any arguments. These are <code>(dedupe)</code> and <code>(distinct)</code>. They are functions instead
+of constants because they are stateful.</p>
+<pre><code class="language-clojure">(dedupe)     ;;=&gt; #function[clojure.core/dedupe/fn--7256]
+(distinct)   ;;=&gt; #function[clojure.core/distinct/fn--5297]
+</code></pre>
+<p>Finally there’s <code>cat</code> which is a transducer that concatenates sequences. <code>cat</code>
+is already itself a transducer, you don’t need to call it, just use the var
+directly wherever you would put a transducer.</p>
+<pre><code class="language-clojure">cat
+;;=&gt; #function[clojure.core/cat]
+
+(into [] cat (map range (range 5)))
+;;=&gt; [0 0 1 0 1 2 0 1 2 3]
+</code></pre>
+<p>What’s beautiful about the design of transducers is that you can stack them like
+legos using good old function composition, <code>comp</code>.</p>
+<p>The result is once again a transducer. This way you can build up a complex
+operation consisting of several steps, and since the result is just a function
+you can pass it around, or store it for later usage.</p>
+<p>One thing you do need to be aware of: normally with <code>comp</code> the first function is
+called last, so functions are actually run in reverse order. With transducers
+its the other way around: the resulting operation will call each transducer in
+source order, just like with a threading operator.</p>
+<pre><code class="language-clojure">(comp
+ (map inc)
+ (drop 5)
+ (take-while (partial &gt; 23)))
+;;=&gt; #function[clojure.core/comp/fn--5529]
+</code></pre>
+<p>But unlike with a threading operator, the resulting operation is first class, it
+is itself a value. I can pass it around or assign it to a var, and then use it
+when needed.</p>
+<pre><code class="language-clojure">(def complex-operation (comp
+                        (map inc)
+                        (drop 5)
+                        (take-while (partial &gt; 23))))
+
+(sequence complex-operation (range))
+;;=&gt; (6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22)
+</code></pre>
+<p>I could have done this with a threading operator as well, but There’s a
+functional difference between the threaded and transducer versions. When you
+thread these calls, then each of them will create a new sequence, which then
+forms the input for the next one. Those intermediate sequences are allocated,
+consumed, and garbage collected over and over again.</p>
+<p>The transducer version processes the collection in a single pass, only building
+up a new sequence for the final result. There are no short-lived intermediate
+collections, which can be a big win for performance.</p>
+<pre><code class="language-clojure">(-&gt;&gt; (range)
+     (map inc)
+     (drop 5)
+     (take-while (partial &gt; 23)))
+;;=&gt; (6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22)
+</code></pre>
+<p>Now that you know how to create and combine transducers, let’s look at some more
+ways you can use them.</p>
+<p><code>sequence</code> is fine for when all you need is a lazy sequence, but if you need a
+specific collection type like a set, vector, or map, then you can use <code>into</code>
+instead.</p>
+<p>You probably already know the two-argument version of <code>into</code>, with a destination
+and a source collection. If you put a transducer in between then it’ll transform
+your source collection while building up the destination.</p>
+<pre><code class="language-clojure">(into #{} (range 10))
+;;=&gt; #{0 7 1 4 6 3 2 9 5 8}
+
+(into #{} (map inc) (range 10))
+;;=&gt; #{7 1 4 6 3 2 9 5 10 8}
+</code></pre>
+<p>This leads to some useful idioms, for instance you can transform sequences into
+maps by mapping over a function that returns key-value pairs, and using a map
+as the target collection.</p>
+<pre><code class="language-clojure">(into {}
+      (map (fn [i]
+             [i (* i i)]))
+      (range 10))
+;;=&gt; {0 0, 7 49, 1 1, 4 16, 6 36, 3 9, 2 4, 9 81, 5 25, 8 64}
+</code></pre>
+<p>It’s also a great opportunity to employ the lovely <code>juxt</code> function, the pinnacle
+of functional programming joy. Maybe throw in a <code>comp</code> or a <code>partial</code> while
+you’re at it.</p>
+<p>This mapping from tea type to the length of the name clearly shows the
+superiority of Wulong Tea.</p>
+<pre><code class="language-clojure">(into {}
+      (map (juxt identity (comp count str))
+      [:green :black :wulong])
+;;=&gt; {:green 6, :black 6, :wulong 7}
+</code></pre>
+<p>So far we’ve transformed collections into collections, but sometimes the final
+result you’re after isn’t a collection at all. Let’s consider this bit of code
+for a moment. The details don’t matter too much, but do notice that it ends with
+a call to <code>(reduce +)</code>, so the result is just a single number.</p>
+<p>As mentioned before doing it this way will create an intermediate collection for
+each transformation step. I deliberately used a pretty big collection here to
+demonstrate that those milleconds do add up.</p>
+<pre><code class="language-clojure">(-&gt;&gt; (range 1e7)
+     (filter odd?)
+     (map (partial bit-xor 42))
+     (filter #(= 0 (mod % 11)))
+     (remove #(= 2r1100 (bit-and % 2r1100)))
+     (reduce +))
+;;=&gt; 1704542045459
+;; "Elapsed time: 678.467931 msecs"
+
+</code></pre>
+<p>The transducer version of <code>reduce</code> is called <code>transduce</code>. You first pass it the
+transducer. I’m taking the exact transformation steps as before, and combining
+them with <code>comp</code>. After that comes the “reducing function”, <code>+</code> in this case,
+the same one you would pass to <code>reduce</code>, and then the input collection.</p>
+<p>The result is the same, but this code is literally twice as fast as the threaded
+version. This shouldn’t be too surprising by now. The threaded version allocates
+four intermediate collections, which are then immediately used and discarded.
+The <code>transduce</code> function does none of that, it just runs over the input in a
+single pass, immediately calculating the result.</p>
+<pre><code class="language-clojure">(transduce (comp
+             (filter odd?)
+             (map (partial bit-xor 42))
+             (filter #(= 0 (mod % 11)))
+             (remove #(= 2r1100 (bit-and % 2r1100))))
+            +
+            (range 1e7))
+
+;; "Elapsed time: 339.195512 msecs"
+</code></pre>
+<p>These are the function signatures of <code>transduce</code>, you can pass it a starting
+value as with <code>reduce</code>, or just let it use the first item of the collection as
+the starting value.</p>
+<p>The transducer argument is called <code>xform</code> here, which you read as “cross form”,
+because data is ran “across” the transducer. You’ll come across this name more
+often when looking at Clojure’s docs.</p>
+<pre><code class="language-clojure">(transduce xform f coll)
+(transduce xform f init coll)
+</code></pre>
+<p>There’s one more “transducing context” you should know about, and that’s inside
+a core.async channel. Core.async is Clojure’s implementation of “communicating
+sequential processes” or CSP, it allows you to set up channels for communicating
+between threads, including lightweight threads known as “go-blocks”.</p>
+<p>Let me require <code>clojure.core.async</code> first, referring just what we need to create
+a channel, put some values onto it, and read them back.</p>
+<p>This channel will be used to process log messages. The first argument to <code>chan</code>
+is an optional buffer size, I’ll give it a buffer size of 10 to prevent it from
+blocking. As a second argument you may put in a transducer. All values coming
+across the channel will be passed through this transducer. The one I have here
+remove all <code>:debug</code> messages.</p>
+<p>Now put some values on the channel… and then read them out again. The debug
+message is gone.</p>
+<p>Here you can see why transducers are truly remarkable. In this case there is no
+input or output collection, there are just values coming over a channel, and yet
+you can use these exact same transducers.</p>
+<pre><code class="language-clojure">(require '[clojure.core.async :refer [chan &gt;!! &lt;!!]])
+
+(def log-chan (chan 10 (remove #(= :debug (:level %)))))
+
+(&gt;!! log-chan {:level :warn, :message "this is a warning"})
+(&gt;!! log-chan {:level :debug, :message "this is a debug message"})
+(&gt;!! log-chan {:level :info, :message "this is informational"})
+
+(prn (&lt;!! log-chan))
+(prn (&lt;!! log-chan))
+
+;;=&gt; {:level :warn, :message "this is a warning"}
+;;=&gt; {:level :info, :message "this is informational"}
+</code></pre>
+<p>I hope you’ve become convinced of the usefulness of transducers. I promise once
+you start adding them to your toolbox you’ll find uses for them everywhere. I
+can’t count the times I found that code was considerably cleaned up by switching
+it to transducers. The extra performance and flexibility are just icing on the
+cake.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<h3 id="cheat-sheet">Cheat sheet</h3>
+<h4 id="transducers">Transducers</h4>
+<ul>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/cat"><code>cat</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dedupe"><code>(dedupe)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/distinct"><code>(distinct)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/drop"><code>(drop n)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/drop-while"><code>(drop-while pred)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/filter"><code>(filter pred)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/halt-when"><code>(halt-when pred)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/interpose"><code>(interpose sep)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keep"><code>(keep f)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keep-indexed"><code>(keep-indexed f)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map"><code>(map f)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map-indexed"><code>(map-indexed f)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mapcat"><code>(mapcat f)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition-all"><code>(partition-all n)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition-by"><code>(partition-by n)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/random-sample"><code>(random-sample prob)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove"><code>(remove prob)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/replace"><code>(replace smap)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take"><code>(take n)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take-nth"><code>(take-nth n)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take-while"><code>(take-while pred)</code></a></li></ul>
+<h4 id="transducing-contexts">Transducing contexts</h4>
+<ul>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sequence"><code>(sequence xform coll)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/eduction"><code>(eduction xform* coll)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into"><code>(into to xfrom from)</code></a></li>
+<li><a shape="rect" href="http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/transduce"><code>(transduce xform f coll)</code></a></li>
+<li><a shape="rect" href="https://clojure.github.io/core.async/#clojure.core.async/chan"><code>(clojure.core.async/chan buf-or-n xform)</code></a></li></ul>
+<h3 id="links">Links</h3>
+<ul>
+<li><a shape="rect" href="http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming">Transducers Are Coming, Rich Hickey, Cognitect Blog, 6 August 2014</a></li>
+<li><a shape="rect" href="https://github.com/cgrand/xforms">cgrand/xforms: extra transducers and reducing functions</a></li>
+<li><a shape="rect" href="https://github.com/MastodonC/kixi.stats">kixi.stats: A library of statistical distribution sampling and transducing functions</a></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>

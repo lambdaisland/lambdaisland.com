@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="192x192" href="../img/favicons/android-chrome-192x192.png%3Fv=2" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png%3Fv=2" />
+<link rel="manifest" href="../img/favicons/site.webmanifest%3Fv=2" />
+<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg%3Fv=2" color="#5bbad5" />
+<link rel="shortcut icon" href="../img/favicons/favicon.ico%3Fv=2" />
+<meta name="apple-mobile-web-app-title" content="Lambda Island" />
+<meta name="application-name" content="Lambda Island" />
+<meta name="msapplication-TileColor" content="#2d89ef" />
+<meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=2" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@lambdaisland" />
+<meta name="twitter:creator" content="@lambdaisland" />
+<meta name="twitter:url" content="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-2" />
+<meta name="twitter:title" content="Building Command Line Applications with Lumo, part 2" />
+<meta name="twitter:description" content="Now that the &quot;birch&quot; command is working, it's time to release it to the world. In this episode you'll learn how to turn your Lumo script into an NPM package. You'll also learn..." />
+<meta name="twitter:image" content="https://i.vimeocdn.com/video/631800046-249d19789115264db204a3ce0eaa457bcdd436619a3b8db53a7e20ee43485a11-d_1280x720?r=pad" />
+<meta name="og:site-name" content="Lambda Island" />
+<meta name="og:title" content="Building Command Line Applications with Lumo, part 2" />
+<meta name="og:url" content="https://lambdaisland.com/episodes/building-cli-apps-with-lumo-part-2" />
+<meta name="video:duration" content="705" />
+<meta name="og:type" content="video.other" />
+<meta name="og:image" content="https://i.vimeocdn.com/video/631800046-249d19789115264db204a3ce0eaa457bcdd436619a3b8db53a7e20ee43485a11-d_1280x720?r=pad" />
+<meta name="og:description" content="Now that the &quot;birch&quot; command is working, it's time to release it to the world. In this episode you'll learn how to turn your Lumo script into an NPM package. You'll also learn..." />
+<meta name="video:release_date" content="2017-04-28T08:42:22.512Z" />
+<title>Lambda Island</title>
+<link rel="preload" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" as="style" />
+<link rel="stylesheet" href="../css/project_discovery.css%3F07E4626E8886EF50FD28CA67FE569812.css" />
+<link rel="stylesheet" href="../css/compiled/ornament.css%3F44CB9048E2A68B0597752D6AB1AAF1EE.css" /><meta name="csrf-param" content="__anti-forgery-token" /><meta name="csrf-token" content="D4DZuFUDKtsGE9q33+bI92lQFYGYZnveQ9RcSXg1DLmKOQMJ9VzrY64PNPhKmZu55oDaEknDe26u+ZzW" /></head>
+<body><div id="flash"></div>
+<div class="project-discovery_partials__layout_mf_episode">
+<div class="project-discovery_partials__left_pane"><a href="../index.html" class="project-discovery_parts__Logo"><img src="../img/new-logo-day.svg%3F1DFDE35924975FA3AA93AB2B5F6D725A" alt="Lambda Island logo" /></a>
+<ul class="project-discovery_parts__main_nav">
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../episodes.html">
+<svg fill="none" viewBox="-5 -2 25 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M1 1.5L15 10.5L1 19.5V1.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Episodes</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../collections.html">
+<svg fill="none" viewBox="0 0 24 25" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M10 3.5H3V10.5H10V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.5H14V10.5H21V3.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 14.5H14V21.5H21V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 14.5H3V21.5H10V14.5Z" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Collections</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../login.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Log in</a></li>
+<li class="project-discovery_parts__nav_item"><a class="project-discovery_parts__a" href="../register.html">
+<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Register</a></li></ul>
+<div class="project-discovery_parts__banner"></div></div>
+<div class="project-discovery_parts__title_area"><a href="../episodes.html" class="project-discovery_parts__breadcrumb">Episodes<span> /</span></a>
+<h1 class="project-discovery_parts__title">Building Command Line Applications with Lumo, part 2</h1></div>
+<div style="grid-area: user;
+  height: 3.7rem;"></div>
+<div class="project-discovery_parts__control_bar">
+<div></div><button class="show-notes-button project-discovery_parts__a project-discovery_parts__control project-discovery_parts__selected" aria-label="Show Notes">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M17.291 3.87a2.828 2.828 0 114 4l-13.5 13.5-5.5 1.5 1.5-5.5 13.5-13.5z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Show Notes</span></button><button class="transcript-button project-discovery_parts__a project-discovery_parts__control" aria-label="Transcript">
+<svg viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-discovery_assets__icon_big"><path d="M14.291 2.87h-8a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2v-12l-6-6z" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.291 2.87v6h6M16.291 13.87h-8M16.291 17.87h-8M10.291 9.87h-2" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Transcript</span></button></div>
+<div class="project-discovery_episode_views__wrapper">
+<article class="project-discovery_episode_views__ep_card project-discovery_parts__flex_2">
+<div class="project-discovery_episode_views__temp_video video-wrapper">
+<iframe frameborder="0" scrolling="auto" src="https://player.vimeo.com/video/215082614?h=caeda99f3f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=70655" width="1280" height="720" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="allowfullscreen" title="30. Building Command Line Applications With Lumo - part 2"></iframe></div>
+<div class="project-discovery_episode_views__description_wrapper">
+<p>Now that the “birch” command is working, it’s time to release it to the world. In this episode you’ll learn how to turn your Lumo script into an NPM package. You’ll also learn how to use packages from NPM (cli-colors) and Clojure library jars (tools.cli) to make your script even more awesome.</p></div></article>
+<aside class="project-discovery_episode_views__sidebar_container show-notes-container project-discovery_parts__flex_1 project-discovery_parts__hidden">
+<h2 class="project-discovery_parts__section_heading">Transcript</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p>In episode 29 I showed you how to write a Lumo script, a re-implementation of
+the Unix <code>tree</code> command, using several of Node’s built-in packages.</p>
+<p>In this episode you’ll learn how to publish your script as an NPM package, and
+how to make use of third party libraries from NPM and Clojars.</p>
+<p>So far this script is just a single file, and it has no dependencies apart from
+what ClojureScript and Node provide out of the box.</p>
+<p>Let’s try to make it more interesting, by using an npm package to add some color
+to the output.</p>
+<p>First create a <code>package.json</code> inside the <code>birch</code> directory. There’s a handy <code>npm
+init</code> command to help you with that. The defaults are fine for now, just press
+enter a bunch of times, or you can add <code>--yes</code> to accept all defaults.</p>
+<pre><code class="language-shell">$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &lt;pkg&gt; --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (birch)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to /tmp/birch/package.json:
+
+{
+  "name": "birch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this ok? (yes)
+</code></pre>
+<p>Now you can install the <code>cli-color</code> npm package. Add the <code>--save</code> flag, this way
+<code>cli-color</code> gets added as a dependency in <code>package.json</code>. This also adds a
+<code>node_modules</code> directory which contains the downloaded package. If you’re
+planning to make a git repo for this project then make sure to exclude this
+directory from version control.</p>
+<pre><code class="language-shell">$ npm install cli-color --save
+</code></pre>
+<pre><code class="language-javascript">{
+  "name": "birch",
+  ...
+  "dependencies": {
+    "cli-color": "^1.2.0"
+  }
+}
+</code></pre>
+<p>Now you can require <code>cli-color</code> in the script. The module contains a bunch of
+functions for different colors, we’ll just use the blue one to make directory
+names pop out a bit.</p>
+<pre><code class="language-clojure">(def cli-color (js/require "cli-color"))
+(def blue-text (.-blue cli-color))
+</code></pre>
+<p>Before changing the render function you first need to update <code>tree-entry</code>, to
+make sure each entry’s map contains all the information needed to render it. So
+inside the map add a <code>:directory?</code> key which will contain true or false.</p>
+<pre><code class="language-clojure">(defn tree-entry [parent name]
+  (let [path (path-join parent name)]
+    {:name name
+     :directory? (directory? path)
+     :children (if (directory? path) (child-entries path))}))
+</code></pre>
+<p>Finally in <code>render-tree</code> use that information to change the color of the entry
+name. If it’s a directory then make the name blue, otherwise leave it as-is.</p>
+<pre><code class="language-clojure">(defn render-tree [{:keys [name children directory?]}]
+  (cons
+   (if directory?
+     (blue-text name)
+     name)
+   ,,,))
+</code></pre>
+<p>When executing this script Node will find the <code>node_modules</code> directory, since
+it’s in a directory above the one where the script is, and from there it will
+know how to load <code>cli-color</code>.</p>
+<p>Now suppose you want to publish this package to <code>npmjs.com</code>, so you can
+help/impress your friends and colleagues. There are two different ways you could
+approach this. Before publishing the package you can compile the script to
+JavaScript, and then package up the JavaScript version instead of the
+ClojureScript one. This makes the package more lightweight: consumers don’t need
+lumo, and the code can be optimized using the Google Closure Compiler.</p>
+<p>The downside is that you need to start messing with ClojureScript compiler
+configuration, which isn’t always straightforward. You have to introduce either
+boot or Leiningen, or rely on Lumo’s build API, which is currently still a bit
+immature. The final downside is that by introducing an extra compile step you
+can really slow down your development and deployment workflows.</p>
+<p>So instead just go Lumo all the way. Since Lumo is itself an npm package you can
+add it as a dependency to make sure it’s available. That way you can bundle the
+uncompiled ClojureScript, and run it on the fly.</p>
+<p>This does complicate matters slightly, because the <code>lumo</code> executable will be
+somewhere under <code>node_modules</code>, and even <code>/usr/bin/env</code> won’t be able to find
+it, so you’ll need a small wrapper script to find and launch lumo.</p>
+<p>First lets restructure the project a bit. Create a <code>src</code> which will contain the
+source files.</p>
+<pre><code class="language-shell">$ mkdir -p src/birch
+</code></pre>
+<p>This time follow the conventions for namespaces. The script as you have it now
+becomes the <code>birch.core</code> namespace which goes into <code>src/birch/core.cljs</code>.</p>
+<pre><code class="language-shell">$ mv bin/birch src/birch/core.cljs
+</code></pre>
+<p>Now get rid of the shebang line and the modeline comment, and instead give it a
+proper namespace form. You can get rid of the <code>lumo.core</code> requirement. The
+command line arguments will come from somewhere else now. Note that in an <code>ns</code>
+form you don’t need a quote in front of the vectors.</p>
+<pre><code class="language-clojure">(ns birch.core
+  (:require [clojure.string :as str]))
+</code></pre>
+<p>Rename the <code>birch</code> function to <code>-main</code>, and delete the last line that calls it.
+We’ll have lumo call this main function directly instead.</p>
+<pre><code class="language-clojure">(defn -main [dir]
+  (-&gt;&gt; (tree-entry "" dir)
+       render-tree
+       (str/join "\n")
+       print))
+</code></pre>
+<p>So far we’ve been calling lumo with the name of the script as a single argument,
+but you can also invoke it in a different way. With <code>-c src</code> you tell it that
+<code>src</code> is part of the “classpath”, in other words, that lumo should look for
+namespaces inside that directory.</p>
+<p>With the <code>-m</code> flag you can give it a “main” namespace. Lumo will load this
+namespace, look for a <code>-main</code> function, and call it, passing any remaining
+command line arguments.</p>
+<pre><code class="language-shell">lumo -c src -m birch.core ..
+</code></pre>
+<p>It should still be possible to launch this as <code>birch</code>, so we’ll have to add a
+wrapper script. Create another <code>bin/birch</code> file, but this time as a regular old
+shell script, so give it a shebang pointing at <code>/bin/bash</code>. Put the lumo
+invocation in there, followed by <code>"$@"</code>, in double quotes. This special variable
+will contain all arguments to the script, so this way you can pass them all on
+to the actual ClojureScript code.</p>
+<p>You might have seen <code>$*</code>, or <code>$@</code> without the quotes somewhere. All of these are
+subtly broken when it comes to dealing with arguments that contain spaces.</p>
+<pre><code class="language-shell">#!/bin/bash
+
+lumo -c src -m birch.core "$@"
+</code></pre>
+<p>Make the new script executable, and now it should work like before.</p>
+<pre><code class="language-shell">$ chmod +x bin/birch
+</code></pre>
+<p>Next you need to tell npm about your script, by adding it to the <code>scripts</code>
+section in <code>package.json</code>. This way if someone install your package with the
+<code>-g</code> flag, npm will install your script in a location where the shell can find
+it.</p>
+<pre><code class="language-javascript">{
+  ...
+  "scripts": {
+    "birch": "bin/birch"
+  },
+  ...
+}
+</code></pre>
+<p>Also add lumo as a dependency, so when people install your package, lumo will be
+installed with it. Careful of the commas when editing JSON! Clojure programmers
+are so spoiled in this regard.</p>
+<pre><code class="language-javascript">{
+  ...
+  "dependencies": {
+    "cli-color": "^1.2.0",
+    "lumo-cljs": "1.4.1"
+  }
+}
+</code></pre>
+<p>You’re almost there, there’s just one more problem. You installed <code>lumo</code>
+globally, so on your computer the wrapper script will always be able to find it,
+but if someone else installs your package then <code>lumo</code> will be installed under
+<code>node_modules</code>, and the script won’t work. You’ll have to add some extra logic
+to always find the correct <code>lumo</code> executable.</p>
+<p>You could ask <code>npm</code> for the location of packages that were installed globally
+with <code>-g</code>, and resolve the path from there.</p>
+<p>Inside the <code>birch</code> package there’s a <code>node_modules</code>, which contains <code>lumo-cljs</code>,
+and in there under <code>bin</code> is the <code>lumo</code> executable.</p>
+<pre><code class="language-shell">$ npm root -g
+/home/arne/.nvm/versions/node/v6.10.2/lib/node_modules
+$ ls `npm root -g`/birch/node_modules/lumo-cljs
+bin  scripts  package.json  README.md
+$ ls `npm root -g`/birch/node_modules/lumo-cljs/bin
+lumo
+$ `npm root -g`/birch/node_modules/lumo-cljs/bin/lumo
+Lumo 1.4.1
+ClojureScript 1.9.521
+Node.js v7.9.0
+ Docs: (doc function-name-here)
+ Exit: Control+D or :cljs/quit or exit
+
+cljs.user=&gt;
+</code></pre>
+<p>This works pretty well, but it bothers me that this assumes <code>birch</code> is installed
+globally. Maybe that’s not the case. Maybe you’re just running it from inside a
+cloned repository, or installing it as a dependency of another package. It would
+be better if <code>birch</code> could find the location of <code>lumo</code> relative to its own
+location.</p>
+<p>For this the bash script needs to figure out its own location on the file
+system, which is a lot harder than it should be. There’s a StackOverflow
+question where people have discussed the merits of various solutions at length,
+I’ll link to it in the show notes. I’m going with this particular oneliner,
+which is the simplest solution that actually works.</p>
+<p>It does not resolve symlinks, which in this case doesn’t matter, and it breaks
+when the final path ends on a newline, which since this script is in a <code>bin</code>
+directory should not be the case.</p>
+<p>With that you get the location of the <code>bin</code> directory, and from there you can
+traverse into Birch’s own <code>node_modules</code> directory to find the lumo executable.</p>
+<pre><code class="language-shell">#!/bin/bash
+
+export BIRCH_BIN="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
+
+$BIRCH_BIN/../node_modules/lumo-cljs/bin/lumo -c src -m birch.core "$@"
+</code></pre>
+<p>Oh and one more thing, add this <code>$BIRCH_BIN</code> in quotes, or it won’t work if
+there are spaces in the path. Oh the joys of shell scripting.</p>
+<pre><code class="language-shell">"$BIRCH_BIN"/../node_modules/lumo-cljs/bin/lumo -c src -m birch.core "$@"
+</code></pre>
+<p>Now your package is ready to be deployed. You’ll have to give it a slightly
+different name though, since “birch”, just like most words in the dictionary, is
+already taken. I’ll call mine <code>lambdaisland-birch</code>.</p>
+<pre><code class="language-clojure">{
+  "name": "lambdaisland-birch",
+  ...
+}
+</code></pre>
+<p>If you haven’t published to npm before then first register an account with <code>npm
+adduser</code>. You need to pick a username and password, and enter your email
+address. After that you are logged in, and you can run <code>npm publish</code> in your
+package directory, and start sending links to your friends!</p>
+<pre><code class="language-shell">$ npm adduser
+Username: lambdaisland
+Password:
+Email: (this IS public) arne@lambdaisland.com
+Logged in as lambdaisland on https://registry.npmjs.org/.
+$ npm publish
++ lambdaisland-birch@1.0.0
+</code></pre>
+<p>So far so good for JavaScript dependencies, but what if you want to use
+ClojureScript libraries that are hosted on Clojars? This is actually a bit more
+involved. First you need to make sure that all the libraries you’re using are
+bootstrap-friendly. Lumo is based on so called “bootstrapped” or “self-hosted”
+ClojureScript, and not all libraries can work with that.</p>
+<p>Assuming the libraries you’re using are compatible, you then need to get them,
+and all of their dependencies, on Lumo’s classpath, one way or another.</p>
+<p>The <code>clojure.tools.cli</code> library has no further dependencies, so I’ll use that
+one to demonstrate how to do this manually. If you have many more ClojureScript
+dependencies you should consider if you’re not better off compiling your script
+with boot or leiningen instead.</p>
+<p>On the <code>tools.cli</code> Github page, follow the link to “all releases”, and download
+the jar for the latest version.</p>
+<p>In your project make a <code>lib</code> directory, and put the downloaded jar file in there.</p>
+<pre><code class="language-shell">$ mkdir lib
+$ mv ~/Downloads/tools.cli-0.3.5.jar lib
+</code></pre>
+<p>Now you need to make sure that jar file is on Lumo’s classpath, so it will look
+inside the jar for namespaces. Let’s refactor this a wee bit by storing
+<code>$BIRCH_HOME</code> instead of <code>$BIRCH_BIN</code>. Entries on the classpath are separated by
+colons, so after <code>src</code> add the location of the <code>tools.cli</code> jar.</p>
+<pre><code class="language-shell">#!/usr/bin/bash
+
+export BIRCH_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )/.."
+
+"$BIRCH_HOME"/node_modules/lumo-cljs/bin/lumo \
+  -c src:"$BIRCH_HOME"/lib/tools.cli-0.3.5.jar \
+  -m birch.core "$@"
+</code></pre>
+<p>Finally you’re ready to use <code>tools.cli</code> in your code. Require the
+<code>cljs.tools.cli</code> namespace, and refer to the <code>parse-opts</code> function, for
+intelligent parsing of command line options.</p>
+<pre><code class="language-clojure">(ns birch.core
+  (:require [clojure.string :as str]
+            [cljs.tools.cli :refer [parse-opts]]))
+</code></pre>
+<p>Define the options your program understands by defining a vector of vectors,
+containing the short and long command line flag, and a description. We’ll make
+colors in the output optional, since not all terminals support them.</p>
+<pre><code class="language-clojure">(def cli-opts [["-c" "--color" "Colorize the output"]])
+</code></pre>
+<p>Now the <code>-main</code> function can receive any number of arguments, so change its
+signature, and call <code>parse-opts</code> in a let block, passing it the incoming
+arguments, and the vector of recognized options.</p>
+<p>The result is a map with <code>:options</code> and <code>:arguments</code>. There should still be just
+one argument, the directory to turn into a tree.</p>
+<p>You can look up <code>:color</code> now in the <code>options</code> map, this will be either <code>nil</code> or
+<code>true</code>. Pass it as an extra argument to <code>render-tree</code>.</p>
+<pre><code class="language-clojure">(defn -main [&amp; args]
+  (let [{:keys [options arguments]} (parse-opts args cli-opts)]
+    (-&gt;&gt; (tree-entry "" (first arguments))
+         (render-tree (:color options))
+         (str/join "\n")
+         print)))
+</code></pre>
+<p>Finally change <code>render-tree</code> to accept that extra argument, and only change the
+color if it is true. Also make sure to pass it on to the recursive calls to
+<code>render-tree</code>.</p>
+<pre><code class="language-clojure">(defn render-tree [colorize? {:keys [name children directory?]}]
+  (cons
+   (if (and colorize? directory?)
+     (blue-text name)
+     name)
+   (mapcat (fn [child index]
+             (let [subtree (render-tree colorize? child)
+                   ,,,]
+               ,,,))
+           children
+           (range))))
+</code></pre>
+<p>That’s it! I hope this episode has inspired you to take Clojure to the command line.
+For all its flaws the venerable Unix shell has still persisted throughout the
+ages, for certains tasks it’s terse textual interface is hard to beat.</p></div></aside>
+<aside class="project-discovery_episode_views__sidebar_container transcript-container project-discovery_parts__flex_1">
+<h2 class="project-discovery_parts__section_heading">Show Notes</h2>
+<div class="project-discovery_episode_views__sidebar_content">
+<p><img src="../img/github-small-icon.png" alt="" /><a shape="rect" href="https://github.com/lambdaisland/birch">browse source code</a></p>
+<p>You can browse the code the way it looks at the end of this episode in the <a shape="rect" href="https://github.com/lambdaisland/birch/tree/ep30-end">ep30-end branch</a>.</p>
+<h3 id="links">Links</h3>
+<ul>
+<li>
+<p><a shape="rect" href="https://github.com/pesterhazy/unravel">Unravel</a>
+and <a shape="rect" href="https://github.com/juxt/mach">Mach</a> are two Lumo CLI apps distributed as
+NPM packages. You can check out their source for inspiration.</p></li>
+<li>
+<p><a shape="rect" href="https://github.com/abiocljs/abio">Abio</a>
+and <a shape="rect" href="https://github.com/pkpkpk/cljs-node-io">cljs-node-io</a> are both libraries
+that provide ClojureScript wrappers for built-in node API’s. If you’re planning
+to do non-trivial IO or host access you should check these out.</p></li>
+<li>
+<p><a shape="rect" href="https://github.com/eginez/calvin">Calvin</a> provides a build tool that uses Lumo to compile your ClojureScript project. Even though young and immature it’s definitely a tool to watch. Interestingly it’s not packaged as a Lumo script, but instead uses <code>lein-cljsbuild</code> to compile to JavaScript, after which it’s packaged as a regular Node package.</p></li>
+<li>
+<p><a shape="rect" href="http://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within">StackOverflow on how to get the location of a bash script.</a></p></li></ul></div></aside></div></div>
+<script type="text/javascript" src="../js/compiled/cljs_base.js%3F3F5E9E27E6ED81CC90FAEDFD036C34F5"></script>
+<script type="text/javascript" src="../js/compiled/public.js%3F80EFEFFA43E43DC923178A0CDDFE8508"></script>
+<script type="text/javascript" src="../highlightjs-10.3.2/highlight.pack.js%3FAD1B6901830314BC4EC306350B5C14C7"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script></body></html>
